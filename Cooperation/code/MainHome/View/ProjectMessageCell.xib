@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="82" id="KGk-i7-Jjw" customClass="ProjectMessageCell">
+            <rect key="frame" x="0.0" y="0.0" width="349" height="82"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="349" height="81.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XmX-YH-fHD">
+                        <rect key="frame" x="209" y="20" width="120" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="120" id="6kN-rG-T6Z"/>
+                            <constraint firstAttribute="height" constant="40" id="Owk-NG-0v3"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zHE-nv-ywr" userLabel="MarkImage">
+                        <rect key="frame" x="0.0" y="0.0" width="30" height="33.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="azX-1z-Dev"/>
+                            <constraint firstAttribute="width" secondItem="zHE-nv-ywr" secondAttribute="height" multiplier="9:10" id="u6D-nm-7ii"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nLf-KF-c77">
+                        <rect key="frame" x="20" y="20" width="184" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="0bj-4o-kt4"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vg0-a9-Vq5">
+                        <rect key="frame" x="0.0" y="80.5" width="349" height="1"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="1Bf-ur-T1h"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="Vg0-a9-Vq5" secondAttribute="bottom" id="D4g-bC-mbq"/>
+                    <constraint firstItem="Vg0-a9-Vq5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Ezu-uz-LZz"/>
+                    <constraint firstAttribute="trailing" secondItem="XmX-YH-fHD" secondAttribute="trailing" constant="20" id="JWw-DE-jtL"/>
+                    <constraint firstItem="XmX-YH-fHD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="KTT-HC-Raj"/>
+                    <constraint firstAttribute="trailing" secondItem="Vg0-a9-Vq5" secondAttribute="trailing" id="NoY-VK-0gp"/>
+                    <constraint firstItem="XmX-YH-fHD" firstAttribute="leading" secondItem="nLf-KF-c77" secondAttribute="trailing" constant="5" id="PKQ-H5-Ch3"/>
+                    <constraint firstItem="nLf-KF-c77" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Xv4-N5-4qk"/>
+                    <constraint firstItem="zHE-nv-ywr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="YMf-C8-pTa"/>
+                    <constraint firstItem="zHE-nv-ywr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="qz7-bE-r3h"/>
+                    <constraint firstItem="nLf-KF-c77" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="yda-bp-xnc"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="MarkImageView" destination="zHE-nv-ywr" id="Keb-fS-Rs3"/>
+                <outlet property="MessgaeLabel" destination="nLf-KF-c77" id="fvd-Yl-kBz"/>
+                <outlet property="StatusImageView" destination="XmX-YH-fHD" id="Bwh-8b-PGy"/>
+            </connections>
+            <point key="canvasLocation" x="294.5" y="283"/>
+        </tableViewCell>
+    </objects>
+</document>

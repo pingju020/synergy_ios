@@ -1,0 +1,50 @@
+//
+//  PrefixHeader.pch
+//  Cooperation
+//
+//  Created by yangjuanping on 16/10/18.
+//  Copyright © 2016年 yangjuanping. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import "ColorDefine.h"
+#import "SystemDefine.h"
+#import "KeyNameDefine.h"
+#import "UIView+Additions.h"
+#import "UIcolor+Expanded.h"
+#import "CocoaLumberjack.h"
+#import "PubllicMaskViewHelper.h"
+#import "UITableView+HeightCache.h"
+
+#import "Tools.h"
+#import "AFNetworking.h"
+#import "MJRefresh.h"
+#define HOST_ADDRESS @"http://139.224.10.134:8080/synergy_w/wx/"
+//#define HOST_ADDRESS @"http://singki.com/synergy_w/wx/"
+//#define HOST_ADDRESS @"http://192.168.0.198/synergy_w/wx/"
+
+#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
+#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
+#define STATUS_BAR_HEIGHT 20.0
+#define TAB_BAR_HEIGHT 49.0
+#define NAVIGATOR_HEIGHT 44.0
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+
+#ifdef DEBUG
+#define SpeLog(frmt, ...)  LOG_MAYBE(LOG_ASYNC_ENABLED, LOG_LEVEL_DEF, DDLogFlagDebug,   0, nil, __PRETTY_FUNCTION__, frmt, ##__VA_ARGS__)
+#else
+#define SpeLog(frmt, ...)  LOG_MAYBE(LOG_ASYNC_ENABLED, LOG_LEVEL_DEF, DDLogFlagDebug,   0, nil, __PRETTY_FUNCTION__, frmt, ##__VA_ARGS__)
+#endif
+
+
+#ifdef DEBUG
+#define SpeAssert(e) assert(e)
+#else
+#define SpeAssert(e)
+#endif
+
+#endif /* PrefixHeader_pch */
