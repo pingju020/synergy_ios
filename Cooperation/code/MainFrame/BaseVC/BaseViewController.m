@@ -24,7 +24,7 @@ static UIFont* kNavigationBarTitleFont = nil;
 @implementation BaseViewController
 
 +(void)load{
-    kCommonColorHighLight = UIColorFromRGB(0x08C875);
+    kCommonColorHighLight = COMMON_CORLOR_HIGHLIGHT;
     kNavigationBarTitleFont = [UIFont boldSystemFontOfSize:19];
     //kNavigationBarColor = kCommonColorHighLight;
 }

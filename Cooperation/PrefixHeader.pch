@@ -17,6 +17,7 @@
 #import "CocoaLumberjack.h"
 #import "PubllicMaskViewHelper.h"
 #import "UITableView+HeightCache.h"
+#import "HttpSessionManager.h"
 
 #import "Tools.h"
 #import "AFNetworking.h"

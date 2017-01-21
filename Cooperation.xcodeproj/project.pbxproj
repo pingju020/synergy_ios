@@ -275,7 +275,7 @@
 		ACB7C5951E330D3900C44615 /* 选框-选中.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB7C5651E330D3900C44615 /* 选框-选中.png */; };
 		ACB7C5961E330D3900C44615 /* 隐藏@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB7C5661E330D3900C44615 /* 隐藏@3x.png */; };
 		ACB7C5971E330D3900C44615 /* 用户名@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB7C5671E330D3900C44615 /* 用户名@3x.png */; };
-		ACB7C5981E330D3900C44615 /* 右箭头.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB7C5681E330D3900C44615 /* 右箭头.png */; };
+		ACB7C5981E330D3900C44615 /* 右箭头@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB7C5681E330D3900C44615 /* 右箭头@2x.png */; };
 		ACB7C5991E330D3900C44615 /* 展开.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB7C5691E330D3900C44615 /* 展开.png */; };
 		ACB7C59A1E330D3900C44615 /* 知识库@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB7C56A1E330D3900C44615 /* 知识库@3x.png */; };
 		ACB7C59B1E330D3900C44615 /* 知识库2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB7C56B1E330D3900C44615 /* 知识库2@3x.png */; };
@@ -289,6 +289,12 @@
 		ACB7C5A31E330D3900C44615 /* pdf@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB7C5731E330D3900C44615 /* pdf@3x.png */; };
 		ACB7C5A41E330D3900C44615 /* ppt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB7C5741E330D3900C44615 /* ppt@3x.png */; };
 		ACB7C5A51E330D3900C44615 /* xls@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB7C5751E330D3900C44615 /* xls@3x.png */; };
+		C6CEDCEE1E3328B500C39E56 /* ProjectDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C6CEDCED1E3328B500C39E56 /* ProjectDetailModel.m */; };
+		C6CEDCF21E33455400C39E56 /* ChangeInfoLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C6CEDCF11E33455400C39E56 /* ChangeInfoLabel.m */; };
+		C6CEDCF51E336AE600C39E56 /* TextTypeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C6CEDCF41E336AE600C39E56 /* TextTypeTableViewCell.m */; };
+		C6CEDCFB1E336B0C00C39E56 /* NumberTypeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C6CEDCFA1E336B0C00C39E56 /* NumberTypeTableViewCell.m */; };
+		C6CEDCFE1E336DE100C39E56 /* AddButtonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C6CEDCFD1E336DE100C39E56 /* AddButtonTableViewCell.m */; };
+		C6CEDD011E33836E00C39E56 /* ChooseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C6CEDD001E33836E00C39E56 /* ChooseTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -776,7 +782,7 @@
 		ACB7C5651E330D3900C44615 /* 选框-选中.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "选框-选中.png"; sourceTree = "<group>"; };
 		ACB7C5661E330D3900C44615 /* 隐藏@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "隐藏@3x.png"; sourceTree = "<group>"; };
 		ACB7C5671E330D3900C44615 /* 用户名@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "用户名@3x.png"; sourceTree = "<group>"; };
-		ACB7C5681E330D3900C44615 /* 右箭头.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "右箭头.png"; sourceTree = "<group>"; };
+		ACB7C5681E330D3900C44615 /* 右箭头@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "右箭头@2x.png"; sourceTree = "<group>"; };
 		ACB7C5691E330D3900C44615 /* 展开.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "展开.png"; sourceTree = "<group>"; };
 		ACB7C56A1E330D3900C44615 /* 知识库@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "知识库@3x.png"; sourceTree = "<group>"; };
 		ACB7C56B1E330D3900C44615 /* 知识库2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "知识库2@3x.png"; sourceTree = "<group>"; };
@@ -790,6 +796,18 @@
 		ACB7C5731E330D3900C44615 /* pdf@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pdf@3x.png"; sourceTree = "<group>"; };
 		ACB7C5741E330D3900C44615 /* ppt@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ppt@3x.png"; sourceTree = "<group>"; };
 		ACB7C5751E330D3900C44615 /* xls@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xls@3x.png"; sourceTree = "<group>"; };
+		C6CEDCEC1E3328B500C39E56 /* ProjectDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectDetailModel.h; sourceTree = "<group>"; };
+		C6CEDCED1E3328B500C39E56 /* ProjectDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectDetailModel.m; sourceTree = "<group>"; };
+		C6CEDCF01E33455400C39E56 /* ChangeInfoLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeInfoLabel.h; sourceTree = "<group>"; };
+		C6CEDCF11E33455400C39E56 /* ChangeInfoLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeInfoLabel.m; sourceTree = "<group>"; };
+		C6CEDCF31E336AE600C39E56 /* TextTypeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextTypeTableViewCell.h; sourceTree = "<group>"; };
+		C6CEDCF41E336AE600C39E56 /* TextTypeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextTypeTableViewCell.m; sourceTree = "<group>"; };
+		C6CEDCF91E336B0C00C39E56 /* NumberTypeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberTypeTableViewCell.h; sourceTree = "<group>"; };
+		C6CEDCFA1E336B0C00C39E56 /* NumberTypeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberTypeTableViewCell.m; sourceTree = "<group>"; };
+		C6CEDCFC1E336DE100C39E56 /* AddButtonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddButtonTableViewCell.h; sourceTree = "<group>"; };
+		C6CEDCFD1E336DE100C39E56 /* AddButtonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddButtonTableViewCell.m; sourceTree = "<group>"; };
+		C6CEDCFF1E33836E00C39E56 /* ChooseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseTableViewCell.h; sourceTree = "<group>"; };
+		C6CEDD001E33836E00C39E56 /* ChooseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1316,16 +1334,10 @@
 				AC1115F81E31DD91009ABFDF /* MainDataModel.m */,
 				AC1115F91E31DD91009ABFDF /* RollAdsDataDTO.h */,
 				AC1115FA1E31DD91009ABFDF /* RollAdsDataDTO.m */,
-				AC1115FB1E31DD91009ABFDF /* 未命名文件夹 */,
+				C6CEDCEC1E3328B500C39E56 /* ProjectDetailModel.h */,
+				C6CEDCED1E3328B500C39E56 /* ProjectDetailModel.m */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		AC1115FB1E31DD91009ABFDF /* 未命名文件夹 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "未命名文件夹";
 			sourceTree = "<group>";
 		};
 		AC1115FC1E31DD91009ABFDF /* View */ = {
@@ -1343,6 +1355,16 @@
 				AC11160A1E31DD91009ABFDF /* MainCollectionView */,
 				AC1116171E31DD91009ABFDF /* MainHomeItemView */,
 				AC11161C1E31DD91009ABFDF /* MainItemCollectionView */,
+				C6CEDCF01E33455400C39E56 /* ChangeInfoLabel.h */,
+				C6CEDCF11E33455400C39E56 /* ChangeInfoLabel.m */,
+				C6CEDCF31E336AE600C39E56 /* TextTypeTableViewCell.h */,
+				C6CEDCF41E336AE600C39E56 /* TextTypeTableViewCell.m */,
+				C6CEDCF91E336B0C00C39E56 /* NumberTypeTableViewCell.h */,
+				C6CEDCFA1E336B0C00C39E56 /* NumberTypeTableViewCell.m */,
+				C6CEDCFC1E336DE100C39E56 /* AddButtonTableViewCell.h */,
+				C6CEDCFD1E336DE100C39E56 /* AddButtonTableViewCell.m */,
+				C6CEDCFF1E33836E00C39E56 /* ChooseTableViewCell.h */,
+				C6CEDD001E33836E00C39E56 /* ChooseTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2110,7 +2132,7 @@
 				ACB7C5651E330D3900C44615 /* 选框-选中.png */,
 				ACB7C5661E330D3900C44615 /* 隐藏@3x.png */,
 				ACB7C5671E330D3900C44615 /* 用户名@3x.png */,
-				ACB7C5681E330D3900C44615 /* 右箭头.png */,
+				ACB7C5681E330D3900C44615 /* 右箭头@2x.png */,
 				ACB7C5691E330D3900C44615 /* 展开.png */,
 				ACB7C56A1E330D3900C44615 /* 知识库@3x.png */,
 				ACB7C56B1E330D3900C44615 /* 知识库2@3x.png */,
@@ -2274,7 +2296,7 @@
 				AC1117601E31DD91009ABFDF /* sum@2x.png in Resources */,
 				AC1117161E31DD91009ABFDF /* LoginViewController.xib in Resources */,
 				ACB7C57D1E330D3900C44615 /* 顶部背景@3x.png in Resources */,
-				ACB7C5981E330D3900C44615 /* 右箭头.png in Resources */,
+				ACB7C5981E330D3900C44615 /* 右箭头@2x.png in Resources */,
 				AC1117761E31DD91009ABFDF /* LICENSE in Resources */,
 				ACB7C5A41E330D3900C44615 /* ppt@3x.png in Resources */,
 				ACB7C5761E330D3900C44615 /* 按钮-大@3x.png in Resources */,
@@ -2379,6 +2401,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6CEDCF21E33455400C39E56 /* ChangeInfoLabel.m in Sources */,
 				AC1117441E31DD91009ABFDF /* DDLog.m in Sources */,
 				AC11172E1E31DD91009ABFDF /* MainCollectionManager.m in Sources */,
 				ACB7C5101E32FF2C00C44615 /* ProjectNewViewController.m in Sources */,
@@ -2437,6 +2460,7 @@
 				AC11171C1E31DD91009ABFDF /* PJTabbarButtonsBGView.m in Sources */,
 				AC1117951E31DD91009ABFDF /* UIImageView+HighlightedWebCache.m in Sources */,
 				AC1117431E31DD91009ABFDF /* DDFileLogger.m in Sources */,
+				C6CEDCFE1E336DE100C39E56 /* AddButtonTableViewCell.m in Sources */,
 				AC11174B1E31DD91009ABFDF /* ELCAssetCell.m in Sources */,
 				AC11176D1E31DD91009ABFDF /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				AC1117031E31DD91009ABFDF /* LeftAlignAlertView.m in Sources */,
@@ -2483,6 +2507,7 @@
 				AC11171E1E31DD91009ABFDF /* PJTabbarCustomButton.m in Sources */,
 				AC1117551E31DD91009ABFDF /* ELCImagePickerDemoAppDelegate.m in Sources */,
 				AC11171A1E31DD91009ABFDF /* UIView+Additions.m in Sources */,
+				C6CEDCFB1E336B0C00C39E56 /* NumberTypeTableViewCell.m in Sources */,
 				AC11171D1E31DD91009ABFDF /* PJTabBarController.m in Sources */,
 				AC1117221E31DD91009ABFDF /* MainViewController.m in Sources */,
 				AC1117641E31DD91009ABFDF /* AFSecurityPolicy.m in Sources */,
@@ -2517,6 +2542,8 @@
 				AC1117131E31DD91009ABFDF /* XXTEncrypt.m in Sources */,
 				AC1118281E31F5B2009ABFDF /* MJRefreshStateHeader.m in Sources */,
 				AC1117311E31DD91009ABFDF /* MainCollectionViewFlowLayout.m in Sources */,
+				C6CEDCF51E336AE600C39E56 /* TextTypeTableViewCell.m in Sources */,
+				C6CEDCEE1E3328B500C39E56 /* ProjectDetailModel.m in Sources */,
 				AC1117881E31DD91009ABFDF /* NSData+ImageContentType.m in Sources */,
 				AC1117911E31DD91009ABFDF /* SDWebImagePrefetcher.m in Sources */,
 				AC11170F1E31DD91009ABFDF /* ConverUtil.m in Sources */,
@@ -2548,6 +2575,7 @@
 				AC11178E1E31DD91009ABFDF /* SDWebImageDownloader.m in Sources */,
 				AC1117841E31DD91009ABFDF /* README.md in Sources */,
 				AC1117261E31DD91009ABFDF /* MainDataModel.m in Sources */,
+				C6CEDD011E33836E00C39E56 /* ChooseTableViewCell.m in Sources */,
 				AC11178B1E31DD91009ABFDF /* SDImageCacheConfig.m in Sources */,
 				ACB7C5211E33037500C44615 /* FileManagerViewController.m in Sources */,
 				AC1117091E31DD91009ABFDF /* WebViewViewController.m in Sources */,

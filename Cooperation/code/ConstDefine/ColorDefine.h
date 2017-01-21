@@ -17,7 +17,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 
-#define  COMMON_CORLOR_HIGHLIGHT      UIColorFromRGB(0x60CDF6)
+#define  COMMON_CORLOR_HIGHLIGHT      UIColorFromRGB(0x0DBEF5)
 #define  COMMON_CORLOR_NORMAL         UIColorFromRGB(0x787878)//UIColorFromRGB(0xc4c4c4)
 
 #define VcBackgroudColor                UIColorFromRGB(0xF3F4F6)
