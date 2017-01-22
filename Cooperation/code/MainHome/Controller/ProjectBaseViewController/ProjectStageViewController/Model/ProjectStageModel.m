@@ -39,6 +39,8 @@
     for (NSDictionary *dict in list) {
         ProjectTaskModel *model = [ProjectTaskModel mj_objectWithKeyValues:dict];
         
+        model.isOn = YES;
+        
         model.taskFiles = [ProjectTaskFileModel parsingArrayWithList:dict[@"taskFiles"]];
         
         model.taskFeedbacks = [ProjectFeedbackModel parsingArrayWithList:dict[@"taskFeedbacks"]];
@@ -85,6 +87,8 @@
     
     for (NSDictionary *dict in list) {
         ProjectFeedbackModel *model = [ProjectFeedbackModel mj_objectWithKeyValues:dict];
+        
+        model.cellHeight = -1;
         
         model.taskFeedFiles = [ProjectFeedbackFileModel parsingArrayWithList:dict[@"taskFeedFiles"]];
         

@@ -60,6 +60,12 @@
 ///任务反馈集合
 @property (nonatomic,strong) NSArray <ProjectFeedbackModel *>*taskFeedbacks;
 
+
+///自定义参数 section高度缓存
+@property (nonatomic,assign) CGFloat sectionHeight; //default -1   默认-1表示该高度未计算过
+///自定义参数 是否展开列表
+@property (nonatomic,assign) BOOL isOn; //default YES
+
 //构建方法
 + (NSArray *)parsingArrayWithList:(NSArray *)list;
 
@@ -101,8 +107,14 @@
 ///任务反馈附件集合
 @property (nonatomic,strong) NSArray <ProjectFeedbackFileModel *>*taskFeedFiles;
 
+
+///自定义参数 cell高度缓存
+@property (nonatomic,assign) CGFloat cellHeight; //default -1
+
 //构建方法
 + (NSArray *)parsingArrayWithList:(NSArray *)list;
+
+
 
 @end
 

@@ -71,12 +71,15 @@
                                        //1.解析数据
                                        NSArray *tabList = [ProjectTabModel parsingDataListWithArray:succeedResult[@"data"]];
                                        
+                                       if (!tabList) {
+                                           return ;
+                                       }
+                                       
                                        //2.左侧tab页赋值
                                        self.projectTabScrollView.dataList = tabList;
                                        
                                        //3.默认请求第一个
-                                       _stageId = [tabList[0] stageId];
-                                       [self requestStageData];
+                                       self.stageId = [tabList[0] stageId];
                                        
                                    }else{
                                        [PubllicMaskViewHelper showTipViewWith:succeedResult[@"msg"] inSuperView:self.view withDuration:1];
@@ -88,6 +91,18 @@
                                       [PubllicMaskViewHelper showTipViewWith:@"网络异常" inSuperView:self.view withDuration:1];
                                   }];
     
+}
+
+- (void)setStageId:(NSString *)stageId
+{
+    _stageId = stageId;
+    
+    if (NO) { //先判断是否有缓存
+        //取缓存
+        
+    }else{ //没有缓存重新获取
+        [self requestStageData];
+    }
 }
 
 - (void)requestStageData
@@ -103,9 +118,12 @@
                                    if (isSucceed) {
                                        //1.解析数据
                                        ProjectStageModel *stageModel =[ProjectStageModel parsingModelWithDict:succeedResult[@"data"]];
-
-                                       //2.构建UI
+                                       
+                                       //2.保存缓存
+                                       
+                                       //3.构建UI
                                        [self refrehViewWithModel:stageModel];
+                                       
 
                                        
                                    }else{
@@ -128,12 +146,6 @@
     self.tableViewModel.stageModel = stageModel;
     
     [self.tableView reloadData];
-}
-
-
-- (void)backBtnClicked
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark -ProjectStageHeaderDelegate
@@ -164,7 +176,6 @@
         typeof(self) __weak weakSelf = self;
         _projectTabScrollView.tabHandle = ^(NSString *stageId) {
             weakSelf.stageId = stageId;
-            [weakSelf requestStageData];
         };
     }
     return _projectTabScrollView;
@@ -178,9 +189,8 @@
         _tableView.backgroundColor = VcBackgroudColor;
         
         //代理交由逻辑层处理
-        _tableViewModel = [ProjectTableViewModel new];
-        _tableView.delegate = _tableViewModel;
-        _tableView.dataSource = _tableViewModel;
+        _tableView.delegate = self.tableViewModel;
+        _tableView.dataSource = self.tableViewModel;
         
         [self.view addSubview:_tableView];
         
@@ -196,6 +206,14 @@
         
     }
     return _headerView;
+}
+
+- (ProjectTableViewModel *)tableViewModel
+{
+    if (!_tableViewModel) {
+        _tableViewModel = [ProjectTableViewModel new];
+    }
+    return _tableViewModel;
 }
 
 @end

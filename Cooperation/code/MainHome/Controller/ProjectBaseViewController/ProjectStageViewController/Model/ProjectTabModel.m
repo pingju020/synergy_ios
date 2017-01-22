@@ -12,7 +12,10 @@
 
 + (NSArray<ProjectTabModel *> *)parsingDataListWithArray:(NSArray *)data
 {
-
+    if (IsArrEmpty(data)) {
+        return nil;
+    }
+    
     NSMutableArray *mulArr = [NSMutableArray array];
     
     for (NSDictionary *dict in data) {
