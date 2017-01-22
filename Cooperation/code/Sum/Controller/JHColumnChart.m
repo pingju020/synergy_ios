@@ -8,7 +8,7 @@
 
 #import "JHColumnChart.h"
 
-@interface JHColumnChart ()<CAAnimationDelegate>
+@interface JHColumnChart ()<UIApplicationDelegate>
 
 //背景图
 @property (nonatomic,strong)UIScrollView *BGScrollView;

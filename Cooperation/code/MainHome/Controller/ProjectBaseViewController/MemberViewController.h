@@ -10,4 +10,6 @@
 
 @interface MemberViewController : BaseViewController
 
+-(instancetype)initWithProjectId:(NSString*)projectId;
+
 @end

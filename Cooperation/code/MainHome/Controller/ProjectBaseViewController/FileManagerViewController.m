@@ -9,10 +9,25 @@
 #import "FileManagerViewController.h"
 
 @interface FileManagerViewController ()
-
+{
+    NSString* ProjectId;
+    
+    UITableView* MemberTable;
+    
+    NSMutableArray* Datasource;
+}
 @end
 
 @implementation FileManagerViewController
+
+- (instancetype)initWithProjectId:(NSString *)projectId{
+    self=[super init];
+    if(self){
+        ProjectId=projectId;
+    }
+    return self;
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];

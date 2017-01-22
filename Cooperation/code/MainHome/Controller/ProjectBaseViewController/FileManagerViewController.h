@@ -10,4 +10,6 @@
 
 @interface FileManagerViewController : BaseViewController
 
+-(instancetype)initWithProjectId:(NSString*)projectId;
+
 @end

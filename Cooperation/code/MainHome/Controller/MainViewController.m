@@ -25,6 +25,8 @@
 
 #import "ProjectSearchViewController.h"
 #import "ProjectNewViewController.h"
+
+#import "MemberViewController.h"
 @interface MainViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIScrollViewDelegate,UIGestureRecognizerDelegate,UITableViewDataSource,UITableViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate>
 @end
 
@@ -874,7 +876,12 @@ AH_BASESUBVCFORMAINTAB_MODULE
 #pragma mark 跳转搜索/跳转新建
 - (void)BeginSearch{
     ProjectSearchViewController* SearchViewController=[[ProjectSearchViewController alloc]init];
-    [self.navigationController pushViewController:SearchViewController animated:NO];
+//    [self.navigationController pushViewController:SearchViewController animated:NO];
+    
+    ProjectMessageModel* model=[Datasource objectAtIndex:0];
+    
+    MemberViewController* member=[[MemberViewController alloc]initWithProjectId:model.id];
+    [self.navigationController pushViewController:member animated:NO];
 }
 
 - (void)AddNewProject{

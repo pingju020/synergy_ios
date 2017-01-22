@@ -307,6 +307,7 @@
 		ACB7C5A31E330D3900C44615 /* pdf@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB7C5731E330D3900C44615 /* pdf@3x.png */; };
 		ACB7C5A41E330D3900C44615 /* ppt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB7C5741E330D3900C44615 /* ppt@3x.png */; };
 		ACB7C5A51E330D3900C44615 /* xls@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB7C5751E330D3900C44615 /* xls@3x.png */; };
+		ACBAB9071E34AD7900784C9C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACBAB9061E34AD7900784C9C /* QuartzCore.framework */; };
 		C634F9261E34A4A9003EE26B /* JHChart.m in Sources */ = {isa = PBXBuildFile; fileRef = C634F9061E34A4A9003EE26B /* JHChart.m */; };
 		C634F9281E34A4A9003EE26B /* JHLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = C634F90B1E34A4A9003EE26B /* JHLineChart.m */; };
 		C634F9291E34A4A9003EE26B /* JHPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = C634F90D1E34A4A9003EE26B /* JHPieChart.m */; };
@@ -859,6 +860,7 @@
 		ACB7C5731E330D3900C44615 /* pdf@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pdf@3x.png"; sourceTree = "<group>"; };
 		ACB7C5741E330D3900C44615 /* ppt@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ppt@3x.png"; sourceTree = "<group>"; };
 		ACB7C5751E330D3900C44615 /* xls@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xls@3x.png"; sourceTree = "<group>"; };
+		ACBAB9061E34AD7900784C9C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C634F9051E34A4A9003EE26B /* JHChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHChart.h; sourceTree = "<group>"; };
 		C634F9061E34A4A9003EE26B /* JHChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHChart.m; sourceTree = "<group>"; };
 		C634F9071E34A4A9003EE26B /* JHChartHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHChartHeader.h; sourceTree = "<group>"; };
@@ -911,6 +913,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACBAB9071E34AD7900784C9C /* QuartzCore.framework in Frameworks */,
 				AC1117B21E31DF6C009ABFDF /* Foundation.framework in Frameworks */,
 				AC1117B01E31DE75009ABFDF /* libz.tbd in Frameworks */,
 				AC1117AE1E31DE68009ABFDF /* libc++.1.tbd in Frameworks */,
@@ -998,6 +1001,7 @@
 		AC1115411E31DD1F009ABFDF = {
 			isa = PBXGroup;
 			children = (
+				ACBAB9061E34AD7900784C9C /* QuartzCore.framework */,
 				AC1117B11E31DF6C009ABFDF /* Foundation.framework */,
 				AC1117AF1E31DE75009ABFDF /* libz.tbd */,
 				AC1117AD1E31DE68009ABFDF /* libc++.1.tbd */,

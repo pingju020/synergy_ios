@@ -18,6 +18,9 @@
     }
     cell.SelectedImageView.layer.masksToBounds=YES;
     cell.SelectedImageView.layer.cornerRadius=10;
+    
+    cell.IconImageView.layer.masksToBounds=YES;
+    cell.IconImageView.layer.cornerRadius=15;
 //    [cell.ConditionLabel setTextColor:[UIColor darkGrayColor]];
     return cell;
 }
