@@ -27,6 +27,7 @@
 #import "ProjectNewViewController.h"
 
 #import "MemberViewController.h"
+#import "FileManagerViewController.h"
 @interface MainViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIScrollViewDelegate,UIGestureRecognizerDelegate,UITableViewDataSource,UITableViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate>
 @end
 
@@ -881,7 +882,8 @@ AH_BASESUBVCFORMAINTAB_MODULE
     ProjectMessageModel* model=[Datasource objectAtIndex:0];
     
     MemberViewController* member=[[MemberViewController alloc]initWithProjectId:model.id];
-    [self.navigationController pushViewController:member animated:NO];
+    FileManagerViewController* file=[[FileManagerViewController alloc]initWithProjectId:model.id];
+    [self.navigationController pushViewController:file animated:NO];
 }
 
 - (void)AddNewProject{

@@ -309,6 +309,12 @@
 		ACB7C5A41E330D3900C44615 /* ppt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB7C5741E330D3900C44615 /* ppt@3x.png */; };
 		ACB7C5A51E330D3900C44615 /* xls@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB7C5751E330D3900C44615 /* xls@3x.png */; };
 		ACBAB9071E34AD7900784C9C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACBAB9061E34AD7900784C9C /* QuartzCore.framework */; };
+		ACF207A71E351C3500498C96 /* FileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF207A61E351C3500498C96 /* FileModel.m */; };
+		ACF207AA1E351C4500498C96 /* FolderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF207A91E351C4500498C96 /* FolderModel.m */; };
+		ACF207B11E351C6700498C96 /* FileTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF207AC1E351C6700498C96 /* FileTableCell.m */; };
+		ACF207B21E351C6700498C96 /* FileTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACF207AD1E351C6700498C96 /* FileTableCell.xib */; };
+		ACF207B31E351C6700498C96 /* FolderTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF207AF1E351C6700498C96 /* FolderTableCell.m */; };
+		ACF207B41E351C6700498C96 /* FolderTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACF207B01E351C6700498C96 /* FolderTableCell.xib */; };
 		C634F9261E34A4A9003EE26B /* JHChart.m in Sources */ = {isa = PBXBuildFile; fileRef = C634F9061E34A4A9003EE26B /* JHChart.m */; };
 		C634F9281E34A4A9003EE26B /* JHLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = C634F90B1E34A4A9003EE26B /* JHLineChart.m */; };
 		C634F9291E34A4A9003EE26B /* JHPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = C634F90D1E34A4A9003EE26B /* JHPieChart.m */; };
@@ -995,6 +1001,16 @@
 		ACB7C5741E330D3900C44615 /* ppt@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ppt@3x.png"; sourceTree = "<group>"; };
 		ACB7C5751E330D3900C44615 /* xls@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xls@3x.png"; sourceTree = "<group>"; };
 		ACBAB9061E34AD7900784C9C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		ACF207A51E351C3500498C96 /* FileModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileModel.h; sourceTree = "<group>"; };
+		ACF207A61E351C3500498C96 /* FileModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileModel.m; sourceTree = "<group>"; };
+		ACF207A81E351C4500498C96 /* FolderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderModel.h; sourceTree = "<group>"; };
+		ACF207A91E351C4500498C96 /* FolderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderModel.m; sourceTree = "<group>"; };
+		ACF207AB1E351C6700498C96 /* FileTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileTableCell.h; sourceTree = "<group>"; };
+		ACF207AC1E351C6700498C96 /* FileTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileTableCell.m; sourceTree = "<group>"; };
+		ACF207AD1E351C6700498C96 /* FileTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FileTableCell.xib; sourceTree = "<group>"; };
+		ACF207AE1E351C6700498C96 /* FolderTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderTableCell.h; sourceTree = "<group>"; };
+		ACF207AF1E351C6700498C96 /* FolderTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderTableCell.m; sourceTree = "<group>"; };
+		ACF207B01E351C6700498C96 /* FolderTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FolderTableCell.xib; sourceTree = "<group>"; };
 		C634F9051E34A4A9003EE26B /* JHChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHChart.h; sourceTree = "<group>"; };
 		C634F9061E34A4A9003EE26B /* JHChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHChart.m; sourceTree = "<group>"; };
 		C634F9071E34A4A9003EE26B /* JHChartHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHChartHeader.h; sourceTree = "<group>"; };
@@ -1818,6 +1834,10 @@
 		AC1115F01E31DD91009ABFDF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				ACF207A81E351C4500498C96 /* FolderModel.h */,
+				ACF207A91E351C4500498C96 /* FolderModel.m */,
+				ACF207A51E351C3500498C96 /* FileModel.h */,
+				ACF207A61E351C3500498C96 /* FileModel.m */,
 				C68710661E34572C0018E152 /* ProjectDetailModel.h */,
 				C68710671E34572C0018E152 /* ProjectDetailModel.m */,
 				AC68D97E1E339633002DD4DE /* SelectManagerModel.h */,
@@ -1859,6 +1879,12 @@
 		AC1115FC1E31DD91009ABFDF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				ACF207AB1E351C6700498C96 /* FileTableCell.h */,
+				ACF207AC1E351C6700498C96 /* FileTableCell.m */,
+				ACF207AD1E351C6700498C96 /* FileTableCell.xib */,
+				ACF207AE1E351C6700498C96 /* FolderTableCell.h */,
+				ACF207AF1E351C6700498C96 /* FolderTableCell.m */,
+				ACF207B01E351C6700498C96 /* FolderTableCell.xib */,
 				C68710691E34575A0018E152 /* AddButtonTableViewCell.m */,
 				C687106A1E34575A0018E152 /* ChooseTableViewCell.m */,
 				C687106B1E34575A0018E152 /* NumberTypeTableViewCell.m */,
@@ -3396,6 +3422,8 @@
 				C634FAA21E34F93E003EE26B /* RecordingSignal004@2x.png in Resources */,
 				ACB7C57E1E330D3900C44615 /* 反馈.png in Resources */,
 				C634FA931E34F93E003EE26B /* msg_chat_voice_unread.png in Resources */,
+				ACF207B21E351C6700498C96 /* FileTableCell.xib in Resources */,
+				ACF207B41E351C6700498C96 /* FolderTableCell.xib in Resources */,
 				ACB7C59B1E330D3900C44615 /* 知识库2@3x.png in Resources */,
 				ACB7C58D1E330D3900C44615 /* 我的2@3x.png in Resources */,
 				AC608DC01E323CCB007519B9 /* ProjectConditionCell.xib in Resources */,
@@ -3512,6 +3540,7 @@
 				C634FA531E34F93D003EE26B /* XHMessageBubbleHelper.m in Sources */,
 				C634FA6F1E34F93E003EE26B /* SELineLayout.m in Sources */,
 				AC1118261E31F5B2009ABFDF /* MJRefreshGifHeader.m in Sources */,
+				ACF207A71E351C3500498C96 /* FileModel.m in Sources */,
 				C634F9311E34A4A9003EE26B /* JHTableDataRowModel.m in Sources */,
 				AC1117341E31DD91009ABFDF /* MainItemCollectionCell.m in Sources */,
 				ACB7C5391E33087600C44615 /* TaskFedBackViewController.m in Sources */,
@@ -3649,6 +3678,7 @@
 				AC1117711E31DD91009ABFDF /* UIRefreshControl+AFNetworking.m in Sources */,
 				AC11176A1E31DD91009ABFDF /* AFAutoPurgingImageCache.m in Sources */,
 				AC1117001E31DD91009ABFDF /* BigImageViewController.m in Sources */,
+				ACF207AA1E351C4500498C96 /* FolderModel.m in Sources */,
 				C634FA751E34F93E003EE26B /* SETextInput.m in Sources */,
 				AC11171B1E31DD91009ABFDF /* FontSizeUtil.m in Sources */,
 				C634FA461E34F93D003EE26B /* NSString+MessageInputView.m in Sources */,
@@ -3663,6 +3693,7 @@
 				C634FA4D1E34F93D003EE26B /* UIScrollView+XHkeyboardControl.m in Sources */,
 				AC1117551E31DD91009ABFDF /* ELCImagePickerDemoAppDelegate.m in Sources */,
 				AC68D9841E3396B1002DD4DE /* SelectManagerCell.m in Sources */,
+				ACF207B31E351C6700498C96 /* FolderTableCell.m in Sources */,
 				AC11171A1E31DD91009ABFDF /* UIView+Additions.m in Sources */,
 				C634FA6C1E34F93E003EE26B /* LKBadgeView.m in Sources */,
 				AC11171D1E31DD91009ABFDF /* PJTabBarController.m in Sources */,
@@ -3736,6 +3767,7 @@
 				4DD372FE1E34A2730011A7D1 /* ProjectTabScrollView.m in Sources */,
 				AC1117E41E31F1BA009ABFDF /* SumWebViewController.m in Sources */,
 				C634FA5B1E34F93D003EE26B /* XHMessageTableViewController.m in Sources */,
+				ACF207B11E351C6700498C96 /* FileTableCell.m in Sources */,
 				C634FA731E34F93E003EE26B /* SETextEditingCaret.m in Sources */,
 				ACB7C53F1E33089D00C44615 /* TaskNewViewController.m in Sources */,
 				AC11182B1E31F5B2009ABFDF /* UIScrollView+MJExtension.m in Sources */,
