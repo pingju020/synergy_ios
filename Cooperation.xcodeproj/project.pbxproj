@@ -322,6 +322,11 @@
 		C634F9331E34A4A9003EE26B /* SumHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = C634F9211E34A4A9003EE26B /* SumHeader.m */; };
 		C634F9341E34A4A9003EE26B /* SumLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = C634F9231E34A4A9003EE26B /* SumLineChart.m */; };
 		C634F9351E34A4A9003EE26B /* UIView+LJAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C634F9251E34A4A9003EE26B /* UIView+LJAdditions.m */; };
+		C634F9501E34AEA1003EE26B /* 日历.png in Resources */ = {isa = PBXBuildFile; fileRef = C634F94B1E34AEA1003EE26B /* 日历.png */; };
+		C634F9511E34AEA1003EE26B /* 汇总-右箭头1.png in Resources */ = {isa = PBXBuildFile; fileRef = C634F94C1E34AEA1003EE26B /* 汇总-右箭头1.png */; };
+		C634F9521E34AEA1003EE26B /* 汇总-右箭头2.png in Resources */ = {isa = PBXBuildFile; fileRef = C634F94D1E34AEA1003EE26B /* 汇总-右箭头2.png */; };
+		C634F9531E34AEA1003EE26B /* 汇总-左箭头1.png in Resources */ = {isa = PBXBuildFile; fileRef = C634F94E1E34AEA1003EE26B /* 汇总-左箭头1.png */; };
+		C634F9541E34AEA1003EE26B /* 汇总-左箭头2.png in Resources */ = {isa = PBXBuildFile; fileRef = C634F94F1E34AEA1003EE26B /* 汇总-左箭头2.png */; };
 		C65875061E347887006FBA99 /* BackMoneyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C65875051E347887006FBA99 /* BackMoneyTableViewCell.m */; };
 		C68710681E34572C0018E152 /* ProjectDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C68710671E34572C0018E152 /* ProjectDetailModel.m */; };
 		C68710731E34575A0018E152 /* AddButtonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C68710691E34575A0018E152 /* AddButtonTableViewCell.m */; };
@@ -890,6 +895,11 @@
 		C634F9231E34A4A9003EE26B /* SumLineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SumLineChart.m; sourceTree = "<group>"; };
 		C634F9241E34A4A9003EE26B /* UIView+LJAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LJAdditions.h"; sourceTree = "<group>"; };
 		C634F9251E34A4A9003EE26B /* UIView+LJAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LJAdditions.m"; sourceTree = "<group>"; };
+		C634F94B1E34AEA1003EE26B /* 日历.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "日历.png"; sourceTree = "<group>"; };
+		C634F94C1E34AEA1003EE26B /* 汇总-右箭头1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "汇总-右箭头1.png"; sourceTree = "<group>"; };
+		C634F94D1E34AEA1003EE26B /* 汇总-右箭头2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "汇总-右箭头2.png"; sourceTree = "<group>"; };
+		C634F94E1E34AEA1003EE26B /* 汇总-左箭头1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "汇总-左箭头1.png"; sourceTree = "<group>"; };
+		C634F94F1E34AEA1003EE26B /* 汇总-左箭头2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "汇总-左箭头2.png"; sourceTree = "<group>"; };
 		C65875041E347887006FBA99 /* BackMoneyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackMoneyTableViewCell.h; sourceTree = "<group>"; };
 		C65875051E347887006FBA99 /* BackMoneyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackMoneyTableViewCell.m; sourceTree = "<group>"; };
 		C68710661E34572C0018E152 /* ProjectDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectDetailModel.h; sourceTree = "<group>"; };
@@ -2289,6 +2299,11 @@
 		ACB7C5401E330C7800C44615 /* knowledge */ = {
 			isa = PBXGroup;
 			children = (
+				C634F94B1E34AEA1003EE26B /* 日历.png */,
+				C634F94C1E34AEA1003EE26B /* 汇总-右箭头1.png */,
+				C634F94D1E34AEA1003EE26B /* 汇总-右箭头2.png */,
+				C634F94E1E34AEA1003EE26B /* 汇总-左箭头1.png */,
+				C634F94F1E34AEA1003EE26B /* 汇总-左箭头2.png */,
 				ACB7C5461E330D3900C44615 /* 按钮-大@3x.png */,
 				ACB7C5471E330D3900C44615 /* 按钮-取消.png */,
 				ACB7C5481E330D3900C44615 /* 按钮-搜索.png */,
@@ -2522,6 +2537,7 @@
 				ACB7C5861E330D3900C44615 /* 搜索-关闭.png in Resources */,
 				ACB7C59F1E330D3900C44615 /* 自动登录背景.png in Resources */,
 				ACB7C5801E330D3900C44615 /* 汇总@3x.png in Resources */,
+				C634F9511E34AEA1003EE26B /* 汇总-右箭头1.png in Resources */,
 				ACB7C57B1E330D3900C44615 /* 按钮-置顶2.png in Resources */,
 				ACB7C5831E330D3900C44615 /* 任务-下拉2.png in Resources */,
 				ACB7C58F1E330D3900C44615 /* 项目@3x.png in Resources */,
@@ -2539,6 +2555,7 @@
 				AC1117861E31DD91009ABFDF /* LICENSE in Resources */,
 				AC1117D31E31F042009ABFDF /* password@3x.png in Resources */,
 				AC1117741E31DD91009ABFDF /* LICENSE in Resources */,
+				C634F9501E34AEA1003EE26B /* 日历.png in Resources */,
 				AC1117C01E31EA05009ABFDF /* unselected@3x.png in Resources */,
 				ACB7C5961E330D3900C44615 /* 隐藏@3x.png in Resources */,
 				ACB7C5851E330D3900C44615 /* 删除2.png in Resources */,
@@ -2549,6 +2566,7 @@
 				AC11175D1E31DD91009ABFDF /* news_press@2x.png in Resources */,
 				AC1117791E31DD91009ABFDF /* LICENSE in Resources */,
 				ACB7C5911E330D3900C44615 /* 项目阶段.png in Resources */,
+				C634F9541E34AEA1003EE26B /* 汇总-左箭头2.png in Resources */,
 				ACB7C5781E330D3900C44615 /* 按钮-搜索.png in Resources */,
 				AC6397351E332B260031682D /* conditionSelected.png in Resources */,
 				AC1118291E31F5B2009ABFDF /* MJRefresh.bundle in Resources */,
@@ -2563,6 +2581,7 @@
 				ACB7C58B1E330D3900C44615 /* 文件夹.png in Resources */,
 				ACB7C59C1E330D3900C44615 /* 置顶@3x.png in Resources */,
 				AC11155A1E31DD1F009ABFDF /* Assets.xcassets in Resources */,
+				C634F9531E34AEA1003EE26B /* 汇总-左箭头1.png in Resources */,
 				AC63973A1E332D030031682D /* projectMarked@3x.png in Resources */,
 				AC1117501E31DD91009ABFDF /* ELCAlbumPickerController.xib in Resources */,
 				ACB7C5A01E330D3900C44615 /* BG@3x.png in Resources */,
@@ -2570,6 +2589,7 @@
 				AC11175C1E31DD91009ABFDF /* news@2x.png in Resources */,
 				ACB7C5971E330D3900C44615 /* 用户名@3x.png in Resources */,
 				ACB7C58C1E330D3900C44615 /* 我的@3x.png in Resources */,
+				C634F9521E34AEA1003EE26B /* 汇总-右箭头2.png in Resources */,
 				ACB7C5921E330D3900C44615 /* 新增@3x.png in Resources */,
 				ACB7C5A51E330D3900C44615 /* xls@3x.png in Resources */,
 				ACB7C5941E330D3900C44615 /* 选框-未选.png in Resources */,
