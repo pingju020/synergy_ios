@@ -7,13 +7,28 @@
 //
 
 #import "ProjectMessageModel.h"
-
+#import "Tools.h"
 @implementation ProjectMessageModel
 
 - (instancetype)initWithDic:(NSMutableDictionary *)dic{
     self=[super init];
     if(dic!=nil){
+        self.createDate=[dic objectForKey:@"createDate"];
+        self.id=[dic objectForKey:@"id"];
+        self.isTop=[dic objectForKey:@"isTop"];
+        self.state=[dic objectForKey:@"state"];
         
+        self.projectName=[Tools replaceUnicode:[dic objectForKey:@"projectName"]];
+        self.stageName=[Tools replaceUnicode:[dic objectForKey:@"stageName"]];
+        self.userName=[Tools replaceUnicode:[dic objectForKey:@"userName"]];
+        
+        
+        if([dic objectForKey:@"projectStages"]){
+            self.projectStages=[dic objectForKey:@"projectStages"];
+        }
+        if([dic objectForKey:@"projectStages"]){
+            self.stageId=[dic objectForKey:@"stageId"];
+        }
     }
     return self;
 }

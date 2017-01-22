@@ -24,6 +24,9 @@
 
 @implementation ProjectWebViewController
 {
+    UIButton* tempgitbtn;
+    //挪一挪
+    
     UIButton* back;
     UIButton* title;
     
@@ -399,7 +402,7 @@
         ProjectMessageCell* cell=[ProjectMessageCell cellWithTableView:tableView];
         
         [cell.MarkImageView setBackgroundColor:[UIColor blackColor]];
-        [cell.StatusImageView setBackgroundColor:[UIColor orangeColor]];
+//        [cell.StatusImageView setBackgroundColor:[UIColor orangeColor]];
         [cell.MessgaeLabel setText:@"南京全聚德"];
         
         return cell;

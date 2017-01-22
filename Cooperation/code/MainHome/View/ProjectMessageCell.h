@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *MessgaeLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *StatusImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *MarkImageView;
+@property (weak, nonatomic) IBOutlet UILabel *StatusLabel;
 
 
 @end

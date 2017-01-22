@@ -218,13 +218,27 @@
 		AC11182B1E31F5B2009ABFDF /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1118161E31F5B2009ABFDF /* UIScrollView+MJExtension.m */; };
 		AC11182C1E31F5B2009ABFDF /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1118181E31F5B2009ABFDF /* UIScrollView+MJRefresh.m */; };
 		AC11182D1E31F5B2009ABFDF /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = AC11181A1E31F5B2009ABFDF /* UIView+MJExtension.m */; };
+		AC2D5ACE1E336EE800D9EC3E /* searchButton.png in Resources */ = {isa = PBXBuildFile; fileRef = AC2D5ACC1E336EE800D9EC3E /* searchButton.png */; };
+		AC2D5ACF1E336EE800D9EC3E /* addnewButton.png in Resources */ = {isa = PBXBuildFile; fileRef = AC2D5ACD1E336EE800D9EC3E /* addnewButton.png */; };
 		AC57932D1E3255F30043B622 /* BankCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AC57932C1E3255F30043B622 /* BankCollectionCell.m */; };
 		AC608DBB1E323C1F007519B9 /* ProjectSearchConditionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AC608DBA1E323C1F007519B9 /* ProjectSearchConditionModel.m */; };
 		AC608DBF1E323CCB007519B9 /* ProjectConditionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AC608DBD1E323CCB007519B9 /* ProjectConditionCell.m */; };
 		AC608DC01E323CCB007519B9 /* ProjectConditionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC608DBE1E323CCB007519B9 /* ProjectConditionCell.xib */; };
+		AC6397351E332B260031682D /* conditionSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = AC6397331E332B260031682D /* conditionSelected.png */; };
+		AC6397361E332B260031682D /* downArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = AC6397341E332B260031682D /* downArrow.png */; };
+		AC6397381E332C200031682D /* projectProgress.png in Resources */ = {isa = PBXBuildFile; fileRef = AC6397371E332C200031682D /* projectProgress.png */; };
+		AC63973A1E332D030031682D /* projectMarked@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC6397391E332D030031682D /* projectMarked@3x.png */; };
+		AC68D9801E339633002DD4DE /* SelectManagerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AC68D97F1E339633002DD4DE /* SelectManagerModel.m */; };
+		AC68D9841E3396B1002DD4DE /* SelectManagerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AC68D9821E3396B1002DD4DE /* SelectManagerCell.m */; };
+		AC68D9851E3396B1002DD4DE /* SelectManagerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC68D9831E3396B1002DD4DE /* SelectManagerCell.xib */; };
+		AC6F3B2E1E33883B00C3C257 /* back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC6F3B2D1E33883B00C3C257 /* back@3x.png */; };
 		AC73437F1E320A400063CE6B /* ProjectMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AC73437E1E320A400063CE6B /* ProjectMessageModel.m */; };
 		AC7343831E320C610063CE6B /* ProjectMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7343811E320C610063CE6B /* ProjectMessageCell.m */; };
 		AC7343841E320C610063CE6B /* ProjectMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC7343821E320C610063CE6B /* ProjectMessageCell.xib */; };
+		AC7C94E71E3383EB00DB7663 /* addManager@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC7C94E61E3383EB00DB7663 /* addManager@3x.png */; };
+		AC7FFC321E3364FB00200686 /* ProgressIdentifyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7FFC311E3364FB00200686 /* ProgressIdentifyModel.m */; };
+		AC7FFC351E33651000200686 /* BankIdentifyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7FFC341E33651000200686 /* BankIdentifyModel.m */; };
+		AC7FFC381E33652500200686 /* BranchBankIdentifyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7FFC371E33652500200686 /* BranchBankIdentifyModel.m */; };
 		ACB7C50D1E32FF1100C44615 /* ProjectSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACB7C50C1E32FF1100C44615 /* ProjectSearchViewController.m */; };
 		ACB7C5101E32FF2C00C44615 /* ProjectNewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACB7C50F1E32FF2C00C44615 /* ProjectNewViewController.m */; };
 		ACB7C5131E32FF4D00C44615 /* ProjectBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACB7C5121E32FF4D00C44615 /* ProjectBaseViewController.m */; };
@@ -260,12 +274,10 @@
 		ACB7C5861E330D3900C44615 /* 搜索-关闭.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB7C5561E330D3900C44615 /* 搜索-关闭.png */; };
 		ACB7C5871E330D3900C44615 /* 搜索2.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB7C5571E330D3900C44615 /* 搜索2.png */; };
 		ACB7C5881E330D3900C44615 /* 完成.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB7C5581E330D3900C44615 /* 完成.png */; };
-		ACB7C5891E330D3900C44615 /* 完成1.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB7C5591E330D3900C44615 /* 完成1.png */; };
 		ACB7C58A1E330D3900C44615 /* 完成2.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB7C55A1E330D3900C44615 /* 完成2.png */; };
 		ACB7C58B1E330D3900C44615 /* 文件夹.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB7C55B1E330D3900C44615 /* 文件夹.png */; };
 		ACB7C58C1E330D3900C44615 /* 我的@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB7C55C1E330D3900C44615 /* 我的@3x.png */; };
 		ACB7C58D1E330D3900C44615 /* 我的2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB7C55D1E330D3900C44615 /* 我的2@3x.png */; };
-		ACB7C58E1E330D3900C44615 /* 下拉.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB7C55E1E330D3900C44615 /* 下拉.png */; };
 		ACB7C58F1E330D3900C44615 /* 项目@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB7C55F1E330D3900C44615 /* 项目@3x.png */; };
 		ACB7C5901E330D3900C44615 /* 项目2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB7C5601E330D3900C44615 /* 项目2@3x.png */; };
 		ACB7C5911E330D3900C44615 /* 项目阶段.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB7C5611E330D3900C44615 /* 项目阶段.png */; };
@@ -289,12 +301,12 @@
 		ACB7C5A31E330D3900C44615 /* pdf@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB7C5731E330D3900C44615 /* pdf@3x.png */; };
 		ACB7C5A41E330D3900C44615 /* ppt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB7C5741E330D3900C44615 /* ppt@3x.png */; };
 		ACB7C5A51E330D3900C44615 /* xls@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB7C5751E330D3900C44615 /* xls@3x.png */; };
-		C6CEDCEE1E3328B500C39E56 /* ProjectDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C6CEDCED1E3328B500C39E56 /* ProjectDetailModel.m */; };
-		C6CEDCF21E33455400C39E56 /* ChangeInfoLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C6CEDCF11E33455400C39E56 /* ChangeInfoLabel.m */; };
-		C6CEDCF51E336AE600C39E56 /* TextTypeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C6CEDCF41E336AE600C39E56 /* TextTypeTableViewCell.m */; };
-		C6CEDCFB1E336B0C00C39E56 /* NumberTypeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C6CEDCFA1E336B0C00C39E56 /* NumberTypeTableViewCell.m */; };
-		C6CEDCFE1E336DE100C39E56 /* AddButtonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C6CEDCFD1E336DE100C39E56 /* AddButtonTableViewCell.m */; };
-		C6CEDD011E33836E00C39E56 /* ChooseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C6CEDD001E33836E00C39E56 /* ChooseTableViewCell.m */; };
+		C68710681E34572C0018E152 /* ProjectDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C68710671E34572C0018E152 /* ProjectDetailModel.m */; };
+		C68710731E34575A0018E152 /* AddButtonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C68710691E34575A0018E152 /* AddButtonTableViewCell.m */; };
+		C68710741E34575A0018E152 /* ChooseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C687106A1E34575A0018E152 /* ChooseTableViewCell.m */; };
+		C68710751E34575A0018E152 /* NumberTypeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C687106B1E34575A0018E152 /* NumberTypeTableViewCell.m */; };
+		C68710761E34575A0018E152 /* TextTypeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C687106C1E34575A0018E152 /* TextTypeTableViewCell.m */; };
+		C68710771E34575A0018E152 /* ChangeInfoLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C687106F1E34575A0018E152 /* ChangeInfoLabel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -704,6 +716,8 @@
 		AC1118181E31F5B2009ABFDF /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		AC1118191E31F5B2009ABFDF /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
 		AC11181A1E31F5B2009ABFDF /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
+		AC2D5ACC1E336EE800D9EC3E /* searchButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchButton.png; sourceTree = "<group>"; };
+		AC2D5ACD1E336EE800D9EC3E /* addnewButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addnewButton.png; sourceTree = "<group>"; };
 		AC57932B1E3255F30043B622 /* BankCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankCollectionCell.h; sourceTree = "<group>"; };
 		AC57932C1E3255F30043B622 /* BankCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankCollectionCell.m; sourceTree = "<group>"; };
 		AC608DB91E323C1F007519B9 /* ProjectSearchConditionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProjectSearchConditionModel.h; path = ../Controller/ProjectSearchConditionModel.h; sourceTree = "<group>"; };
@@ -711,11 +725,28 @@
 		AC608DBC1E323CCB007519B9 /* ProjectConditionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectConditionCell.h; sourceTree = "<group>"; };
 		AC608DBD1E323CCB007519B9 /* ProjectConditionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectConditionCell.m; sourceTree = "<group>"; };
 		AC608DBE1E323CCB007519B9 /* ProjectConditionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectConditionCell.xib; sourceTree = "<group>"; };
+		AC6397331E332B260031682D /* conditionSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = conditionSelected.png; sourceTree = "<group>"; };
+		AC6397341E332B260031682D /* downArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = downArrow.png; sourceTree = "<group>"; };
+		AC6397371E332C200031682D /* projectProgress.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = projectProgress.png; sourceTree = "<group>"; };
+		AC6397391E332D030031682D /* projectMarked@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "projectMarked@3x.png"; sourceTree = "<group>"; };
+		AC68D97E1E339633002DD4DE /* SelectManagerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectManagerModel.h; sourceTree = "<group>"; };
+		AC68D97F1E339633002DD4DE /* SelectManagerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectManagerModel.m; sourceTree = "<group>"; };
+		AC68D9811E3396B1002DD4DE /* SelectManagerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectManagerCell.h; sourceTree = "<group>"; };
+		AC68D9821E3396B1002DD4DE /* SelectManagerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectManagerCell.m; sourceTree = "<group>"; };
+		AC68D9831E3396B1002DD4DE /* SelectManagerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectManagerCell.xib; sourceTree = "<group>"; };
+		AC6F3B2D1E33883B00C3C257 /* back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@3x.png"; sourceTree = "<group>"; };
 		AC73437D1E320A400063CE6B /* ProjectMessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectMessageModel.h; sourceTree = "<group>"; };
 		AC73437E1E320A400063CE6B /* ProjectMessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectMessageModel.m; sourceTree = "<group>"; };
 		AC7343801E320C610063CE6B /* ProjectMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectMessageCell.h; sourceTree = "<group>"; };
 		AC7343811E320C610063CE6B /* ProjectMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectMessageCell.m; sourceTree = "<group>"; };
 		AC7343821E320C610063CE6B /* ProjectMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectMessageCell.xib; sourceTree = "<group>"; };
+		AC7C94E61E3383EB00DB7663 /* addManager@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addManager@3x.png"; sourceTree = "<group>"; };
+		AC7FFC301E3364FB00200686 /* ProgressIdentifyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressIdentifyModel.h; sourceTree = "<group>"; };
+		AC7FFC311E3364FB00200686 /* ProgressIdentifyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressIdentifyModel.m; sourceTree = "<group>"; };
+		AC7FFC331E33651000200686 /* BankIdentifyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankIdentifyModel.h; sourceTree = "<group>"; };
+		AC7FFC341E33651000200686 /* BankIdentifyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankIdentifyModel.m; sourceTree = "<group>"; };
+		AC7FFC361E33652500200686 /* BranchBankIdentifyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BranchBankIdentifyModel.h; sourceTree = "<group>"; };
+		AC7FFC371E33652500200686 /* BranchBankIdentifyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BranchBankIdentifyModel.m; sourceTree = "<group>"; };
 		ACB7C50B1E32FF1100C44615 /* ProjectSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectSearchViewController.h; sourceTree = "<group>"; };
 		ACB7C50C1E32FF1100C44615 /* ProjectSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectSearchViewController.m; sourceTree = "<group>"; };
 		ACB7C50E1E32FF2C00C44615 /* ProjectNewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectNewViewController.h; sourceTree = "<group>"; };
@@ -767,12 +798,10 @@
 		ACB7C5561E330D3900C44615 /* 搜索-关闭.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "搜索-关闭.png"; sourceTree = "<group>"; };
 		ACB7C5571E330D3900C44615 /* 搜索2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "搜索2.png"; sourceTree = "<group>"; };
 		ACB7C5581E330D3900C44615 /* 完成.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "完成.png"; sourceTree = "<group>"; };
-		ACB7C5591E330D3900C44615 /* 完成1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "完成1.png"; path = "../knowledge/完成1.png"; sourceTree = "<group>"; };
 		ACB7C55A1E330D3900C44615 /* 完成2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "完成2.png"; sourceTree = "<group>"; };
 		ACB7C55B1E330D3900C44615 /* 文件夹.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "文件夹.png"; sourceTree = "<group>"; };
 		ACB7C55C1E330D3900C44615 /* 我的@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我的@3x.png"; sourceTree = "<group>"; };
 		ACB7C55D1E330D3900C44615 /* 我的2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我的2@3x.png"; sourceTree = "<group>"; };
-		ACB7C55E1E330D3900C44615 /* 下拉.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "下拉.png"; path = "../knowledge/下拉.png"; sourceTree = "<group>"; };
 		ACB7C55F1E330D3900C44615 /* 项目@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "项目@3x.png"; sourceTree = "<group>"; };
 		ACB7C5601E330D3900C44615 /* 项目2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "项目2@3x.png"; sourceTree = "<group>"; };
 		ACB7C5611E330D3900C44615 /* 项目阶段.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "项目阶段.png"; sourceTree = "<group>"; };
@@ -796,18 +825,18 @@
 		ACB7C5731E330D3900C44615 /* pdf@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pdf@3x.png"; sourceTree = "<group>"; };
 		ACB7C5741E330D3900C44615 /* ppt@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ppt@3x.png"; sourceTree = "<group>"; };
 		ACB7C5751E330D3900C44615 /* xls@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xls@3x.png"; sourceTree = "<group>"; };
-		C6CEDCEC1E3328B500C39E56 /* ProjectDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectDetailModel.h; sourceTree = "<group>"; };
-		C6CEDCED1E3328B500C39E56 /* ProjectDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectDetailModel.m; sourceTree = "<group>"; };
-		C6CEDCF01E33455400C39E56 /* ChangeInfoLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeInfoLabel.h; sourceTree = "<group>"; };
-		C6CEDCF11E33455400C39E56 /* ChangeInfoLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeInfoLabel.m; sourceTree = "<group>"; };
-		C6CEDCF31E336AE600C39E56 /* TextTypeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextTypeTableViewCell.h; sourceTree = "<group>"; };
-		C6CEDCF41E336AE600C39E56 /* TextTypeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextTypeTableViewCell.m; sourceTree = "<group>"; };
-		C6CEDCF91E336B0C00C39E56 /* NumberTypeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberTypeTableViewCell.h; sourceTree = "<group>"; };
-		C6CEDCFA1E336B0C00C39E56 /* NumberTypeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberTypeTableViewCell.m; sourceTree = "<group>"; };
-		C6CEDCFC1E336DE100C39E56 /* AddButtonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddButtonTableViewCell.h; sourceTree = "<group>"; };
-		C6CEDCFD1E336DE100C39E56 /* AddButtonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddButtonTableViewCell.m; sourceTree = "<group>"; };
-		C6CEDCFF1E33836E00C39E56 /* ChooseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseTableViewCell.h; sourceTree = "<group>"; };
-		C6CEDD001E33836E00C39E56 /* ChooseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseTableViewCell.m; sourceTree = "<group>"; };
+		C68710661E34572C0018E152 /* ProjectDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectDetailModel.h; sourceTree = "<group>"; };
+		C68710671E34572C0018E152 /* ProjectDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectDetailModel.m; sourceTree = "<group>"; };
+		C68710691E34575A0018E152 /* AddButtonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddButtonTableViewCell.m; sourceTree = "<group>"; };
+		C687106A1E34575A0018E152 /* ChooseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseTableViewCell.m; sourceTree = "<group>"; };
+		C687106B1E34575A0018E152 /* NumberTypeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberTypeTableViewCell.m; sourceTree = "<group>"; };
+		C687106C1E34575A0018E152 /* TextTypeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextTypeTableViewCell.m; sourceTree = "<group>"; };
+		C687106D1E34575A0018E152 /* AddButtonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddButtonTableViewCell.h; sourceTree = "<group>"; };
+		C687106E1E34575A0018E152 /* ChangeInfoLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeInfoLabel.h; sourceTree = "<group>"; };
+		C687106F1E34575A0018E152 /* ChangeInfoLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeInfoLabel.m; sourceTree = "<group>"; };
+		C68710701E34575A0018E152 /* ChooseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseTableViewCell.h; sourceTree = "<group>"; };
+		C68710711E34575A0018E152 /* NumberTypeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberTypeTableViewCell.h; sourceTree = "<group>"; };
+		C68710721E34575A0018E152 /* TextTypeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextTypeTableViewCell.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1320,6 +1349,16 @@
 		AC1115F01E31DD91009ABFDF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C68710661E34572C0018E152 /* ProjectDetailModel.h */,
+				C68710671E34572C0018E152 /* ProjectDetailModel.m */,
+				AC68D97E1E339633002DD4DE /* SelectManagerModel.h */,
+				AC68D97F1E339633002DD4DE /* SelectManagerModel.m */,
+				AC7FFC301E3364FB00200686 /* ProgressIdentifyModel.h */,
+				AC7FFC311E3364FB00200686 /* ProgressIdentifyModel.m */,
+				AC7FFC331E33651000200686 /* BankIdentifyModel.h */,
+				AC7FFC341E33651000200686 /* BankIdentifyModel.m */,
+				AC7FFC361E33652500200686 /* BranchBankIdentifyModel.h */,
+				AC7FFC371E33652500200686 /* BranchBankIdentifyModel.m */,
 				AC608DB91E323C1F007519B9 /* ProjectSearchConditionModel.h */,
 				AC608DBA1E323C1F007519B9 /* ProjectSearchConditionModel.m */,
 				AC73437D1E320A400063CE6B /* ProjectMessageModel.h */,
@@ -1334,15 +1373,34 @@
 				AC1115F81E31DD91009ABFDF /* MainDataModel.m */,
 				AC1115F91E31DD91009ABFDF /* RollAdsDataDTO.h */,
 				AC1115FA1E31DD91009ABFDF /* RollAdsDataDTO.m */,
-				C6CEDCEC1E3328B500C39E56 /* ProjectDetailModel.h */,
-				C6CEDCED1E3328B500C39E56 /* ProjectDetailModel.m */,
+				AC1115FB1E31DD91009ABFDF /* 未命名文件夹 */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		AC1115FB1E31DD91009ABFDF /* 未命名文件夹 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "未命名文件夹";
 			sourceTree = "<group>";
 		};
 		AC1115FC1E31DD91009ABFDF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C68710691E34575A0018E152 /* AddButtonTableViewCell.m */,
+				C687106A1E34575A0018E152 /* ChooseTableViewCell.m */,
+				C687106B1E34575A0018E152 /* NumberTypeTableViewCell.m */,
+				C687106C1E34575A0018E152 /* TextTypeTableViewCell.m */,
+				C687106D1E34575A0018E152 /* AddButtonTableViewCell.h */,
+				C687106E1E34575A0018E152 /* ChangeInfoLabel.h */,
+				C687106F1E34575A0018E152 /* ChangeInfoLabel.m */,
+				C68710701E34575A0018E152 /* ChooseTableViewCell.h */,
+				C68710711E34575A0018E152 /* NumberTypeTableViewCell.h */,
+				C68710721E34575A0018E152 /* TextTypeTableViewCell.h */,
+				AC68D9811E3396B1002DD4DE /* SelectManagerCell.h */,
+				AC68D9821E3396B1002DD4DE /* SelectManagerCell.m */,
+				AC68D9831E3396B1002DD4DE /* SelectManagerCell.xib */,
 				AC57932B1E3255F30043B622 /* BankCollectionCell.h */,
 				AC57932C1E3255F30043B622 /* BankCollectionCell.m */,
 				AC608DBC1E323CCB007519B9 /* ProjectConditionCell.h */,
@@ -1355,16 +1413,6 @@
 				AC11160A1E31DD91009ABFDF /* MainCollectionView */,
 				AC1116171E31DD91009ABFDF /* MainHomeItemView */,
 				AC11161C1E31DD91009ABFDF /* MainItemCollectionView */,
-				C6CEDCF01E33455400C39E56 /* ChangeInfoLabel.h */,
-				C6CEDCF11E33455400C39E56 /* ChangeInfoLabel.m */,
-				C6CEDCF31E336AE600C39E56 /* TextTypeTableViewCell.h */,
-				C6CEDCF41E336AE600C39E56 /* TextTypeTableViewCell.m */,
-				C6CEDCF91E336B0C00C39E56 /* NumberTypeTableViewCell.h */,
-				C6CEDCFA1E336B0C00C39E56 /* NumberTypeTableViewCell.m */,
-				C6CEDCFC1E336DE100C39E56 /* AddButtonTableViewCell.h */,
-				C6CEDCFD1E336DE100C39E56 /* AddButtonTableViewCell.m */,
-				C6CEDCFF1E33836E00C39E56 /* ChooseTableViewCell.h */,
-				C6CEDD001E33836E00C39E56 /* ChooseTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1701,11 +1749,11 @@
 		AC11167A1E31DD91009ABFDF /* res */ = {
 			isa = PBXGroup;
 			children = (
+				AC6397321E332AE60031682D /* project */,
 				ACB7C5401E330C7800C44615 /* knowledge */,
 				ACB7C5411E330C7800C44615 /* mine */,
 				ACB7C5421E330C7800C44615 /* news */,
 				ACB7C5431E330C7800C44615 /* other */,
-				ACB7C5441E330C7800C44615 /* project */,
 				ACB7C5451E330C7800C44615 /* sum */,
 				AC11167B1E31DD91009ABFDF /* loginAddRegister */,
 				AC11167C1E31DD91009ABFDF /* mainFrame */,
@@ -2041,6 +2089,21 @@
 			path = Header;
 			sourceTree = "<group>";
 		};
+		AC6397321E332AE60031682D /* project */ = {
+			isa = PBXGroup;
+			children = (
+				AC6F3B2D1E33883B00C3C257 /* back@3x.png */,
+				AC7C94E61E3383EB00DB7663 /* addManager@3x.png */,
+				AC2D5ACC1E336EE800D9EC3E /* searchButton.png */,
+				AC2D5ACD1E336EE800D9EC3E /* addnewButton.png */,
+				AC6397391E332D030031682D /* projectMarked@3x.png */,
+				AC6397331E332B260031682D /* conditionSelected.png */,
+				AC6397341E332B260031682D /* downArrow.png */,
+				AC6397371E332C200031682D /* projectProgress.png */,
+			);
+			path = project;
+			sourceTree = "<group>";
+		};
 		ACB7C5151E3302BF00C44615 /* ProjectBaseViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -2171,15 +2234,6 @@
 			path = other;
 			sourceTree = "<group>";
 		};
-		ACB7C5441E330C7800C44615 /* project */ = {
-			isa = PBXGroup;
-			children = (
-				ACB7C55E1E330D3900C44615 /* 下拉.png */,
-				ACB7C5591E330D3900C44615 /* 完成1.png */,
-			);
-			path = project;
-			sourceTree = "<group>";
-		};
 		ACB7C5451E330C7800C44615 /* sum */ = {
 			isa = PBXGroup;
 			children = (
@@ -2297,11 +2351,14 @@
 				AC1117161E31DD91009ABFDF /* LoginViewController.xib in Resources */,
 				ACB7C57D1E330D3900C44615 /* 顶部背景@3x.png in Resources */,
 				ACB7C5981E330D3900C44615 /* 右箭头@2x.png in Resources */,
+				AC6397361E332B260031682D /* downArrow.png in Resources */,
 				AC1117761E31DD91009ABFDF /* LICENSE in Resources */,
+				AC6F3B2E1E33883B00C3C257 /* back@3x.png in Resources */,
 				ACB7C5A41E330D3900C44615 /* ppt@3x.png in Resources */,
 				ACB7C5761E330D3900C44615 /* 按钮-大@3x.png in Resources */,
 				AC11175A1E31DD91009ABFDF /* mine@2x.png in Resources */,
 				ACB7C59A1E330D3900C44615 /* 知识库@3x.png in Resources */,
+				AC7C94E71E3383EB00DB7663 /* addManager@3x.png in Resources */,
 				ACB7C5861E330D3900C44615 /* 搜索-关闭.png in Resources */,
 				ACB7C59F1E330D3900C44615 /* 自动登录背景.png in Resources */,
 				ACB7C5801E330D3900C44615 /* 汇总@3x.png in Resources */,
@@ -2309,7 +2366,6 @@
 				ACB7C5831E330D3900C44615 /* 任务-下拉2.png in Resources */,
 				ACB7C58F1E330D3900C44615 /* 项目@3x.png in Resources */,
 				ACB7C5881E330D3900C44615 /* 完成.png in Resources */,
-				ACB7C58E1E330D3900C44615 /* 下拉.png in Resources */,
 				AC11175E1E31DD91009ABFDF /* project@2x.png in Resources */,
 				AC1117BD1E31EA05009ABFDF /* selected@3x.png in Resources */,
 				AC1117581E31DD91009ABFDF /* knowledge@2x.png in Resources */,
@@ -2334,6 +2390,7 @@
 				AC1117791E31DD91009ABFDF /* LICENSE in Resources */,
 				ACB7C5911E330D3900C44615 /* 项目阶段.png in Resources */,
 				ACB7C5781E330D3900C44615 /* 按钮-搜索.png in Resources */,
+				AC6397351E332B260031682D /* conditionSelected.png in Resources */,
 				AC1118291E31F5B2009ABFDF /* MJRefresh.bundle in Resources */,
 				AC1117541E31DD91009ABFDF /* Overlay@2x.png in Resources */,
 				ACB7C57C1E330D3900C44615 /* 登录按钮@3x.png in Resources */,
@@ -2342,9 +2399,11 @@
 				ACB7C59B1E330D3900C44615 /* 知识库2@3x.png in Resources */,
 				ACB7C58D1E330D3900C44615 /* 我的2@3x.png in Resources */,
 				AC608DC01E323CCB007519B9 /* ProjectConditionCell.xib in Resources */,
+				AC6397381E332C200031682D /* projectProgress.png in Resources */,
 				ACB7C58B1E330D3900C44615 /* 文件夹.png in Resources */,
 				ACB7C59C1E330D3900C44615 /* 置顶@3x.png in Resources */,
 				AC11155A1E31DD1F009ABFDF /* Assets.xcassets in Resources */,
+				AC63973A1E332D030031682D /* projectMarked@3x.png in Resources */,
 				AC1117501E31DD91009ABFDF /* ELCAlbumPickerController.xib in Resources */,
 				ACB7C5A01E330D3900C44615 /* BG@3x.png in Resources */,
 				AC1117D51E31F04D009ABFDF /* username@3x.png in Resources */,
@@ -2365,18 +2424,20 @@
 				AC1117681E31DD91009ABFDF /* LICENSE in Resources */,
 				ACB7C5A11E330D3900C44615 /* doc@3x.png in Resources */,
 				AC1117591E31DD91009ABFDF /* knowledge_press@2x.png in Resources */,
+				AC2D5ACE1E336EE800D9EC3E /* searchButton.png in Resources */,
 				ACB7C57F1E330D3900C44615 /* 返回@3x.png in Resources */,
 				ACB7C5811E330D3900C44615 /* 汇总2@3x.png in Resources */,
 				ACB7C5991E330D3900C44615 /* 展开.png in Resources */,
 				AC1115581E31DD1F009ABFDF /* Main.storyboard in Resources */,
+				AC68D9851E3396B1002DD4DE /* SelectManagerCell.xib in Resources */,
 				AC1117BC1E31EA05009ABFDF /* selected@2x.png in Resources */,
 				AC1117511E31DD91009ABFDF /* ELCAssetPicker.xib in Resources */,
-				ACB7C5891E330D3900C44615 /* 完成1.png in Resources */,
 				ACB7C5771E330D3900C44615 /* 按钮-取消.png in Resources */,
 				ACB7C5901E330D3900C44615 /* 项目2@3x.png in Resources */,
 				ACB7C5951E330D3900C44615 /* 选框-选中.png in Resources */,
 				AC11170B1E31DD91009ABFDF /* SpeSqlSetting.plist in Resources */,
 				ACB7C5791E330D3900C44615 /* 按钮-新增.png in Resources */,
+				AC2D5ACF1E336EE800D9EC3E /* addnewButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2401,7 +2462,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C6CEDCF21E33455400C39E56 /* ChangeInfoLabel.m in Sources */,
+				C68710681E34572C0018E152 /* ProjectDetailModel.m in Sources */,
 				AC1117441E31DD91009ABFDF /* DDLog.m in Sources */,
 				AC11172E1E31DD91009ABFDF /* MainCollectionManager.m in Sources */,
 				ACB7C5101E32FF2C00C44615 /* ProjectNewViewController.m in Sources */,
@@ -2429,6 +2490,7 @@
 				AC1118241E31F5B2009ABFDF /* MJRefreshBackNormalFooter.m in Sources */,
 				AC11176C1E31DD91009ABFDF /* AFNetworkActivityIndicatorManager.m in Sources */,
 				AC1117321E31DD91009ABFDF /* MainHomeItemLoadContext.m in Sources */,
+				C68710761E34575A0018E152 /* TextTypeTableViewCell.m in Sources */,
 				AC1115551E31DD1F009ABFDF /* ViewController.m in Sources */,
 				AC1117181E31DD91009ABFDF /* BaseViewController.m in Sources */,
 				AC1117CF1E31EF93009ABFDF /* TabBarController.m in Sources */,
@@ -2460,8 +2522,8 @@
 				AC11171C1E31DD91009ABFDF /* PJTabbarButtonsBGView.m in Sources */,
 				AC1117951E31DD91009ABFDF /* UIImageView+HighlightedWebCache.m in Sources */,
 				AC1117431E31DD91009ABFDF /* DDFileLogger.m in Sources */,
-				C6CEDCFE1E336DE100C39E56 /* AddButtonTableViewCell.m in Sources */,
 				AC11174B1E31DD91009ABFDF /* ELCAssetCell.m in Sources */,
+				AC68D9801E339633002DD4DE /* SelectManagerModel.m in Sources */,
 				AC11176D1E31DD91009ABFDF /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				AC1117031E31DD91009ABFDF /* LeftAlignAlertView.m in Sources */,
 				AC1117EA1E31F314009ABFDF /* Tools.m in Sources */,
@@ -2477,6 +2539,7 @@
 				ACB7C52B1E33067000C44615 /* ProjectManagerSelectViewController.m in Sources */,
 				AC1117871E31DD91009ABFDF /* README.md in Sources */,
 				AC1117721E31DD91009ABFDF /* UIWebView+AFNetworking.m in Sources */,
+				C68710741E34575A0018E152 /* ChooseTableViewCell.m in Sources */,
 				AC1117061E31DD91009ABFDF /* UITableView+HeightCache.m in Sources */,
 				AC1118221E31F5B2009ABFDF /* MJRefreshAutoStateFooter.m in Sources */,
 				AC1117371E31DD91009ABFDF /* MainItemCollectionView.m in Sources */,
@@ -2490,6 +2553,7 @@
 				AC1118251E31F5B2009ABFDF /* MJRefreshBackStateFooter.m in Sources */,
 				AC1117691E31DD91009ABFDF /* README.md in Sources */,
 				AC1117ED1E31F4C5009ABFDF /* MyNavigationController.m in Sources */,
+				AC7FFC351E33651000200686 /* BankIdentifyModel.m in Sources */,
 				AC11174C1E31DD91009ABFDF /* ELCAssetTablePicker.m in Sources */,
 				AC1117361E31DD91009ABFDF /* MainItemCollectionManager.m in Sources */,
 				AC1117851E31DD91009ABFDF /* RegexKitLite.m in Sources */,
@@ -2506,8 +2570,8 @@
 				AC11174A1E31DD91009ABFDF /* ELCAsset.m in Sources */,
 				AC11171E1E31DD91009ABFDF /* PJTabbarCustomButton.m in Sources */,
 				AC1117551E31DD91009ABFDF /* ELCImagePickerDemoAppDelegate.m in Sources */,
+				AC68D9841E3396B1002DD4DE /* SelectManagerCell.m in Sources */,
 				AC11171A1E31DD91009ABFDF /* UIView+Additions.m in Sources */,
-				C6CEDCFB1E336B0C00C39E56 /* NumberTypeTableViewCell.m in Sources */,
 				AC11171D1E31DD91009ABFDF /* PJTabBarController.m in Sources */,
 				AC1117221E31DD91009ABFDF /* MainViewController.m in Sources */,
 				AC1117641E31DD91009ABFDF /* AFSecurityPolicy.m in Sources */,
@@ -2516,6 +2580,7 @@
 				AC11181B1E31F5B2009ABFDF /* MJRefreshAutoFooter.m in Sources */,
 				AC1117491E31DD91009ABFDF /* ELCAlbumPickerController.m in Sources */,
 				AC11181E1E31F5B2009ABFDF /* MJRefreshFooter.m in Sources */,
+				AC7FFC381E33652500200686 /* BranchBankIdentifyModel.m in Sources */,
 				AC1117E01E31F1BA009ABFDF /* LibraryWebViewController.m in Sources */,
 				AC1117481E31DD91009ABFDF /* DDMultiFormatter.m in Sources */,
 				AC1117831E31DD91009ABFDF /* NSString+MJExtension.m in Sources */,
@@ -2531,28 +2596,30 @@
 				AC1117631E31DD91009ABFDF /* AFNetworkReachabilityManager.m in Sources */,
 				AC11177B1E31DD91009ABFDF /* MJFoundation.m in Sources */,
 				AC11172B1E31DD91009ABFDF /* InfoCollectionSectionHeader.m in Sources */,
+				C68710751E34575A0018E152 /* NumberTypeTableViewCell.m in Sources */,
 				AC11174E1E31DD91009ABFDF /* ELCImagePickerController.m in Sources */,
 				AC1117291E31DD91009ABFDF /* InfoItem.m in Sources */,
 				AC11176B1E31DD91009ABFDF /* AFImageDownloader.m in Sources */,
 				AC1117901E31DD91009ABFDF /* SDWebImageManager.m in Sources */,
 				AC1117281E31DD91009ABFDF /* InfoCollectionManager.m in Sources */,
+				C68710771E34575A0018E152 /* ChangeInfoLabel.m in Sources */,
 				AC1117461E31DD91009ABFDF /* DDContextFilterLogFormatter.m in Sources */,
 				AC7343831E320C610063CE6B /* ProjectMessageCell.m in Sources */,
 				AC1117661E31DD91009ABFDF /* AFURLResponseSerialization.m in Sources */,
 				AC1117131E31DD91009ABFDF /* XXTEncrypt.m in Sources */,
 				AC1118281E31F5B2009ABFDF /* MJRefreshStateHeader.m in Sources */,
 				AC1117311E31DD91009ABFDF /* MainCollectionViewFlowLayout.m in Sources */,
-				C6CEDCF51E336AE600C39E56 /* TextTypeTableViewCell.m in Sources */,
-				C6CEDCEE1E3328B500C39E56 /* ProjectDetailModel.m in Sources */,
 				AC1117881E31DD91009ABFDF /* NSData+ImageContentType.m in Sources */,
 				AC1117911E31DD91009ABFDF /* SDWebImagePrefetcher.m in Sources */,
 				AC11170F1E31DD91009ABFDF /* ConverUtil.m in Sources */,
 				AC11178A1E31DD91009ABFDF /* SDImageCache.m in Sources */,
 				AC11172D1E31DD91009ABFDF /* CollectionItem.m in Sources */,
+				C68710731E34575A0018E152 /* AddButtonTableViewCell.m in Sources */,
 				AC11174F1E31DD91009ABFDF /* ELCOverlayImageView.m in Sources */,
 				AC11177F1E31DD91009ABFDF /* NSObject+MJClass.m in Sources */,
 				AC1117971E31DD91009ABFDF /* UIView+WebCache.m in Sources */,
 				AC1117801E31DD91009ABFDF /* NSObject+MJCoding.m in Sources */,
+				AC7FFC321E3364FB00200686 /* ProgressIdentifyModel.m in Sources */,
 				AC11177D1E31DD91009ABFDF /* MJPropertyKey.m in Sources */,
 				AC11178D1E31DD91009ABFDF /* SDWebImageDecoder.m in Sources */,
 				AC73437F1E320A400063CE6B /* ProjectMessageModel.m in Sources */,
@@ -2575,7 +2642,6 @@
 				AC11178E1E31DD91009ABFDF /* SDWebImageDownloader.m in Sources */,
 				AC1117841E31DD91009ABFDF /* README.md in Sources */,
 				AC1117261E31DD91009ABFDF /* MainDataModel.m in Sources */,
-				C6CEDD011E33836E00C39E56 /* ChooseTableViewCell.m in Sources */,
 				AC11178B1E31DD91009ABFDF /* SDImageCacheConfig.m in Sources */,
 				ACB7C5211E33037500C44615 /* FileManagerViewController.m in Sources */,
 				AC1117091E31DD91009ABFDF /* WebViewViewController.m in Sources */,

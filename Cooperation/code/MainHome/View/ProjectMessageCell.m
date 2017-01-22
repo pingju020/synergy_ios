@@ -15,7 +15,11 @@
     ProjectMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     if (!cell) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ProjectMessageCell" owner:nil options:nil] lastObject];
+       
     }
+    [cell.StatusLabel setTextColor:[UIColor colorWithHexString:@"#00B1F0"]];
+    [cell.StatusLabel setTextAlignment:NSTextAlignmentLeft];
+    [cell.MessgaeLabel setTextColor:[UIColor darkGrayColor]];
     return cell;
 }
 

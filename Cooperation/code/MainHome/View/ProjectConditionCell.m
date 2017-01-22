@@ -16,6 +16,7 @@
     if (!cell) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ProjectConditionCell" owner:nil options:nil] lastObject];
     }
+    [cell.ConditionLabel setTextColor:[UIColor darkGrayColor]];
     return cell;
 }
 - (void)awakeFromNib {

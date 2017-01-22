@@ -15,46 +15,60 @@
                 <rect key="frame" x="0.0" y="0.0" width="349" height="81.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XmX-YH-fHD">
-                        <rect key="frame" x="209" y="20" width="120" height="40"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="projectProgress.png" translatesAutoresizingMaskIntoConstraints="NO" id="XmX-YH-fHD">
+                        <rect key="frame" x="239" y="25" width="90" height="30"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="120" id="6kN-rG-T6Z"/>
-                            <constraint firstAttribute="height" constant="40" id="Owk-NG-0v3"/>
+                            <constraint firstAttribute="width" constant="90" id="6kN-rG-T6Z"/>
+                            <constraint firstAttribute="height" constant="30" id="Owk-NG-0v3"/>
                         </constraints>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zHE-nv-ywr" userLabel="MarkImage">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="projectMarked.png" translatesAutoresizingMaskIntoConstraints="NO" id="zHE-nv-ywr" userLabel="MarkImage">
                         <rect key="frame" x="0.0" y="0.0" width="30" height="33.5"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="30" id="azX-1z-Dev"/>
                             <constraint firstAttribute="width" secondItem="zHE-nv-ywr" secondAttribute="height" multiplier="9:10" id="u6D-nm-7ii"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nLf-KF-c77">
-                        <rect key="frame" x="20" y="20" width="184" height="40"/>
+                        <rect key="frame" x="20" y="20" width="214" height="40"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="0bj-4o-kt4"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vg0-a9-Vq5">
-                        <rect key="frame" x="0.0" y="80.5" width="349" height="1"/>
+                        <rect key="frame" x="0.0" y="80" width="349" height="1"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="1Bf-ur-T1h"/>
                         </constraints>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7vT-SY-2IM">
+                        <rect key="frame" x="249" y="26" width="80" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="ZvW-5a-CjJ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="Vg0-a9-Vq5" secondAttribute="bottom" id="D4g-bC-mbq"/>
                     <constraint firstItem="Vg0-a9-Vq5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Ezu-uz-LZz"/>
                     <constraint firstAttribute="trailing" secondItem="XmX-YH-fHD" secondAttribute="trailing" constant="20" id="JWw-DE-jtL"/>
-                    <constraint firstItem="XmX-YH-fHD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="KTT-HC-Raj"/>
+                    <constraint firstItem="XmX-YH-fHD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25" id="KTT-HC-Raj"/>
+                    <constraint firstItem="7vT-SY-2IM" firstAttribute="leading" secondItem="XmX-YH-fHD" secondAttribute="leading" constant="10" id="N6b-am-GuX"/>
                     <constraint firstAttribute="trailing" secondItem="Vg0-a9-Vq5" secondAttribute="trailing" id="NoY-VK-0gp"/>
+                    <constraint firstItem="7vT-SY-2IM" firstAttribute="top" secondItem="XmX-YH-fHD" secondAttribute="top" constant="1" id="OGB-8I-zH5"/>
                     <constraint firstItem="XmX-YH-fHD" firstAttribute="leading" secondItem="nLf-KF-c77" secondAttribute="trailing" constant="5" id="PKQ-H5-Ch3"/>
                     <constraint firstItem="nLf-KF-c77" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Xv4-N5-4qk"/>
                     <constraint firstItem="zHE-nv-ywr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="YMf-C8-pTa"/>
+                    <constraint firstItem="7vT-SY-2IM" firstAttribute="bottom" secondItem="XmX-YH-fHD" secondAttribute="bottom" constant="1" id="mFC-dP-mMe"/>
                     <constraint firstItem="zHE-nv-ywr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="qz7-bE-r3h"/>
                     <constraint firstItem="nLf-KF-c77" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="yda-bp-xnc"/>
                 </constraints>
@@ -63,8 +77,13 @@
                 <outlet property="MarkImageView" destination="zHE-nv-ywr" id="Keb-fS-Rs3"/>
                 <outlet property="MessgaeLabel" destination="nLf-KF-c77" id="fvd-Yl-kBz"/>
                 <outlet property="StatusImageView" destination="XmX-YH-fHD" id="Bwh-8b-PGy"/>
+                <outlet property="StatusLabel" destination="7vT-SY-2IM" id="nrO-zn-toI"/>
             </connections>
             <point key="canvasLocation" x="294.5" y="283"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="projectMarked.png" width="30" height="30"/>
+        <image name="projectProgress.png" width="237" height="72"/>
+    </resources>
 </document>

@@ -173,9 +173,6 @@ E_ROLE role;
             [UserDefaults setObject:password forKey:@"password"];
             
             //进入首页
-            //BaseInfomationViewController* vc=[[BaseInfomationViewController alloc]initWithProjectId:@"" ProjectName:@"" type:E_INFO_VIEW];
-            PJTabBarController *vc=[[PJTabBarController alloc]init];
-            [self presentViewController:vc animated:NO completion:^{}];
         }
         else{
             [PubllicMaskViewHelper showTipViewWith:succeedResult[@"msg"] inSuperView:self.view withDuration:2];
