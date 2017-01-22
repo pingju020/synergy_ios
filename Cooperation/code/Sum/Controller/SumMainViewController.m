@@ -60,8 +60,8 @@ AH_BASESUBVCFORMAINTAB_MODULE
     [super viewWillLayoutSubviews];
     
     self.tableView.lj_width = self.view.lj_width;
-    self.tableView.lj_height = self.view.lj_height - HEIGHT_NAVIGATION - HEIGHT_STATUSBAR;
-    self.tableView.lj_top = HEIGHT_NAVIGATION+HEIGHT_STATUSBAR;
+    self.tableView.lj_height = self.view.lj_height - HEIGHT_NAVIGATION - HEIGHT_MAIN_BOTTOM;
+    self.tableView.lj_top = HEIGHT_NAVIGATION;
     self.tableView.lj_centerX =  self.view.lj_centerX;
 }
 
