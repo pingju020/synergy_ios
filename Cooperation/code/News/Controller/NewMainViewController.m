@@ -8,6 +8,7 @@
 
 #import "NewMainViewController.h"
 #import "PJTabBarItem.h"
+#import "MessageViewController.h"
 
 @interface NewMainViewController ()
 
@@ -20,6 +21,10 @@ AH_BASESUBVCFORMAINTAB_MODULE
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    MessageViewController *msg = [[MessageViewController alloc]init];
+
+    [self.navigationController pushViewController:msg animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

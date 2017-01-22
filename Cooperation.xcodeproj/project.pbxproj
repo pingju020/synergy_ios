@@ -442,6 +442,16 @@
 		C634FAB01E34F93E003EE26B /* VoiceBtn_BlackHL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C634FA421E34F93D003EE26B /* VoiceBtn_BlackHL@2x.png */; };
 		C634FAB11E34F93E003EE26B /* weChatBubble_Receiving_Solid@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C634FA431E34F93D003EE26B /* weChatBubble_Receiving_Solid@2x.png */; };
 		C634FAB21E34F93E003EE26B /* weChatBubble_Sending_Solid@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C634FA441E34F93D003EE26B /* weChatBubble_Sending_Solid@2x.png */; };
+		C634FABD1E350FC8003EE26B /* sharemore_friendcard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C634FAB31E350FC8003EE26B /* sharemore_friendcard@2x.png */; };
+		C634FABE1E350FC8003EE26B /* sharemore_location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C634FAB41E350FC8003EE26B /* sharemore_location@2x.png */; };
+		C634FABF1E350FC8003EE26B /* sharemore_myfav@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C634FAB51E350FC8003EE26B /* sharemore_myfav@2x.png */; };
+		C634FAC01E350FC8003EE26B /* sharemore_openapi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C634FAB61E350FC8003EE26B /* sharemore_openapi@2x.png */; };
+		C634FAC11E350FC8003EE26B /* sharemore_pic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C634FAB71E350FC8003EE26B /* sharemore_pic@2x.png */; };
+		C634FAC21E350FC8003EE26B /* sharemore_video@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C634FAB81E350FC8003EE26B /* sharemore_video@2x.png */; };
+		C634FAC31E350FC8003EE26B /* sharemore_videovoip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C634FAB91E350FC8003EE26B /* sharemore_videovoip@2x.png */; };
+		C634FAC41E350FC8003EE26B /* sharemore_voiceinput@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C634FABA1E350FC8003EE26B /* sharemore_voiceinput@2x.png */; };
+		C634FAC51E350FC8003EE26B /* sharemore_voipvoice@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C634FABB1E350FC8003EE26B /* sharemore_voipvoice@2x.png */; };
+		C634FAC61E350FC8003EE26B /* sharemore_wxtalk@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C634FABC1E350FC8003EE26B /* sharemore_wxtalk@2x.png */; };
 		C65875061E347887006FBA99 /* BackMoneyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C65875051E347887006FBA99 /* BackMoneyTableViewCell.m */; };
 		C68710681E34572C0018E152 /* ProjectDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C68710671E34572C0018E152 /* ProjectDetailModel.m */; };
 		C68710731E34575A0018E152 /* AddButtonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C68710691E34575A0018E152 /* AddButtonTableViewCell.m */; };
@@ -1211,6 +1221,16 @@
 		C634FA431E34F93D003EE26B /* weChatBubble_Receiving_Solid@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weChatBubble_Receiving_Solid@2x.png"; sourceTree = "<group>"; };
 		C634FA441E34F93D003EE26B /* weChatBubble_Sending_Solid@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weChatBubble_Sending_Solid@2x.png"; sourceTree = "<group>"; };
 		C634FA451E34F93D003EE26B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MessageDisplayKitString.strings"; sourceTree = "<group>"; };
+		C634FAB31E350FC8003EE26B /* sharemore_friendcard@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sharemore_friendcard@2x.png"; sourceTree = "<group>"; };
+		C634FAB41E350FC8003EE26B /* sharemore_location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sharemore_location@2x.png"; sourceTree = "<group>"; };
+		C634FAB51E350FC8003EE26B /* sharemore_myfav@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sharemore_myfav@2x.png"; sourceTree = "<group>"; };
+		C634FAB61E350FC8003EE26B /* sharemore_openapi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sharemore_openapi@2x.png"; sourceTree = "<group>"; };
+		C634FAB71E350FC8003EE26B /* sharemore_pic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sharemore_pic@2x.png"; sourceTree = "<group>"; };
+		C634FAB81E350FC8003EE26B /* sharemore_video@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sharemore_video@2x.png"; sourceTree = "<group>"; };
+		C634FAB91E350FC8003EE26B /* sharemore_videovoip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sharemore_videovoip@2x.png"; sourceTree = "<group>"; };
+		C634FABA1E350FC8003EE26B /* sharemore_voiceinput@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sharemore_voiceinput@2x.png"; sourceTree = "<group>"; };
+		C634FABB1E350FC8003EE26B /* sharemore_voipvoice@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sharemore_voipvoice@2x.png"; sourceTree = "<group>"; };
+		C634FABC1E350FC8003EE26B /* sharemore_wxtalk@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sharemore_wxtalk@2x.png"; sourceTree = "<group>"; };
 		C65875041E347887006FBA99 /* BackMoneyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackMoneyTableViewCell.h; sourceTree = "<group>"; };
 		C65875051E347887006FBA99 /* BackMoneyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackMoneyTableViewCell.m; sourceTree = "<group>"; };
 		C68710661E34572C0018E152 /* ProjectDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectDetailModel.h; sourceTree = "<group>"; };
@@ -2577,6 +2597,7 @@
 				ACB7C51A1E33034C00C44615 /* ProgressViewController.m */,
 				ACB7C51C1E33036300C44615 /* MessageViewController.h */,
 				ACB7C51D1E33036300C44615 /* MessageViewController.m */,
+				C634FAC71E350FCE003EE26B /* MessageRES */,
 				ACB7C51F1E33037500C44615 /* FileManagerViewController.h */,
 				ACB7C5201E33037500C44615 /* FileManagerViewController.m */,
 				ACB7C5221E33038C00C44615 /* MemberViewController.h */,
@@ -3172,6 +3193,23 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		C634FAC71E350FCE003EE26B /* MessageRES */ = {
+			isa = PBXGroup;
+			children = (
+				C634FAB31E350FC8003EE26B /* sharemore_friendcard@2x.png */,
+				C634FAB41E350FC8003EE26B /* sharemore_location@2x.png */,
+				C634FAB51E350FC8003EE26B /* sharemore_myfav@2x.png */,
+				C634FAB61E350FC8003EE26B /* sharemore_openapi@2x.png */,
+				C634FAB71E350FC8003EE26B /* sharemore_pic@2x.png */,
+				C634FAB81E350FC8003EE26B /* sharemore_video@2x.png */,
+				C634FAB91E350FC8003EE26B /* sharemore_videovoip@2x.png */,
+				C634FABA1E350FC8003EE26B /* sharemore_voiceinput@2x.png */,
+				C634FABB1E350FC8003EE26B /* sharemore_voipvoice@2x.png */,
+				C634FABC1E350FC8003EE26B /* sharemore_wxtalk@2x.png */,
+			);
+			name = MessageRES;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -3280,6 +3318,7 @@
 				C634FA901E34F93E003EE26B /* keyboard@2x.png in Resources */,
 				AC1117BF1E31EA05009ABFDF /* unselected@2x.png in Resources */,
 				C634FA911E34F93E003EE26B /* keyboard_HL@2x.png in Resources */,
+				C634FAC21E350FC8003EE26B /* sharemore_video@2x.png in Resources */,
 				ACB7C5931E330D3900C44615 /* 新增任务.png in Resources */,
 				AC1117601E31DD91009ABFDF /* sum@2x.png in Resources */,
 				AC1117161E31DD91009ABFDF /* LoginViewController.xib in Resources */,
@@ -3287,6 +3326,7 @@
 				C634FAA51E34F93E003EE26B /* RecordingSignal007@2x.png in Resources */,
 				ACB7C5981E330D3900C44615 /* 右箭头@2x.png in Resources */,
 				AC6397361E332B260031682D /* downArrow.png in Resources */,
+				C634FAC41E350FC8003EE26B /* sharemore_voiceinput@2x.png in Resources */,
 				C634FA8C1E34F93E003EE26B /* face_HL@2x.png in Resources */,
 				C634FA9C1E34F93E003EE26B /* ReceiverVoiceNodePlaying@2x.png in Resources */,
 				C634FAA11E34F93E003EE26B /* RecordingSignal003@2x.png in Resources */,
@@ -3296,6 +3336,7 @@
 				ACB7C5761E330D3900C44615 /* 按钮-大@3x.png in Resources */,
 				AC11175A1E31DD91009ABFDF /* mine@2x.png in Resources */,
 				C634FAAC1E34F93E003EE26B /* SenderVoiceNodePlaying@2x.png in Resources */,
+				C634FAC11E350FC8003EE26B /* sharemore_pic@2x.png in Resources */,
 				ACB7C59A1E330D3900C44615 /* 知识库@3x.png in Resources */,
 				AC7C94E71E3383EB00DB7663 /* addManager@3x.png in Resources */,
 				ACB7C5861E330D3900C44615 /* 搜索-关闭.png in Resources */,
@@ -3367,6 +3408,8 @@
 				AC11155A1E31DD1F009ABFDF /* Assets.xcassets in Resources */,
 				C634FA981E34F93E003EE26B /* ReceiverVoiceNodePlaying000@2x.png in Resources */,
 				C634F9531E34AEA1003EE26B /* 汇总-左箭头1.png in Resources */,
+				C634FAC51E350FC8003EE26B /* sharemore_voipvoice@2x.png in Resources */,
+				C634FABD1E350FC8003EE26B /* sharemore_friendcard@2x.png in Resources */,
 				C634FAA61E34F93E003EE26B /* RecordingSignal008@2x.png in Resources */,
 				AC63973A1E332D030031682D /* projectMarked@3x.png in Resources */,
 				C634FA971E34F93E003EE26B /* placeholderImage@2x.png in Resources */,
@@ -3386,6 +3429,7 @@
 				ACB7C59E1E330D3900C44615 /* 资讯2@3x.png in Resources */,
 				AC1117571E31DD91009ABFDF /* back@2x.png in Resources */,
 				C634FA8F1E34F93E003EE26B /* input-bar-flat@2x.png in Resources */,
+				C634FAC31E350FC8003EE26B /* sharemore_videovoip@2x.png in Resources */,
 				ACB7C5A21E330D3900C44615 /* jpg@3x.png in Resources */,
 				C634FAAB1E34F93E003EE26B /* SenderVoiceNodePlaying003@2x.png in Resources */,
 				AC1117BB1E31EA05009ABFDF /* selected@1x.png in Resources */,
@@ -3396,8 +3440,11 @@
 				AC1117681E31DD91009ABFDF /* LICENSE in Resources */,
 				ACB7C5A11E330D3900C44615 /* doc@3x.png in Resources */,
 				C634FA8E1E34F93E003EE26B /* input-bar-flat.png in Resources */,
+				C634FAC01E350FC8003EE26B /* sharemore_openapi@2x.png in Resources */,
+				C634FAC61E350FC8003EE26B /* sharemore_wxtalk@2x.png in Resources */,
 				AC1117591E31DD91009ABFDF /* knowledge_press@2x.png in Resources */,
 				AC2D5ACE1E336EE800D9EC3E /* searchButton.png in Resources */,
+				C634FABF1E350FC8003EE26B /* sharemore_myfav@2x.png in Resources */,
 				C634FAB11E34F93E003EE26B /* weChatBubble_Receiving_Solid@2x.png in Resources */,
 				ACB7C57F1E330D3900C44615 /* 返回@3x.png in Resources */,
 				C634FA8B1E34F93E003EE26B /* face@2x.png in Resources */,
@@ -3412,6 +3459,7 @@
 				C634FA951E34F93E003EE26B /* multiMedia@2x.png in Resources */,
 				ACB7C5771E330D3900C44615 /* 按钮-取消.png in Resources */,
 				ACB7C5901E330D3900C44615 /* 项目2@3x.png in Resources */,
+				C634FABE1E350FC8003EE26B /* sharemore_location@2x.png in Resources */,
 				ACB7C5951E330D3900C44615 /* 选框-选中.png in Resources */,
 				AC11170B1E31DD91009ABFDF /* SpeSqlSetting.plist in Resources */,
 				C634FAAE1E34F93E003EE26B /* voice_HL@2x.png in Resources */,

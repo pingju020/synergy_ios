@@ -9,6 +9,6 @@
 #import "BaseViewController.h"
 #import "XHMessageTableViewController.h"
 
-@interface MessageViewController : BaseViewController
+@interface MessageViewController : XHMessageTableViewController
 
 @end
