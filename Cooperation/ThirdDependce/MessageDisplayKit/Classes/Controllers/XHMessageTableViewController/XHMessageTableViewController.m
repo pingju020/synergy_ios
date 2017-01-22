@@ -732,7 +732,7 @@ static CGPoint  delayOffset = {0.0};
     NSDate *now = [NSDate date];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyyMMddHHmmssSSS"];
-    recorderPath = [recorderPath stringByAppendingFormat:@"%@-MySound.m4a", [dateFormatter stringFromDate:now]];
+    recorderPath = [recorderPath stringByAppendingFormat:@"%@-MySound.mp3", [dateFormatter stringFromDate:now]];
     return recorderPath;
 }
 
