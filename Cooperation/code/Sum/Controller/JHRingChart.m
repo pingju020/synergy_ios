@@ -202,9 +202,14 @@
         
         for (NSInteger i = 0; i<_descArr.count; i++) {
             
-            [self drawQuartWithColor:colors[i%colors.count] andBeginPoint:P_M(15+self.frame.size.width/2*(i%2), 20*(i/2  )+25+_chartArcLength*2) andContext:contex];
-            CGFloat present = [_valueDataArr[i] floatValue]/_allValueCount*100;
-            [self drawText:[NSString stringWithFormat:@"%@",_descArr[i]] andContext:contex atPoint:P_M(30+self.frame.size.width/2*(i%2), 20*(i/2  )+25+_chartArcLength*2) WithColor:[UIColor blackColor] andTextFontSize:8];
+            CGFloat seg = self.frame.size.width/5;
+            
+            [self drawQuartWithColor:colors[i%colors.count] andBeginPoint:(CGPoint){seg*i+10,self.frame.size.height-20} andContext:contex];
+            [self drawText:_descArr[i] andContext:contex atPoint:(CGPoint){seg*i+25,self.frame.size.height-20} WithColor:[UIColor blackColor] andTextFontSize:8];
+            
+//            [self drawQuartWithColor:colors[i%colors.count] andBeginPoint:P_M(15+self.frame.size.width/2*(i%2), 20*(i/2  )+25+_chartArcLength*2) andContext:contex];
+//            CGFloat present = [_valueDataArr[i] floatValue]/_allValueCount*100;
+//            [self drawText:[NSString stringWithFormat:@"%@",_descArr[i]] andContext:contex atPoint:P_M(30+self.frame.size.width/2*(i%2), 20*(i/2  )+25+_chartArcLength*2) WithColor:[UIColor blackColor] andTextFontSize:8];
         }
         
         

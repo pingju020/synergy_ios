@@ -11,6 +11,8 @@
 
 #import "SumHeader.h"
 #import "UIView+LJAdditions.h"
+#import "NSString+LJAdditions.h"
+#import "NSDate+LJAdditions.h"
 #import "JHRingChart.h"
 #import "SumLineChart.h"
 
@@ -46,9 +48,27 @@ AH_BASESUBVCFORMAINTAB_MODULE
     
 }
 
+- (void) showWithDate:(NSDate*)date{
+    if (nil == date) {
+        date = [NSDate date];
+    }
+    
+    [HTTP_MANAGER startNormalPostWithParagram:@{@"phone":[[NSUserDefaults standardUserDefaults]objectForKey:@"user"],@"date":[date lj_stringWithFormat:@"yyyy-MM"]} Commandtype:@"app/project/getGatherDate" successedBlock:^(NSDictionary *succeedResult, BOOL isSucceed) {
+        NSLog(@"1>>>>%@",succeedResult);
+    } failedBolck:^(AFHTTPSessionManager *session, NSError *error) {
+        NSLog(@"2>>>>%@",error);
+    }];
+}
+
+- (void) reloadData{
+    [self showWithDate:[NSDate date]];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"汇总";
+    
+    [self reloadData];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -239,10 +259,14 @@ AH_BASESUBVCFORMAINTAB_MODULE
                     
                     JHRingChart *ring = [[JHRingChart alloc] initWithFrame:CGRectMake(0, 0, self.view.lj_width, 200)];
                     ring.backgroundColor = [UIColor whiteColor];
-                    ring.valueDataArr = @[@"12",@"17",@"5"];
+                    ring.valueDataArr = @[@"12",@"7",@"5",@"13",@"46"];
                     ring.ringWidth = 35.0;
-                    ring.fillColorArray = @[[UIColor colorWithRed:1.000 green:0.783 blue:0.371 alpha:1.000], [UIColor colorWithRed:1.000 green:0.562 blue:0.968 alpha:1.000],[UIColor colorWithRed:0.313 green:1.000 blue:0.983 alpha:1.000]];
-                    ring.descArr = @[@"阶段一",@"阶段二",@"阶段三"];
+                    ring.fillColorArray = @[[UIColor colorWithHexString:@"#0DBEF5"]
+                                            ,[UIColor colorWithHexString:@"#6C85DD"]
+                                            ,[UIColor colorWithHexString:@"#09BB07"]
+                                            ,[UIColor colorWithHexString:@"#3188DB"]
+                                            ,[UIColor colorWithHexString:@"#50E3C2"]];
+                    ring.descArr = @[@"阶段一",@"阶段二",@"阶段三",@"阶段四",@"其他"];
                     [ring showAnimation];
                     
                     [cell.contentView addSubview:ring];

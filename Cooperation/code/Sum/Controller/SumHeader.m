@@ -80,12 +80,12 @@
     
     _ivArrowLeft.lj_width = 10;
     _ivArrowLeft.lj_height = 10;
-    _ivArrowLeft.lj_right = _buttonLeft.lj_right;
+    _ivArrowLeft.lj_right = _buttonLeft.lj_right-10.f;
     _ivArrowLeft.lj_centerY = _buttonLeft.lj_centerY;
     
     _ivArrowRight.lj_width = 10;
     _ivArrowRight.lj_height = 10;
-    _ivArrowRight.lj_left = _buttonRight.lj_left;
+    _ivArrowRight.lj_left = _buttonRight.lj_left+10.f;
     _ivArrowRight.lj_centerY = _buttonRight.lj_centerY;
     
     _imageDate.lj_width = 10;

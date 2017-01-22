@@ -329,6 +329,7 @@
 		C634F9531E34AEA1003EE26B /* 汇总-左箭头1.png in Resources */ = {isa = PBXBuildFile; fileRef = C634F94E1E34AEA1003EE26B /* 汇总-左箭头1.png */; };
 		C634F9541E34AEA1003EE26B /* 汇总-左箭头2.png in Resources */ = {isa = PBXBuildFile; fileRef = C634F94F1E34AEA1003EE26B /* 汇总-左箭头2.png */; };
 		C634F9571E34B2DB003EE26B /* NSString+LJAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C634F9561E34B2DB003EE26B /* NSString+LJAdditions.m */; };
+		C634F95D1E34D52F003EE26B /* NSDate+LJAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C634F95C1E34D52F003EE26B /* NSDate+LJAdditions.m */; };
 		C65875061E347887006FBA99 /* BackMoneyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C65875051E347887006FBA99 /* BackMoneyTableViewCell.m */; };
 		C68710681E34572C0018E152 /* ProjectDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C68710671E34572C0018E152 /* ProjectDetailModel.m */; };
 		C68710731E34575A0018E152 /* AddButtonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C68710691E34575A0018E152 /* AddButtonTableViewCell.m */; };
@@ -905,6 +906,8 @@
 		C634F94F1E34AEA1003EE26B /* 汇总-左箭头2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "汇总-左箭头2.png"; sourceTree = "<group>"; };
 		C634F9551E34B2DB003EE26B /* NSString+LJAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LJAdditions.h"; sourceTree = "<group>"; };
 		C634F9561E34B2DB003EE26B /* NSString+LJAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LJAdditions.m"; sourceTree = "<group>"; };
+		C634F95B1E34D52F003EE26B /* NSDate+LJAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+LJAdditions.h"; sourceTree = "<group>"; };
+		C634F95C1E34D52F003EE26B /* NSDate+LJAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+LJAdditions.m"; sourceTree = "<group>"; };
 		C65875041E347887006FBA99 /* BackMoneyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackMoneyTableViewCell.h; sourceTree = "<group>"; };
 		C65875051E347887006FBA99 /* BackMoneyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackMoneyTableViewCell.m; sourceTree = "<group>"; };
 		C68710661E34572C0018E152 /* ProjectDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectDetailModel.h; sourceTree = "<group>"; };
@@ -2392,6 +2395,8 @@
 		C634F9361E34A8A0003EE26B /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				C634F95B1E34D52F003EE26B /* NSDate+LJAdditions.h */,
+				C634F95C1E34D52F003EE26B /* NSDate+LJAdditions.m */,
 				C634F9551E34B2DB003EE26B /* NSString+LJAdditions.h */,
 				C634F9561E34B2DB003EE26B /* NSString+LJAdditions.m */,
 				C634F9051E34A4A9003EE26B /* JHChart.h */,
@@ -2820,6 +2825,7 @@
 				AC11178A1E31DD91009ABFDF /* SDImageCache.m in Sources */,
 				AC11172D1E31DD91009ABFDF /* CollectionItem.m in Sources */,
 				C68710731E34575A0018E152 /* AddButtonTableViewCell.m in Sources */,
+				C634F95D1E34D52F003EE26B /* NSDate+LJAdditions.m in Sources */,
 				AC11174F1E31DD91009ABFDF /* ELCOverlayImageView.m in Sources */,
 				AC11177F1E31DD91009ABFDF /* NSObject+MJClass.m in Sources */,
 				AC1117971E31DD91009ABFDF /* UIView+WebCache.m in Sources */,
