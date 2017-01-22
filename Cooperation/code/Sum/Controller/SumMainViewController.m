@@ -23,6 +23,7 @@
 @property (nonatomic,strong) SumLineChart* lineChart;
 @property (nonatomic,strong) JHRingChart* ringChart;
 @property (nonatomic,strong) NSDate* dateCurrent;
+@property (nonatomic,strong) NSDictionary* resultInfos;
 @end
 
 @implementation SumMainViewController
@@ -58,7 +59,7 @@ AH_BASESUBVCFORMAINTAB_MODULE
     self.dateCurrent = date;
     
     [HTTP_MANAGER startNormalPostWithParagram:@{@"phone":[[NSUserDefaults standardUserDefaults]objectForKey:@"user"],@"date":[date lj_stringWithFormat:@"yyyy-MM"]} Commandtype:@"app/project/getGatherDate" successedBlock:^(NSDictionary *succeedResult, BOOL isSucceed) {
-        NSLog(@"1>>>>%@",succeedResult);
+        
     } failedBolck:^(AFHTTPSessionManager *session, NSError *error) {
         NSLog(@"2>>>>%@",error);
     }];
