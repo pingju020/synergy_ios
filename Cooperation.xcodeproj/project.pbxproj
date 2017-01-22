@@ -308,7 +308,6 @@
 		ACB7C5A41E330D3900C44615 /* ppt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB7C5741E330D3900C44615 /* ppt@3x.png */; };
 		ACB7C5A51E330D3900C44615 /* xls@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB7C5751E330D3900C44615 /* xls@3x.png */; };
 		C634F9261E34A4A9003EE26B /* JHChart.m in Sources */ = {isa = PBXBuildFile; fileRef = C634F9061E34A4A9003EE26B /* JHChart.m */; };
-		C634F9271E34A4A9003EE26B /* JHColumnChart.m in Sources */ = {isa = PBXBuildFile; fileRef = C634F9091E34A4A9003EE26B /* JHColumnChart.m */; };
 		C634F9281E34A4A9003EE26B /* JHLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = C634F90B1E34A4A9003EE26B /* JHLineChart.m */; };
 		C634F9291E34A4A9003EE26B /* JHPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = C634F90D1E34A4A9003EE26B /* JHPieChart.m */; };
 		C634F92A1E34A4A9003EE26B /* JHPieForeBGView.m in Sources */ = {isa = PBXBuildFile; fileRef = C634F90F1E34A4A9003EE26B /* JHPieForeBGView.m */; };
@@ -863,8 +862,6 @@
 		C634F9051E34A4A9003EE26B /* JHChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHChart.h; sourceTree = "<group>"; };
 		C634F9061E34A4A9003EE26B /* JHChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHChart.m; sourceTree = "<group>"; };
 		C634F9071E34A4A9003EE26B /* JHChartHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHChartHeader.h; sourceTree = "<group>"; };
-		C634F9081E34A4A9003EE26B /* JHColumnChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHColumnChart.h; sourceTree = "<group>"; };
-		C634F9091E34A4A9003EE26B /* JHColumnChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHColumnChart.m; sourceTree = "<group>"; };
 		C634F90A1E34A4A9003EE26B /* JHLineChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHLineChart.h; sourceTree = "<group>"; };
 		C634F90B1E34A4A9003EE26B /* JHLineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHLineChart.m; sourceTree = "<group>"; };
 		C634F90C1E34A4A9003EE26B /* JHPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHPieChart.h; sourceTree = "<group>"; };
@@ -2376,8 +2373,6 @@
 				C634F9051E34A4A9003EE26B /* JHChart.h */,
 				C634F9061E34A4A9003EE26B /* JHChart.m */,
 				C634F9071E34A4A9003EE26B /* JHChartHeader.h */,
-				C634F9081E34A4A9003EE26B /* JHColumnChart.h */,
-				C634F9091E34A4A9003EE26B /* JHColumnChart.m */,
 				C634F90A1E34A4A9003EE26B /* JHLineChart.h */,
 				C634F90B1E34A4A9003EE26B /* JHLineChart.m */,
 				C634F90C1E34A4A9003EE26B /* JHPieChart.h */,
@@ -2792,7 +2787,6 @@
 				AC1117881E31DD91009ABFDF /* NSData+ImageContentType.m in Sources */,
 				AC1117911E31DD91009ABFDF /* SDWebImagePrefetcher.m in Sources */,
 				AC11170F1E31DD91009ABFDF /* ConverUtil.m in Sources */,
-				C634F9271E34A4A9003EE26B /* JHColumnChart.m in Sources */,
 				AC11178A1E31DD91009ABFDF /* SDImageCache.m in Sources */,
 				AC11172D1E31DD91009ABFDF /* CollectionItem.m in Sources */,
 				C68710731E34575A0018E152 /* AddButtonTableViewCell.m in Sources */,
