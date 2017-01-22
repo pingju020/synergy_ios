@@ -50,6 +50,15 @@ dispatch_source_t LJGCDTimer(NSTimeInterval interval,
 
 @implementation MessageViewController
 
+-(void)backBtnClicked{
+    if (_backVC) {
+        [_backVC backBtnClicked];
+    }
+    else{
+        [super backBtnClicked];
+    }
+}
+
 - (XHMessage *)getTextMessageWithBubbleMessageType:(XHBubbleMessageType)bubbleMessageType {
     XHMessage *textMessage = [[XHMessage alloc] initWithText:@"这是华捷微信，希望大家喜欢这个开源库，请大家帮帮忙支持这个开源库吧！我是Jack，叫华仔也行，曾宪华就是我啦！" sender:@"华仔" timestamp:[NSDate distantPast]];
     textMessage.avatar = [UIImage imageNamed:@"avatar"];
@@ -200,6 +209,9 @@ dispatch_source_t LJGCDTimer(NSTimeInterval interval,
             @strongify(self)
             NSNumber* maxId = nil;
             self.messages = [self generateMessage:[succeedResult lj_arrayForKey:@"data"] reverse:YES maxId:&maxId];
+            if (maxId) {
+                self.maxMessageId = maxId;
+            }
             [self.messageTableView reloadData];
             [self scrollToBottomAnimated:NO];
             
@@ -215,6 +227,61 @@ dispatch_source_t LJGCDTimer(NSTimeInterval interval,
 
 - (void)loadMessageDataSource {
     [self getStartMessages];
+}
+
+-(void)sendImageMessage:(UIImage*)image{
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    //接收类型不一致请替换一致text/html或别的
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",
+                                                         @"text/html",
+                                                         @"image/jpeg",
+                                                         @"image/png",
+                                                         @"application/octet-stream",
+                                                         @"text/json",
+                                                         @"multipart/form-data",
+                                                         nil];
+    
+    NSString *url=[NSString stringWithFormat:@"%@uploadfile/upload",HOST_ADDRESS];
+    NSMutableDictionary* dic=[NSMutableDictionary new];
+    [dic setValue:[[NSUserDefaults standardUserDefaults]objectForKey:@"user"] forKey:@"phone"];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyyMMddHHmmss";
+    NSString *str = [formatter stringFromDate:[NSDate date]];
+    NSString *fileName = [NSString stringWithFormat:@"%@.jpg", str];
+    
+    [manager POST:url parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData)
+     {
+         NSData *imageDatas =UIImageJPEGRepresentation(image, 0.1) ;
+         
+         //上传的参数(上传图片，以文件流的格式)
+         [formData appendPartWithFileData:imageDatas
+                                     name:@"file"
+                                 fileName:fileName
+                                 mimeType:@"image/jpeg"];
+     }
+         progress:^(NSProgress * _Nonnull uploadProgress) {
+             //打印下上传进度
+             //NSLog(@"上传进度");
+             //NSLog(@"%@",uploadProgress);
+         }
+          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+              //上传成功
+              NSLog(@"上传成功");
+              NSString* imageUrl=[responseObject objectForKey:@"data"];
+              [HTTP_MANAGER startNormalPostWithParagram:@{@"phone":[[NSUserDefaults standardUserDefaults]objectForKey:@"user"],@"projectId":self.projectId,@"fileUrl":imageUrl,@"fileName":fileName} Commandtype:@"app/message/addMessage" successedBlock:^(NSDictionary *succeedResult, BOOL isSucceed) {
+                  NSLog(@"发送图片成功");
+                  [self finishSendMessageWithBubbleMessageType:XHBubbleMessageMediaTypePhoto];
+                  
+              } failedBolck:^(AFHTTPSessionManager *session, NSError *error) {
+                  NSLog(@"发送图片失败");
+              }];
+          }
+          failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+              //上传失败
+              NSLog(@"上传失败");
+              NSLog(@"%@",error);
+          }];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -256,32 +323,36 @@ dispatch_source_t LJGCDTimer(NSTimeInterval interval,
 //    }
 }
 
-- (void) startLoop{
+- (void) fireTimer:(id)timer{
     @weakify(self)
+
+    [HTTP_MANAGER startNormalPostWithParagram:@{@"phone":[[NSUserDefaults standardUserDefaults]objectForKey:@"user"],@"projectId":self.projectId,@"messageId":self.maxMessageId} Commandtype:@"app/message/getMoreMessage" successedBlock:^(NSDictionary *succeedResult, BOOL isSucceed) {
+        
+        NSNumber* ret =  [succeedResult lj_numberForKey:@"ret"];
+        if ([ret isEqualToNumber:@0]) {
+            //成功
+            @strongify(self)
+            NSNumber* maxId = nil;;
+            [self appendMessages:[self generateMessage:[succeedResult lj_arrayForKey:@"data"]reverse:YES maxId:&maxId]];
+            if (maxId) {
+                self.maxMessageId = maxId;
+            }
+            
+        }
+        else
+        {
+            NSLog(@"没有轮询到信息!");
+        }
+    } failedBolck:^(AFHTTPSessionManager *session, NSError *error) {
+        
+    }];
+}
+
+- (void) startLoop{
+    
     NSLog(@"开始轮询...");
     
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:3.f repeats:YES block:^(NSTimer * _Nonnull timer) {
-        [HTTP_MANAGER startNormalPostWithParagram:@{@"phone":[[NSUserDefaults standardUserDefaults]objectForKey:@"user"],@"projectId":self.projectId,@"messageId":self.maxMessageId} Commandtype:@"app/message/getMoreMessage" successedBlock:^(NSDictionary *succeedResult, BOOL isSucceed) {
-            
-            NSNumber* ret =  [succeedResult lj_numberForKey:@"ret"];
-            if ([ret isEqualToNumber:@0]) {
-                //成功
-                @strongify(self)
-                NSNumber* maxId = nil;;
-                [self appendMessages:[self generateMessage:[succeedResult lj_arrayForKey:@"data"]reverse:YES maxId:&maxId]];
-                if (maxId) {
-                    self.maxMessageId = maxId;
-                }
-                
-            }
-            else
-            {
-                NSLog(@"没有轮询到信息!");
-            }
-        } failedBolck:^(AFHTTPSessionManager *session, NSError *error) {
-            
-        }];
-    }];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.f target:self selector:@selector(fireTimer:) userInfo:nil repeats:YES];
 
 }
 
@@ -487,7 +558,7 @@ dispatch_source_t LJGCDTimer(NSTimeInterval interval,
                 @strongify(self)
                 NSNumber* maxId = nil;;
                 [self insertOldMessages:[self generateMessage:[succeedResult lj_arrayForKey:@"data"]reverse:YES maxId:&maxId]];
-                
+
             }
             else
             {
@@ -521,11 +592,12 @@ dispatch_source_t LJGCDTimer(NSTimeInterval interval,
  *  @param date   发送时间
  */
 - (void)didSendText:(NSString *)text fromSender:(NSString *)sender onDate:(NSDate *)date {
-    XHMessage *textMessage = [[XHMessage alloc] initWithText:text sender:sender timestamp:date];
-    textMessage.avatar = [UIImage imageNamed:@"Avatar"];
-    textMessage.avatarUrl = @"http://childapp.pailixiu.com/jack/meIcon@2x.png";
-    [self addMessage:textMessage];
-    [self finishSendMessageWithBubbleMessageType:XHBubbleMessageMediaTypeText];
+    [HTTP_MANAGER startNormalPostWithParagram:@{@"phone":[[NSUserDefaults standardUserDefaults]objectForKey:@"user"],@"projectId":self.projectId,@"message":text} Commandtype:@"app/message/addMessage" successedBlock:^(NSDictionary *succeedResult, BOOL isSucceed) {
+        NSLog(@"发送文本成功");
+        [self finishSendMessageWithBubbleMessageType:XHBubbleMessageMediaTypeText];
+    } failedBolck:^(AFHTTPSessionManager *session, NSError *error) {
+        NSLog(@"发送文本失败");
+    }];
 }
 
 /**
@@ -536,11 +608,7 @@ dispatch_source_t LJGCDTimer(NSTimeInterval interval,
  *  @param date   发送时间
  */
 - (void)didSendPhoto:(UIImage *)photo fromSender:(NSString *)sender onDate:(NSDate *)date {
-    XHMessage *photoMessage = [[XHMessage alloc] initWithPhoto:photo thumbnailUrl:nil originPhotoUrl:nil sender:sender timestamp:date];
-    photoMessage.avatar = [UIImage imageNamed:@"avatar"];
-    photoMessage.avatarUrl = @"http://childapp.pailixiu.com/jack/meIcon@2x.png";
-    [self addMessage:photoMessage];
-    [self finishSendMessageWithBubbleMessageType:XHBubbleMessageMediaTypePhoto];
+    [self sendImageMessage:photo];
 }
 
 /**
@@ -608,11 +676,24 @@ dispatch_source_t LJGCDTimer(NSTimeInterval interval,
  *  @return 根据indexPath获取消息的Model的对象，从而判断返回YES or NO来控制是否显示时间轴Label
  */
 - (BOOL)shouldDisplayTimestampForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row % 2) {
-        return YES;
-    } else {
-        return NO;
+    BOOL ret = NO;
+    XHMessage* curr = [self.messages lj_safeObjectAtIndex:indexPath.row];
+    XHMessage* next = [self.messages lj_safeObjectAtIndex:indexPath.row+1];
+    NSDate* dateCurr = curr.timestamp;
+    NSDate* dateNext = next.timestamp;
+    if (nil == dateCurr) {
+        dateCurr = [NSDate date];
     }
+    if (nil == dateNext) {
+        dateNext = [NSDate date];
+    }
+    
+    NSTimeInterval interval = [dateNext timeIntervalSinceDate:dateCurr];
+    if (interval > 5*60) {
+        ret = YES;
+    }
+    
+    return ret;
 }
 
 /**

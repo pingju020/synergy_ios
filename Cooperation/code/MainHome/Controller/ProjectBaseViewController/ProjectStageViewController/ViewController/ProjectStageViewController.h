@@ -10,6 +10,8 @@
 
 @interface ProjectStageViewController : BaseViewController
 
+@property(nonatomic,strong)BaseViewController* backVC;
+
 - (instancetype)initWithProjectId:(NSString *)projectId;
 
 @end

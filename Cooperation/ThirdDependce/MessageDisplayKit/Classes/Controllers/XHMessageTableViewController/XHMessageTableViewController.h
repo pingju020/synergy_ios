@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "BaseViewController.h"
+
 // Model
 #import "XHMessage.h"
 
@@ -162,7 +164,7 @@
 
 @end
 
-@interface XHMessageTableViewController : UIViewController <
+@interface XHMessageTableViewController : BaseViewController <
 UITableViewDataSource,
 UITableViewDelegate,
 XHMessageTableViewControllerDelegate,

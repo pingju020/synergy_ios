@@ -41,7 +41,14 @@
     [self initTableView];
 }
 
-
+-(void)backBtnClicked{
+    if (_backVC) {
+        [_backVC backBtnClicked];
+    }
+    else{
+        [super backBtnClicked];
+    }
+}
 
 - (void)initData
 {

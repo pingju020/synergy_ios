@@ -10,7 +10,7 @@
 #import "XHMessageTableViewController.h"
 
 @interface MessageViewController : XHMessageTableViewController
-
+@property(nonatomic,strong)BaseViewController* backVC;
 @property (nonatomic,strong) NSString* projectId;
 
 @end

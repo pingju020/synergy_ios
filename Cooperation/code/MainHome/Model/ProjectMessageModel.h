@@ -27,7 +27,7 @@
 @property (nonatomic,strong) NSString* projectStages;
 @property (nonatomic,strong) NSString* stageId;
 @property (nonatomic,strong) NSString* stageName;
-@property (nonatomic,strong) NSString* state;
+@property (nonatomic,strong) NSNumber* state;
 @property (nonatomic,strong) NSString* userName;
 
 @property (nonatomic, strong) NSString *MessageInfo;

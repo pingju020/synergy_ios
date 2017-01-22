@@ -36,6 +36,14 @@
     return self;
 }
 
+-(void)backBtnClicked{
+    if (_backVC) {
+        [_backVC backBtnClicked];
+    }
+    else{
+        [super backBtnClicked];
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
