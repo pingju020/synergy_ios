@@ -23,7 +23,7 @@
                     </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Vh-eS-0sB">
                         <rect key="frame" x="20" y="25" width="30" height="30"/>
-                        <color key="backgroundColor" red="0.38079976160000001" green="0.4356435468" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="uQR-Ap-PdZ"/>
                             <constraint firstAttribute="width" constant="30" id="vJU-fQ-nul"/>

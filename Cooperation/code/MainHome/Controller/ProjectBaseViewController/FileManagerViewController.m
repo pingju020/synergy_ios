@@ -48,6 +48,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.title=@"文件";
+    
     IfisFolder=NO;
     [self initTopView];
     

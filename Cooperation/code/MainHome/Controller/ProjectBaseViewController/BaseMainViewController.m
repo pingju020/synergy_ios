@@ -94,13 +94,6 @@
     modelMsg.Name = @"消息";
     [mulArr addObject:modelMsg];
     
-    ViewButtonModel* modelPersons = [[ViewButtonModel alloc]init];
-    MemberViewController* memberVC= [[MemberViewController alloc]initWithProjectId:_projectId];
-    memberVC.backVC = self;
-    modelPersons.vc = memberVC;
-    modelPersons.Name = @"成员";
-    [mulArr addObject:modelPersons];
-    
     
     ViewButtonModel* modelFile = [[ViewButtonModel alloc]init];
     FileManagerViewController* vc = [[FileManagerViewController alloc]initWithProjectId:_projectId];
@@ -108,6 +101,13 @@
     modelFile.vc =vc;
     modelFile.Name = @"文件";
     [mulArr addObject:modelFile];
+    
+    ViewButtonModel* modelPersons = [[ViewButtonModel alloc]init];
+    MemberViewController* memberVC= [[MemberViewController alloc]initWithProjectId:_projectId];
+    memberVC.backVC = self;
+    modelPersons.vc = memberVC;
+    modelPersons.Name = @"成员";
+    [mulArr addObject:modelPersons];
 
     _dataList = [mulArr copy];
     

@@ -9,5 +9,9 @@
 #import "BaseSubVcForMainTab.h"
 
 @interface KnowledgeMainViewController : BaseSubVcForMainTab
-
+{
+    IBOutlet UIWebView *webView;
+    UIActivityIndicatorView *activityIndicatorView;
+    UIView *opaqueView;
+}
 @end

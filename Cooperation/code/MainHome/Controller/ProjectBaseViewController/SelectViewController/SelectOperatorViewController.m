@@ -11,7 +11,7 @@
 #import "SelectManagerCell.h"
 #import "HttpSessionManager.h"
 #import "AFNetworking.h"
-
+#import "UIImageView+WebCache.h"
 @interface SelectOperatorViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @end
@@ -139,7 +139,7 @@
     SelectManagerCell *cell=[SelectManagerCell cellWithTableView:tableView];
     
     SelectManagerModel* model=[DataSource objectAtIndex:indexPath.row];
-    
+    [cell.IconImageView sd_setImageWithURL:[NSURL URLWithString:model.ImageUrlString]];
     [cell.NameLabel setText:model.name];
     if(model.Mark==YES){
         [cell.SelectedImageView setImage:[UIImage imageNamed:@"selected@3x.png"]];

@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface LibraryWebViewController : UIViewController<UIWebViewDelegate>
+#import "BaseSubVcForMainTab.h"
+@interface LibraryWebViewController : BaseSubVcForMainTab<UIWebViewDelegate>
 {
     IBOutlet UIWebView *webView;
     UIActivityIndicatorView *activityIndicatorView;
     UIView *opaqueView;
 }
 @property  (nonatomic, strong) NSString* params;
+-(instancetype)initWithUrl:(NSString*)UrlString;
 @end

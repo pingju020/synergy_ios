@@ -128,10 +128,14 @@
         [dic setObject:ProjectNameTextField.text forKey:@"projectName"];
         [dic setObject:paramsID forKey:@"userId"];
         
-        [HTTP_MANAGER startNormalPostWithParagram:dic Commandtype:@"app/project/getProjectData" successedBlock:^(NSDictionary *succeedResult, BOOL isSucceed) {
+        [HTTP_MANAGER startNormalPostWithParagram:dic Commandtype:@"app/project/addProject" successedBlock:^(NSDictionary *succeedResult, BOOL isSucceed) {
             if (isSucceed) {
                 NSLog(@"-------%@-----",succeedResult);
-            
+                NSString* string=[NSString stringWithFormat:@"%@",[succeedResult objectForKey:@"ret"]];
+                if([string isEqualToString:@"0"])
+                {
+                    [self.navigationController popViewControllerAnimated:NO];
+                }
             }
             else{
                 [PubllicMaskViewHelper showTipViewWith:succeedResult[@"msg"] inSuperView:self.view withDuration:2];

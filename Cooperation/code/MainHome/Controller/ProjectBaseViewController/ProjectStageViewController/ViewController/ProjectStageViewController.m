@@ -55,7 +55,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    self.title=@"进展";
 }
 
 -(void)backBtnClicked{
@@ -73,7 +73,7 @@
 {
     
     [self showWaitingView];
-    
+    //查询项目阶段
     [HTTP_MANAGER startNormalPostWithParagram:@{@"phone":_phone,
                                                 @"projectId":_projectId}
                                   Commandtype:@"app/project/getProjectStage"

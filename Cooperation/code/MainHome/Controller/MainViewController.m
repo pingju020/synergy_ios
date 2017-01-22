@@ -444,7 +444,7 @@ AH_BASESUBVCFORMAINTAB_MODULE
 - (void)StatusListWithPermission:(NSString*)Permission{
     if([Permission isEqualToString:@"待审核"]){
         StatusList=[[UITableView alloc]initWithFrame:CGRectMake(0,40+STATUS_BAR_HEIGHT+NAVIGATOR_HEIGHT,SCREEN_WIDTH, 200)];
-        NSMutableArray* TempArray=[[NSMutableArray alloc]initWithObjects:@"正在进行",@"已完成",@"已关闭",@"待审批",@"待确认", nil];
+        NSMutableArray* TempArray=[[NSMutableArray alloc]initWithObjects:@"正在进行",@"已完成",@"已关闭",@"待审批",@"我的项目", nil];
         StatusDataSource=[[NSMutableArray alloc]init];
         for(int i=0;i<TempArray.count;i++){
             if(i==0){
@@ -452,6 +452,12 @@ AH_BASESUBVCFORMAINTAB_MODULE
                 TempModel.MessageInfo=[TempArray objectAtIndex:i];
                 TempModel.passParam=@"1";
                 TempModel.Mark=YES;
+                [StatusDataSource addObject:TempModel];
+            }else if(i==4){
+                ProjectSearchConditionModel* TempModel=[[ProjectSearchConditionModel alloc]init];
+                TempModel.MessageInfo=[TempArray objectAtIndex:i];
+                TempModel.passParam=[NSString stringWithFormat:@"%d",i+2];
+                TempModel.Mark=NO;
                 [StatusDataSource addObject:TempModel];
             }
             else{
@@ -464,7 +470,7 @@ AH_BASESUBVCFORMAINTAB_MODULE
         }
     }else{
         StatusList=[[UITableView alloc]initWithFrame:CGRectMake(0,40+STATUS_BAR_HEIGHT+NAVIGATOR_HEIGHT,SCREEN_WIDTH, 160)];
-        NSMutableArray* TempArray=[[NSMutableArray alloc]initWithObjects:@"正在进行",@"已完成",@"已关闭",@"待确认", nil];
+        NSMutableArray* TempArray=[[NSMutableArray alloc]initWithObjects:@"正在进行",@"已完成",@"已关闭",@"我的项目", nil];
         StatusDataSource=[[NSMutableArray alloc]init];
         for(int i=0;i<TempArray.count;i++){
             if(i==0){
@@ -476,7 +482,7 @@ AH_BASESUBVCFORMAINTAB_MODULE
             }else if(i==3){
                 ProjectSearchConditionModel* TempModel=[[ProjectSearchConditionModel alloc]init];
                 TempModel.MessageInfo=[TempArray objectAtIndex:i];
-                TempModel.passParam=[NSString stringWithFormat:@"%d",i+2];
+                TempModel.passParam=[NSString stringWithFormat:@"%d",i+3];
                 TempModel.Mark=NO;
                 [StatusDataSource addObject:TempModel];
             }
@@ -923,13 +929,13 @@ AH_BASESUBVCFORMAINTAB_MODULE
 #pragma mark 跳转搜索/跳转新建
 - (void)BeginSearch{
     ProjectSearchViewController* SearchViewController=[[ProjectSearchViewController alloc]init];
-//    [self.navigationController pushViewController:SearchViewController animated:NO];
+    [self.navigationController pushViewController:SearchViewController animated:NO];
     
-    ProjectMessageModel* model=[Datasource objectAtIndex:0];
-    
-    MemberViewController* member=[[MemberViewController alloc]initWithProjectId:model.id];
-    FileManagerViewController* file=[[FileManagerViewController alloc]initWithProjectId:model.id];
-    [self.navigationController pushViewController:member animated:NO];
+//    ProjectMessageModel* model=[Datasource objectAtIndex:0];
+//    
+//    MemberViewController* member=[[MemberViewController alloc]initWithProjectId:model.id];
+//    FileManagerViewController* file=[[FileManagerViewController alloc]initWithProjectId:model.id];
+//    [self.navigationController pushViewController:member animated:NO];
 }
 
 - (void)AddNewProject{
