@@ -166,8 +166,8 @@ AH_BASESUBVCFORMAINTAB_MODULE
     }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.textLabel.font = [UIFont boldSystemFontOfSize:15.f];
-    cell.detailTextLabel.font = [UIFont systemFontOfSize:15.f];
+    cell.textLabel.font = [UIFont boldSystemFontOfSize:12.f];
+    cell.detailTextLabel.font = [UIFont systemFontOfSize:12.f];
     cell.detailTextLabel.textColor = [UIColor colorWithRed:43/255.f green:185/255.f blue:244/255.f alpha:1];
     
     
