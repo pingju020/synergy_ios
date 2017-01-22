@@ -23,6 +23,7 @@ AH_BASESUBVCFORMAINTAB_MODULE
     // Do any additional setup after loading the view.
     
     MessageViewController *msg = [[MessageViewController alloc]init];
+    msg.projectId = @"43163f1cb46f4919bfbb06dbb71ca143";
 
     [self.navigationController pushViewController:msg animated:YES];
 }

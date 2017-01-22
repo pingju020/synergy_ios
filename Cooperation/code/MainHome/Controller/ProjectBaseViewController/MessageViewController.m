@@ -16,6 +16,24 @@
 #import "LJMacros.h"
 #import "NSString+LJAdditions.h"
 #import "NSDate+LJAdditions.h"
+#import "NSObject+LJAdditions.h"
+#import "NSArray+LJAdditions.h"
+
+dispatch_source_t LJGCDTimer(NSTimeInterval interval,
+                             NSTimeInterval leeway,
+                             dispatch_block_t handler,
+                             dispatch_block_t cancelHandler)
+{
+    double t = interval * NSEC_PER_SEC;
+    dispatch_source_t timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_main_queue());
+    dispatch_source_set_timer(timer, DISPATCH_TIME_NOW, t, leeway * NSEC_PER_SEC);
+    dispatch_source_set_event_handler(timer, handler);
+    if (cancelHandler) {
+        dispatch_source_set_cancel_handler(timer, cancelHandler);
+    }
+    dispatch_resume(timer);
+    return timer;
+}
 
 
 @interface MessageViewController () <XHAudioPlayerHelperDelegate>
@@ -23,6 +41,10 @@
 @property (nonatomic, strong) NSArray *emotionManagers;
 
 @property (nonatomic, strong) XHMessageTableViewCell *currentSelectedCell;
+
+@property (nonatomic,strong) NSNumber* maxMessageId;
+
+@property (nonatomic,strong) NSTimer* timer;
 
 @end
 
@@ -83,10 +105,21 @@
     return localPositionMessage;
 }
 
-- (NSMutableArray*) generateMessage:(NSArray*)rawData{
+- (NSMutableArray*) generateMessage:(NSArray*)rawData reverse:(BOOL)reverse maxId:(NSNumber**)maxId{
     NSMutableArray *messages = [[NSMutableArray alloc] init];
     NSString* myUID = [[NSUserDefaults standardUserDefaults]stringForKey:@"userId"];
+
+    BOOL first = YES;
     for (NSDictionary* item in rawData) {
+        if (first) {
+            
+            NSString* temp = [item lj_stringForKey:@"id"];
+            NSNumberFormatter *f = [[NSNumberFormatter alloc]init];
+            NSNumber* temp1 = [f numberFromString:temp];
+            *maxId = temp1;
+            first = NO;
+        }
+        
         NSString* sendUserId = [item lj_stringForKey:@"sendUserId"];
         if ([sendUserId isEqualToString:myUID]) {
             //自己
@@ -97,6 +130,9 @@
                 textMessage.avatar = [UIImage imageNamed:@"avatar"];
                 textMessage.avatarUrl = [item lj_stringForKey:@"sendUserImageUrl"];
                 textMessage.bubbleMessageType = XHBubbleMessageTypeSending;
+                [textMessage lj_setValue:item forKey:@"rawData"];
+                
+                
                 [messages addObject:textMessage];
             } else if([contentType isEqualToNumber:@7]){
                 //图片
@@ -104,6 +140,8 @@
                 photoMessage.avatar = [UIImage imageNamed:@"avatar"];
                 photoMessage.avatarUrl = [item lj_stringForKey:@"sendUserImageUrl"];
                 photoMessage.bubbleMessageType = XHBubbleMessageTypeSending;
+                [photoMessage lj_setValue:item forKey:@"rawData"];
+                
                 [messages addObject:photoMessage];
             }
         } else {
@@ -115,6 +153,7 @@
                 textMessage.avatar = [UIImage imageNamed:@"avatar"];
                 textMessage.avatarUrl = [item lj_stringForKey:@"sendUserImageUrl"];
                 textMessage.bubbleMessageType = XHBubbleMessageTypeReceiving;
+                [textMessage lj_setValue:item forKey:@"rawData"];
                 [messages addObject:textMessage];
             } else if([contentType isEqualToNumber:@7]){
                 //图片
@@ -122,41 +161,76 @@
                 photoMessage.avatar = [UIImage imageNamed:@"avatar"];
                 photoMessage.avatarUrl = [item lj_stringForKey:@"sendUserImageUrl"];
                 photoMessage.bubbleMessageType = XHBubbleMessageTypeReceiving;
+                [photoMessage lj_setValue:item forKey:@"rawData"];
                 [messages addObject:photoMessage];
             }
         }
     }
+    
+    if (reverse) {
+        messages=[[[messages reverseObjectEnumerator] allObjects] mutableCopy];
+    }
+    
     return messages;
 }
 
-- (NSMutableArray *)getStartMessages {
+- (NSNumber*) maxMessageId{
+    if (nil == _maxMessageId) {
+        _maxMessageId = @0;
+    }
+    return _maxMessageId;
+}
+
+- (NSString*) projectId{
+    if (nil == _projectId) {
+        _projectId = @"";
+    }
+    return _projectId;
+}
+
+- (void )getStartMessages {
     @weakify(self)
-    NSMutableArray *messages = [[NSMutableArray alloc] init];
     
-    [HTTP_MANAGER startNormalPostWithParagram:@{@"phone":[[NSUserDefaults standardUserDefaults]objectForKey:@"user"],@"projectId":@"43163f1cb46f4919bfbb06dbb71ca143",@"messageId":@"0"} Commandtype:@"app/message/getMoreMessage" successedBlock:^(NSDictionary *succeedResult, BOOL isSucceed) {
+    
+    [HTTP_MANAGER startNormalPostWithParagram:@{@"phone":[[NSUserDefaults standardUserDefaults]objectForKey:@"user"],@"projectId":self.projectId,@"messageId":self.maxMessageId} Commandtype:@"app/message/getMoreMessage" successedBlock:^(NSDictionary *succeedResult, BOOL isSucceed) {
         NSLog(@"开始消息%@",succeedResult);
         NSNumber* ret =  [succeedResult lj_numberForKey:@"ret"];
         if ([ret isEqualToNumber:@0]) {
             //成功
             @strongify(self)
-            self.messages = [self generateMessage:[succeedResult lj_arrayForKey:@"data"]];
+            NSNumber* maxId = nil;
+            self.messages = [self generateMessage:[succeedResult lj_arrayForKey:@"data"] reverse:YES maxId:&maxId];
             [self.messageTableView reloadData];
             [self scrollToBottomAnimated:NO];
+            
+            //开始轮询
+            [self startLoop];
             
         }
     } failedBolck:^(AFHTTPSessionManager *session, NSError *error) {
         
     }];
     
-    return messages;
 }
 
 - (void)loadMessageDataSource {
     [self getStartMessages];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    [self loadMessageDataSource];
+}
+
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    
+    if (nil !=self.timer && [self.timer isValid]) {
+        [self.timer invalidate];
+        self.timer = nil;
+    }
+    
     [[XHAudioPlayerHelper shareInstance] stopAudio];
 }
 
@@ -169,6 +243,46 @@
                 self.allowsSendMultiMedia = YES;
     }
     return self;
+}
+
+- (void) appendMessages:(NSArray*)msgs{
+    [self.messages addObjectsFromArray:msgs];
+    [self.messageTableView reloadData];
+    [self scrollToBottomAnimated:YES];
+//    for (XHMessage* msg in msgs) {
+//        [self addMessage:msg];
+//        [self finishSendMessageWithBubbleMessageType:msg.messageMediaType];
+//        break;
+//    }
+}
+
+- (void) startLoop{
+    @weakify(self)
+    NSLog(@"开始轮询...");
+    
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:3.f repeats:YES block:^(NSTimer * _Nonnull timer) {
+        [HTTP_MANAGER startNormalPostWithParagram:@{@"phone":[[NSUserDefaults standardUserDefaults]objectForKey:@"user"],@"projectId":self.projectId,@"messageId":self.maxMessageId} Commandtype:@"app/message/getMoreMessage" successedBlock:^(NSDictionary *succeedResult, BOOL isSucceed) {
+            
+            NSNumber* ret =  [succeedResult lj_numberForKey:@"ret"];
+            if ([ret isEqualToNumber:@0]) {
+                //成功
+                @strongify(self)
+                NSNumber* maxId = nil;;
+                [self appendMessages:[self generateMessage:[succeedResult lj_arrayForKey:@"data"]reverse:YES maxId:&maxId]];
+                if (maxId) {
+                    self.maxMessageId = maxId;
+                }
+                
+            }
+            else
+            {
+                NSLog(@"没有轮询到信息!");
+            }
+        } failedBolck:^(AFHTTPSessionManager *session, NSError *error) {
+            
+        }];
+    }];
+
 }
 
 - (void)viewDidLoad
@@ -224,8 +338,10 @@
     [self.shareMenuView reloadData];
     
     
-    [self loadMessageDataSource];
+   
 }
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -345,18 +461,56 @@
 }
 
 - (void)loadMoreMessagesScrollTotop {
-    if (!self.loadingMoreMessage) {
+    @weakify(self)
+    if (!self.loadingMoreMessage){
         self.loadingMoreMessage = YES;
+    
         
-        WEAKSELF
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            NSMutableArray *messages = [weakSelf getStartMessages];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [weakSelf insertOldMessages:messages];
-                weakSelf.loadingMoreMessage = NO;
-            });
-        });
+        NSNumber* minId = nil;
+        XHMessage* msg = [self.messages lj_safeObjectAtIndex:0];
+        if (msg) {
+            id obj = [msg lj_valueForKey:@"rawData"];
+            if ([obj isKindOfClass:[NSDictionary class]]) {
+                minId = [(NSDictionary*)obj lj_numberForKey:@"id"];
+            }
+        }
+        if (nil == minId) {
+            self.loadingMoreMessage = NO;
+            return;
+        }
+        
+        [HTTP_MANAGER startNormalPostWithParagram:@{@"phone":[[NSUserDefaults standardUserDefaults]objectForKey:@"user"],@"projectId":self.projectId,@"messageId":minId} Commandtype:@"app/message/getHistoryMessage" successedBlock:^(NSDictionary *succeedResult, BOOL isSucceed) {
+            
+            NSNumber* ret =  [succeedResult lj_numberForKey:@"ret"];
+            if ([ret isEqualToNumber:@0]) {
+                //成功
+                @strongify(self)
+                NSNumber* maxId = nil;;
+                [self insertOldMessages:[self generateMessage:[succeedResult lj_arrayForKey:@"data"]reverse:YES maxId:&maxId]];
+                
+            }
+            else
+            {
+                NSLog(@"没有更多");
+            }
+            self.loadingMoreMessage = NO;
+        } failedBolck:^(AFHTTPSessionManager *session, NSError *error) {
+            
+        }];
     }
+    
+//    if (!self.loadingMoreMessage) {
+//        self.loadingMoreMessage = YES;
+//        
+//        WEAKSELF
+//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//            NSMutableArray *messages = [weakSelf getStartMessages];
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [weakSelf insertOldMessages:messages];
+//                weakSelf.loadingMoreMessage = NO;
+//            });
+//        });
+//    }
 }
 
 /**

@@ -458,6 +458,7 @@
 		C634FAC41E350FC8003EE26B /* sharemore_voiceinput@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C634FABA1E350FC8003EE26B /* sharemore_voiceinput@2x.png */; };
 		C634FAC51E350FC8003EE26B /* sharemore_voipvoice@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C634FABB1E350FC8003EE26B /* sharemore_voipvoice@2x.png */; };
 		C634FAC61E350FC8003EE26B /* sharemore_wxtalk@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C634FABC1E350FC8003EE26B /* sharemore_wxtalk@2x.png */; };
+		C634FACD1E352906003EE26B /* NSObject+LJAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C634FACC1E352906003EE26B /* NSObject+LJAdditions.m */; };
 		C65875061E347887006FBA99 /* BackMoneyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C65875051E347887006FBA99 /* BackMoneyTableViewCell.m */; };
 		C68710681E34572C0018E152 /* ProjectDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C68710671E34572C0018E152 /* ProjectDetailModel.m */; };
 		C68710731E34575A0018E152 /* AddButtonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C68710691E34575A0018E152 /* AddButtonTableViewCell.m */; };
@@ -1247,6 +1248,8 @@
 		C634FABA1E350FC8003EE26B /* sharemore_voiceinput@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sharemore_voiceinput@2x.png"; sourceTree = "<group>"; };
 		C634FABB1E350FC8003EE26B /* sharemore_voipvoice@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sharemore_voipvoice@2x.png"; sourceTree = "<group>"; };
 		C634FABC1E350FC8003EE26B /* sharemore_wxtalk@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sharemore_wxtalk@2x.png"; sourceTree = "<group>"; };
+		C634FACB1E352906003EE26B /* NSObject+LJAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+LJAdditions.h"; sourceTree = "<group>"; };
+		C634FACC1E352906003EE26B /* NSObject+LJAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LJAdditions.m"; sourceTree = "<group>"; };
 		C65875041E347887006FBA99 /* BackMoneyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackMoneyTableViewCell.h; sourceTree = "<group>"; };
 		C65875051E347887006FBA99 /* BackMoneyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackMoneyTableViewCell.m; sourceTree = "<group>"; };
 		C68710661E34572C0018E152 /* ProjectDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectDetailModel.h; sourceTree = "<group>"; };
@@ -2761,6 +2764,8 @@
 			isa = PBXGroup;
 			children = (
 				C634F9681E34DF2A003EE26B /* LJMacros.h */,
+				C634FACB1E352906003EE26B /* NSObject+LJAdditions.h */,
+				C634FACC1E352906003EE26B /* NSObject+LJAdditions.m */,
 				C634F96F1E34F8CC003EE26B /* NSArray+LJAdditions.h */,
 				C634F9701E34F8CC003EE26B /* NSArray+LJAdditions.m */,
 				C634F9691E34EA6D003EE26B /* NSDictionary+LJAdditions.h */,
@@ -3730,6 +3735,7 @@
 				AC11172B1E31DD91009ABFDF /* InfoCollectionSectionHeader.m in Sources */,
 				C68710751E34575A0018E152 /* NumberTypeTableViewCell.m in Sources */,
 				AC11174E1E31DD91009ABFDF /* ELCImagePickerController.m in Sources */,
+				C634FACD1E352906003EE26B /* NSObject+LJAdditions.m in Sources */,
 				AC1117291E31DD91009ABFDF /* InfoItem.m in Sources */,
 				AC11176B1E31DD91009ABFDF /* AFImageDownloader.m in Sources */,
 				AC1117901E31DD91009ABFDF /* SDWebImageManager.m in Sources */,

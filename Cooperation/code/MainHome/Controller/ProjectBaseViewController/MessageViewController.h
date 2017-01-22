@@ -11,4 +11,6 @@
 
 @interface MessageViewController : XHMessageTableViewController
 
+@property (nonatomic,strong) NSString* projectId;
+
 @end

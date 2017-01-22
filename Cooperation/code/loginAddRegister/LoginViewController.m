@@ -12,6 +12,7 @@
 #import "TabBarController.h"
 #import "HttpSessionManager.h"
 #import "BaseInfomationViewController.h"
+#import "NSDictionary+LJAdditions.h"
 
 
 E_ROLE role;
@@ -167,6 +168,10 @@ E_ROLE role;
             NSUserDefaults *UserDefaults = [NSUserDefaults standardUserDefaults];
             [UserDefaults setObject:user forKey:@"user"];
             [UserDefaults setObject:password forKey:@"password"];
+            
+            NSString* userId = [succeedResult lj_stringForKey:@"userId"];
+            [UserDefaults setObject:userId forKey:@"userId"];
+            [UserDefaults synchronize];
             
             //进入首页
             PJTabBarController* vc=[[PJTabBarController alloc]init];
