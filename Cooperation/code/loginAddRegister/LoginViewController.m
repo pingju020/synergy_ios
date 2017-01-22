@@ -11,6 +11,7 @@
 #import "PJTabBarController.h"
 #import "TabBarController.h"
 #import "HttpSessionManager.h"
+#import "BaseInfomationViewController.h"
 
 
 E_ROLE role;
@@ -172,7 +173,7 @@ E_ROLE role;
             [UserDefaults setObject:password forKey:@"password"];
             
             //进入首页
-            PJTabBarController* vc=[[PJTabBarController alloc]init];
+            BaseInfomationViewController* vc=[[BaseInfomationViewController alloc]initWithProjectId:@"" ProjectName:@"" type:E_INFO_VIEW];
             [self presentViewController:vc animated:NO completion:^{}];
         }
         else{

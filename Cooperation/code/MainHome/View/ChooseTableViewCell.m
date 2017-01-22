@@ -50,7 +50,7 @@
         [self.contentView addSubview:_input];
         
         _sep = [[UIView alloc]initWithFrame:CGRectMake(0, 55, MAIN_WIDTH, 1)];
-        [_sep setBackgroundColor:[UIColor colorWithHexString:@"F1F1F1"]];
+        [_sep setBackgroundColor:VcBackgroudColor];
         [self.contentView addSubview:_sep];
     }
     return self;

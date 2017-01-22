@@ -19,6 +19,7 @@
 @property(nonatomic,strong)UITableView* tableView;
 @property(nonatomic,strong)NSString* projectName;
 @property(nonatomic,strong)NSArray* listData;
+@property(nonatomic,strong)UIView* headerView;
 
 // 上不固定的list数据
 @property(nonatomic,strong)NSArray* list;
@@ -69,6 +70,25 @@
         }
     }
     return self;
+}
+
+-(UIView*)headerView{
+    if (!_headerView) {
+        _headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, MAIN_WIDTH, 56)];
+        _headerView.backgroundColor = [UIColor whiteColor];
+        UILabel* lab = [[UILabel alloc]initWithFrame:CGRectMake(15, 0, 60, 44)];
+        [lab setFont:[UIFont systemFontOfSize:14]];
+        [lab setTextColor:[UIColor darkGrayColor]];
+        [lab setTextAlignment:NSTextAlignmentLeft];
+        lab.numberOfLines = 0;
+        [lab setText:@"基本信息"];
+        [_headerView addSubview:lab];
+        
+        UIView* sep = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(lab.frame), MAIN_WIDTH, 56-CGRectGetMaxY(lab.frame))];
+        sep.backgroundColor = VcBackgroudColor;
+        [_headerView addSubview:sep];
+    }
+    return _headerView;
 }
 
 -(UITableView*)tableView{
@@ -200,6 +220,13 @@
     return 56;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 56;
+}
+
+-(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    return self.headerView;
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     FactorModel* model = _list[indexPath.row];
