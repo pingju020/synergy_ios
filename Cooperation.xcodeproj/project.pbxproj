@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4DD372FA1E34A2730011A7D1 /* ProjectStageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD372EC1E34A2730011A7D1 /* ProjectStageModel.m */; };
+		4DD372FB1E34A2730011A7D1 /* ProjectTableViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD372EE1E34A2730011A7D1 /* ProjectTableViewModel.m */; };
+		4DD372FC1E34A2730011A7D1 /* ProjectTabModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD372F01E34A2730011A7D1 /* ProjectTabModel.m */; };
+		4DD372FD1E34A2730011A7D1 /* ProjectStageHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD372F41E34A2730011A7D1 /* ProjectStageHeaderView.m */; };
+		4DD372FE1E34A2730011A7D1 /* ProjectTabScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD372F61E34A2730011A7D1 /* ProjectTabScrollView.m */; };
+		4DD372FF1E34A2730011A7D1 /* ProjectStageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD372F91E34A2730011A7D1 /* ProjectStageViewController.m */; };
 		AC11154F1E31DD1F009ABFDF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AC11154E1E31DD1F009ABFDF /* main.m */; };
 		AC1115521E31DD1F009ABFDF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1115511E31DD1F009ABFDF /* AppDelegate.m */; };
 		AC1115551E31DD1F009ABFDF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1115541E31DD1F009ABFDF /* ViewController.m */; };
@@ -328,6 +334,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4DD372EB1E34A2730011A7D1 /* ProjectStageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectStageModel.h; sourceTree = "<group>"; };
+		4DD372EC1E34A2730011A7D1 /* ProjectStageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectStageModel.m; sourceTree = "<group>"; };
+		4DD372ED1E34A2730011A7D1 /* ProjectTableViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectTableViewModel.h; sourceTree = "<group>"; };
+		4DD372EE1E34A2730011A7D1 /* ProjectTableViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectTableViewModel.m; sourceTree = "<group>"; };
+		4DD372EF1E34A2730011A7D1 /* ProjectTabModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectTabModel.h; sourceTree = "<group>"; };
+		4DD372F01E34A2730011A7D1 /* ProjectTabModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectTabModel.m; sourceTree = "<group>"; };
+		4DD372F31E34A2730011A7D1 /* ProjectStageHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectStageHeaderView.h; sourceTree = "<group>"; };
+		4DD372F41E34A2730011A7D1 /* ProjectStageHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectStageHeaderView.m; sourceTree = "<group>"; };
+		4DD372F51E34A2730011A7D1 /* ProjectTabScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectTabScrollView.h; sourceTree = "<group>"; };
+		4DD372F61E34A2730011A7D1 /* ProjectTabScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectTabScrollView.m; sourceTree = "<group>"; };
+		4DD372F81E34A2730011A7D1 /* ProjectStageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectStageViewController.h; sourceTree = "<group>"; };
+		4DD372F91E34A2730011A7D1 /* ProjectStageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectStageViewController.m; sourceTree = "<group>"; };
 		AC11154A1E31DD1F009ABFDF /* Cooperation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cooperation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC11154E1E31DD1F009ABFDF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AC1115501E31DD1F009ABFDF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -880,6 +898,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4DD372E91E34A2730011A7D1 /* ProjectStageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4DD372EA1E34A2730011A7D1 /* Model */,
+				4DD372F11E34A2730011A7D1 /* View */,
+				4DD372F71E34A2730011A7D1 /* ViewController */,
+			);
+			path = ProjectStageViewController;
+			sourceTree = "<group>";
+		};
+		4DD372EA1E34A2730011A7D1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4DD372EB1E34A2730011A7D1 /* ProjectStageModel.h */,
+				4DD372EC1E34A2730011A7D1 /* ProjectStageModel.m */,
+				4DD372ED1E34A2730011A7D1 /* ProjectTableViewModel.h */,
+				4DD372EE1E34A2730011A7D1 /* ProjectTableViewModel.m */,
+				4DD372EF1E34A2730011A7D1 /* ProjectTabModel.h */,
+				4DD372F01E34A2730011A7D1 /* ProjectTabModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4DD372F11E34A2730011A7D1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4DD372F21E34A2730011A7D1 /* PeojectStageTableView */,
+				4DD372F51E34A2730011A7D1 /* ProjectTabScrollView.h */,
+				4DD372F61E34A2730011A7D1 /* ProjectTabScrollView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4DD372F21E34A2730011A7D1 /* PeojectStageTableView */ = {
+			isa = PBXGroup;
+			children = (
+				4DD372F31E34A2730011A7D1 /* ProjectStageHeaderView.h */,
+				4DD372F41E34A2730011A7D1 /* ProjectStageHeaderView.m */,
+			);
+			path = PeojectStageTableView;
+			sourceTree = "<group>";
+		};
+		4DD372F71E34A2730011A7D1 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4DD372F81E34A2730011A7D1 /* ProjectStageViewController.h */,
+				4DD372F91E34A2730011A7D1 /* ProjectStageViewController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		AC1115411E31DD1F009ABFDF = {
 			isa = PBXGroup;
 			children = (
@@ -2112,6 +2181,7 @@
 		ACB7C5151E3302BF00C44615 /* ProjectBaseViewController */ = {
 			isa = PBXGroup;
 			children = (
+				4DD372E91E34A2730011A7D1 /* ProjectStageViewController */,
 				ACB7C52F1E3307E700C44615 /* SelectViewController */,
 				ACB7C5301E3307E700C44615 /* TaskViewController */,
 				ACB7C5161E3302EE00C44615 /* BaseInfomationViewController.h */,
@@ -2476,6 +2546,7 @@
 				AC11173A1E31DD91009ABFDF /* NewMainViewController.m in Sources */,
 				AC11173B1E31DD91009ABFDF /* README.md in Sources */,
 				AC11181C1E31F5B2009ABFDF /* MJRefreshBackFooter.m in Sources */,
+				4DD372FB1E34A2730011A7D1 /* ProjectTableViewModel.m in Sources */,
 				AC1118201E31F5B2009ABFDF /* MJRefreshAutoGifFooter.m in Sources */,
 				AC1118231E31F5B2009ABFDF /* MJRefreshBackGifFooter.m in Sources */,
 				AC11181D1E31F5B2009ABFDF /* MJRefreshComponent.m in Sources */,
@@ -2496,6 +2567,7 @@
 				AC11176C1E31DD91009ABFDF /* AFNetworkActivityIndicatorManager.m in Sources */,
 				AC1117321E31DD91009ABFDF /* MainHomeItemLoadContext.m in Sources */,
 				C68710761E34575A0018E152 /* TextTypeTableViewCell.m in Sources */,
+				4DD372FD1E34A2730011A7D1 /* ProjectStageHeaderView.m in Sources */,
 				AC1115551E31DD1F009ABFDF /* ViewController.m in Sources */,
 				AC1117181E31DD91009ABFDF /* BaseViewController.m in Sources */,
 				AC1117CF1E31EF93009ABFDF /* TabBarController.m in Sources */,
@@ -2522,7 +2594,9 @@
 				AC11173D1E31DD91009ABFDF /* SubjectTimetableViewController.m in Sources */,
 				ACB7C5181E3302EE00C44615 /* BaseInfomationViewController.m in Sources */,
 				AC11170E1E31DD91009ABFDF /* HttpSessionManager.m in Sources */,
+				4DD372FC1E34A2730011A7D1 /* ProjectTabModel.m in Sources */,
 				ACB7C52E1E3306E100C44615 /* NewProjectBaseInfoViewController.m in Sources */,
+				4DD372FA1E34A2730011A7D1 /* ProjectStageModel.m in Sources */,
 				AC1117271E31DD91009ABFDF /* RollAdsDataDTO.m in Sources */,
 				AC11172F1E31DD91009ABFDF /* MainCollectionCell.m in Sources */,
 				AC11171C1E31DD91009ABFDF /* PJTabbarButtonsBGView.m in Sources */,
@@ -2632,6 +2706,7 @@
 				ACB7C5331E33081900C44615 /* SelectOperatorViewController.m in Sources */,
 				AC1117171E31DD91009ABFDF /* BaseSubVcForMainTab.m in Sources */,
 				AC1117811E31DD91009ABFDF /* NSObject+MJKeyValue.m in Sources */,
+				4DD372FE1E34A2730011A7D1 /* ProjectTabScrollView.m in Sources */,
 				AC1117E41E31F1BA009ABFDF /* SumWebViewController.m in Sources */,
 				ACB7C53F1E33089D00C44615 /* TaskNewViewController.m in Sources */,
 				AC11182B1E31F5B2009ABFDF /* UIScrollView+MJExtension.m in Sources */,
@@ -2643,6 +2718,7 @@
 				AC11176E1E31DD91009ABFDF /* UIButton+AFNetworking.m in Sources */,
 				AC11173F1E31DD91009ABFDF /* CLIColor.m in Sources */,
 				AC1117041E31DD91009ABFDF /* BottomPickerView.m in Sources */,
+				4DD372FF1E34A2730011A7D1 /* ProjectStageViewController.m in Sources */,
 				AC11182C1E31F5B2009ABFDF /* UIScrollView+MJRefresh.m in Sources */,
 				AC1117301E31DD91009ABFDF /* MainCollectionView.m in Sources */,
 				AC11178E1E31DD91009ABFDF /* SDWebImageDownloader.m in Sources */,
