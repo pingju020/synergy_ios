@@ -21,7 +21,7 @@
 #import "ProjectSearchConditionModel.h"
 #import "BankCollectionCell.h"
 #import "HttpSessionManager.h"
-#import "BaseInfomationViewController.h"
+#import "BaseMainViewController.h"
 
 #import "ProjectSearchViewController.h"
 #import "ProjectNewViewController.h"
@@ -652,7 +652,7 @@ AH_BASESUBVCFORMAINTAB_MODULE
     if(tableView==MainTableView){
         ProjectMessageModel* TempModel=[Datasource objectAtIndex:indexPath.row];
         //跳转详情页面
-        BaseInfomationViewController* BaseInfoViewController=[[BaseInfomationViewController alloc]initWithProjectId:TempModel.id ProjectName:TempModel.projectName type:E_INFO_VIEW];
+        BaseMainViewController* BaseInfoViewController=[[BaseMainViewController alloc]initWithProjretId:TempModel.id Name:TempModel.projectName];
         //传参等待上传
         [self.navigationController pushViewController:BaseInfoViewController animated:NO];
     }

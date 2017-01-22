@@ -337,6 +337,9 @@
 		C68710751E34575A0018E152 /* NumberTypeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C687106B1E34575A0018E152 /* NumberTypeTableViewCell.m */; };
 		C68710761E34575A0018E152 /* TextTypeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C687106C1E34575A0018E152 /* TextTypeTableViewCell.m */; };
 		C68710771E34575A0018E152 /* ChangeInfoLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C687106F1E34575A0018E152 /* ChangeInfoLabel.m */; };
+		C6EEC12A1E34932B009469E8 /* BaseMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6EEC1291E34932B009469E8 /* BaseMainViewController.m */; };
+		C6EEC1301E34969C009469E8 /* PPLabelMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = C6EEC12F1E34969C009469E8 /* PPLabelMenuView.m */; };
+		C6EEC1331E34981F009469E8 /* ViewButtonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C6EEC1321E34981F009469E8 /* ViewButtonModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -922,6 +925,12 @@
 		C68710701E34575A0018E152 /* ChooseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseTableViewCell.h; sourceTree = "<group>"; };
 		C68710711E34575A0018E152 /* NumberTypeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberTypeTableViewCell.h; sourceTree = "<group>"; };
 		C68710721E34575A0018E152 /* TextTypeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextTypeTableViewCell.h; sourceTree = "<group>"; };
+		C6EEC1281E34932B009469E8 /* BaseMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseMainViewController.h; sourceTree = "<group>"; };
+		C6EEC1291E34932B009469E8 /* BaseMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseMainViewController.m; sourceTree = "<group>"; };
+		C6EEC12E1E34969C009469E8 /* PPLabelMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPLabelMenuView.h; sourceTree = "<group>"; };
+		C6EEC12F1E34969C009469E8 /* PPLabelMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPLabelMenuView.m; sourceTree = "<group>"; };
+		C6EEC1311E34981F009469E8 /* ViewButtonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewButtonModel.h; sourceTree = "<group>"; };
+		C6EEC1321E34981F009469E8 /* ViewButtonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewButtonModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1512,6 +1521,8 @@
 				AC1115F91E31DD91009ABFDF /* RollAdsDataDTO.h */,
 				AC1115FA1E31DD91009ABFDF /* RollAdsDataDTO.m */,
 				AC1115FB1E31DD91009ABFDF /* 未命名文件夹 */,
+				C6EEC1311E34981F009469E8 /* ViewButtonModel.h */,
+				C6EEC1321E34981F009469E8 /* ViewButtonModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1553,6 +1564,8 @@
 				AC11161C1E31DD91009ABFDF /* MainItemCollectionView */,
 				C65875041E347887006FBA99 /* BackMoneyTableViewCell.h */,
 				C65875051E347887006FBA99 /* BackMoneyTableViewCell.m */,
+				C6EEC12E1E34969C009469E8 /* PPLabelMenuView.h */,
+				C6EEC12F1E34969C009469E8 /* PPLabelMenuView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2265,6 +2278,8 @@
 				ACB7C5201E33037500C44615 /* FileManagerViewController.m */,
 				ACB7C5221E33038C00C44615 /* MemberViewController.h */,
 				ACB7C5231E33038C00C44615 /* MemberViewController.m */,
+				C6EEC1281E34932B009469E8 /* BaseMainViewController.h */,
+				C6EEC1291E34932B009469E8 /* BaseMainViewController.m */,
 			);
 			path = ProjectBaseViewController;
 			sourceTree = "<group>";
@@ -2828,6 +2843,7 @@
 				C634F95D1E34D52F003EE26B /* NSDate+LJAdditions.m in Sources */,
 				AC11174F1E31DD91009ABFDF /* ELCOverlayImageView.m in Sources */,
 				AC11177F1E31DD91009ABFDF /* NSObject+MJClass.m in Sources */,
+				C6EEC1301E34969C009469E8 /* PPLabelMenuView.m in Sources */,
 				AC1117971E31DD91009ABFDF /* UIView+WebCache.m in Sources */,
 				AC1117801E31DD91009ABFDF /* NSObject+MJCoding.m in Sources */,
 				AC7FFC321E3364FB00200686 /* ProgressIdentifyModel.m in Sources */,
@@ -2856,6 +2872,7 @@
 				AC1117301E31DD91009ABFDF /* MainCollectionView.m in Sources */,
 				AC11178E1E31DD91009ABFDF /* SDWebImageDownloader.m in Sources */,
 				AC1117841E31DD91009ABFDF /* README.md in Sources */,
+				C6EEC1331E34981F009469E8 /* ViewButtonModel.m in Sources */,
 				AC1117261E31DD91009ABFDF /* MainDataModel.m in Sources */,
 				C634F92D1E34A4A9003EE26B /* JHRingChart.m in Sources */,
 				AC11178B1E31DD91009ABFDF /* SDImageCacheConfig.m in Sources */,
@@ -2866,6 +2883,7 @@
 				AC1118271E31F5B2009ABFDF /* MJRefreshNormalHeader.m in Sources */,
 				AC1117021E31DD91009ABFDF /* ImageCollectionViewCell.m in Sources */,
 				AC1116FE1E31DD91009ABFDF /* CustomSelectView.m in Sources */,
+				C6EEC12A1E34932B009469E8 /* BaseMainViewController.m in Sources */,
 				ACB7C5281E33065500C44615 /* NewProjectNameViewController.m in Sources */,
 				C634F92E1E34A4A9003EE26B /* JHScatterChart.m in Sources */,
 				AC1117E11E31F1BA009ABFDF /* MeWebViewController.m in Sources */,
