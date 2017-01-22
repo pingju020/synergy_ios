@@ -256,32 +256,36 @@ dispatch_source_t LJGCDTimer(NSTimeInterval interval,
 //    }
 }
 
-- (void) startLoop{
+- (void) fireTimer:(id)timer{
     @weakify(self)
+
+    [HTTP_MANAGER startNormalPostWithParagram:@{@"phone":[[NSUserDefaults standardUserDefaults]objectForKey:@"user"],@"projectId":self.projectId,@"messageId":self.maxMessageId} Commandtype:@"app/message/getMoreMessage" successedBlock:^(NSDictionary *succeedResult, BOOL isSucceed) {
+        
+        NSNumber* ret =  [succeedResult lj_numberForKey:@"ret"];
+        if ([ret isEqualToNumber:@0]) {
+            //成功
+            @strongify(self)
+            NSNumber* maxId = nil;;
+            [self appendMessages:[self generateMessage:[succeedResult lj_arrayForKey:@"data"]reverse:YES maxId:&maxId]];
+            if (maxId) {
+                self.maxMessageId = maxId;
+            }
+            
+        }
+        else
+        {
+            NSLog(@"没有轮询到信息!");
+        }
+    } failedBolck:^(AFHTTPSessionManager *session, NSError *error) {
+        
+    }];
+}
+
+- (void) startLoop{
+    
     NSLog(@"开始轮询...");
     
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:3.f repeats:YES block:^(NSTimer * _Nonnull timer) {
-        [HTTP_MANAGER startNormalPostWithParagram:@{@"phone":[[NSUserDefaults standardUserDefaults]objectForKey:@"user"],@"projectId":self.projectId,@"messageId":self.maxMessageId} Commandtype:@"app/message/getMoreMessage" successedBlock:^(NSDictionary *succeedResult, BOOL isSucceed) {
-            
-            NSNumber* ret =  [succeedResult lj_numberForKey:@"ret"];
-            if ([ret isEqualToNumber:@0]) {
-                //成功
-                @strongify(self)
-                NSNumber* maxId = nil;;
-                [self appendMessages:[self generateMessage:[succeedResult lj_arrayForKey:@"data"]reverse:YES maxId:&maxId]];
-                if (maxId) {
-                    self.maxMessageId = maxId;
-                }
-                
-            }
-            else
-            {
-                NSLog(@"没有轮询到信息!");
-            }
-        } failedBolck:^(AFHTTPSessionManager *session, NSError *error) {
-            
-        }];
-    }];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.f target:self selector:@selector(fireTimer:) userInfo:nil repeats:YES];
 
 }
 
@@ -521,11 +525,12 @@ dispatch_source_t LJGCDTimer(NSTimeInterval interval,
  *  @param date   发送时间
  */
 - (void)didSendText:(NSString *)text fromSender:(NSString *)sender onDate:(NSDate *)date {
-    XHMessage *textMessage = [[XHMessage alloc] initWithText:text sender:sender timestamp:date];
-    textMessage.avatar = [UIImage imageNamed:@"Avatar"];
-    textMessage.avatarUrl = @"http://childapp.pailixiu.com/jack/meIcon@2x.png";
-    [self addMessage:textMessage];
-    [self finishSendMessageWithBubbleMessageType:XHBubbleMessageMediaTypeText];
+    [HTTP_MANAGER startNormalPostWithParagram:@{@"phone":[[NSUserDefaults standardUserDefaults]objectForKey:@"user"],@"projectId":self.projectId,@"message":text} Commandtype:@"app/message/addMessage" successedBlock:^(NSDictionary *succeedResult, BOOL isSucceed) {
+        NSLog(@"发送文本成功");
+        [self finishSendMessageWithBubbleMessageType:XHBubbleMessageMediaTypeText];
+    } failedBolck:^(AFHTTPSessionManager *session, NSError *error) {
+        NSLog(@"发送文本失败");
+    }];
 }
 
 /**
@@ -608,11 +613,24 @@ dispatch_source_t LJGCDTimer(NSTimeInterval interval,
  *  @return 根据indexPath获取消息的Model的对象，从而判断返回YES or NO来控制是否显示时间轴Label
  */
 - (BOOL)shouldDisplayTimestampForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row % 2) {
-        return YES;
-    } else {
-        return NO;
+    BOOL ret = NO;
+    XHMessage* curr = [self.messages lj_safeObjectAtIndex:indexPath.row];
+    XHMessage* next = [self.messages lj_safeObjectAtIndex:indexPath.row+1];
+    NSDate* dateCurr = curr.timestamp;
+    NSDate* dateNext = next.timestamp;
+    if (nil == dateCurr) {
+        dateCurr = [NSDate date];
     }
+    if (nil == dateNext) {
+        dateNext = [NSDate date];
+    }
+    
+    NSTimeInterval interval = [dateNext timeIntervalSinceDate:dateCurr];
+    if (interval > 5*60) {
+        ret = YES;
+    }
+    
+    return ret;
 }
 
 /**
