@@ -220,6 +220,61 @@ dispatch_source_t LJGCDTimer(NSTimeInterval interval,
     [self getStartMessages];
 }
 
+-(void)sendImageMessage:(UIImage*)image{
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    //接收类型不一致请替换一致text/html或别的
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",
+                                                         @"text/html",
+                                                         @"image/jpeg",
+                                                         @"image/png",
+                                                         @"application/octet-stream",
+                                                         @"text/json",
+                                                         @"multipart/form-data",
+                                                         nil];
+    
+    NSString *url=[NSString stringWithFormat:@"%@uploadfile/upload",HOST_ADDRESS];
+    NSMutableDictionary* dic=[NSMutableDictionary new];
+    [dic setValue:[[NSUserDefaults standardUserDefaults]objectForKey:@"user"] forKey:@"phone"];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyyMMddHHmmss";
+    NSString *str = [formatter stringFromDate:[NSDate date]];
+    NSString *fileName = [NSString stringWithFormat:@"%@.jpg", str];
+    
+    [manager POST:url parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData)
+     {
+         NSData *imageDatas =UIImageJPEGRepresentation(image, 0.1) ;
+         
+         //上传的参数(上传图片，以文件流的格式)
+         [formData appendPartWithFileData:imageDatas
+                                     name:@"file"
+                                 fileName:fileName
+                                 mimeType:@"image/jpeg"];
+     }
+         progress:^(NSProgress * _Nonnull uploadProgress) {
+             //打印下上传进度
+             //NSLog(@"上传进度");
+             //NSLog(@"%@",uploadProgress);
+         }
+          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+              //上传成功
+              NSLog(@"上传成功");
+              NSString* imageUrl=[responseObject objectForKey:@"data"];
+              [HTTP_MANAGER startNormalPostWithParagram:@{@"phone":[[NSUserDefaults standardUserDefaults]objectForKey:@"user"],@"projectId":self.projectId,@"fileUrl":imageUrl,@"fileName":fileName} Commandtype:@"app/message/addMessage" successedBlock:^(NSDictionary *succeedResult, BOOL isSucceed) {
+                  NSLog(@"发送图片成功");
+                  [self finishSendMessageWithBubbleMessageType:XHBubbleMessageMediaTypePhoto];
+                  
+              } failedBolck:^(AFHTTPSessionManager *session, NSError *error) {
+                  NSLog(@"发送图片失败");
+              }];
+          }
+          failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+              //上传失败
+              NSLog(@"上传失败");
+              NSLog(@"%@",error);
+          }];
+}
+
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
@@ -544,11 +599,7 @@ dispatch_source_t LJGCDTimer(NSTimeInterval interval,
  *  @param date   发送时间
  */
 - (void)didSendPhoto:(UIImage *)photo fromSender:(NSString *)sender onDate:(NSDate *)date {
-    XHMessage *photoMessage = [[XHMessage alloc] initWithPhoto:photo thumbnailUrl:nil originPhotoUrl:nil sender:sender timestamp:date];
-    photoMessage.avatar = [UIImage imageNamed:@"avatar"];
-    photoMessage.avatarUrl = @"http://childapp.pailixiu.com/jack/meIcon@2x.png";
-    [self addMessage:photoMessage];
-    [self finishSendMessageWithBubbleMessageType:XHBubbleMessageMediaTypePhoto];
+    [self sendImageMessage:photo];
 }
 
 /**
