@@ -403,7 +403,7 @@
         
         [cell.MarkImageView setBackgroundColor:[UIColor blackColor]];
 //        [cell.StatusImageView setBackgroundColor:[UIColor orangeColor]];
-        [cell.MessgaeLabel setText:@"南京全聚德"];
+        //[cell.MessgaeLabel setText:@"南京全聚德"];
         
         return cell;
     }

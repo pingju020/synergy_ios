@@ -157,7 +157,7 @@ AH_BASESUBVCFORMAINTAB_MODULE
     
     //navigation操作
     [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithHexString:@"#393842"]];
-    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],UITextAttributeTextColor,nil]];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont systemFontOfSize:14.f]}];
     self.navigationController.navigationBar.translucent=NO;
     //左侧button
     leftItem =[[UIBarButtonItem alloc]initWithTitle:@"搜索" style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
@@ -187,18 +187,18 @@ AH_BASESUBVCFORMAINTAB_MODULE
     
     CGFloat ArrowWidth=20;
     CGFloat BlankWidth=10;
-    CGFloat ButtonWidth=SCREEN_WIDTH/4-20-BlankWidth;
+    CGFloat ButtonWidth=SCREEN_WIDTH/4-15-BlankWidth;
     CGFloat BarHeight=40;
     
     //设定右侧的向下箭头为20宽度
     StatusButton=[[UIButton alloc]initWithFrame:CGRectMake(0,0,ButtonWidth,BarHeight)];
     UIView* Arrow1=[[UIView alloc]initWithFrame:CGRectMake(ButtonWidth, 0, ArrowWidth, BarHeight)];
-    UIImageView* Image1=[[UIImageView alloc]initWithFrame:CGRectMake(0,15, 16, 10)];
+    UIImageView* Image1=[[UIImageView alloc]initWithFrame:CGRectMake(0,15, 16, 10.5)];
     [Image1 setImage:[UIImage imageNamed:@"downArrow.png"]];
     [Arrow1 addSubview:Image1];
     [StatusButton setBackgroundColor:[UIColor whiteColor]];
     [StatusButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-    StatusButton.titleLabel.font=[UIFont systemFontOfSize:14];
+    StatusButton.titleLabel.font=[UIFont systemFontOfSize:12];
     [StatusButton addTarget:self action:@selector(ShowOrRemoveStatusList) forControlEvents:UIControlEventTouchUpInside];
     [TopTabbar addSubview:StatusButton];
     [TopTabbar addSubview:Arrow1];
@@ -210,7 +210,7 @@ AH_BASESUBVCFORMAINTAB_MODULE
     [Arrow2 addSubview:Image2];
     [ProgressButton setBackgroundColor:[UIColor whiteColor]];
     [ProgressButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-    ProgressButton.titleLabel.font=[UIFont systemFontOfSize:14];
+    ProgressButton.titleLabel.font=[UIFont systemFontOfSize:12];
     [ProgressButton addTarget:self action:@selector(ShowOrRemoveProgressList) forControlEvents:UIControlEventTouchUpInside];
     [TopTabbar addSubview:ProgressButton];
     [TopTabbar addSubview:Arrow2];
@@ -222,7 +222,7 @@ AH_BASESUBVCFORMAINTAB_MODULE
     [Arrow3 addSubview:Image3];
     [BankButton setBackgroundColor:[UIColor whiteColor]];
     [BankButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-    BankButton.titleLabel.font=[UIFont systemFontOfSize:14];
+    BankButton.titleLabel.font=[UIFont systemFontOfSize:12];
     [BankButton addTarget:self action:@selector(ShowOrRemoveBankCollection) forControlEvents:UIControlEventTouchUpInside];
     [TopTabbar addSubview:BankButton];
     [TopTabbar addSubview:Arrow3];
@@ -234,7 +234,7 @@ AH_BASESUBVCFORMAINTAB_MODULE
     [Arrow4 addSubview:Image4];
     [BranchBankButton setBackgroundColor:[UIColor whiteColor]];
     [BranchBankButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-    BranchBankButton.titleLabel.font=[UIFont systemFontOfSize:14];
+    BranchBankButton.titleLabel.font=[UIFont systemFontOfSize:12];
     [BranchBankButton addTarget:self action:@selector(ShowOrRemoveBranchBankCollection) forControlEvents:UIControlEventTouchUpInside];
     [TopTabbar addSubview:BranchBankButton];
     [TopTabbar addSubview:Arrow4];
@@ -299,7 +299,7 @@ AH_BASESUBVCFORMAINTAB_MODULE
             
             //progress项---判定是否为空
             if([[succeedResult objectForKey:@"stageList"] isKindOfClass:[NSNull class]]){
-                [ProgressButton setTitle:@"全部阶段" forState:UIControlStateNormal];
+                [ProgressButton setTitle:@"阶段" forState:UIControlStateNormal];
                 ProgressCondition=@"0";
             }
             else{
@@ -307,7 +307,7 @@ AH_BASESUBVCFORMAINTAB_MODULE
                 ProgressDataSource=[[NSMutableArray alloc]init];
                 
                 ProjectSearchConditionModel* TempModel=[[ProjectSearchConditionModel alloc]init];
-                TempModel.MessageInfo=@"全部阶段";
+                TempModel.MessageInfo=@"阶段";
                 TempModel.stageOrder=@"0";
                 TempModel.Mark=YES;
                 TempModel.passParam=@"0";
@@ -325,7 +325,7 @@ AH_BASESUBVCFORMAINTAB_MODULE
                 }
                 [self ProgressList];
                 //设定初始条件
-                [ProgressButton setTitle:@"全部阶段" forState:UIControlStateNormal];
+                [ProgressButton setTitle:@"阶段" forState:UIControlStateNormal];
                 ProgressCondition=@"0";
             }
             
@@ -362,12 +362,12 @@ AH_BASESUBVCFORMAINTAB_MODULE
 - (void)ResetSearchCondition{
     //初始设定为
     //    StatusCondition=@"正在进行";
-    //    ProgressCondition=@"全部阶段";
+    //    ProgressCondition=@"阶段";
     //    BankCondition=@"分行";
     //    BranchBankCondition=@"支行";
     
     [StatusButton setTitle:@"正在进行" forState:UIControlStateNormal];
-    [ProgressButton setTitle:@"全部阶段" forState:UIControlStateNormal];
+    [ProgressButton setTitle:@"阶段" forState:UIControlStateNormal];
     [BankButton setTitle:@"分行" forState:UIControlStateNormal];
     [BranchBankButton setTitle:@"支行" forState:UIControlStateNormal];
     
@@ -511,7 +511,7 @@ AH_BASESUBVCFORMAINTAB_MODULE
     ProgressList=[[UITableView alloc]initWithFrame:CGRectMake(0,40+STATUS_BAR_HEIGHT+NAVIGATOR_HEIGHT,SCREEN_WIDTH,320)];
     ProgressList.delegate=self;
     ProgressList.dataSource=self;
-    //    NSMutableArray* TempArray=[[NSMutableArray alloc]initWithObjects:@"全部阶段",@"营销中",@"材料收集",@"分行审批",@"总行审批",@"审批通过",@"合同签订",@"已放款",nil];
+    //    NSMutableArray* TempArray=[[NSMutableArray alloc]initWithObjects:@"阶段",@"营销中",@"材料收集",@"分行审批",@"总行审批",@"审批通过",@"合同签订",@"已放款",nil];
     //    ProgressDataSource=[[NSMutableArray alloc]init];
     //    for(int i=0;i<TempArray.count;i++){
     //        if(i==0){
@@ -686,7 +686,7 @@ AH_BASESUBVCFORMAINTAB_MODULE
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(tableView==MainTableView){
-        return 80;
+        return 52;
     }
     else{
         return 40;
@@ -694,6 +694,8 @@ AH_BASESUBVCFORMAINTAB_MODULE
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if(tableView==MainTableView){
         ProjectMessageModel* TempModel=[Datasource objectAtIndex:indexPath.row];
