@@ -93,7 +93,7 @@ return shared; \
 #define  IS_FIRST_LAUNCH                       @"IS_FIRST_LAUNCH"
 #define  NOT_FIRST_LAUNCH                      @"NOT_FIRST_LAUNCH"
 
-#define HOST_ADDRESS @"http://139.224.10.134:8080/synergy_w/wx/"
+//#define HOST_ADDRESS @"http://139.224.10.134:8080/synergy_w/wx/"
 
 typedef NS_ENUM(NSInteger, E_DEVICE_TYPE) {
     iPhone2G = 0,

@@ -19,6 +19,8 @@
 #import "NSObject+LJAdditions.h"
 #import "NSArray+LJAdditions.h"
 
+#import "AppDelegate.h"
+
 dispatch_source_t LJGCDTimer(NSTimeInterval interval,
                              NSTimeInterval leeway,
                              dispatch_block_t handler,
@@ -231,6 +233,64 @@ dispatch_source_t LJGCDTimer(NSTimeInterval interval,
     [self getStartMessages];
 }
 
+-(void)sendVoiceMessage:(NSString*)filePath dur:(NSString*)dur{
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    //接收类型不一致请替换一致text/html或别的
+//    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",
+//                                                         @"text/html",
+//                                                         @"image/jpeg",
+//                                                         @"image/png",
+//                                                         @"application/octet-stream",
+//                                                         @"text/json",
+//                                                         @"multipart/form-data",
+//                                                         nil];
+    
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"*/*",
+                                                         nil];
+    
+    NSString *url=[NSString stringWithFormat:@"%@uploadfile/upload",HOST_ADDRESS];
+    NSMutableDictionary* dic=[NSMutableDictionary new];
+    [dic setValue:[[NSUserDefaults standardUserDefaults]objectForKey:@"user"] forKey:@"phone"];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyyMMddHHmmss";
+    NSString *str = [formatter stringFromDate:[NSDate date]];
+    NSString *fileName = [NSString stringWithFormat:@"%@.mp3", str];
+    
+    NSURLSessionDataTask* task = [manager POST:url parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData)
+                                  {
+                                      NSData *fileData = [NSData dataWithContentsOfFile:filePath];
+                                      
+                                      //上传的参数(上传图片，以文件流的格式)
+                                      [formData appendPartWithFileData:fileData
+                                                                  name:@"file"
+                                                              fileName:fileName
+                                                              mimeType:@"audio/mp3"];
+                                  }
+                                      progress:^(NSProgress * _Nonnull uploadProgress) {
+                                          //打印下上传进度
+                                          NSLog(@"上传进度");
+                                          NSLog(@"%@",uploadProgress);
+                                      }
+                                       success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                           //上传成功
+                                           NSLog(@"上传成功");
+                                           NSString* imageUrl=[responseObject objectForKey:@"data"];
+                                           [HTTP_MANAGER startNormalPostWithParagram:@{@"phone":[[NSUserDefaults standardUserDefaults]objectForKey:@"user"],@"projectId":self.projectId,@"fileUrl":imageUrl,@"fileName":fileName} Commandtype:@"app/message/addMessage" successedBlock:^(NSDictionary *succeedResult, BOOL isSucceed) {
+                                               NSLog(@"发送图片成功");
+                                               [self finishSendMessageWithBubbleMessageType:XHBubbleMessageMediaTypeVoice];
+                                               
+                                           } failedBolck:^(AFHTTPSessionManager *session, NSError *error) {
+                                               NSLog(@"发送图片失败");
+                                           }];
+                                       }
+                                       failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                           //上传失败
+                                           NSLog(@"上传失败");
+                                           NSLog(@"%@",error);
+                                       }];
+}
+
 -(void)sendImageMessage:(UIImage*)image{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     //接收类型不一致请替换一致text/html或别的
@@ -252,7 +312,7 @@ dispatch_source_t LJGCDTimer(NSTimeInterval interval,
     NSString *str = [formatter stringFromDate:[NSDate date]];
     NSString *fileName = [NSString stringWithFormat:@"%@.jpg", str];
     
-    [manager POST:url parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData)
+    NSURLSessionDataTask* task = [manager POST:url parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData)
      {
          NSData *imageDatas =UIImageJPEGRepresentation(image, 0.1) ;
          
@@ -264,8 +324,8 @@ dispatch_source_t LJGCDTimer(NSTimeInterval interval,
      }
          progress:^(NSProgress * _Nonnull uploadProgress) {
              //打印下上传进度
-             //NSLog(@"上传进度");
-             //NSLog(@"%@",uploadProgress);
+             NSLog(@"上传进度");
+             NSLog(@"%@",uploadProgress);
          }
           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
               //上传成功
@@ -307,7 +367,7 @@ dispatch_source_t LJGCDTimer(NSTimeInterval interval,
     self = [super init];
     if (self) {
         // 配置输入框UI的样式
-                self.allowsSendVoice = NO;
+                self.allowsSendVoice = YES;
                 self.allowsSendFace = NO;
                 self.allowsSendMultiMedia = YES;
     }
@@ -486,7 +546,8 @@ dispatch_source_t LJGCDTimer(NSTimeInterval interval,
             break;
     }
     if (disPlayViewController) {
-        [self.navigationController pushViewController:disPlayViewController animated:YES];
+        UINavigationController* nav = (UINavigationController*)((AppDelegate*)[UIApplication sharedApplication].delegate).window.rootViewController;
+        [nav pushViewController:disPlayViewController animated:YES];
     }
 }
 
@@ -640,11 +701,7 @@ dispatch_source_t LJGCDTimer(NSTimeInterval interval,
  *  @param date             发送时间
  */
 - (void)didSendVoice:(NSString *)voicePath voiceDuration:(NSString *)voiceDuration fromSender:(NSString *)sender onDate:(NSDate *)date {
-    XHMessage *voiceMessage = [[XHMessage alloc] initWithVoicePath:voicePath voiceUrl:nil voiceDuration:voiceDuration sender:sender timestamp:date];
-    voiceMessage.avatar = [UIImage imageNamed:@"avatar"];
-    voiceMessage.avatarUrl = @"http://childapp.pailixiu.com/jack/meIcon@2x.png";
-    [self addMessage:voiceMessage];
-    [self finishSendMessageWithBubbleMessageType:XHBubbleMessageMediaTypeVoice];
+    [self sendVoiceMessage:voicePath dur:voiceDuration];
 }
 
 /**

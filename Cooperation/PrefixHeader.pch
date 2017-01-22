@@ -22,8 +22,8 @@
 #import "Tools.h"
 #import "AFNetworking.h"
 #import "MJRefresh.h"
-#define HOST_ADDRESS @"http://139.224.10.134:8080/synergy_w/wx/"
-//#define HOST_ADDRESS @"http://singki.com/synergy_w/wx/"
+//#define HOST_ADDRESS @"http://139.224.10.134:8080/synergy_w/wx/"
+#define HOST_ADDRESS @"http://singki.com/synergy_w/wx/"
 //#define HOST_ADDRESS @"http://192.168.0.198/synergy_w/wx/"
 
 #define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
