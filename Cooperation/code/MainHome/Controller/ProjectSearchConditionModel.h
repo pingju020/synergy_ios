@@ -11,6 +11,12 @@
 @interface ProjectSearchConditionModel : NSObject
 @property (nonatomic, strong) NSString *MessageInfo;
 @property (nonatomic) BOOL Mark;
+@property (nonatomic, strong) NSString *stageOrder;
+@property (nonatomic, strong) NSString *bankId;
+@property (nonatomic, strong) NSMutableArray *branchBankArray;
+
+@property (nonatomic, strong) NSString *passParam;
+
 - (instancetype)initWithDic:(NSMutableDictionary *)dic;
 
 @end

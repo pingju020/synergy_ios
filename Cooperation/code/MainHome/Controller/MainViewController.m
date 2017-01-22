@@ -70,6 +70,10 @@
     
     NSMutableArray* BranchDataSource;
     UICollectionView* BranchBankCollection;
+    
+    //新增项目
+    UIButton* AddButton;
+
 }
 
 
@@ -84,22 +88,15 @@ AH_BASESUBVCFORMAINTAB_MODULE
     [self SetNavigator];
     
     [self SetTopTabbar];
-    //获取可选项
-    [self GetSelectConditions];
-    
-    [self ResetSearchCondition];
-    
     
     [self SetBaseDetailsTable];
     
+    //获取可选项
+    [self ResetSearchCondition];
+    
     [self StatusList];
     
-    [self ProgressList];
-    
-    [self BankList];
-    
-    [self BranchBankList];
-    
+    [self GetSelectConditions];
     
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
@@ -143,7 +140,7 @@ AH_BASESUBVCFORMAINTAB_MODULE
     [SearchButton addTarget:self action:@selector(BeginSearch) forControlEvents:UIControlEventTouchUpInside];
     [navigationBG addSubview:SearchButton];
     
-    UIButton* AddButton=[UIButton buttonWithType:UIButtonTypeCustom];
+    AddButton=[UIButton buttonWithType:UIButtonTypeCustom];
     [AddButton setFrame:CGRectMake(SCREEN_WIDTH-51, DISTANCE_TOP, 56-5, 46-5)];
     [AddButton setImageEdgeInsets:UIEdgeInsetsMake(10, 10, 10, 20)];
     [AddButton setBackgroundColor:[UIColor clearColor]];
@@ -252,13 +249,91 @@ AH_BASESUBVCFORMAINTAB_MODULE
     [dic setObject:[UserDefaults objectForKey:@"password"] forKey:@"passWord"];
     [HTTP_MANAGER startNormalPostWithParagram:dic Commandtype:@"app/check" successedBlock:^(NSDictionary *succeedResult, BOOL isSucceed) {
         if (isSucceed) {
-            NSLog(@"success=%@",succeedResult);
-           //反馈可选项
-            NSLog(@"result=========%@",[succeedResult objectForKey:@"stageList"]);
-            NSLog(@"isauditbutton====%@",[succeedResult objectForKey:@"isAuditButton"]);
-            NSLog(@"office========%@",[succeedResult objectForKey:@"office"]);
-            //branch项
+            //设定status条件
+            StatusCondition=@"1";
+            //支行分行项---判定是否为空
+            if([[succeedResult objectForKey:@"office"]isKindOfClass:[NSNull class]]){
+                [BankButton setTitle:@"分行" forState:UIControlStateNormal];
+                BankCondition=@"all";
+                [BranchBankButton setTitle:@"支行" forState:UIControlStateNormal];
+                BranchBankCondition=@"all";
+            }
+            else{
+                //设定分行
+                NSArray* arr=[succeedResult objectForKey:@"office"];
+                BankDataSource=[[NSMutableArray alloc]init];
+                
+                ProjectSearchConditionModel* TempModel=[[ProjectSearchConditionModel alloc]init];
+                TempModel.MessageInfo=@"全部分行";
+                TempModel.Mark=YES;
+                TempModel.passParam=@"all";
+                [BankDataSource addObject:TempModel];
+                
+                for(int i=0;i<arr.count;i++){
+                    NSDictionary* TempDic=[arr objectAtIndex:i];
+                    ProjectSearchConditionModel* TempModel=[[ProjectSearchConditionModel alloc]init];
+                    TempModel.MessageInfo=[TempDic objectForKey:@"name"];
+                    TempModel.bankId=[TempDic objectForKey:@"id"];
+                    TempModel.branchBankArray=[TempDic objectForKey:@"orgViews"];
+                    TempModel.passParam=[TempDic objectForKey:@"id"];
+                    [BankDataSource addObject:TempModel];
+                }
+                [self BankList];
+                
+                //设定分行--未选定时为全部
+                [BankButton setTitle:@"分行" forState:UIControlStateNormal];
+                BankCondition=@"all";
+                //设定支行--未选定分行时无法进行选择
+                BranchDataSource=[[NSMutableArray alloc]init];
+                [self BranchBankList];
+                
+                [BranchBankButton setTitle:@"支行" forState:UIControlStateNormal];
+                BranchBankCondition=@"all";
+            }
             
+            //progress项---判定是否为空
+            if([[succeedResult objectForKey:@"stageList"] isKindOfClass:[NSNull class]]){
+                [ProgressButton setTitle:@"全部阶段" forState:UIControlStateNormal];
+                ProgressCondition=@"0";
+            }
+            else{
+                NSArray* arr=[succeedResult objectForKey:@"stageList"];
+                ProgressDataSource=[[NSMutableArray alloc]init];
+                
+                ProjectSearchConditionModel* TempModel=[[ProjectSearchConditionModel alloc]init];
+                TempModel.MessageInfo=@"全部阶段";
+                TempModel.stageOrder=@"0";
+                TempModel.Mark=YES;
+                TempModel.passParam=@"0";
+                [ProgressDataSource addObject:TempModel];
+                for(int i=0;i<arr.count;i++){
+                    NSDictionary* TempDic=[arr objectAtIndex:i];
+                    ProjectSearchConditionModel* TempModel=[[ProjectSearchConditionModel alloc]init];
+                    
+                    NSString* name=[TempDic objectForKey:@"name"];
+                    TempModel.MessageInfo=name;
+                    TempModel.stageOrder=[TempDic objectForKey:@"stageOrder"];
+                    TempModel.passParam=[TempDic objectForKey:@"stageOrder"];
+                    TempModel.Mark=NO;
+                    [ProgressDataSource addObject:TempModel];
+                }
+                [self ProgressList];
+                //设定初始条件
+                [ProgressButton setTitle:@"全部阶段" forState:UIControlStateNormal];
+                ProgressCondition=@"0";
+            }
+            
+            
+            //判断是否可以新增项目
+            if([succeedResult objectForKey:@"isAuditButton"]==0)
+            {
+                //可以新增
+                AddButton.hidden=NO;
+            }else{
+                AddButton.hidden=NO;
+            }
+            
+            [self GetDateWithCondition];
             
         }
         else{
@@ -266,23 +341,24 @@ AH_BASESUBVCFORMAINTAB_MODULE
         }
     } failedBolck:^(AFHTTPSessionManager *session, NSError *error) {
         [PubllicMaskViewHelper showTipViewWith:@"请求失败，请检查网络设置后重试" inSuperView:self.view withDuration:2];
+        NSLog(@"second login");
     }];
 }
 
 //重置搜索条件
 - (void)ResetSearchCondition{
     //初始设定为
-    StatusCondition=@"正在进行";
-    ProgressCondition=@"阶段";
-    BankCondition=@"分行";
-    BranchBankCondition=@"支行";
+    //    StatusCondition=@"正在进行";
+    //    ProgressCondition=@"全部阶段";
+    //    BankCondition=@"分行";
+    //    BranchBankCondition=@"支行";
     
-    [StatusButton setTitle:StatusCondition forState:UIControlStateNormal];
-    [ProgressButton setTitle:ProgressCondition forState:UIControlStateNormal];
-    [BankButton setTitle:BankCondition forState:UIControlStateNormal];
-    [BranchBankButton setTitle:BranchBankCondition forState:UIControlStateNormal];
+    [StatusButton setTitle:@"正在进行" forState:UIControlStateNormal];
+    [ProgressButton setTitle:@"全部阶段" forState:UIControlStateNormal];
+    [BankButton setTitle:@"分行" forState:UIControlStateNormal];
+    [BranchBankButton setTitle:@"支行" forState:UIControlStateNormal];
     
-    [self GetDateWithCondition];
+    //    [self GetDateWithCondition];
 }
 
 //锁定条件，获取数据
@@ -296,9 +372,12 @@ AH_BASESUBVCFORMAINTAB_MODULE
     [dic setObject:TempString forKey:@"phone"];
     [dic setObject:@"0" forKey:@"page"];
     [dic setObject:@"1000" forKey:@"pageSize"];
-    [dic setObject:@"1" forKey:@"state"];
-    [dic setObject:@"all" forKey:@"branch"];
-    [dic setObject:@"all" forKey:@"subbranch"];
+    
+    
+    [dic setObject:StatusCondition forKey:@"state"];
+    [dic setObject:ProgressCondition forKey:@"stage"];
+    [dic setObject:BankCondition forKey:@"branch"];
+    [dic setObject:BranchBankCondition forKey:@"subbranch"];
     
     
     [HTTP_MANAGER startNormalPostWithParagram:dic Commandtype:@"app/project/getProjectData" successedBlock:^(NSDictionary *succeedResult, BOOL isSucceed) {
@@ -355,26 +434,28 @@ AH_BASESUBVCFORMAINTAB_MODULE
     StatusList.delegate=self;
     StatusList.dataSource=self;
     
-    NSMutableArray* TempArray=[[NSMutableArray alloc]initWithObjects:@"待审批",@"正在进行",@"已完成",@"已关闭", nil];
+    NSMutableArray* TempArray=[[NSMutableArray alloc]initWithObjects:@"正在进行",@"已完成",@"已关闭",@"待审批", nil];
     StatusDataSource=[[NSMutableArray alloc]init];
     for(int i=0;i<TempArray.count;i++){
         if(i==0){
             ProjectSearchConditionModel* TempModel=[[ProjectSearchConditionModel alloc]init];
             TempModel.MessageInfo=[TempArray objectAtIndex:i];
+            TempModel.passParam=@"1";
             TempModel.Mark=YES;
             [StatusDataSource addObject:TempModel];
         }
         else{
             ProjectSearchConditionModel* TempModel=[[ProjectSearchConditionModel alloc]init];
             TempModel.MessageInfo=[TempArray objectAtIndex:i];
+            TempModel.passParam=[NSString stringWithFormat:@"%d",i+1];
             TempModel.Mark=NO;
             [StatusDataSource addObject:TempModel];
         }
     }
     StatusList.separatorStyle = UITableViewCellEditingStyleNone;
     StatusList.scrollEnabled=NO;
-    [self.view addSubview:StatusList];
     StatusList.hidden=YES;
+    [self.view addSubview:StatusList];
 }
 
 - (void)ProgressList{
@@ -382,22 +463,22 @@ AH_BASESUBVCFORMAINTAB_MODULE
     ProgressList=[[UITableView alloc]initWithFrame:CGRectMake(0,40+STATUS_BAR_HEIGHT+NAVIGATOR_HEIGHT,SCREEN_WIDTH,320)];
     ProgressList.delegate=self;
     ProgressList.dataSource=self;
-    NSMutableArray* TempArray=[[NSMutableArray alloc]initWithObjects:@"全部阶段",@"营销中",@"材料收集",@"分行审批",@"总行审批",@"审批通过",@"合同签订",@"已放款",nil];
-    ProgressDataSource=[[NSMutableArray alloc]init];
-    for(int i=0;i<TempArray.count;i++){
-        if(i==0){
-            ProjectSearchConditionModel* TempModel=[[ProjectSearchConditionModel alloc]init];
-            TempModel.MessageInfo=[TempArray objectAtIndex:i];
-            TempModel.Mark=YES;
-            [ProgressDataSource addObject:TempModel];
-        }
-        else{
-            ProjectSearchConditionModel* TempModel=[[ProjectSearchConditionModel alloc]init];
-            TempModel.MessageInfo=[TempArray objectAtIndex:i];
-            TempModel.Mark=NO;
-            [ProgressDataSource addObject:TempModel];
-        }
-    }
+    //    NSMutableArray* TempArray=[[NSMutableArray alloc]initWithObjects:@"全部阶段",@"营销中",@"材料收集",@"分行审批",@"总行审批",@"审批通过",@"合同签订",@"已放款",nil];
+    //    ProgressDataSource=[[NSMutableArray alloc]init];
+    //    for(int i=0;i<TempArray.count;i++){
+    //        if(i==0){
+    //            ProjectSearchConditionModel* TempModel=[[ProjectSearchConditionModel alloc]init];
+    //            TempModel.MessageInfo=[TempArray objectAtIndex:i];
+    //            TempModel.Mark=YES;
+    //            [ProgressDataSource addObject:TempModel];
+    //        }
+    //        else{
+    //            ProjectSearchConditionModel* TempModel=[[ProjectSearchConditionModel alloc]init];
+    //            TempModel.MessageInfo=[TempArray objectAtIndex:i];
+    //            TempModel.Mark=NO;
+    //            [ProgressDataSource addObject:TempModel];
+    //        }
+    //    }
     ProgressList.separatorStyle = UITableViewCellEditingStyleNone;
     ProgressList.scrollEnabled=NO;
     [self.view addSubview:ProgressList];
@@ -406,18 +487,18 @@ AH_BASESUBVCFORMAINTAB_MODULE
 
 - (void)BankList{
     //分行名称---接口返回
-    BankDataSource=[[NSMutableArray alloc]init];
-    ProjectMessageModel* TempModel=[[ProjectMessageModel alloc]init];
-    TempModel.MessageInfo=@"南京分行";
-    TempModel.Mark=YES;
-    [BankDataSource addObject:TempModel];
-    
-    for(int i=1;i<8;i++){
-        ProjectMessageModel* TempModel=[[ProjectMessageModel alloc]init];
-        TempModel.MessageInfo=@"南京分行";
-        TempModel.Mark=NO;
-        [BankDataSource addObject:TempModel];
-    }
+    //    BankDataSource=[[NSMutableArray alloc]init];
+    //    ProjectMessageModel* TempModel=[[ProjectMessageModel alloc]init];
+    //    TempModel.MessageInfo=@"南京分行";
+    //    TempModel.Mark=YES;
+    //    [BankDataSource addObject:TempModel];
+    //
+    //    for(int i=1;i<8;i++){
+    //        ProjectMessageModel* TempModel=[[ProjectMessageModel alloc]init];
+    //        TempModel.MessageInfo=@"南京分行";
+    //        TempModel.Mark=NO;
+    //        [BankDataSource addObject:TempModel];
+    //    }
     
     
     CGSize itemSize = CGSizeMake(SCREEN_WIDTH/2, 40);
@@ -450,18 +531,18 @@ AH_BASESUBVCFORMAINTAB_MODULE
 - (void)BranchBankList{
     //支行名称---接口返回
     //分行名称---接口返回
-    BranchDataSource=[[NSMutableArray alloc]init];
-    ProjectMessageModel* TempModel=[[ProjectMessageModel alloc]init];
-    TempModel.MessageInfo=@"苏州分行";
-    TempModel.Mark=YES;
-    [BranchDataSource addObject:TempModel];
-    
-    for(int i=1;i<8;i++){
-        ProjectMessageModel* TempModel=[[ProjectMessageModel alloc]init];
-        TempModel.MessageInfo=@"苏州分行";
-        TempModel.Mark=NO;
-        [BranchDataSource addObject:TempModel];
-    }
+    //    BranchDataSource=[[NSMutableArray alloc]init];
+    //    ProjectMessageModel* TempModel=[[ProjectMessageModel alloc]init];
+    //    TempModel.MessageInfo=@"苏州分行";
+    //    TempModel.Mark=YES;
+    //    [BranchDataSource addObject:TempModel];
+    //
+    //    for(int i=1;i<8;i++){
+    //        ProjectMessageModel* TempModel=[[ProjectMessageModel alloc]init];
+    //        TempModel.MessageInfo=@"苏州分行";
+    //        TempModel.Mark=NO;
+    //        [BranchDataSource addObject:TempModel];
+    //    }
     
     
     CGSize itemSize = CGSizeMake(SCREEN_WIDTH/2, 40);
@@ -565,8 +646,8 @@ AH_BASESUBVCFORMAINTAB_MODULE
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     if(tableView==MainTableView){
-        
         ProjectMessageModel* TempModel=[Datasource objectAtIndex:indexPath.row];
         //跳转详情页面
         BaseInfomationViewController* BaseInfoViewController=[[BaseInfomationViewController alloc]initWithProjectId:TempModel.id ProjectName:TempModel.projectName type:E_INFO_VIEW];
@@ -579,7 +660,6 @@ AH_BASESUBVCFORMAINTAB_MODULE
         for(int i=0;i<ProgressDataSource.count;i++){
             if(i==indexPath.row){
                 ProjectSearchConditionModel* TempModel=[ProgressDataSource objectAtIndex:i];
-                ProgressCondition=TempModel.MessageInfo;
                 TempModel.Mark=YES;
             }else{
                 ProjectSearchConditionModel* TempModel=[ProgressDataSource objectAtIndex:i];
@@ -588,8 +668,11 @@ AH_BASESUBVCFORMAINTAB_MODULE
         }
         [ProgressList reloadData];
         ProgressList.hidden=YES;
-        [ProgressButton setTitle:ProgressCondition forState:UIControlStateNormal];
+        ProjectSearchConditionModel* TempModel=[ProgressDataSource objectAtIndex:indexPath.row];
+        [ProgressButton setTitle:TempModel.MessageInfo forState:UIControlStateNormal];
+        ProgressCondition=TempModel.passParam;
         [self GetDateWithCondition];
+        //        [self lookcondition];
     }
     else{
         //设置阶段条件
@@ -597,7 +680,6 @@ AH_BASESUBVCFORMAINTAB_MODULE
         for(int i=0;i<StatusDataSource.count;i++){
             if(i==indexPath.row){
                 ProjectSearchConditionModel* TempModel=[StatusDataSource objectAtIndex:i];
-                StatusCondition=TempModel.MessageInfo;
                 TempModel.Mark=YES;
             }else{
                 ProjectSearchConditionModel* TempModel=[StatusDataSource objectAtIndex:i];
@@ -607,17 +689,24 @@ AH_BASESUBVCFORMAINTAB_MODULE
         [StatusList reloadData];
         StatusList.hidden=YES;
         [StatusButton setTitle:StatusCondition forState:UIControlStateNormal];
+        ProjectSearchConditionModel* TempModel=[StatusDataSource objectAtIndex:indexPath.row];
+        [StatusButton setTitle:TempModel.MessageInfo forState:UIControlStateNormal];
+        StatusCondition=TempModel.passParam;
         [self GetDateWithCondition];
+        //        [self lookcondition];
     }
-    
-    
 }
 
 
 #pragma mark collection代理和数据源方法
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return BankDataSource.count;
+    if(collectionView==BankCollection){
+        return BankDataSource.count;
+    }
+    else{
+        return BranchDataSource.count;
+    }
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -671,11 +760,9 @@ AH_BASESUBVCFORMAINTAB_MODULE
     if(collectionView==BankCollection)
     {
         //设置分行条件
-        //更改数组状态
         for(int i=0;i<BankDataSource.count;i++){
             if(i==indexPath.row){
                 ProjectSearchConditionModel* TempModel=[BankDataSource objectAtIndex:i];
-                BankCondition=TempModel.MessageInfo;
                 TempModel.Mark=YES;
             }else{
                 ProjectSearchConditionModel* TempModel=[BankDataSource objectAtIndex:i];
@@ -684,8 +771,47 @@ AH_BASESUBVCFORMAINTAB_MODULE
         }
         [BankCollection reloadData];
         BankCollection.hidden=YES;
-        [BankButton setTitle:BankCondition forState:UIControlStateNormal];
+        
+        
+        //更改支行数组
+        ProjectSearchConditionModel* model=[BankDataSource objectAtIndex:indexPath.row];
+        NSMutableArray* arr=model.branchBankArray;
+        BranchDataSource=[[NSMutableArray alloc]init];
+        
+        ProjectSearchConditionModel* branchall=[[ProjectSearchConditionModel alloc]init];
+        branchall.MessageInfo=@"全部支行";
+        branchall.passParam=@"all";
+        [BranchDataSource addObject:branchall];
+        
+        for(int i=0;i<arr.count;i++)
+        {
+            NSDictionary* dic=[arr objectAtIndex:i];
+            ProjectSearchConditionModel* model=[[ProjectSearchConditionModel alloc]init];
+            model.MessageInfo=[dic objectForKey:@"name"];
+            model.bankId=[dic objectForKey:@"id"];
+            model.passParam=[dic objectForKey:@"id"];
+            [BranchDataSource addObject:model];
+        }
+        //更改支行框体
+        long TempFrameNumber;
+        if(BranchDataSource.count%2==0){
+            TempFrameNumber=BranchDataSource.count/2;
+        }
+        else{
+            TempFrameNumber=BranchDataSource.count/2+1;
+        }
+        BranchBankCollection.frame=CGRectMake(0,40+STATUS_BAR_HEIGHT+NAVIGATOR_HEIGHT,SCREEN_WIDTH,40*TempFrameNumber);
+        [BranchBankCollection reloadData];
+        
+        //分行
+        BankCondition=model.passParam;
+        [BankButton setTitle:model.MessageInfo forState:UIControlStateNormal];
+        //更改支行title
+        [BranchBankButton setTitle:@"支行" forState:UIControlStateNormal];
+        BranchBankCondition=@"all";
+        
         [self GetDateWithCondition];
+        //        [self lookcondition];
     }else
     {
         //设置分行条件
@@ -693,7 +819,6 @@ AH_BASESUBVCFORMAINTAB_MODULE
         for(int i=0;i<BranchDataSource.count;i++){
             if(i==indexPath.row){
                 ProjectSearchConditionModel* TempModel=[BranchDataSource objectAtIndex:i];
-                BranchBankCondition=TempModel.MessageInfo;
                 TempModel.Mark=YES;
             }else{
                 ProjectSearchConditionModel* TempModel=[BranchDataSource objectAtIndex:i];
@@ -702,9 +827,14 @@ AH_BASESUBVCFORMAINTAB_MODULE
         }
         [BranchBankCollection reloadData];
         BranchBankCollection.hidden=YES;
-        [BranchBankButton setTitle:BranchBankCondition forState:UIControlStateNormal];
+        
+        ProjectSearchConditionModel* TempModel=[BranchDataSource objectAtIndex:indexPath.row];
+        BranchBankCondition=TempModel.passParam;
+        [BranchBankButton setTitle:TempModel.MessageInfo forState:UIControlStateNormal];
         [self GetDateWithCondition];
+        //        [self lookcondition];
     }
+
     
 }
 
@@ -735,6 +865,10 @@ AH_BASESUBVCFORMAINTAB_MODULE
     ProgressList.hidden=YES;
     BankCollection.hidden=YES;
     StatusList.hidden=YES;
+}
+
+- (void)lookcondition{
+    //    NSLog(@"status=%@,progress=%@,banl=%@,branch=%@",StatusCondition,ProgressCondition,BankCondition,BranchBankCondition);
 }
 
 #pragma mark 跳转搜索/跳转新建
