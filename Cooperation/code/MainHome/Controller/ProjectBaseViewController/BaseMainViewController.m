@@ -10,6 +10,7 @@
 #import "ViewButtonModel.h"
 #import "BaseInfomationViewController.h"
 #import "ProjectStageViewController.h"
+#import "PrjectReplyViewController.h"
 
 //带下划线的按钮
 @interface LineButton : UIButton
@@ -31,14 +32,16 @@
 
 @property (nonatomic,strong) NSString* projectId;
 @property (nonatomic,strong) NSString* projectName;
+@property (nonatomic,assign) BOOL check;
 @end
 
 @implementation BaseMainViewController
 
--(id)initWithProjretId:(NSString*)projectId Name:(NSString*)name{
+-(id)initWithProjretId:(NSString*)projectId Name:(NSString*)name Check:(BOOL)isCheck{
     if (self = [super init]) {
         _projectId = projectId;
         _projectName = name;
+        _check = isCheck;
     }
     return self;
 }
@@ -60,9 +63,16 @@
     NSMutableArray *mulArr = [NSMutableArray array];
     
     ViewButtonModel* modelInfo = [[ViewButtonModel alloc]init];
-    BaseInfomationViewController*vc = [[BaseInfomationViewController alloc]initWithProjectId:_projectId ProjectName:_projectName type:E_INFO_VIEW];
-    vc.backVC = self;
-    modelInfo.vc = vc;
+    if (_check) {
+        PrjectReplyViewController* vc = [[PrjectReplyViewController alloc]initWithProjectId:_projectId ProjectName:_projectName];
+        vc.backVC = self;
+        modelInfo.vc = vc;
+    }
+    else{
+        BaseInfomationViewController*vc = [[BaseInfomationViewController alloc]initWithProjectId:_projectId ProjectName:_projectName type:E_INFO_VIEW];
+        vc.backVC = self;
+        modelInfo.vc = vc;
+    }
     modelInfo.Name = @"基本信息";
     [mulArr addObject:modelInfo];
     
@@ -98,6 +108,7 @@
             [btn addTarget:self action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
             [_scorllView addSubview:btn];
             [arrList addObject:btn];
+            _btnList = arrList;
         }
         //[self.view addSubview:_scorllView];
     }
@@ -165,6 +176,9 @@
         
         ViewButtonModel* model = _dataList[0];
         [_pageVC setViewControllers:@[model.vc] direction:0 animated:YES completion:nil];
+        
+        LineButton* btn = _btnList[0];
+        btn.selected = YES;
         
         _pageVC.delegate   = self;
         

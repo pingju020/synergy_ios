@@ -42,10 +42,13 @@
 @implementation OfficeModel
 + (OfficeModel *)parsingDataWithResult:(NSDictionary *)resultDict{
     NSDictionary *office = resultDict[@"office"];
-    OfficeModel *model = [OfficeModel mj_objectWithKeyValues:office];
-    model.officeId        = office[@"id"];
-    
-    return model;
+    if (office) {
+        OfficeModel *model = [OfficeModel mj_objectWithKeyValues:office];
+        model.officeId        = office[@"id"];
+        
+        return model;
+    }
+    return nil;
 }
 @end
 

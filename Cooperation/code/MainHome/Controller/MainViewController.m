@@ -653,7 +653,7 @@ AH_BASESUBVCFORMAINTAB_MODULE
     if(tableView==MainTableView){
         ProjectMessageModel* TempModel=[Datasource objectAtIndex:indexPath.row];
         //跳转详情页面
-        BaseMainViewController* BaseInfoViewController=[[BaseMainViewController alloc]initWithProjretId:TempModel.id Name:TempModel.projectName];
+        BaseMainViewController* BaseInfoViewController=[[BaseMainViewController alloc]initWithProjretId:TempModel.id Name:TempModel.projectName Check:TempModel.state==1];
         //传参等待上传
         [self.navigationController pushViewController:BaseInfoViewController animated:NO];
     }

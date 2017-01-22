@@ -469,6 +469,9 @@
 		C6EEC12A1E34932B009469E8 /* BaseMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6EEC1291E34932B009469E8 /* BaseMainViewController.m */; };
 		C6EEC1301E34969C009469E8 /* PPLabelMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = C6EEC12F1E34969C009469E8 /* PPLabelMenuView.m */; };
 		C6EEC1331E34981F009469E8 /* ViewButtonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C6EEC1321E34981F009469E8 /* ViewButtonModel.m */; };
+		C6EEC1391E3510CA009469E8 /* PrjectReplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6EEC1381E3510CA009469E8 /* PrjectReplyViewController.m */; };
+		C6EEC13C1E351F2C009469E8 /* ProjectReplyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C6EEC13B1E351F2C009469E8 /* ProjectReplyTableViewCell.m */; };
+		C6EEC13F1E351FC3009469E8 /* ProjectReplyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C6EEC13E1E351FC3009469E8 /* ProjectReplyModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1270,6 +1273,12 @@
 		C6EEC12F1E34969C009469E8 /* PPLabelMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPLabelMenuView.m; sourceTree = "<group>"; };
 		C6EEC1311E34981F009469E8 /* ViewButtonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewButtonModel.h; sourceTree = "<group>"; };
 		C6EEC1321E34981F009469E8 /* ViewButtonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewButtonModel.m; sourceTree = "<group>"; };
+		C6EEC1371E3510CA009469E8 /* PrjectReplyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrjectReplyViewController.h; sourceTree = "<group>"; };
+		C6EEC1381E3510CA009469E8 /* PrjectReplyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrjectReplyViewController.m; sourceTree = "<group>"; };
+		C6EEC13A1E351F2C009469E8 /* ProjectReplyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectReplyTableViewCell.h; sourceTree = "<group>"; };
+		C6EEC13B1E351F2C009469E8 /* ProjectReplyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectReplyTableViewCell.m; sourceTree = "<group>"; };
+		C6EEC13D1E351FC3009469E8 /* ProjectReplyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectReplyModel.h; sourceTree = "<group>"; };
+		C6EEC13E1E351FC3009469E8 /* ProjectReplyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectReplyModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1830,6 +1839,8 @@
 				ACB7C50F1E32FF2C00C44615 /* ProjectNewViewController.m */,
 				ACB7C5111E32FF4D00C44615 /* ProjectBaseViewController.h */,
 				ACB7C5121E32FF4D00C44615 /* ProjectBaseViewController.m */,
+				C6EEC1371E3510CA009469E8 /* PrjectReplyViewController.h */,
+				C6EEC1381E3510CA009469E8 /* PrjectReplyViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1868,6 +1879,8 @@
 				AC1115FB1E31DD91009ABFDF /* 未命名文件夹 */,
 				C6EEC1311E34981F009469E8 /* ViewButtonModel.h */,
 				C6EEC1321E34981F009469E8 /* ViewButtonModel.m */,
+				C6EEC13D1E351FC3009469E8 /* ProjectReplyModel.h */,
+				C6EEC13E1E351FC3009469E8 /* ProjectReplyModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1917,6 +1930,8 @@
 				C65875051E347887006FBA99 /* BackMoneyTableViewCell.m */,
 				C6EEC12E1E34969C009469E8 /* PPLabelMenuView.h */,
 				C6EEC12F1E34969C009469E8 /* PPLabelMenuView.m */,
+				C6EEC13A1E351F2C009469E8 /* ProjectReplyTableViewCell.h */,
+				C6EEC13B1E351F2C009469E8 /* ProjectReplyTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3584,6 +3599,7 @@
 				AC57932D1E3255F30043B622 /* BankCollectionCell.m in Sources */,
 				AC1117981E31DD91009ABFDF /* UIView+WebCacheOperation.m in Sources */,
 				AC1117751E31DD91009ABFDF /* README.md in Sources */,
+				C6EEC13F1E351FC3009469E8 /* ProjectReplyModel.m in Sources */,
 				C634FA5F1E34F93D003EE26B /* XHOperationNetworkKit.m in Sources */,
 				ACB7C50D1E32FF1100C44615 /* ProjectSearchViewController.m in Sources */,
 				C634FA4A1E34F93D003EE26B /* UIImage+RoundedCorner.m in Sources */,
@@ -3618,6 +3634,7 @@
 				AC1117271E31DD91009ABFDF /* RollAdsDataDTO.m in Sources */,
 				AC11172F1E31DD91009ABFDF /* MainCollectionCell.m in Sources */,
 				AC11171C1E31DD91009ABFDF /* PJTabbarButtonsBGView.m in Sources */,
+				C6EEC1391E3510CA009469E8 /* PrjectReplyViewController.m in Sources */,
 				AC1117951E31DD91009ABFDF /* UIImageView+HighlightedWebCache.m in Sources */,
 				AC1117431E31DD91009ABFDF /* DDFileLogger.m in Sources */,
 				AC11174B1E31DD91009ABFDF /* ELCAssetCell.m in Sources */,
@@ -3676,6 +3693,7 @@
 				AC11174C1E31DD91009ABFDF /* ELCAssetTablePicker.m in Sources */,
 				AC1117361E31DD91009ABFDF /* MainItemCollectionManager.m in Sources */,
 				AC1117851E31DD91009ABFDF /* RegexKitLite.m in Sources */,
+				C6EEC13C1E351F2C009469E8 /* ProjectReplyTableViewCell.m in Sources */,
 				AC1117411E31DD91009ABFDF /* DDASLLogCapture.m in Sources */,
 				C634FA811E34F93E003EE26B /* XHMessageInputView.m in Sources */,
 				AC11177C1E31DD91009ABFDF /* MJProperty.m in Sources */,

@@ -9,5 +9,5 @@
 #import "BaseViewController.h"
 
 @interface BaseMainViewController : BaseViewController
--(id)initWithProjretId:(NSString*)projectId Name:(NSString*)name;
+-(id)initWithProjretId:(NSString*)projectId Name:(NSString*)name Check:(BOOL)isCheck;
 @end
