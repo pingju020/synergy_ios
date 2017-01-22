@@ -14,6 +14,7 @@
 #import "UIView+LJAdditions.h"
 #import "NSString+LJAdditions.h"
 #import "NSDate+LJAdditions.h"
+#import "NSDictionary+LJAdditions.h"
 #import "JHRingChart.h"
 #import "SumLineChart.h"
 
@@ -52,16 +53,26 @@ AH_BASESUBVCFORMAINTAB_MODULE
 }
 
 - (void) showWithDate:(NSDate*)date{
+    @weakify(self)
+    
     if (nil == date) {
         date = [NSDate date];
     }
     
     self.dateCurrent = date;
     
+    
+    
     [HTTP_MANAGER startNormalPostWithParagram:@{@"phone":[[NSUserDefaults standardUserDefaults]objectForKey:@"user"],@"date":[date lj_stringWithFormat:@"yyyy-MM"]} Commandtype:@"app/project/getGatherDate" successedBlock:^(NSDictionary *succeedResult, BOOL isSucceed) {
-        
+        NSNumber* ret =  [succeedResult lj_numberForKey:@"ret"];
+        if ([ret isEqualToNumber:@0]) {
+            //成功
+            @strongify(self)
+            self.resultInfos = [succeedResult lj_dictionaryForKey:@"data"];
+            [self.tableView reloadData];
+        }
     } failedBolck:^(AFHTTPSessionManager *session, NSError *error) {
-        NSLog(@"2>>>>%@",error);
+        
     }];
 }
 
@@ -83,6 +94,70 @@ AH_BASESUBVCFORMAINTAB_MODULE
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDate *newDate = [calendar dateByAddingComponents:dateComponents toDate:self.dateCurrent options:0];
     [self showWithDate:newDate];
+}
+
+- (void) getMonths:(NSArray**)months money:(NSArray**)money{
+    NSMutableArray* m0 = @[].mutableCopy;
+    NSMutableArray* m1 = @[].mutableCopy;
+    NSArray* monthsMoneys = [self.resultInfos lj_arrayForKey:@"monthsMoneys"];
+    for (NSDictionary* it in monthsMoneys) {
+        [m0 addObject:[it lj_stringForKey:@"month" default:@""]];
+        [m1 addObject:[it lj_stringForKey:@"money" default:@""]];
+    }
+    *months = m0;
+    *money = m1;
+}
+
+- (NSString*) getProjectStateNum:(NSNumber*)pid{
+    NSString* ret = @"";
+    NSArray* projectState = [self.resultInfos lj_arrayForKey:@"projectState"];
+    for (NSDictionary* it in projectState) {
+        if ([[it lj_numberForKey:@"stateId"]isEqualToNumber:pid]) {
+            ret = [it lj_stringForKey:@"num"];
+            break;
+        }
+    }
+    return ret;
+}
+
+- (NSString*) getStateNum:(NSNumber*)pid{
+    NSString* ret = @"";
+    NSArray* stateNum = [self.resultInfos lj_arrayForKey:@"stateNum"];
+    for (NSDictionary* it in stateNum) {
+        if ([[it lj_numberForKey:@"stateId"]isEqualToNumber:pid]) {
+            ret = [it lj_stringForKey:@"num"];
+            break;
+        }
+    }
+    return ret;
+}
+- (NSString*) getStateName:(NSNumber*)pid{
+    NSString* ret = @"";
+    NSArray* stateNum = [self.resultInfos lj_arrayForKey:@"stateNum"];
+    for (NSDictionary* it in stateNum) {
+        if ([[it lj_numberForKey:@"stateId"]isEqualToNumber:pid]) {
+            ret = [it lj_stringForKey:@"stateName"];
+            break;
+        }
+    }
+    return ret;
+}
+
+- (NSArray*) getStateValues{
+    NSMutableArray* ret = @[].mutableCopy;
+    NSArray* s = @[@1,@2,@3,@4,@0];
+    for (NSNumber* si in s) {
+        [ret addObject:[self getStateNum:si]];
+    }
+    return ret;
+}
+- (NSArray*) getStateDescs{
+    NSMutableArray* ret = @[].mutableCopy;
+    NSArray* s = @[@1,@2,@3,@4,@0];
+    for (NSNumber* si in s) {
+        [ret addObject:[self getStateName:si]];
+    }
+    return ret;
 }
 
 - (void)viewDidLoad {
@@ -233,6 +308,9 @@ AH_BASESUBVCFORMAINTAB_MODULE
                     };
                     
                     [cell.contentView addSubview:header];
+                    
+                    header.labelDate.text = [self.dateCurrent lj_stringWithFormat:@"yyyy年MM月"];
+                    
                     break;
                 }
                 case 1:
@@ -246,11 +324,14 @@ AH_BASESUBVCFORMAINTAB_MODULE
                 {
                     [cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
                     
-                    // value:@[@10,@11,@10.5,@10.8,@14,@12] desc:@[@"8月",@"9月",@"10月",@"11月",@"12月",@"1月"]
+                    NSArray* vArray = nil;
+                    NSArray* dArray = nil;
+                    [self getMonths:&vArray money:&dArray];
+                    
                     SumLineChart* lineChart = [[SumLineChart alloc]initWithFrame:(CGRect){0,0,self.view.lj_width,120}];
                     lineChart.backgroundColor = [UIColor whiteColor];
-                    lineChart.descArray = @[@"8月",@"9月",@"10月",@"11月",@"12月",@"1月"];
-                    [lineChart drawLineChartWithValueArray:@[@10,@11,@10.5,@10.8,@14,@12] lineWidth:3.0 lineColor:[UIColor colorWithRed:26/255.f green:176/255.f blue:241/255.f alpha:1.f] lineJionStyle:LPLineJoinRound lineJoinPointColor:[UIColor colorWithRed:26/255.f green:176/255.f blue:241/255.f alpha:1.f] lineJoinPointWidth:5.0 topPadding:50 rightPadding:10 bottomPadding:50 leftPadding:10 valueSituation:LPValueSituationTop prefixString:@"" suffixString:@"亿" valueStringPadding:10 valueTextAttributes:@{NSForegroundColorAttributeName:[UIColor lightGrayColor],NSFontAttributeName:[UIFont systemFontOfSize:(10)]}];
+                    lineChart.descArray = dArray;//@[@"8月",@"9月",@"10月",@"11月",@"12月",@"1月"];
+                    [lineChart drawLineChartWithValueArray:vArray/*@[@10,@11,@10.5,@10.8,@14,@12]*/ lineWidth:3.0 lineColor:[UIColor colorWithRed:26/255.f green:176/255.f blue:241/255.f alpha:1.f] lineJionStyle:LPLineJoinRound lineJoinPointColor:[UIColor colorWithRed:26/255.f green:176/255.f blue:241/255.f alpha:1.f] lineJoinPointWidth:5.0 topPadding:50 rightPadding:10 bottomPadding:50 leftPadding:10 valueSituation:LPValueSituationTop prefixString:@"" suffixString:@"亿" valueStringPadding:10 valueTextAttributes:@{NSForegroundColorAttributeName:[UIColor lightGrayColor],NSFontAttributeName:[UIFont systemFontOfSize:(10)]}];
                     
                     [cell.contentView addSubview:lineChart];
                     break;
@@ -263,7 +344,7 @@ AH_BASESUBVCFORMAINTAB_MODULE
                     ac.lj_height = ac.lj_width*1.5;
                     cell.accessoryView = ac;
                     cell.textLabel.text = @"已完成";
-                    cell.detailTextLabel.text = @"56个";
+                    cell.detailTextLabel.text = [self getProjectStateNum:@2];
                     break;
                 }
                 case 4:
@@ -274,14 +355,14 @@ AH_BASESUBVCFORMAINTAB_MODULE
                     ac.lj_height = ac.lj_width*1.5;
                     cell.accessoryView = ac;
                     cell.textLabel.text = @"已关闭";
-                    cell.detailTextLabel.text = @"3个";
+                    cell.detailTextLabel.text = [self getProjectStateNum:@3];
                     break;
                 }
                 case 5:
                 {
                     cell.accessoryType = UITableViewCellAccessoryNone;
                     cell.textLabel.text = @"进行中";
-                    cell.detailTextLabel.text = @"82个";
+                    cell.detailTextLabel.text = [self getProjectStateNum:@1];;
                     break;
                 }
                 case 6:
@@ -290,14 +371,14 @@ AH_BASESUBVCFORMAINTAB_MODULE
                     
                     JHRingChart *ring = [[JHRingChart alloc] initWithFrame:CGRectMake(0, 0, self.view.lj_width, 200)];
                     ring.backgroundColor = [UIColor whiteColor];
-                    ring.valueDataArr = @[@"12",@"7",@"5",@"13",@"46"];
+                    ring.valueDataArr = [self getStateValues];//@[@"12",@"7",@"5",@"13",@"46"];
                     ring.ringWidth = 35.0;
                     ring.fillColorArray = @[[UIColor colorWithHexString:@"#0DBEF5"]
                                             ,[UIColor colorWithHexString:@"#6C85DD"]
                                             ,[UIColor colorWithHexString:@"#09BB07"]
                                             ,[UIColor colorWithHexString:@"#3188DB"]
                                             ,[UIColor colorWithHexString:@"#50E3C2"]];
-                    ring.descArr = @[@"阶段一",@"阶段二",@"阶段三",@"阶段四",@"其他"];
+                    ring.descArr = [self getStateDescs];//@[@"阶段一",@"阶段二",@"阶段三",@"阶段四",@"其他"];
                     [ring showAnimation];
                     
                     [cell.contentView addSubview:ring];

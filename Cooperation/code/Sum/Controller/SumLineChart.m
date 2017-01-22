@@ -1,6 +1,7 @@
 
 
 #import "SumLineChart.h"
+#import "NSArray+LJAdditions.h"
 //控件自身宽度 和 高度
 #define kWidth self.frame.size.width
 #define kHeight self.frame.size.height
@@ -420,11 +421,11 @@
                 //描述
                 {
                     //最终文本
-                    NSString *desc = self.descArray[i];
+                    NSString *desc = [self.descArray lj_safeObjectAtIndex:i];
                     //计算文本size
                     CGSize descSize =[desc sizeWithAttributes:self.valueTextAttribute];
                     //取折点
-                    CGPoint descPoint = [self.pointArray[i] CGPointValue];
+                    CGPoint descPoint = [[self.pointArray lj_safeObjectAtIndex:i] CGPointValue];
                     
                     CGPoint descPointBottom = CGPointMake(descPoint.x - descSize.width / 2, self.frame.size.height-descSize.height-3.f);
                     

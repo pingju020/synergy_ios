@@ -75,7 +75,6 @@ void LJGCDDelay(NSTimeInterval delayInSeconds, dispatch_block_t handler)
     _labelDate.textAlignment = NSTextAlignmentRight;
     _labelDate.font = [UIFont systemFontOfSize:12.f];
     _labelDate.textColor = [UIColor lightGrayColor];
-    _labelDate.text = @"2017年1月";
     [self addSubview:_labelDate];
     
     _imageDate = [[UIImageView alloc]initWithFrame:(CGRect){0}];
