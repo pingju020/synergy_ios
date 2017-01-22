@@ -154,6 +154,15 @@ dispatch_source_t LJGCDTimer(NSTimeInterval interval,
                 [photoMessage lj_setValue:item forKey:@"rawData"];
                 
                 [messages addObject:photoMessage];
+            }else if([contentType isEqualToNumber:@15]){
+                //语音
+                XHMessage *voiceMessage = [[XHMessage alloc] initWithVoicePath:nil voiceUrl:[item lj_stringForKey:@"fileUrl"] voiceDuration:@"3" sender:[item lj_stringForKey:@"sendUserName"] timestamp:[[item lj_stringForKey:@"completeTime"]lj_dateWithFormat:@"yyyy-MM-dd HH:mm:ss"] isRead:YES];
+                voiceMessage.avatar = [UIImage imageNamed:@"avatar"];
+                voiceMessage.avatarUrl = [item lj_stringForKey:@"sendUserImageUrl"];
+                voiceMessage.bubbleMessageType = XHBubbleMessageTypeSending;
+                [voiceMessage lj_setValue:item forKey:@"rawData"];
+                
+                [messages addObject:voiceMessage];
             }
         } else {
             //别人
@@ -174,6 +183,16 @@ dispatch_source_t LJGCDTimer(NSTimeInterval interval,
                 photoMessage.bubbleMessageType = XHBubbleMessageTypeReceiving;
                 [photoMessage lj_setValue:item forKey:@"rawData"];
                 [messages addObject:photoMessage];
+            }
+            else if([contentType isEqualToNumber:@15]){
+                //语音
+                XHMessage *voiceMessage = [[XHMessage alloc] initWithVoicePath:nil voiceUrl:[item lj_stringForKey:@"fileUrl"] voiceDuration:@"3" sender:[item lj_stringForKey:@"sendUserName"] timestamp:[[item lj_stringForKey:@"completeTime"]lj_dateWithFormat:@"yyyy-MM-dd HH:mm:ss"] isRead:YES];
+                voiceMessage.avatar = [UIImage imageNamed:@"avatar"];
+                voiceMessage.avatarUrl = [item lj_stringForKey:@"sendUserImageUrl"];
+                voiceMessage.bubbleMessageType = XHBubbleMessageTypeReceiving;
+                [voiceMessage lj_setValue:item forKey:@"rawData"];
+                
+                [messages addObject:voiceMessage];
             }
         }
     }
@@ -236,17 +255,17 @@ dispatch_source_t LJGCDTimer(NSTimeInterval interval,
 -(void)sendVoiceMessage:(NSString*)filePath dur:(NSString*)dur{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     //接收类型不一致请替换一致text/html或别的
-//    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",
-//                                                         @"text/html",
-//                                                         @"image/jpeg",
-//                                                         @"image/png",
-//                                                         @"application/octet-stream",
-//                                                         @"text/json",
-//                                                         @"multipart/form-data",
-//                                                         nil];
-    
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"*/*",
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",
+                                                         @"text/html",
+                                                         @"image/jpeg",
+                                                         @"image/png",
+                                                         @"application/octet-stream",
+                                                         @"text/json",
+                                                         @"multipart/form-data",
                                                          nil];
+    
+ //   manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"*/*",
+ //                                                        nil];
     
     NSString *url=[NSString stringWithFormat:@"%@uploadfile/upload",HOST_ADDRESS];
     NSMutableDictionary* dic=[NSMutableDictionary new];
