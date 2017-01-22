@@ -8,6 +8,8 @@
 
 #import "BaseSubVcForMainTab.h"
 
+#define UIViewAutoresizingFlexibleAll (UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleBottomMargin)
+
 @interface SumMainViewController : BaseSubVcForMainTab
 
 @end
