@@ -252,10 +252,14 @@ AH_BASESUBVCFORMAINTAB_MODULE
     [dic setObject:[UserDefaults objectForKey:@"password"] forKey:@"passWord"];
     [HTTP_MANAGER startNormalPostWithParagram:dic Commandtype:@"app/check" successedBlock:^(NSDictionary *succeedResult, BOOL isSucceed) {
         if (isSucceed) {
+            NSLog(@"success=%@",succeedResult);
            //反馈可选项
             NSLog(@"result=========%@",[succeedResult objectForKey:@"stageList"]);
             NSLog(@"isauditbutton====%@",[succeedResult objectForKey:@"isAuditButton"]);
             NSLog(@"office========%@",[succeedResult objectForKey:@"office"]);
+            //branch项
+            
+            
         }
         else{
             [PubllicMaskViewHelper showTipViewWith:succeedResult[@"msg"] inSuperView:self.view withDuration:2];
@@ -293,11 +297,14 @@ AH_BASESUBVCFORMAINTAB_MODULE
     [dic setObject:@"0" forKey:@"page"];
     [dic setObject:@"1000" forKey:@"pageSize"];
     [dic setObject:@"1" forKey:@"state"];
+    [dic setObject:@"all" forKey:@"branch"];
+    [dic setObject:@"all" forKey:@"subbranch"];
+    
     
     [HTTP_MANAGER startNormalPostWithParagram:dic Commandtype:@"app/project/getProjectData" successedBlock:^(NSDictionary *succeedResult, BOOL isSucceed) {
         if (isSucceed) {
             Datasource=[[NSMutableArray alloc]init];
-            
+            NSLog(@"succeed=%@",succeedResult);
             NSArray* ResultArray=[succeedResult objectForKey:@"data"];
             for(int i=0;i<ResultArray.count;i++){
                 NSMutableDictionary* Tempdic=[ResultArray objectAtIndex:i];
@@ -559,8 +566,10 @@ AH_BASESUBVCFORMAINTAB_MODULE
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if(tableView==MainTableView){
+        
+        ProjectMessageModel* TempModel=[Datasource objectAtIndex:indexPath.row];
         //跳转详情页面
-        BaseInfomationViewController* BaseInfoViewController=[[BaseInfomationViewController alloc]init];
+        BaseInfomationViewController* BaseInfoViewController=[[BaseInfomationViewController alloc]initWithProjectId:TempModel.id ProjectName:TempModel.projectName type:E_INFO_VIEW];
         //传参等待上传
         [self.navigationController pushViewController:BaseInfoViewController animated:NO];
     }

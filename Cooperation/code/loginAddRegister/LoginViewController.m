@@ -11,6 +11,7 @@
 #import "PJTabBarController.h"
 #import "TabBarController.h"
 #import "HttpSessionManager.h"
+#import "BaseInfomationViewController.h"
 
 
 E_ROLE role;
@@ -169,6 +170,7 @@ E_ROLE role;
             
             //进入首页
             PJTabBarController* vc=[[PJTabBarController alloc]init];
+            //BaseInfomationViewController* vc = [[BaseInfomationViewController alloc]initWithProjectId:@"" ProjectName:@"" type:E_INFO_EDIT];
             [self.navigationController pushViewController:vc animated:NO];
             
         }

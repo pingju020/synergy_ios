@@ -114,6 +114,9 @@
 //	√	String	放款类型（0：未放款，1：部分放款，2：全部放款）
 @property(nonatomic,strong)NSString*type;
 
+// 非服务端返回数据，只在本地控制显示。
+@property(nonatomic,assign)BOOL edit;
+
 + (NSArray *)parsingDataWithResult:(NSDictionary *)resultDict;
 @end
 

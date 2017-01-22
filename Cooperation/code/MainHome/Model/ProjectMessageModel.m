@@ -18,9 +18,13 @@
         self.isTop=[dic objectForKey:@"isTop"];
         self.state=[dic objectForKey:@"state"];
         
-        self.projectName=[Tools replaceUnicode:[dic objectForKey:@"projectName"]];
-        self.stageName=[Tools replaceUnicode:[dic objectForKey:@"stageName"]];
-        self.userName=[Tools replaceUnicode:[dic objectForKey:@"userName"]];
+        self.projectName=[dic objectForKey:@"projectName"];
+        self.stageName=[dic objectForKey:@"stageName"];
+        self.userName=[dic objectForKey:@"userName"];
+        
+//        self.projectName=[Tools replaceUnicode:[dic objectForKey:@"projectName"]];
+//        self.stageName=[Tools replaceUnicode:[dic objectForKey:@"stageName"]];
+//        self.userName=[Tools replaceUnicode:[dic objectForKey:@"userName"]];
         
         
         if([dic objectForKey:@"projectStages"]){

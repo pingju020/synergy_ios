@@ -301,6 +301,7 @@
 		ACB7C5A31E330D3900C44615 /* pdf@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB7C5731E330D3900C44615 /* pdf@3x.png */; };
 		ACB7C5A41E330D3900C44615 /* ppt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB7C5741E330D3900C44615 /* ppt@3x.png */; };
 		ACB7C5A51E330D3900C44615 /* xls@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB7C5751E330D3900C44615 /* xls@3x.png */; };
+		C65875061E347887006FBA99 /* BackMoneyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C65875051E347887006FBA99 /* BackMoneyTableViewCell.m */; };
 		C68710681E34572C0018E152 /* ProjectDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C68710671E34572C0018E152 /* ProjectDetailModel.m */; };
 		C68710731E34575A0018E152 /* AddButtonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C68710691E34575A0018E152 /* AddButtonTableViewCell.m */; };
 		C68710741E34575A0018E152 /* ChooseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C687106A1E34575A0018E152 /* ChooseTableViewCell.m */; };
@@ -825,6 +826,8 @@
 		ACB7C5731E330D3900C44615 /* pdf@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pdf@3x.png"; sourceTree = "<group>"; };
 		ACB7C5741E330D3900C44615 /* ppt@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ppt@3x.png"; sourceTree = "<group>"; };
 		ACB7C5751E330D3900C44615 /* xls@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xls@3x.png"; sourceTree = "<group>"; };
+		C65875041E347887006FBA99 /* BackMoneyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackMoneyTableViewCell.h; sourceTree = "<group>"; };
+		C65875051E347887006FBA99 /* BackMoneyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackMoneyTableViewCell.m; sourceTree = "<group>"; };
 		C68710661E34572C0018E152 /* ProjectDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectDetailModel.h; sourceTree = "<group>"; };
 		C68710671E34572C0018E152 /* ProjectDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectDetailModel.m; sourceTree = "<group>"; };
 		C68710691E34575A0018E152 /* AddButtonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddButtonTableViewCell.m; sourceTree = "<group>"; };
@@ -1413,6 +1416,8 @@
 				AC11160A1E31DD91009ABFDF /* MainCollectionView */,
 				AC1116171E31DD91009ABFDF /* MainHomeItemView */,
 				AC11161C1E31DD91009ABFDF /* MainItemCollectionView */,
+				C65875041E347887006FBA99 /* BackMoneyTableViewCell.h */,
+				C65875051E347887006FBA99 /* BackMoneyTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2509,6 +2514,7 @@
 				AC1117E71E31F1D8009ABFDF /* CommonWebViewController.m in Sources */,
 				AC1117671E31DD91009ABFDF /* AFURLSessionManager.m in Sources */,
 				AC11174D1E31DD91009ABFDF /* ELCConsole.m in Sources */,
+				C65875061E347887006FBA99 /* BackMoneyTableViewCell.m in Sources */,
 				AC1117211E31DD91009ABFDF /* XTNavigationController.m in Sources */,
 				AC1117111E31DD91009ABFDF /* DesUtil.m in Sources */,
 				AC1117141E31DD91009ABFDF /* KnowledgeMainViewController.m in Sources */,

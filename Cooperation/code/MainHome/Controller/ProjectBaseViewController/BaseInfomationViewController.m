@@ -12,6 +12,8 @@
 #import "NumberTypeTableViewCell.h"
 #import "AddButtonTableViewCell.h"
 #import "ChooseTableViewCell.h"
+#import "BackMoneyTableViewCell.h"
+#import "SelectOperatorViewController.h"
 
 @interface BaseInfomationViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,assign)E_INFO_TYPE type;
@@ -19,6 +21,7 @@
 @property(nonatomic,strong)UITableView* tableView;
 @property(nonatomic,strong)NSString* projectName;
 @property(nonatomic,strong)NSArray* listData;
+@property(nonatomic,strong)NSArray*  creditList;
 @property(nonatomic,strong)UIView* headerView;
 
 // 上不固定的list数据
@@ -30,6 +33,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     title.text = self.projectName;
+    
+    if (_type == E_INFO_EDIT) {
+        [self.tableView reloadData];
+    }
     // Do any additional setup after loading the view.
 }
 
@@ -43,23 +50,20 @@
         _type = type;
         _projectName = projectName;
         if (type == E_INFO_EDIT) {
-            ;
+            _model = [[ProjectDetailModel alloc]init];
+            title.text = @"填写项目基本信息";
+            [self makeListData];
         }
         else{
-//            NSDictionary* para = @{
-//                                   @"phone":[[NSUserDefaults standardUserDefaults]objectForKey:@"user"],
-//                                   @"projectId":projectId};
             NSDictionary* para = @{
-                                   @"phone":@"13851491149",
-                                   @"projectId":@"a8560710625d4392bf525fe8f38bccb6"};
-            
+                                   @"phone":[[NSUserDefaults standardUserDefaults]objectForKey:@"user"],
+                                   @"projectId":projectId};
             [HTTP_MANAGER startNormalPostWithParagram:para Commandtype:@"app/project/getProjectInfo" successedBlock:^(NSDictionary *succeedResult, BOOL isSucceed) {
                 if (isSucceed) {
                     _model = [ProjectDetailModel creatModelWithDictonary:succeedResult[@"data"]];
                     [self makeListData];
                     title.text = _model.project.projectName;
                     [self.tableView reloadData];
-                    
                 }
                 else{
                     [PubllicMaskViewHelper showTipViewWith:succeedResult[@"msg"] inSuperView:self.view withDuration:2];
@@ -107,7 +111,13 @@
     FactorModel* projectName = [[FactorModel alloc]init];
     projectName.name = @"项目名称";
     projectName.projectContentValue = _model.project.projectName;
-    projectName.type = @"show";
+    if (_type == E_INFO_EDIT) {
+        projectName.type = @"text";
+    }
+    else{
+        projectName.type = @"show";
+    }
+    
     [listData addObject:projectName];
     
     FactorModel* handlerName = [[FactorModel alloc]init];
@@ -136,8 +146,16 @@
     
     FactorModel* financingModeName = [[FactorModel alloc]init];
     financingModeName.name = @"融资模式";
-    financingModeName.projectContentValue = _model.project.financingModeName;
-    financingModeName.type = @"show";
+    if (_type == E_INFO_EDIT) {
+        financingModeName.projectContentValue = _model.project.financingModeName;
+        financingModeName.type = @"date";
+        financingModeName.parentVC = self;
+        financingModeName.action = @selector(chooseFinace);
+    }
+    else{
+        financingModeName.projectContentValue = _model.project.financingModeName;
+        financingModeName.type = @"show";
+    }
     [listData addObject:financingModeName];
     
     for (FactorModel* item in _model.factors) {
@@ -179,7 +197,8 @@
 #pragma mark -- 回调
 // 添加项目负责人
 -(void)addResponsiblePerson{
-    NSLog(@"addResponsiblePerson");
+    SelectOperatorViewController* vc = [[SelectOperatorViewController alloc]initWithSelectType:@"manager"];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 // 添加经办支行
@@ -189,7 +208,8 @@
 
 // 添加经办人
 -(void)addUser{
-    NSLog(@"addUser");
+    SelectOperatorViewController* vc = [[SelectOperatorViewController alloc]initWithSelectType:@""];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 // 添加返款详情
@@ -207,68 +227,111 @@
     ;NSLog(@"chooseDate");
 }
 
-//
+//选择融资模式
+-(void)chooseFinace{
+    NSLog(@"chooseFinace");
+}
 
 #pragma mark - UITableViewDataSource
-
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 2;
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return _list.count;
+    if (section == 0) {
+        return _list.count;
+    }
+    else{
+        return 0;
+    }
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 56;
+    
+    if (indexPath.section == 0) {
+        return 56;
+    }
+    else{
+        return 44;
+    }
+    
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 56;
+    if (section == 0) {
+        return 56;
+    }
+    else{
+        return 44;
+    }
 }
 
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    return self.headerView;
+    if (0 == section) {
+        return self.headerView;
+    }
+    else{
+        return [[UIView alloc]initWithFrame:CGRectMake(0, 0, MAIN_WIDTH, 44)];
+    }
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    FactorModel* model = _list[indexPath.row];
-    if ([model.type isEqualToString:@"text"]|| [model.type isEqualToString:@"show"]) {
-        static NSString *textCell = @"textCell";
-        TextTypeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:textCell];
-        if (!cell) {
-            cell = [[TextTypeTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:textCell];
+    if (indexPath.section == 0) {
+        FactorModel* model = _list[indexPath.row];
+        if ([model.type isEqualToString:@"text"]|| [model.type isEqualToString:@"show"]) {
+            static NSString *textCell = @"textCell";
+            TextTypeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:textCell];
+            if (!cell) {
+                cell = [[TextTypeTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:textCell];
+            }
+            cell.model = model;
+            return cell;
         }
-        cell.model = model;
-        return cell;
-    }
-    else if([model.type isEqualToString:@"number"]){
-        static NSString *numberCell = @"numberCell";
-        NumberTypeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:numberCell];
-        
-        if (!cell) {
-            cell = [[NumberTypeTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:numberCell];
+        else if([model.type isEqualToString:@"number"]){
+            static NSString *numberCell = @"numberCell";
+            NumberTypeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:numberCell];
+            
+            if (!cell) {
+                cell = [[NumberTypeTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:numberCell];
+            }
+            cell.model = model;
+            return cell;
         }
-        cell.model = model;
-        return cell;
-    }
-    else if([model.type isEqualToString:@"date"]){
-        static NSString *dateCell = @"dateCell";
-        ChooseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:dateCell];
-        
-        if (!cell) {
-            cell = [[ChooseTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:dateCell];
+        else if([model.type isEqualToString:@"date"]){
+            static NSString *dateCell = @"dateCell";
+            ChooseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:dateCell];
+            
+            if (!cell) {
+                cell = [[ChooseTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:dateCell];
+            }
+            cell.model = model;
+            return cell;
         }
-        cell.model = model;
-        return cell;
+        else{
+            static NSString *cellIdentifier = @"cellIdentifier";
+            AddButtonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+            
+            if (!cell) {
+                cell = [[AddButtonTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+            }
+            cell.model = model;
+            return cell;
+        }
     }
     else{
-        static NSString *cellIdentifier = @"cellIdentifier";
-        AddButtonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-        
+        static NSString *cellIdentifier = @"cellIdentifierAddtional";
+        BackMoneyTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        CreditModel* model = _creditList[indexPath.row];
         if (!cell) {
-            cell = [[AddButtonTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+            cell = [[BackMoneyTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        }
+        if (indexPath.row == 0) {
+            cell.isTableHeader = YES;
         }
         cell.model = model;
         return cell;
     }
+    
     return nil;
 }
 

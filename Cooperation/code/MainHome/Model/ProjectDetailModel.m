@@ -19,6 +19,14 @@
     model.credits    = [CreditModel parsingDataWithResult:dictonary];
     return model;
 }
+
+-(id)init{
+    if (self = [super init]) {
+        self.project = [[ProjectModel alloc]init];
+        self.office = [[OfficeModel alloc]init];
+    }
+    return self;
+}
 @end
 
 @implementation ProjectModel
@@ -67,10 +75,18 @@
     
     for (NSDictionary *dict in credits) {
         CreditModel *model = [CreditModel mj_objectWithKeyValues:dict];
+        model.edit = NO;
         [mulArr addObject:model];
     }
     
     return [mulArr copy];
+}
+
+-(id)init{
+    if (self = [super init]) {
+        _edit = YES;
+    }
+    return self;
 }
 @end
 
