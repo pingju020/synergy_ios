@@ -11,7 +11,6 @@
 #import "PJTabBarController.h"
 #import "TabBarController.h"
 #import "HttpSessionManager.h"
-//#import "BaseInfomationViewController.h"
 
 
 E_ROLE role;
@@ -159,13 +158,9 @@ E_ROLE role;
 
 
 - (void)LoginWithUserName:(NSString*)user AndPassword:(NSString*)password{
-    //跳转tab页面
-//        PJTabBarController *TempController=[[PJTabBarController alloc]init];
-//        [self presentViewController:TempController animated:NO completion:^{}];
-    NSMutableDictionary* dic=[NSMutableDictionary new];
-    [dic setObject:user forKey:@"loginName"];
-    [dic setObject:password forKey:@"passWord"];
-    [HTTP_MANAGER startNormalPostWithParagram:dic Commandtype:@"app/check" successedBlock:^(NSDictionary *succeedResult, BOOL isSucceed) {
+    NSDictionary* dicPara = @{@"loginName":user, @"passWord":password};
+    
+    [HTTP_MANAGER startNormalPostWithParagram:dicPara Commandtype:@"app/check" successedBlock:^(NSDictionary *succeedResult, BOOL isSucceed) {
         if (isSucceed) {
             //存储用户信息
             NSUserDefaults *UserDefaults = [NSUserDefaults standardUserDefaults];
@@ -173,6 +168,9 @@ E_ROLE role;
             [UserDefaults setObject:password forKey:@"password"];
             
             //进入首页
+            PJTabBarController* vc=[[PJTabBarController alloc]init];
+            [self.navigationController pushViewController:vc animated:NO];
+            
         }
         else{
             [PubllicMaskViewHelper showTipViewWith:succeedResult[@"msg"] inSuperView:self.view withDuration:2];

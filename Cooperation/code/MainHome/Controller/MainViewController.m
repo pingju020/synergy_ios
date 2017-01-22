@@ -81,6 +81,7 @@ AH_BASESUBVCFORMAINTAB_MODULE
 //    [self.view setBackgroundColor:[UIColor yellowColor]];
     [self.view setBackgroundColor:[UIColor colorWithHexString:@"#F8F8F8"]];
     
+    [self SetNavigator];
     
     [self SetTopTabbar];
     //获取可选项
