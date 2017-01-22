@@ -200,6 +200,9 @@ dispatch_source_t LJGCDTimer(NSTimeInterval interval,
             @strongify(self)
             NSNumber* maxId = nil;
             self.messages = [self generateMessage:[succeedResult lj_arrayForKey:@"data"] reverse:YES maxId:&maxId];
+            if (maxId) {
+                self.maxMessageId = maxId;
+            }
             [self.messageTableView reloadData];
             [self scrollToBottomAnimated:NO];
             
@@ -491,7 +494,7 @@ dispatch_source_t LJGCDTimer(NSTimeInterval interval,
                 @strongify(self)
                 NSNumber* maxId = nil;;
                 [self insertOldMessages:[self generateMessage:[succeedResult lj_arrayForKey:@"data"]reverse:YES maxId:&maxId]];
-                
+
             }
             else
             {

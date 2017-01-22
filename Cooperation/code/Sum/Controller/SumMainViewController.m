@@ -326,7 +326,7 @@ AH_BASESUBVCFORMAINTAB_MODULE
                     
                     NSArray* vArray = nil;
                     NSArray* dArray = nil;
-                    [self getMonths:&vArray money:&dArray];
+                    [self getMonths:&dArray money:&vArray];
                     
                     SumLineChart* lineChart = [[SumLineChart alloc]initWithFrame:(CGRect){0,0,self.view.lj_width,120}];
                     lineChart.backgroundColor = [UIColor whiteColor];
