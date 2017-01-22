@@ -332,6 +332,7 @@
 		C634F9571E34B2DB003EE26B /* NSString+LJAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C634F9561E34B2DB003EE26B /* NSString+LJAdditions.m */; };
 		C634F95D1E34D52F003EE26B /* NSDate+LJAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C634F95C1E34D52F003EE26B /* NSDate+LJAdditions.m */; };
 		C634F96B1E34EA6D003EE26B /* NSDictionary+LJAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C634F96A1E34EA6D003EE26B /* NSDictionary+LJAdditions.m */; };
+		C634F9711E34F8CC003EE26B /* NSArray+LJAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C634F9701E34F8CC003EE26B /* NSArray+LJAdditions.m */; };
 		C65875061E347887006FBA99 /* BackMoneyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C65875051E347887006FBA99 /* BackMoneyTableViewCell.m */; };
 		C68710681E34572C0018E152 /* ProjectDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C68710671E34572C0018E152 /* ProjectDetailModel.m */; };
 		C68710731E34575A0018E152 /* AddButtonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C68710691E34575A0018E152 /* AddButtonTableViewCell.m */; };
@@ -918,6 +919,8 @@
 		C634F9681E34DF2A003EE26B /* LJMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJMacros.h; sourceTree = "<group>"; };
 		C634F9691E34EA6D003EE26B /* NSDictionary+LJAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+LJAdditions.h"; sourceTree = "<group>"; };
 		C634F96A1E34EA6D003EE26B /* NSDictionary+LJAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+LJAdditions.m"; sourceTree = "<group>"; };
+		C634F96F1E34F8CC003EE26B /* NSArray+LJAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+LJAdditions.h"; sourceTree = "<group>"; };
+		C634F9701E34F8CC003EE26B /* NSArray+LJAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+LJAdditions.m"; sourceTree = "<group>"; };
 		C65875041E347887006FBA99 /* BackMoneyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackMoneyTableViewCell.h; sourceTree = "<group>"; };
 		C65875051E347887006FBA99 /* BackMoneyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackMoneyTableViewCell.m; sourceTree = "<group>"; };
 		C68710661E34572C0018E152 /* ProjectDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectDetailModel.h; sourceTree = "<group>"; };
@@ -2420,6 +2423,8 @@
 			isa = PBXGroup;
 			children = (
 				C634F9681E34DF2A003EE26B /* LJMacros.h */,
+				C634F96F1E34F8CC003EE26B /* NSArray+LJAdditions.h */,
+				C634F9701E34F8CC003EE26B /* NSArray+LJAdditions.m */,
 				C634F9691E34EA6D003EE26B /* NSDictionary+LJAdditions.h */,
 				C634F96A1E34EA6D003EE26B /* NSDictionary+LJAdditions.m */,
 				C634F95B1E34D52F003EE26B /* NSDate+LJAdditions.h */,
@@ -2890,6 +2895,7 @@
 				AC1117261E31DD91009ABFDF /* MainDataModel.m in Sources */,
 				C634F92D1E34A4A9003EE26B /* JHRingChart.m in Sources */,
 				AC11178B1E31DD91009ABFDF /* SDImageCacheConfig.m in Sources */,
+				C634F9711E34F8CC003EE26B /* NSArray+LJAdditions.m in Sources */,
 				ACB7C5211E33037500C44615 /* FileManagerViewController.m in Sources */,
 				AC1117091E31DD91009ABFDF /* WebViewViewController.m in Sources */,
 				AC1117561E31DD91009ABFDF /* ELCImagePickerDemoViewController.m in Sources */,
