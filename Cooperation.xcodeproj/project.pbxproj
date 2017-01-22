@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		4DD372FA1E34A2730011A7D1 /* ProjectStageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD372EC1E34A2730011A7D1 /* ProjectStageModel.m */; };
-		4DD372FB1E34A2730011A7D1 /* ProjectTableViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD372EE1E34A2730011A7D1 /* ProjectTableViewModel.m */; };
 		4DD372FC1E34A2730011A7D1 /* ProjectTabModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD372F01E34A2730011A7D1 /* ProjectTabModel.m */; };
 		4DD372FD1E34A2730011A7D1 /* ProjectStageHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD372F41E34A2730011A7D1 /* ProjectStageHeaderView.m */; };
 		4DD372FE1E34A2730011A7D1 /* ProjectTabScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD372F61E34A2730011A7D1 /* ProjectTabScrollView.m */; };
 		4DD372FF1E34A2730011A7D1 /* ProjectStageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD372F91E34A2730011A7D1 /* ProjectStageViewController.m */; };
+		4DD373081E34DD1E0011A7D1 /* ProjectStageSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD373071E34DD1E0011A7D1 /* ProjectStageSectionView.m */; };
+		4DD3730B1E34E26A0011A7D1 /* ProjectStageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD3730A1E34E26A0011A7D1 /* ProjectStageCell.m */; };
 		AC11154F1E31DD1F009ABFDF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AC11154E1E31DD1F009ABFDF /* main.m */; };
 		AC1115521E31DD1F009ABFDF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1115511E31DD1F009ABFDF /* AppDelegate.m */; };
 		AC1115551E31DD1F009ABFDF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1115541E31DD1F009ABFDF /* ViewController.m */; };
@@ -363,8 +364,6 @@
 /* Begin PBXFileReference section */
 		4DD372EB1E34A2730011A7D1 /* ProjectStageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectStageModel.h; sourceTree = "<group>"; };
 		4DD372EC1E34A2730011A7D1 /* ProjectStageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectStageModel.m; sourceTree = "<group>"; };
-		4DD372ED1E34A2730011A7D1 /* ProjectTableViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectTableViewModel.h; sourceTree = "<group>"; };
-		4DD372EE1E34A2730011A7D1 /* ProjectTableViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectTableViewModel.m; sourceTree = "<group>"; };
 		4DD372EF1E34A2730011A7D1 /* ProjectTabModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectTabModel.h; sourceTree = "<group>"; };
 		4DD372F01E34A2730011A7D1 /* ProjectTabModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectTabModel.m; sourceTree = "<group>"; };
 		4DD372F31E34A2730011A7D1 /* ProjectStageHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectStageHeaderView.h; sourceTree = "<group>"; };
@@ -373,6 +372,10 @@
 		4DD372F61E34A2730011A7D1 /* ProjectTabScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectTabScrollView.m; sourceTree = "<group>"; };
 		4DD372F81E34A2730011A7D1 /* ProjectStageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectStageViewController.h; sourceTree = "<group>"; };
 		4DD372F91E34A2730011A7D1 /* ProjectStageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectStageViewController.m; sourceTree = "<group>"; };
+		4DD373061E34DD1E0011A7D1 /* ProjectStageSectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectStageSectionView.h; sourceTree = "<group>"; };
+		4DD373071E34DD1E0011A7D1 /* ProjectStageSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectStageSectionView.m; sourceTree = "<group>"; };
+		4DD373091E34E26A0011A7D1 /* ProjectStageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectStageCell.h; sourceTree = "<group>"; };
+		4DD3730A1E34E26A0011A7D1 /* ProjectStageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectStageCell.m; sourceTree = "<group>"; };
 		AC11154A1E31DD1F009ABFDF /* Cooperation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cooperation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC11154E1E31DD1F009ABFDF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AC1115501E31DD1F009ABFDF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -979,9 +982,9 @@
 		4DD372E91E34A2730011A7D1 /* ProjectStageViewController */ = {
 			isa = PBXGroup;
 			children = (
+				4DD372F71E34A2730011A7D1 /* ViewController */,
 				4DD372EA1E34A2730011A7D1 /* Model */,
 				4DD372F11E34A2730011A7D1 /* View */,
-				4DD372F71E34A2730011A7D1 /* ViewController */,
 			);
 			path = ProjectStageViewController;
 			sourceTree = "<group>";
@@ -989,12 +992,10 @@
 		4DD372EA1E34A2730011A7D1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4DD372EB1E34A2730011A7D1 /* ProjectStageModel.h */,
-				4DD372EC1E34A2730011A7D1 /* ProjectStageModel.m */,
-				4DD372ED1E34A2730011A7D1 /* ProjectTableViewModel.h */,
-				4DD372EE1E34A2730011A7D1 /* ProjectTableViewModel.m */,
 				4DD372EF1E34A2730011A7D1 /* ProjectTabModel.h */,
 				4DD372F01E34A2730011A7D1 /* ProjectTabModel.m */,
+				4DD372EB1E34A2730011A7D1 /* ProjectStageModel.h */,
+				4DD372EC1E34A2730011A7D1 /* ProjectStageModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1014,6 +1015,10 @@
 			children = (
 				4DD372F31E34A2730011A7D1 /* ProjectStageHeaderView.h */,
 				4DD372F41E34A2730011A7D1 /* ProjectStageHeaderView.m */,
+				4DD373061E34DD1E0011A7D1 /* ProjectStageSectionView.h */,
+				4DD373071E34DD1E0011A7D1 /* ProjectStageSectionView.m */,
+				4DD373091E34E26A0011A7D1 /* ProjectStageCell.h */,
+				4DD3730A1E34E26A0011A7D1 /* ProjectStageCell.m */,
 			);
 			path = PeojectStageTableView;
 			sourceTree = "<group>";
@@ -2689,10 +2694,10 @@
 				AC11173B1E31DD91009ABFDF /* README.md in Sources */,
 				C634F9571E34B2DB003EE26B /* NSString+LJAdditions.m in Sources */,
 				AC11181C1E31F5B2009ABFDF /* MJRefreshBackFooter.m in Sources */,
-				4DD372FB1E34A2730011A7D1 /* ProjectTableViewModel.m in Sources */,
 				AC1118201E31F5B2009ABFDF /* MJRefreshAutoGifFooter.m in Sources */,
 				AC1118231E31F5B2009ABFDF /* MJRefreshBackGifFooter.m in Sources */,
 				AC11181D1E31F5B2009ABFDF /* MJRefreshComponent.m in Sources */,
+				4DD373081E34DD1E0011A7D1 /* ProjectStageSectionView.m in Sources */,
 				AC1118261E31F5B2009ABFDF /* MJRefreshGifHeader.m in Sources */,
 				C634F9311E34A4A9003EE26B /* JHTableDataRowModel.m in Sources */,
 				AC1117341E31DD91009ABFDF /* MainItemCollectionCell.m in Sources */,
@@ -2705,6 +2710,7 @@
 				AC1117151E31DD91009ABFDF /* LoginViewController.m in Sources */,
 				AC11177E1E31DD91009ABFDF /* MJPropertyType.m in Sources */,
 				C634F9351E34A4A9003EE26B /* UIView+LJAdditions.m in Sources */,
+				4DD3730B1E34E26A0011A7D1 /* ProjectStageCell.m in Sources */,
 				AC1117101E31DD91009ABFDF /* DES3Util.m in Sources */,
 				AC11178C1E31DD91009ABFDF /* SDWebImageCompat.m in Sources */,
 				AC1117201E31DD91009ABFDF /* MainTabLoadContext.m in Sources */,

@@ -12,9 +12,10 @@
 #import "ProjectTabModel.h"
 #import "ProjectStageModel.h"
 #import "ProjectStageHeaderView.h"
-#import "ProjectTableViewModel.h"
+#import "ProjectStageSectionView.h"
+#import "ProjectStageCell.h"
 
-@interface ProjectStageViewController ()<ProjectStageHeaderDelegate>
+@interface ProjectStageViewController ()<ProjectStageHeaderDelegate,UITableViewDelegate,UITableViewDataSource>
 
 //UI
 @property (nonatomic,strong) ProjectTabScrollView *projectTabScrollView; //左侧滚动条
@@ -28,9 +29,11 @@
 
 @property (nonatomic,copy) NSString *phone;  //手机号
 
-@property (nonatomic,copy) NSString *stageId; //状态id
+@property (nonatomic,copy) NSString *stageId; //阶段id
 
-@property (nonatomic,strong) ProjectTableViewModel *tableViewModel; //逻辑层
+@property (nonatomic,strong) ProjectStageModel *stageModel; //数据包
+
+@property (nonatomic,strong) NSMutableDictionary *caches; //缓存     要清除某个阶段的缓存直接清除stageId对应的value就可以
 
 @end
 
@@ -97,8 +100,9 @@
 {
     _stageId = stageId;
     
-    if (NO) { //先判断是否有缓存
-        //取缓存
+    //先判断是否有缓存
+    if (self.caches[stageId]) { //有缓存，取缓存
+        self.stageModel = self.caches[stageId];
         
     }else{ //没有缓存重新获取
         [self requestStageData];
@@ -116,15 +120,8 @@
                                    [self removeWaitingView];
                                    
                                    if (isSucceed) {
-                                       //1.解析数据
-                                       ProjectStageModel *stageModel =[ProjectStageModel parsingModelWithDict:succeedResult[@"data"]];
-                                       
-                                       //2.保存缓存
-                                       
-                                       //3.构建UI
-                                       [self refrehViewWithModel:stageModel];
-                                       
-
+                                       //解析数据
+                                       self.stageModel =[ProjectStageModel parsingModelWithDict:succeedResult[@"data"]];
                                        
                                    }else{
                                        [PubllicMaskViewHelper showTipViewWith:succeedResult[@"msg"] inSuperView:self.view withDuration:1];
@@ -137,16 +134,24 @@
     
 }
 
-- (void)refrehViewWithModel:(ProjectStageModel *)stageModel
+- (void)setStageModel:(ProjectStageModel *)stageModel
 {
+    _stageModel = stageModel;
+    
+    //1.保存缓存
+    if (!self.caches[_stageId]) {
+        self.caches[_stageId] = stageModel;
+    }
+        
+    //2.构建UI
     //头视图
     self.headerView.model = stageModel;
-    self.tableView.tableHeaderView = self.headerView; //iOS8和9部分不写该方法会出现BUG
-    //tableView逻辑层
-    self.tableViewModel.stageModel = stageModel;
+    self.tableView.tableHeaderView = self.headerView;//iOS8和9部分不写该方法会出现BUG
     
     [self.tableView reloadData];
+
 }
+
 
 #pragma mark -ProjectStageHeaderDelegate
 //更改状态
@@ -160,6 +165,64 @@
 {
     [PubllicMaskViewHelper showTipViewWith:@"点击了新增任务" inSuperView:self.view withDuration:1];
 }
+
+
+#pragma mark -UITableViewDelegate
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return _stageModel.projectTasks.count;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+
+    ProjectTaskModel *taskModel = _stageModel.projectTasks[section];
+    
+    return taskModel.isOn ? taskModel.taskFeedbacks.count : 0;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    ProjectTaskModel *taskModel = _stageModel.projectTasks[section];
+    
+    //计算高度
+    return [ProjectStageSectionView getSectionHeightWithModel:taskModel tableWidth:tableView.width];
+    
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    
+    ProjectStageSectionView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:PS_SECTION_ID];
+    
+    ProjectTaskModel *taskModel = _stageModel.projectTasks[section];
+    
+    view.taskModel = taskModel;
+    
+    return view;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ProjectTaskModel *taskModel   = _stageModel.projectTasks[indexPath.section];
+    ProjectFeedbackModel *fbModel = taskModel.taskFeedbacks[indexPath.row];
+    
+    //计算高度
+    return [ProjectStageCell getCellHeightWithModel:fbModel tableWidth:tableView.width];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ProjectStageCell *cell = [tableView dequeueReusableCellWithIdentifier:PS_CELL_ID forIndexPath:indexPath];
+    
+    ProjectTaskModel *taskModel = _stageModel.projectTasks[indexPath.section];
+    ProjectFeedbackModel *feedBackModel = taskModel.taskFeedbacks[indexPath.row];
+    
+    cell.feedBackModel = feedBackModel;
+    
+    return cell;
+}
+
 
 #pragma mark -setUI
 
@@ -187,10 +250,13 @@
         _tableView = [[UITableView alloc]initWithFrame:CGRectMake(kTabWidth, 64, MAIN_WIDTH-kTabWidth, MAIN_HEIGHT-64) style:UITableViewStylePlain];
         _tableView.showsVerticalScrollIndicator = NO;
         _tableView.backgroundColor = VcBackgroudColor;
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
         
-        //代理交由逻辑层处理
-        _tableView.delegate = self.tableViewModel;
-        _tableView.dataSource = self.tableViewModel;
+        //注册sectionView
+        [_tableView registerClass:[ProjectStageSectionView class] forHeaderFooterViewReuseIdentifier:PS_SECTION_ID];
+        //注册cell
+        [_tableView registerClass:[ProjectStageCell class] forCellReuseIdentifier:PS_CELL_ID];
         
         [self.view addSubview:_tableView];
         
@@ -208,12 +274,12 @@
     return _headerView;
 }
 
-- (ProjectTableViewModel *)tableViewModel
+- (NSMutableDictionary *)caches
 {
-    if (!_tableViewModel) {
-        _tableViewModel = [ProjectTableViewModel new];
+    if (!_caches) {
+        _caches = [NSMutableDictionary dictionary];
     }
-    return _tableViewModel;
+    return _caches;
 }
 
 @end
