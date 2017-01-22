@@ -10,6 +10,7 @@
 #import "PJTabBarItem.h"
 
 #import "SumHeader.h"
+#import "LJMacros.h"
 #import "UIView+LJAdditions.h"
 #import "NSString+LJAdditions.h"
 #import "NSDate+LJAdditions.h"
@@ -21,6 +22,7 @@
 @property (nonatomic,strong) SumHeader* sumHeader;
 @property (nonatomic,strong) SumLineChart* lineChart;
 @property (nonatomic,strong) JHRingChart* ringChart;
+@property (nonatomic,strong) NSDate* dateCurrent;
 @end
 
 @implementation SumMainViewController
@@ -53,6 +55,8 @@ AH_BASESUBVCFORMAINTAB_MODULE
         date = [NSDate date];
     }
     
+    self.dateCurrent = date;
+    
     [HTTP_MANAGER startNormalPostWithParagram:@{@"phone":[[NSUserDefaults standardUserDefaults]objectForKey:@"user"],@"date":[date lj_stringWithFormat:@"yyyy-MM"]} Commandtype:@"app/project/getGatherDate" successedBlock:^(NSDictionary *succeedResult, BOOL isSucceed) {
         NSLog(@"1>>>>%@",succeedResult);
     } failedBolck:^(AFHTTPSessionManager *session, NSError *error) {
@@ -62,6 +66,22 @@ AH_BASESUBVCFORMAINTAB_MODULE
 
 - (void) reloadData{
     [self showWithDate:[NSDate date]];
+}
+
+- (void) showPrev{
+    NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
+    [dateComponents setMonth:-1];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDate *newDate = [calendar dateByAddingComponents:dateComponents toDate:self.dateCurrent options:0];
+    [self showWithDate:newDate];
+}
+
+- (void) showNext{
+    NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
+    [dateComponents setMonth:1];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDate *newDate = [calendar dateByAddingComponents:dateComponents toDate:self.dateCurrent options:0];
+    [self showWithDate:newDate];
 }
 
 - (void)viewDidLoad {
@@ -179,6 +199,8 @@ AH_BASESUBVCFORMAINTAB_MODULE
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    @weakify(self)
+    
     static NSString* cellIdentifier = @"CellIdentifier";
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
@@ -200,6 +222,14 @@ AH_BASESUBVCFORMAINTAB_MODULE
                     [cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
                     
                     SumHeader* header = [[SumHeader alloc]initWithFrame:cell.contentView.bounds];
+                    header.onDidSelectedAtLeft = ^{
+                        @strongify(self)
+                        [self showPrev];
+                    };
+                    header.onDidSelectedAtRight = ^{
+                        @strongify(self)
+                        [self showNext];
+                    };
                     
                     [cell.contentView addSubview:header];
                     break;

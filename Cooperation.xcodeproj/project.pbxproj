@@ -911,6 +911,7 @@
 		C634F9561E34B2DB003EE26B /* NSString+LJAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LJAdditions.m"; sourceTree = "<group>"; };
 		C634F95B1E34D52F003EE26B /* NSDate+LJAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+LJAdditions.h"; sourceTree = "<group>"; };
 		C634F95C1E34D52F003EE26B /* NSDate+LJAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+LJAdditions.m"; sourceTree = "<group>"; };
+		C634F9681E34DF2A003EE26B /* LJMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJMacros.h; sourceTree = "<group>"; };
 		C65875041E347887006FBA99 /* BackMoneyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackMoneyTableViewCell.h; sourceTree = "<group>"; };
 		C65875051E347887006FBA99 /* BackMoneyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackMoneyTableViewCell.m; sourceTree = "<group>"; };
 		C68710661E34572C0018E152 /* ProjectDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectDetailModel.h; sourceTree = "<group>"; };
@@ -2410,6 +2411,7 @@
 		C634F9361E34A8A0003EE26B /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				C634F9681E34DF2A003EE26B /* LJMacros.h */,
 				C634F95B1E34D52F003EE26B /* NSDate+LJAdditions.h */,
 				C634F95C1E34D52F003EE26B /* NSDate+LJAdditions.m */,
 				C634F9551E34B2DB003EE26B /* NSString+LJAdditions.h */,

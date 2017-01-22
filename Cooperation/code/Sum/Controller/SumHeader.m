@@ -9,6 +9,12 @@
 #import "SumHeader.h"
 #import "UIView+LJAdditions.h"
 
+void LJGCDDelay(NSTimeInterval delayInSeconds, dispatch_block_t handler)
+{
+    dispatch_time_t when = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(when, dispatch_get_main_queue(), handler);
+}
+
 @implementation SumHeader
 - (instancetype) initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
@@ -18,27 +24,43 @@
 }
 
 - (void) onButtonLeft:(UIButton*)btn{
-    
+    self.ivArrowLeft.image = [UIImage imageNamed:@"汇总-左箭头2"];
+    LJGCDDelay(0.3f, ^{
+        self.ivArrowLeft.image = [UIImage imageNamed:@"汇总-左箭头1"];
+    });
+    if (self.onDidSelectedAtLeft) {
+        self.onDidSelectedAtLeft();
+    }
 }
 - (void) onButtonCenter:(UIButton*)btn{
     
 }
 
 - (void) onButtonRight:(UIButton*)btn{
-    
+    self.ivArrowRight.image = [UIImage imageNamed:@"汇总-右箭头2"];
+    LJGCDDelay(0.3f, ^{
+        self.ivArrowRight.image = [UIImage imageNamed:@"汇总-右箭头1"];
+    });
+
+    if (self.onDidSelectedAtRight) {
+        self.onDidSelectedAtRight();
+    }
 }
 
 - (void) commoninit{
     _buttonLeft = [UIButton buttonWithType:UIButtonTypeCustom];
+    //_buttonLeft.backgroundColor = [UIColor redColor];
     [_buttonLeft addTarget:self action:@selector(onButtonLeft:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_buttonLeft];
     
     _buttonCenter = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_buttonLeft addTarget:self action:@selector(onButtonCenter:) forControlEvents:UIControlEventTouchUpInside];
+    //_buttonCenter.backgroundColor = [UIColor grayColor];
+    [_buttonCenter addTarget:self action:@selector(onButtonCenter:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_buttonCenter];
     
     _buttonRight = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_buttonLeft addTarget:self action:@selector(onButtonRight:) forControlEvents:UIControlEventTouchUpInside];
+    //buttonRight.backgroundColor = [UIColor blueColor];
+    [_buttonRight addTarget:self action:@selector(onButtonRight:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_buttonRight];
     
     _ivArrowLeft = [[UIImageView alloc]initWithFrame:(CGRect){0}];
