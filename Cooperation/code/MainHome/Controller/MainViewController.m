@@ -76,7 +76,9 @@
     
     //新增项目
     UIButton* AddButton;
-
+    
+    //判定是不是待审核状态进入下一页面
+    BOOL isToBeConfirm;
 }
 
 
@@ -97,7 +99,7 @@ AH_BASESUBVCFORMAINTAB_MODULE
     //获取可选项
     [self ResetSearchCondition];
     
-    [self StatusList];
+//    [self StatusList];
     
     [self GetSelectConditions];
     
@@ -333,9 +335,18 @@ AH_BASESUBVCFORMAINTAB_MODULE
                 //可以新增
                 AddButton.hidden=NO;
             }else{
-                AddButton.hidden=NO;
+                AddButton.hidden=YES;
             }
             
+            //获取权限
+            NSString* PermissionString=[succeedResult objectForKey:@"permission"];
+            if([PermissionString containsString:@"app:project:state:sure"]){
+                [self StatusListWithPermission:@"待审核"];
+            }else{
+                [self StatusListWithPermission:@"随意"];
+            }
+            
+
             [self GetDateWithCondition];
             
         }
@@ -431,30 +442,63 @@ AH_BASESUBVCFORMAINTAB_MODULE
 }
 
 #pragma mark 弹出list制作
-- (void)StatusList{
+- (void)StatusListWithPermission:(NSString*)CanJudge{
     //待审批，已完成，已关闭，正在进行
-    StatusList=[[UITableView alloc]initWithFrame:CGRectMake(0,40+STATUS_BAR_HEIGHT+NAVIGATOR_HEIGHT,SCREEN_WIDTH, 160)];
+    
+    isToBeConfirm=NO;
+    
+    if([CanJudge isEqualToString:@"待审核"]){
+        StatusList=[[UITableView alloc]initWithFrame:CGRectMake(0,40+STATUS_BAR_HEIGHT+NAVIGATOR_HEIGHT,SCREEN_WIDTH, 200)];
+        NSMutableArray* TempArray=[[NSMutableArray alloc]initWithObjects:@"正在进行",@"已完成",@"已关闭",@"待审批",@"待确认", nil];
+        StatusDataSource=[[NSMutableArray alloc]init];
+        for(int i=0;i<TempArray.count;i++){
+            if(i==0){
+                ProjectSearchConditionModel* TempModel=[[ProjectSearchConditionModel alloc]init];
+                TempModel.MessageInfo=[TempArray objectAtIndex:i];
+                TempModel.passParam=@"1";
+                TempModel.Mark=YES;
+                [StatusDataSource addObject:TempModel];
+            }
+            else{
+                ProjectSearchConditionModel* TempModel=[[ProjectSearchConditionModel alloc]init];
+                TempModel.MessageInfo=[TempArray objectAtIndex:i];
+                TempModel.passParam=[NSString stringWithFormat:@"%d",i+1];
+                TempModel.Mark=NO;
+                [StatusDataSource addObject:TempModel];
+            }
+        }
+    }else{
+        StatusList=[[UITableView alloc]initWithFrame:CGRectMake(0,40+STATUS_BAR_HEIGHT+NAVIGATOR_HEIGHT,SCREEN_WIDTH, 160)];
+        NSMutableArray* TempArray=[[NSMutableArray alloc]initWithObjects:@"正在进行",@"已完成",@"已关闭",@"待确认", nil];
+        StatusDataSource=[[NSMutableArray alloc]init];
+        for(int i=0;i<TempArray.count;i++){
+            if(i==0){
+                ProjectSearchConditionModel* TempModel=[[ProjectSearchConditionModel alloc]init];
+                TempModel.MessageInfo=[TempArray objectAtIndex:i];
+                TempModel.passParam=@"1";
+                TempModel.Mark=YES;
+                [StatusDataSource addObject:TempModel];
+            }
+            else if(i==3){
+                ProjectSearchConditionModel* TempModel=[[ProjectSearchConditionModel alloc]init];
+                TempModel.MessageInfo=[TempArray objectAtIndex:i];
+                TempModel.passParam=[NSString stringWithFormat:@"%d",i+2];
+                TempModel.Mark=NO;
+                [StatusDataSource addObject:TempModel];
+            }
+            else{
+                ProjectSearchConditionModel* TempModel=[[ProjectSearchConditionModel alloc]init];
+                TempModel.MessageInfo=[TempArray objectAtIndex:i];
+                TempModel.passParam=[NSString stringWithFormat:@"%d",i+1];
+                TempModel.Mark=NO;
+                [StatusDataSource addObject:TempModel];
+            }
+        }
+        
+    }
     StatusList.delegate=self;
     StatusList.dataSource=self;
     
-    NSMutableArray* TempArray=[[NSMutableArray alloc]initWithObjects:@"正在进行",@"已完成",@"已关闭",@"待审批", nil];
-    StatusDataSource=[[NSMutableArray alloc]init];
-    for(int i=0;i<TempArray.count;i++){
-        if(i==0){
-            ProjectSearchConditionModel* TempModel=[[ProjectSearchConditionModel alloc]init];
-            TempModel.MessageInfo=[TempArray objectAtIndex:i];
-            TempModel.passParam=@"1";
-            TempModel.Mark=YES;
-            [StatusDataSource addObject:TempModel];
-        }
-        else{
-            ProjectSearchConditionModel* TempModel=[[ProjectSearchConditionModel alloc]init];
-            TempModel.MessageInfo=[TempArray objectAtIndex:i];
-            TempModel.passParam=[NSString stringWithFormat:@"%d",i+1];
-            TempModel.Mark=NO;
-            [StatusDataSource addObject:TempModel];
-        }
-    }
     StatusList.separatorStyle = UITableViewCellEditingStyleNone;
     StatusList.scrollEnabled=NO;
     StatusList.hidden=YES;
@@ -689,14 +733,20 @@ AH_BASESUBVCFORMAINTAB_MODULE
                 TempModel.Mark=NO;
             }
         }
+        
         [StatusList reloadData];
         StatusList.hidden=YES;
         [StatusButton setTitle:StatusCondition forState:UIControlStateNormal];
         ProjectSearchConditionModel* TempModel=[StatusDataSource objectAtIndex:indexPath.row];
         [StatusButton setTitle:TempModel.MessageInfo forState:UIControlStateNormal];
         StatusCondition=TempModel.passParam;
+        if([TempModel.MessageInfo isEqualToString:@"待审核"])
+        {
+            isToBeConfirm=YES;
+        }else{
+            isToBeConfirm=NO;
+        }
         [self GetDateWithCondition];
-        //        [self lookcondition];
     }
 }
 

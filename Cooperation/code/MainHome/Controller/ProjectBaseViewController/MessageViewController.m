@@ -259,7 +259,7 @@ dispatch_source_t LJGCDTimer(NSTimeInterval interval,
 - (void) startLoop{
     @weakify(self)
     NSLog(@"开始轮询...");
-    
+    /*
     self.timer = [NSTimer scheduledTimerWithTimeInterval:3.f repeats:YES block:^(NSTimer * _Nonnull timer) {
         [HTTP_MANAGER startNormalPostWithParagram:@{@"phone":[[NSUserDefaults standardUserDefaults]objectForKey:@"user"],@"projectId":self.projectId,@"messageId":self.maxMessageId} Commandtype:@"app/message/getMoreMessage" successedBlock:^(NSDictionary *succeedResult, BOOL isSucceed) {
             
@@ -281,7 +281,7 @@ dispatch_source_t LJGCDTimer(NSTimeInterval interval,
         } failedBolck:^(AFHTTPSessionManager *session, NSError *error) {
             
         }];
-    }];
+    }];*/
 
 }
 
