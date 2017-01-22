@@ -23,6 +23,7 @@
 @property (nonatomic,strong) UIPageViewController *pageVC;
 
 @property (nonatomic,strong) NSArray              *dataList;
+@property (nonatomic,strong) NSArray              *btnList;
 
 @property (nonatomic,assign) NSInteger             page;
 
@@ -59,7 +60,9 @@
     NSMutableArray *mulArr = [NSMutableArray array];
     
     ViewButtonModel* modelInfo = [[ViewButtonModel alloc]init];
-    modelInfo.vc = [[BaseInfomationViewController alloc]initWithProjectId:_projectId ProjectName:_projectName type:E_INFO_VIEW];
+    BaseInfomationViewController*vc = [[BaseInfomationViewController alloc]initWithProjectId:_projectId ProjectName:_projectName type:E_INFO_VIEW];
+    vc.backVC = self;
+    modelInfo.vc = vc;
     modelInfo.Name = @"基本信息";
     [mulArr addObject:modelInfo];
     
@@ -86,6 +89,7 @@
 -(UIScrollView*)scorllView{
     if (!_scorllView) {
         _scorllView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(navigationBG.frame), MAIN_WIDTH, 44)];
+        NSMutableArray* arrList = [[NSMutableArray alloc]init];
         for (NSInteger index = 0; index<4; index++) {
             ViewButtonModel* model = _dataList[index];
             LineButton* btn = [[LineButton alloc]initWithFrame:CGRectMake(index*(MAIN_WIDTH/4), 0, MAIN_WIDTH/4, 44) needBottomLine:YES];
@@ -93,8 +97,9 @@
             btn.tag = index;
             [btn addTarget:self action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
             [_scorllView addSubview:btn];
+            [arrList addObject:btn];
         }
-        [self.view addSubview:_scorllView];
+        //[self.view addSubview:_scorllView];
     }
     
     return _scorllView;
@@ -127,6 +132,17 @@
 
 -(void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed
 {
+    for (NSInteger index = 0; index<_dataList.count; index++) {
+        ViewButtonModel* model = _dataList[index];
+        LineButton* btn = _btnList[index];
+        
+        if (model.vc == pageViewController.viewControllers[0]) {
+            btn.selected = YES;
+        }
+        else{
+            btn.selected = NO;
+        }
+    }
     //NSInteger index = ((SubTableViewController *)pageViewController.viewControllers[0]).page;
 }
 
@@ -135,7 +151,7 @@
 {
     [self.view addSubview:self.pageVC.view];
     
-    //[_pageVC.view addSubview:self.segmentedConrol];
+    [_pageVC.view addSubview:self.scorllView];
     
 }
 
@@ -168,7 +184,18 @@
 */
 
 -(void)btnClicked:(LineButton*)sender{
-    ;
+    NSInteger index = sender.tag;
+    for (NSInteger i = 0; i<_btnList.count; i++) {
+        LineButton* btn = _btnList[i];
+        if (i == index) {
+            btn.selected = YES;
+        }
+        else{
+            btn.selected = NO;
+        }
+    }
+    ViewButtonModel* model = _dataList[index];
+    [_pageVC setViewControllers:@[model.vc] direction:0 animated:YES completion:nil];
 }
 
 @end
@@ -187,7 +214,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-        [self setTitleColor:kCommonColorHighLight forState:UIControlStateSelected];
+        [self setTitleColor:COMMON_CORLOR_HIGHLIGHT forState:UIControlStateSelected];
+        self.backgroundColor = [UIColor whiteColor];
         self.titleLabel.font = [UIFont systemFontOfSize:14];
         
         if (needBottomLine) {
@@ -203,10 +231,8 @@
     [super setSelected:selected];
     
     if (_line) {
-        self.line.backgroundColor = selected ? kCommonColorHighLight : VcBackgroudColor;
+        self.line.backgroundColor = selected ? COMMON_CORLOR_HIGHLIGHT : VcBackgroudColor;
     }
-    
-    
 }
 
 - (UIView *)line

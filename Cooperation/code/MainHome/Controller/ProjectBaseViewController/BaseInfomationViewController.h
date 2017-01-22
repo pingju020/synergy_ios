@@ -17,5 +17,7 @@ typedef NS_ENUM(NSInteger, E_INFO_TYPE){
 
 @interface BaseInfomationViewController : BaseViewController
 
+@property(nonatomic,strong)BaseViewController* backVC;
+
 -(id)initWithProjectId:(NSString*)projectId ProjectName:(NSString*)projectName type:(E_INFO_TYPE)type;
 @end

@@ -45,6 +45,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)backBtnClicked{
+    if (_backVC) {
+        [_backVC backBtnClicked];
+    }
+    else{
+        [super backBtnClicked];
+    }
+}
+
 -(id)initWithProjectId:(NSString*)projectId ProjectName:(NSString*)projectName type:(E_INFO_TYPE)type{
     if (self = [super init]) {
         _type = type;
@@ -97,7 +106,7 @@
 
 -(UITableView*)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(navigationBG.frame), MAIN_WIDTH, MAIN_HEIGHT-CGRectGetMaxY(navigationBG.frame)) style:UITableViewStyleGrouped];
+        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(navigationBG.frame)+44, MAIN_WIDTH, MAIN_HEIGHT-CGRectGetMaxY(navigationBG.frame)-44) style:UITableViewStyleGrouped];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.delegate = self;
         _tableView.dataSource = self;
