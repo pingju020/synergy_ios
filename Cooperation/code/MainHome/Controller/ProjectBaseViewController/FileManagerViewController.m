@@ -40,10 +40,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    IfisFolder=YES;
+    IfisFolder=NO;
     [self initTopView];
     
     [self initFolderData];
+    
+    [self GetFileDataWithFolderName:@"all"];
     
     [self initTableView];
     
@@ -64,7 +66,7 @@
     
     ChangeButton=[[UIButton alloc]initWithFrame:CGRectMake(0, 10, SCREEN_WIDTH, 69)];
     //    [ChangeButton setBackgroundColor:[UIColor whiteColor]];
-    [ChangeButton setTitle:@"显示全部文件" forState:UIControlStateNormal];
+    [ChangeButton setTitle:@"显示文件夹" forState:UIControlStateNormal];
     [ChangeButton setTitleColor:[UIColor colorWithHexString:@"#00B700"] forState:UIControlStateNormal];
     [ChangeButton addTarget:self action:@selector(ChangeListModel) forControlEvents:UIControlEventTouchUpInside];
     [backview addSubview:ChangeButton];
@@ -172,14 +174,14 @@
     FolderTable.delegate=self;
     FolderTable.dataSource=self;
     FolderTable.separatorStyle = UITableViewCellEditingStyleNone;
-    FolderTable.hidden=NO;
+    FolderTable.hidden=YES;
     [self.view addSubview:FolderTable];
     
     FileTable=[[UITableView alloc]initWithFrame:CGRectMake(0, NAVIGATOR_HEIGHT+STATUS_BAR_HEIGHT+40+80, SCREEN_WIDTH, SCREEN_HEIGHT-NAVIGATOR_HEIGHT-STATUS_BAR_HEIGHT-40-80)];
     FileTable.delegate=self;
     FileTable.dataSource=self;
     FileTable.separatorStyle = UITableViewCellEditingStyleNone;
-    FileTable.hidden=YES;
+    FileTable.hidden=NO;
     [self.view addSubview:FileTable];
     
 }

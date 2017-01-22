@@ -96,13 +96,13 @@
             if(Manager.count!=0){
                 NSMutableDictionary* dic=[[NSMutableDictionary alloc]init];
                 [dic setObject:Manager forKey:@"array"];
-                [dic setObject:@"投行经办人" forKey:@"header"];
+                [dic setObject:@"支行经办人" forKey:@"header"];
                 [Datasource addObject:dic];
             }
             if(Operator.count!=0){
                 NSMutableDictionary* dic=[[NSMutableDictionary alloc]init];
                 [dic setObject:Operator forKey:@"array"];
-                [dic setObject:@"支行经办人" forKey:@"header"];
+                [dic setObject:@"投行经办人" forKey:@"header"];
                 [Datasource addObject:dic];
             }
             
