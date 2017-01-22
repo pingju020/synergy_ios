@@ -209,6 +209,7 @@
     SelectOperatorViewController* vc = [[SelectOperatorViewController alloc]initWithSelectType:@"manager"];
     vc.delegate = self;
     [self.navigationController pushViewController:vc animated:YES];
+//    [self presentViewController:vc animated:NO completion:^{}];
 }
 
 // 添加经办支行
@@ -239,6 +240,13 @@
 
 //选择融资模式
 -(void)chooseFinace{
+    //融资模式
+    
+    //主要设置这个东西
+    
+//    _model.factors
+    
+    //获取融资信息
     NSLog(@"chooseFinace");
 }
 
