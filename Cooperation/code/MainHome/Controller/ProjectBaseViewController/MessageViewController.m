@@ -215,12 +215,14 @@ dispatch_source_t LJGCDTimer(NSTimeInterval interval,
             [self.messageTableView reloadData];
             [self scrollToBottomAnimated:NO];
             
-            //开始轮询
-            [self startLoop];
+            
             
         }
+        //开始轮询
+        [self startLoop];
     } failedBolck:^(AFHTTPSessionManager *session, NSError *error) {
-        
+        //开始轮询
+        [self startLoop];
     }];
     
 }
@@ -351,7 +353,10 @@ dispatch_source_t LJGCDTimer(NSTimeInterval interval,
 - (void) startLoop{
     
     NSLog(@"开始轮询...");
-    
+    if (nil !=self.timer && [self.timer isValid]) {
+        [self.timer invalidate];
+        self.timer = nil;
+    }
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1.f target:self selector:@selector(fireTimer:) userInfo:nil repeats:YES];
 
 }
