@@ -179,7 +179,7 @@ AH_BASESUBVCFORMAINTAB_MODULE
                 {
                     [cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
                     
-                    SumHeader* header = [[SumHeader alloc]initWithFrame:(CGRect){0,0,self.view.lj_width,40}];
+                    SumHeader* header = [[SumHeader alloc]initWithFrame:cell.contentView.bounds];
                     
                     [cell.contentView addSubview:header];
                     break;
@@ -207,7 +207,10 @@ AH_BASESUBVCFORMAINTAB_MODULE
                 case 3:
                 {
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                    cell.accessoryView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"右箭头@2x"]];
+                    UIImageView* ac = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"右箭头"]];
+                    ac.lj_width = 8;
+                    ac.lj_height = ac.lj_width*1.5;
+                    cell.accessoryView = ac;
                     cell.textLabel.text = @"已完成";
                     cell.detailTextLabel.text = @"56个";
                     break;
@@ -215,7 +218,10 @@ AH_BASESUBVCFORMAINTAB_MODULE
                 case 4:
                 {
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                    cell.accessoryView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"右箭头@2x"]];
+                    UIImageView* ac = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"右箭头"]];
+                    ac.lj_width = 8;
+                    ac.lj_height = ac.lj_width*1.5;
+                    cell.accessoryView = ac;
                     cell.textLabel.text = @"已关闭";
                     cell.detailTextLabel.text = @"3个";
                     break;

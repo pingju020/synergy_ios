@@ -42,16 +42,22 @@
     [self addSubview:_buttonRight];
     
     _ivArrowLeft = [[UIImageView alloc]initWithFrame:(CGRect){0}];
+    _ivArrowLeft.image = [UIImage imageNamed:@"汇总-左箭头1"];
     [self addSubview:_ivArrowLeft];
     
     _ivArrowRight = [[UIImageView alloc]initWithFrame:(CGRect){0}];
+    _ivArrowRight.image = [UIImage imageNamed:@"汇总-右箭头1"];
     [self addSubview:_ivArrowRight];
     
     _labelDate = [[UILabel alloc]initWithFrame:(CGRect){0}];
     _labelDate.textAlignment = NSTextAlignmentRight;
+    _labelDate.font = [UIFont systemFontOfSize:12.f];
+    _labelDate.textColor = [UIColor lightGrayColor];
+    _labelDate.text = @"2017年1月";
     [self addSubview:_labelDate];
     
     _imageDate = [[UIImageView alloc]initWithFrame:(CGRect){0}];
+    _imageDate.image = [UIImage imageNamed:@"日历"];
     [self addSubview:_imageDate];
     
 }
@@ -72,22 +78,22 @@
     _buttonRight.lj_left = _buttonCenter.lj_right;
     _buttonRight.lj_top = 0;
     
-    _ivArrowLeft.lj_width = 20;
-    _ivArrowLeft.lj_height = 20;
+    _ivArrowLeft.lj_width = 10;
+    _ivArrowLeft.lj_height = 10;
     _ivArrowLeft.lj_right = _buttonLeft.lj_right;
     _ivArrowLeft.lj_centerY = _buttonLeft.lj_centerY;
     
-    _ivArrowRight.lj_width = 20;
-    _ivArrowRight.lj_height = 20;
+    _ivArrowRight.lj_width = 10;
+    _ivArrowRight.lj_height = 10;
     _ivArrowRight.lj_left = _buttonRight.lj_left;
     _ivArrowRight.lj_centerY = _buttonRight.lj_centerY;
     
-    _imageDate.lj_width = 20;
-    _imageDate.lj_height = 20;
-    _imageDate.lj_right = _buttonCenter.lj_right;
+    _imageDate.lj_width = 10;
+    _imageDate.lj_height = 10;
+    _imageDate.lj_right = _buttonCenter.lj_right-5;
     _imageDate.lj_centerY = _buttonCenter.lj_centerY;
     
-    _labelDate.lj_width = _buttonCenter.lj_width - _imageDate.lj_width;
+    _labelDate.lj_width = _buttonCenter.lj_width - _imageDate.lj_width-5;
     _labelDate.lj_height = _buttonCenter.lj_height;
     _labelDate.lj_right = _imageDate.lj_left;
     _labelDate.lj_centerY = _buttonCenter.lj_centerY;
