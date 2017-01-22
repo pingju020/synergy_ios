@@ -44,11 +44,17 @@ SINGLETON_FOR_CLASS(MainTabLoadContext)
         if ([subTabview isKindOfClass:[BaseSubVcForMainTab class]]) {
             BaseSubVcForMainTab *baseSubVcForMainTab = subTabview;
             PJTabBarItem* item = [baseSubVcForMainTab getTabBarItem];
-            if (item.tabIndex > arrItems.count) {
-                [arrItems addObject:item];
+            
+            NSInteger index = 0;
+            for (; index<arrItems.count; index++) {
+                PJTabBarItem* itemFirst = arrItems[index];
+                if (item.tabIndex < itemFirst.tabIndex) {
+                    [arrItems insertObject:item atIndex:index];
+                    break;
+                }
             }
-            else{
-                [arrItems insertObject:item atIndex:item.tabIndex-1];
+            if (index ==  arrItems.count) {
+                [arrItems addObject:item];
             }
         }
     }
