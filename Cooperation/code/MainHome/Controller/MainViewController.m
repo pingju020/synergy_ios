@@ -883,7 +883,7 @@ AH_BASESUBVCFORMAINTAB_MODULE
     
     MemberViewController* member=[[MemberViewController alloc]initWithProjectId:model.id];
     FileManagerViewController* file=[[FileManagerViewController alloc]initWithProjectId:model.id];
-    [self.navigationController pushViewController:file animated:NO];
+    [self.navigationController pushViewController:member animated:NO];
 }
 
 - (void)AddNewProject{
