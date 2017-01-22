@@ -164,6 +164,8 @@ E_ROLE role;
     
     [HTTP_MANAGER startNormalPostWithParagram:dicPara Commandtype:@"app/check" successedBlock:^(NSDictionary *succeedResult, BOOL isSucceed) {
         if (isSucceed) {
+            
+            
             //存储用户信息
             NSUserDefaults *UserDefaults = [NSUserDefaults standardUserDefaults];
             [UserDefaults setObject:user forKey:@"user"];
