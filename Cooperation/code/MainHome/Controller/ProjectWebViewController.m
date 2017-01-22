@@ -24,6 +24,8 @@
 
 @implementation ProjectWebViewController
 {
+    UIButton* button;
+    
     UIButton* back;
     UIButton* title;
     
