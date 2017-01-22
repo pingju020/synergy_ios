@@ -9,6 +9,7 @@
 #import "BaseViewController.h"
 
 @interface FileManagerViewController : BaseViewController
+@property(nonatomic,strong)BaseViewController* backVC;
 
 -(instancetype)initWithProjectId:(NSString*)projectId;
 

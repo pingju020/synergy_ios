@@ -11,6 +11,9 @@
 #import "BaseInfomationViewController.h"
 #import "ProjectStageViewController.h"
 #import "PrjectReplyViewController.h"
+#import "MessageViewController.h"
+#import "MemberViewController.h"
+#import "FileManagerViewController.h"
 
 //带下划线的按钮
 @interface LineButton : UIButton
@@ -77,20 +80,35 @@
     [mulArr addObject:modelInfo];
     
     ViewButtonModel* modelProgress = [[ViewButtonModel alloc]init];
-    modelProgress.vc = [[ProjectStageViewController alloc]initWithProjectId:@""];
+    ProjectStageViewController* ProgressVc = [[ProjectStageViewController alloc]initWithProjectId:_projectId];
+    ProgressVc.backVC = self;
+    modelProgress.vc = ProgressVc;
     modelProgress.Name = @"进展";
     [mulArr addObject:modelProgress];
     
     ViewButtonModel* modelMsg = [[ViewButtonModel alloc]init];
-    modelMsg.vc = [[ProjectStageViewController alloc]initWithProjectId:@""];
+    MessageViewController* vcMsg = [[MessageViewController alloc]init];
+    vcMsg.projectId = _projectId;
+    vcMsg.backVC = self;
+    modelMsg.vc = vcMsg;
     modelMsg.Name = @"消息";
     [mulArr addObject:modelMsg];
     
     ViewButtonModel* modelPersons = [[ViewButtonModel alloc]init];
-    modelPersons.vc = [[ProjectStageViewController alloc]initWithProjectId:@""];
+    MemberViewController* memberVC= [[MemberViewController alloc]initWithProjectId:_projectId];
+    memberVC.backVC = self;
+    modelPersons.vc = memberVC;
     modelPersons.Name = @"成员";
     [mulArr addObject:modelPersons];
     
+    
+    ViewButtonModel* modelFile = [[ViewButtonModel alloc]init];
+    FileManagerViewController* vc = [[FileManagerViewController alloc]initWithProjectId:_projectId];
+    vc.backVC = self;
+    modelFile.vc =vc;
+    modelFile.Name = @"文件";
+    [mulArr addObject:modelFile];
+
     _dataList = [mulArr copy];
     
     _page = 0;
@@ -100,9 +118,9 @@
     if (!_scorllView) {
         _scorllView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(navigationBG.frame), MAIN_WIDTH, 44)];
         NSMutableArray* arrList = [[NSMutableArray alloc]init];
-        for (NSInteger index = 0; index<4; index++) {
+        for (NSInteger index = 0; index<5; index++) {
             ViewButtonModel* model = _dataList[index];
-            LineButton* btn = [[LineButton alloc]initWithFrame:CGRectMake(index*(MAIN_WIDTH/4), 0, MAIN_WIDTH/4, 44) needBottomLine:YES];
+            LineButton* btn = [[LineButton alloc]initWithFrame:CGRectMake(index*(MAIN_WIDTH/5), 0, MAIN_WIDTH/5, 44) needBottomLine:YES];
             [btn setTitle:model.Name forState:UIControlStateNormal];
             btn.tag = index;
             [btn addTarget:self action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -110,6 +128,9 @@
             [arrList addObject:btn];
             _btnList = arrList;
         }
+        
+        LineButton* btn = _btnList[0];
+        btn.selected = YES;
         //[self.view addSubview:_scorllView];
     }
     
@@ -176,9 +197,6 @@
         
         ViewButtonModel* model = _dataList[0];
         [_pageVC setViewControllers:@[model.vc] direction:0 animated:YES completion:nil];
-        
-        LineButton* btn = _btnList[0];
-        btn.selected = YES;
         
         _pageVC.delegate   = self;
         

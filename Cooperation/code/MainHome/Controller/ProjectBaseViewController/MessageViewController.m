@@ -50,6 +50,15 @@ dispatch_source_t LJGCDTimer(NSTimeInterval interval,
 
 @implementation MessageViewController
 
+-(void)backBtnClicked{
+    if (_backVC) {
+        [_backVC backBtnClicked];
+    }
+    else{
+        [super backBtnClicked];
+    }
+}
+
 - (XHMessage *)getTextMessageWithBubbleMessageType:(XHBubbleMessageType)bubbleMessageType {
     XHMessage *textMessage = [[XHMessage alloc] initWithText:@"这是华捷微信，希望大家喜欢这个开源库，请大家帮帮忙支持这个开源库吧！我是Jack，叫华仔也行，曾宪华就是我啦！" sender:@"华仔" timestamp:[NSDate distantPast]];
     textMessage.avatar = [UIImage imageNamed:@"avatar"];

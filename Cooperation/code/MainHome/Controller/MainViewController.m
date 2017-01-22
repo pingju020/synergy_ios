@@ -653,7 +653,8 @@ AH_BASESUBVCFORMAINTAB_MODULE
     if(tableView==MainTableView){
         ProjectMessageModel* TempModel=[Datasource objectAtIndex:indexPath.row];
         //跳转详情页面
-        BaseMainViewController* BaseInfoViewController=[[BaseMainViewController alloc]initWithProjretId:TempModel.id Name:TempModel.projectName Check:TempModel.state==1];
+        NSRange range = [TempModel.stageName rangeOfString:@"审批"];
+        BaseMainViewController* BaseInfoViewController=[[BaseMainViewController alloc]initWithProjretId:TempModel.id Name:TempModel.projectName Check:range.length > 0];
         //传参等待上传
         [self.navigationController pushViewController:BaseInfoViewController animated:NO];
     }

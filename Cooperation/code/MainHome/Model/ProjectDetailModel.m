@@ -42,7 +42,7 @@
 @implementation OfficeModel
 + (OfficeModel *)parsingDataWithResult:(NSDictionary *)resultDict{
     NSDictionary *office = resultDict[@"office"];
-    if (office) {
+    if (office && office != [NSNull null]) {
         OfficeModel *model = [OfficeModel mj_objectWithKeyValues:office];
         model.officeId        = office[@"id"];
         

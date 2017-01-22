@@ -58,6 +58,15 @@
 
 }
 
+-(void)backBtnClicked{
+    if (_backVC) {
+        [_backVC backBtnClicked];
+    }
+    else{
+        [super backBtnClicked];
+    }
+}
+
 
 #pragma mark -Request & Data
 - (void)requestLeftTabData
@@ -232,7 +241,7 @@
 {
     if (!_projectTabScrollView) {
         
-        _projectTabScrollView = [[ProjectTabScrollView alloc]initWithFrame:CGRectMake(0, 64, kTabWidth, MAIN_HEIGHT-64)];
+        _projectTabScrollView = [[ProjectTabScrollView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(navigationBG.frame)+44, kTabWidth, MAIN_HEIGHT-CGRectGetMaxY(navigationBG.frame)-44)];
         [self.view addSubview:_projectTabScrollView];
         
         
@@ -247,7 +256,7 @@
 - (UITableView *)tableView
 {
     if (!_tableView) {
-        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(kTabWidth, 64, MAIN_WIDTH-kTabWidth, MAIN_HEIGHT-64) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(kTabWidth, CGRectGetMaxY(navigationBG.frame)+44, MAIN_WIDTH-kTabWidth, MAIN_HEIGHT-CGRectGetMaxY(navigationBG.frame)-44) style:UITableViewStylePlain];
         _tableView.showsVerticalScrollIndicator = NO;
         _tableView.backgroundColor = VcBackgroudColor;
         _tableView.delegate = self;

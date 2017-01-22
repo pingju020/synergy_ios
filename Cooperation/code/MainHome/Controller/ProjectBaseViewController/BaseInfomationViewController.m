@@ -15,7 +15,7 @@
 #import "BackMoneyTableViewCell.h"
 #import "SelectOperatorViewController.h"
 
-@interface BaseInfomationViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface BaseInfomationViewController ()<UITableViewDelegate,UITableViewDataSource,ChoosePeopleDelegate>
 @property(nonatomic,assign)E_INFO_TYPE type;
 @property(nonatomic,strong)ProjectDetailModel* model;
 @property(nonatomic,strong)UITableView* tableView;
@@ -207,6 +207,7 @@
 // 添加项目负责人
 -(void)addResponsiblePerson{
     SelectOperatorViewController* vc = [[SelectOperatorViewController alloc]initWithSelectType:@"manager"];
+    vc.delegate = self;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -350,5 +351,8 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-
+#pragma mark -- ChoosePeopleDelegate
+-(void)chooseOperatorOrManagerWithName:(NSString*)name AndId:(NSString*)peopleid{
+    ;
+}
 @end

@@ -10,6 +10,8 @@
 
 @interface MemberViewController : BaseViewController
 
+@property(nonatomic,strong)BaseViewController* backVC;
+
 -(instancetype)initWithProjectId:(NSString*)projectId;
 
 @end
