@@ -426,7 +426,7 @@
                     //取折点
                     CGPoint descPoint = [self.pointArray[i] CGPointValue];
                     
-                    CGPoint descPointBottom = CGPointMake(descPoint.x - descSize.width / 2, self.frame.size.height-descSize.height);
+                    CGPoint descPointBottom = CGPointMake(descPoint.x - descSize.width / 2, self.frame.size.height-descSize.height-3.f);
                     
                     [desc drawAtPoint:descPointBottom withAttributes:self.valueTextAttribute];
                 }
