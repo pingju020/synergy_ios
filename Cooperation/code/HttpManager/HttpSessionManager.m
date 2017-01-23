@@ -20,9 +20,9 @@ SINGLETON_FOR_CLASS(HttpSessionManager)
 
 +(void)load{
 //    kXjServerNew = KEY_IS_PRODUCTION?@"http://120.210.214.20:8080/educloud/api/terminal":@"http://221.130.6.212:4887/educloud/api/terminal";
-//    kXjServerNew = @"http://139.224.10.134:8080/synergy_w/wx/";
-    kXjServerNew = @"http://singki.com/synergy_w/wx/";
-//        kXjServerNew = @"http://192.168.1.150/synergy_w/wx/";
+    kXjServerNew = @"http://139.224.10.134:8080/synergy_w/wx/";
+//    kXjServerNew = @"http://singki.com/synergy_w/wx/";
+//        kXjServerNew = @"http://192.168.10.132:8080/synergy2/wx/";
     
     kTermManu = [NSString stringWithFormat:@"%@,%@,i01,%@,%@", [[UIDevice currentDevice] model],[[UIDevice currentDevice] systemVersion],[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"],@""];
 }

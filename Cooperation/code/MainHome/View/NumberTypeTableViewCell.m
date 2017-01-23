@@ -66,9 +66,10 @@
     [self.input setText:model.projectContentValue];
 }
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField{
+- (void)textFieldDidEndEditing:(UITextField *)textField{
     NSString* str=textField.text;
     NSString* name=self.model.name;
+    NSLog(@"%@",self.model);
     [self.delegate NumberPassValue:[NSString stringWithFormat:@"%@--%@",str,name]];
 }
 

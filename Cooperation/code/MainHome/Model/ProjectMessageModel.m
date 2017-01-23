@@ -15,10 +15,18 @@
     if(dic!=nil){
         self.createDate=[dic objectForKey:@"createDate"];
         self.id=[dic objectForKey:@"id"];
-        self.isTop=[dic objectForKey:@"isTop"];
+        NSNumber* num=[dic objectForKey:@"isTop"];
+        self.isTop=[NSString stringWithFormat:@"%@",num];
         self.state=[dic objectForKey:@"state"];
         
-        self.projectName=[dic objectForKey:@"projectName"];
+//        self.projectName=[dic objectForKey:@"projectName"];
+        if([dic objectForKey:@"projectName"]){
+            self.projectName=[dic objectForKey:@"projectName"];
+        }
+        else{
+            NSDictionary* mydic=[dic objectForKey:@"project"];
+            self.projectName=[mydic objectForKey:@"projectName"];
+        }
         self.stageName=[dic objectForKey:@"stageName"];
         self.userName=[dic objectForKey:@"userName"];
         

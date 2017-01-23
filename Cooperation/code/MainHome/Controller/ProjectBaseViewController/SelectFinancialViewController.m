@@ -23,6 +23,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    backBtn.hidden=YES;
+    
     [self SetTitle];
     
     [self initTableView];
@@ -77,12 +79,7 @@
 //    NSDictionary* tem=[arr objectAtIndex:0];
 //    [dic setObject:[tem objectForKey:@"val"] forKey:@"financialId"];
 //    [dic setObject:[UserDefaults objectForKey:@"user"] forKey:@"phone"];
-//    NSMutableDictionary* dic=[NSMutableDictionary new];
-//    
-//    NSUserDefaults *UserDefaults = [NSUserDefaults standardUserDefaults];
-//    NSString* TempString=[UserDefaults objectForKey:@"user"];
-//    
-//    [dic setObject:TempString forKey:@"phone"];
+
     
     
     
@@ -133,13 +130,15 @@
     
     NSMutableDictionary* model=[DataSource objectAtIndex:indexPath.row];
 
-//    [cell.NameLabel setText:model.name];
-//    if(model.Mark==YES){
-//        [cell.SelectedImageView setImage:[UIImage imageNamed:@"selected@3x.png"]];
-//    }
-//    else{
-//        [cell.SelectedImageView setImage:[UIImage imageNamed:@"unselected@3x.png"]];
-//    }
+    [cell.NameLabel setText:[model objectForKey:@"txt"]];
+    NSString* mark=[model objectForKey:@"Mark"];
+
+    if([mark isEqualToString: @"YES"]){
+        [cell.SelectedImageView setImage:[UIImage imageNamed:@"selected@3x.png"]];
+    }
+    else{
+        [cell.SelectedImageView setImage:[UIImage imageNamed:@"unselected@3x.png"]];
+    }
     return cell;
 }
 
@@ -151,17 +150,28 @@
     for(int i=0;i<DataSource.count;i++){
         if(i==indexPath.row)
         {
-            SelectManagerModel* model=[DataSource objectAtIndex:i];
-            model.Mark=YES;
+            NSMutableDictionary* model=[DataSource objectAtIndex:i];
+            [model setObject:@"YES" forKey:@"Mark"];
         }
         else{
-            SelectManagerModel* model=[DataSource objectAtIndex:i];
-            model.Mark=NO;
+            NSMutableDictionary* model=[DataSource objectAtIndex:i];
+            [model setObject:@"NO" forKey:@"Mark"];
         }
     }
     [SelectTable reloadData];
 }
 
+
+- (void)ConfirmThePeople
+{
+    for (int i=0; i<DataSource.count;i++) {
+        NSMutableDictionary* dic=[DataSource objectAtIndex:i];
+        if([[dic objectForKey:@"Mark"]isEqualToString:@"YES"]){
+            [self.delegate SelectFinancialModel:dic];
+            [self dismissViewControllerAnimated:NO completion:^{}];
+        }
+    }
+}
 
 
 - (void)didReceiveMemoryWarning {
@@ -180,31 +190,6 @@
 */
 
 //
-//[HTTP_MANAGER startNormalPostWithParagram:dic Commandtype:@"app/project/getFactors" successedBlock:^(NSDictionary *succeedResult, BOOL isSucceed) {
-//    if (isSucceed) {
-//        NSLog(@"issec=%@",succeedResult);
-//        //            NSDictionary* dic=[succeedResult objectForKey:@"result"];
-//        //                    NSMutableArray* arr=[succeedResult objectForKey:@"data"];
-//        
-//        NSArray *factors = succeedResult[@"data"];
-//        
-//        NSMutableArray *mulArr = [NSMutableArray array];
-//        
-//        for (NSDictionary *dict in factors) {
-//            FactorModel *model = [FactorModel mj_objectWithKeyValues:dict];
-//            model.factorId        = dict[@"id"];
-//            [mulArr addObject:model];
-//        }
-//        _model.factors=mulArr;
-//        [self makeListData];
-//        [self.tableView reloadData];
-//    }
-//    else{
-//        [PubllicMaskViewHelper showTipViewWith:succeedResult[@"msg"] inSuperView:self.view withDuration:2];
-//    }
-//} failedBolck:^(AFHTTPSessionManager *session, NSError *error) {
-//    [PubllicMaskViewHelper showTipViewWith:@"请求失败，请稍后再试" inSuperView:self.view withDuration:2];
-//}];
 
 
 @end

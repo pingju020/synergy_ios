@@ -15,8 +15,12 @@
 #import "BackMoneyTableViewCell.h"
 #import "SelectOperatorViewController.h"
 #import "NSObject+MJKeyValue.h"
+#import "SelectFinancialViewController.h"
+#import "SelectBankOperateViewController.h"
+#import "SelectBranchOperatorViewController.h"
 
-@interface BaseInfomationViewController ()<UITableViewDelegate,UITableViewDataSource,ChoosePeopleDelegate,TextPassValue,NumberPassValue,ChoosePassValue,AddPassValue,BankMoneyPassValue>
+
+@interface BaseInfomationViewController ()<UITableViewDelegate,UITableViewDataSource,ChoosePeopleDelegate,TextPassValue,NumberPassValue,ChoosePassValue,AddPassValue,BankMoneyPassValue,SelectFinancialModel,SelectBankModel,SelectBranchOperatorModel>
 @property(nonatomic,assign)E_INFO_TYPE type;
 @property(nonatomic,strong)ProjectDetailModel* model;
 @property(nonatomic,strong)UITableView* tableView;
@@ -30,11 +34,14 @@
 @end
 
 @implementation BaseInfomationViewController
-
+{
+    NSString* branchId;
+    NSMutableDictionary* paramsDic;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     title.text = self.projectName;
-    
+    paramsDic=[[NSMutableDictionary alloc]init];
     if (_type == E_INFO_EDIT) {
         [self.tableView reloadData];
     }
@@ -236,13 +243,20 @@
 
 // 添加经办支行
 -(void)addOffice{
-    NSLog(@"addOffice");
+    //跳转
+    SelectBankOperateViewController* bankOperate=[[SelectBankOperateViewController alloc]init];
+    bankOperate.delegate=self;
+    [self presentViewController:bankOperate animated:NO completion:^{}];
 }
 
 // 添加经办人
 -(void)addUser{
-    SelectOperatorViewController* vc = [[SelectOperatorViewController alloc]initWithSelectType:@""];
-    [self.navigationController pushViewController:vc animated:YES];
+    SelectBranchOperatorViewController* vc=[[SelectBranchOperatorViewController alloc]initWithBranchId:branchId];
+    vc.delegate=self;
+    [self presentViewController:vc animated:NO completion:^{}];
+    
+//    SelectOperatorViewController* vc = [[SelectOperatorViewController alloc]initWithSelectType:@""];
+//    [self.navigationController pushViewController:vc animated:YES];
 }
 
 // 添加放款详情
@@ -263,7 +277,9 @@
 //选择融资模式
 -(void)chooseFinace{
     //跳转
-    
+    SelectFinancialViewController* fin=[[SelectFinancialViewController alloc]init];
+    fin.delegate=self;
+    [self presentViewController:fin animated:NO completion:^{}];
     
     
     
@@ -400,23 +416,96 @@
 
 #pragma mark 代理传值
 -(void)PassValue:(NSString *)Text{
+    
+    //存储值
     NSLog(@"text=%@",Text);
 }
 
 - (void)NumberPassValue:(NSString*)Text{
+    //存储值
      NSLog(@"text=%@",Text);
 }
 
 - (void)ChoosePassValue:(NSString*)Text{
+    //存储值
      NSLog(@"text=%@",Text);
 }
 
 - (void)AddPassValue:(NSString *)Text{
+    //存储值
      NSLog(@"text=%@",Text);
 }
 
 -(void)BankMoneyPassValue:(NSString *)Text{
+    //存储值
      NSLog(@"text=%@",Text);
 }
+
+-(void)SelectFinancialModel:(NSMutableDictionary *)financialDic{
+    //发起请求重置并填充值
+    NSLog(@"fin=%@",financialDic);
+    
+    _model.project.financingModeName=[financialDic objectForKey:@"txt"];
+    
+    NSMutableDictionary* dic=[[NSMutableDictionary alloc]init];
+    
+    //    NSMutableDictionary* dic=[NSMutableDictionary new];
+    //
+    NSUserDefaults *UserDefaults = [NSUserDefaults standardUserDefaults];
+    NSString* TempString=[UserDefaults objectForKey:@"user"];
+    [dic setObject:TempString forKey:@"phone"];
+    [dic setObject:[financialDic objectForKey:@"val"] forKey:@"financialId"];
+    
+    [HTTP_MANAGER startNormalPostWithParagram:dic Commandtype:@"app/project/getFactors" successedBlock:^(NSDictionary *succeedResult, BOOL isSucceed) {
+        if (isSucceed) {
+            NSLog(@"issec=%@",succeedResult);
+            //            NSDictionary* dic=[succeedResult objectForKey:@"result"];
+            //                    NSMutableArray* arr=[succeedResult objectForKey:@"data"];
+            
+            
+            NSArray *factors = succeedResult[@"data"];
+            
+            NSMutableArray *mulArr = [NSMutableArray array];
+            
+            for (NSDictionary *dict in factors) {
+                FactorModel *model = [FactorModel mj_objectWithKeyValues:dict];
+                model.factorId        = dict[@"id"];
+                [mulArr addObject:model];
+            }
+            _model.factors=mulArr;
+            [self makeListData];
+            [self.tableView reloadData];
+        }
+        else{
+            [PubllicMaskViewHelper showTipViewWith:succeedResult[@"msg"] inSuperView:self.view withDuration:2];
+        }
+    } failedBolck:^(AFHTTPSessionManager *session, NSError *error) {
+        [PubllicMaskViewHelper showTipViewWith:@"请求失败，请稍后再试" inSuperView:self.view withDuration:2];
+    }];
+}
+
+
+-(void)SelectBankModel:(NSMutableDictionary *)bankDic{
+    //重新初始化
+    _model.office=[[OfficeModel alloc]init];
+    _model.office.officeName=[bankDic objectForKey:@"txt"];
+    branchId=[bankDic objectForKey:@"val"];
+    [self makeListData];
+    [self.tableView reloadData];
+}
+
+-(void)SelectBranchOperator:(NSMutableArray *)bankArray{
+    NSString* str=@"";
+    for(int i=0;i<bankArray.count;i++){
+        NSDictionary* dic=[bankArray objectAtIndex:i];
+        NSString* tempstr=[dic objectForKey:@"userName"];
+        str=[NSString stringWithFormat:@"%@,%@",str,tempstr];
+    }
+    _model.userNames=str;
+    [self makeListData];
+    [self.tableView reloadData];
+//    _model.userNames
+}
+
 
 @end

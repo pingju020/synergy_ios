@@ -245,6 +245,8 @@
 		AC7FFC321E3364FB00200686 /* ProgressIdentifyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7FFC311E3364FB00200686 /* ProgressIdentifyModel.m */; };
 		AC7FFC351E33651000200686 /* BankIdentifyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7FFC341E33651000200686 /* BankIdentifyModel.m */; };
 		AC7FFC381E33652500200686 /* BranchBankIdentifyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7FFC371E33652500200686 /* BranchBankIdentifyModel.m */; };
+		AC84D10D1E35CD1C005FF01C /* SelectBranchOperatorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AC84D10C1E35CD1C005FF01C /* SelectBranchOperatorModel.m */; };
+		ACB329A81E35B8F40098CE4D /* SelectBranchOperatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACB329A71E35B8F40098CE4D /* SelectBranchOperatorViewController.m */; };
 		ACB7C50D1E32FF1100C44615 /* ProjectSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACB7C50C1E32FF1100C44615 /* ProjectSearchViewController.m */; };
 		ACB7C5101E32FF2C00C44615 /* ProjectNewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACB7C50F1E32FF2C00C44615 /* ProjectNewViewController.m */; };
 		ACB7C5131E32FF4D00C44615 /* ProjectBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACB7C5121E32FF4D00C44615 /* ProjectBaseViewController.m */; };
@@ -926,6 +928,10 @@
 		AC7FFC341E33651000200686 /* BankIdentifyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankIdentifyModel.m; sourceTree = "<group>"; };
 		AC7FFC361E33652500200686 /* BranchBankIdentifyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BranchBankIdentifyModel.h; sourceTree = "<group>"; };
 		AC7FFC371E33652500200686 /* BranchBankIdentifyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BranchBankIdentifyModel.m; sourceTree = "<group>"; };
+		AC84D10B1E35CD1C005FF01C /* SelectBranchOperatorModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectBranchOperatorModel.h; sourceTree = "<group>"; };
+		AC84D10C1E35CD1C005FF01C /* SelectBranchOperatorModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectBranchOperatorModel.m; sourceTree = "<group>"; };
+		ACB329A61E35B8F40098CE4D /* SelectBranchOperatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectBranchOperatorViewController.h; sourceTree = "<group>"; };
+		ACB329A71E35B8F40098CE4D /* SelectBranchOperatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectBranchOperatorViewController.m; sourceTree = "<group>"; };
 		ACB7C50B1E32FF1100C44615 /* ProjectSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectSearchViewController.h; sourceTree = "<group>"; };
 		ACB7C50C1E32FF1100C44615 /* ProjectSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectSearchViewController.m; sourceTree = "<group>"; };
 		ACB7C50E1E32FF2C00C44615 /* ProjectNewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectNewViewController.h; sourceTree = "<group>"; };
@@ -1851,6 +1857,8 @@
 		AC1115F01E31DD91009ABFDF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AC84D10B1E35CD1C005FF01C /* SelectBranchOperatorModel.h */,
+				AC84D10C1E35CD1C005FF01C /* SelectBranchOperatorModel.m */,
 				ACF207A81E351C4500498C96 /* FolderModel.h */,
 				ACF207A91E351C4500498C96 /* FolderModel.m */,
 				ACF207A51E351C3500498C96 /* FileModel.h */,
@@ -2679,6 +2687,8 @@
 				ACB7C5321E33081900C44615 /* SelectOperatorViewController.m */,
 				ACB7C5341E33083300C44615 /* SelectBankOperateViewController.h */,
 				ACB7C5351E33083300C44615 /* SelectBankOperateViewController.m */,
+				ACB329A61E35B8F40098CE4D /* SelectBranchOperatorViewController.h */,
+				ACB329A71E35B8F40098CE4D /* SelectBranchOperatorViewController.m */,
 			);
 			path = SelectViewController;
 			sourceTree = "<group>";
@@ -3690,6 +3700,7 @@
 				AC11176F1E31DD91009ABFDF /* UIImageView+AFNetworking.m in Sources */,
 				C634FA821E34F93E003EE26B /* XHMessageTextView.m in Sources */,
 				AC1117331E31DD91009ABFDF /* MainHomeItemView.m in Sources */,
+				ACB329A81E35B8F40098CE4D /* SelectBranchOperatorViewController.m in Sources */,
 				AC1118251E31F5B2009ABFDF /* MJRefreshBackStateFooter.m in Sources */,
 				C634FA601E34F93D003EE26B /* XHMessageAvatarFactory.m in Sources */,
 				AC1117691E31DD91009ABFDF /* README.md in Sources */,
@@ -3835,6 +3846,7 @@
 				C634FA651E34F93D003EE26B /* XHAnnotation.m in Sources */,
 				AC1118271E31F5B2009ABFDF /* MJRefreshNormalHeader.m in Sources */,
 				AC1117021E31DD91009ABFDF /* ImageCollectionViewCell.m in Sources */,
+				AC84D10D1E35CD1C005FF01C /* SelectBranchOperatorModel.m in Sources */,
 				AC1116FE1E31DD91009ABFDF /* CustomSelectView.m in Sources */,
 				C634FA641E34F93D003EE26B /* XHVideoOutputSampleBufferFactory.m in Sources */,
 				C6EEC12A1E34932B009469E8 /* BaseMainViewController.m in Sources */,

@@ -160,7 +160,7 @@ E_ROLE role;
 
 
 - (void)LoginWithUserName:(NSString*)user AndPassword:(NSString*)password{
-    NSDictionary* dicPara = @{@"loginName":user, @"passWord":password};
+    NSDictionary* dicPara = @{@"loginName":@"13621580762", @"passWord":password};
     
     [HTTP_MANAGER startNormalPostWithParagram:dicPara Commandtype:@"app/check" successedBlock:^(NSDictionary *succeedResult, BOOL isSucceed) {
         if (isSucceed) {

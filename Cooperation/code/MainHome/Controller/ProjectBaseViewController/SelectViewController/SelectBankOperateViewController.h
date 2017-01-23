@@ -7,7 +7,11 @@
 //
 
 #import "BaseViewController.h"
+@protocol SelectBankModel <NSObject>
 
+- (void)SelectBankModel:(NSMutableDictionary*)bankDic;
+
+@end
 @interface SelectBankOperateViewController : BaseViewController
-
+@property(nonatomic,strong) id<SelectBankModel>delegate;
 @end

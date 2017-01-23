@@ -389,8 +389,8 @@ AH_BASESUBVCFORMAINTAB_MODULE
     //1：进行中，2：已完成，3：已关闭，4：待审核，5：待确认）
     NSUserDefaults *UserDefaults = [NSUserDefaults standardUserDefaults];
     NSString* TempString=[UserDefaults objectForKey:@"user"];
-    
-    [dic setObject:TempString forKey:@"phone"];
+    //tempstring
+    [dic setObject:@"13621580762" forKey:@"phone"];
     [dic setObject:@"0" forKey:@"page"];
     [dic setObject:@"1000" forKey:@"pageSize"];
     
@@ -651,6 +651,13 @@ AH_BASESUBVCFORMAINTAB_MODULE
         ProjectMessageCell* cell=[ProjectMessageCell cellWithTableView:tableView];
         
         ProjectMessageModel* TempModel=[Datasource objectAtIndex:indexPath.row];
+        
+        if([TempModel.isTop isEqualToString:@"1"])
+        {
+            cell.MarkImageView.hidden=NO;
+        }else{
+            cell.MarkImageView.hidden=YES;
+        }
         
         [cell.MessgaeLabel setText:TempModel.projectName];
         [cell.StatusLabel setText:TempModel.stageName];

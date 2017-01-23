@@ -9,7 +9,7 @@
 #import "BaseViewController.h"
 @protocol SelectFinancialModel <NSObject>
 
-- (void)SelectFinancialModel:(NSString*)financialId;
+- (void)SelectFinancialModel:(NSMutableDictionary*)financialDic;
 
 @end
 @interface SelectFinancialViewController : BaseViewController
