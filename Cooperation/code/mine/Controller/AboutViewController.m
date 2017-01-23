@@ -8,8 +8,11 @@
 
 #import "AboutViewController.h"
 #import "PJTabBarItem.h"
+#import "LJMacros.h"
 
-@interface AboutViewController ()
+@interface AboutViewController ()<UITableViewDelegate,UITableViewDataSource>
+
+@property (nonatomic,strong) UITableView* tableView;
 
 @end
 
@@ -31,7 +34,27 @@
 
 - (void)loadView{
     [super loadView];
+    
+    _tableView = [[UITableView alloc]initWithFrame:self.view.bounds];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    _tableView.backgroundView = nil;
+    _tableView.backgroundColor = [UIColor clearColor];
+    _tableView.tableFooterView = [UIView new];
+    _tableView.autoresizingMask = UIViewAutoresizingFlexibleAll;
+    [self.view addSubview:_tableView];
+    
+    self.tableView.tableHeaderView = [self tableViewHeader];
 }
+
+- (UIView*) tableViewHeader{
+    UIView* v = [[UIView alloc]initWithFrame:(CGRect){0,0,SCREEN_WIDTH,300.f}];
+    UIImageView* iv = [[UIImageView alloc]initWithFrame:(CGRect){0}];
+    [v addSubview:iv];
+    
+    return v;
+}
+
 
 - (void) viewWillAppear:(BOOL)animated
 {
@@ -68,6 +91,96 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 4;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    CGFloat h = 44;
+    switch (indexPath.row) {
+        case 0:
+        {
+            break;
+        }
+        case 1:
+        {
+            break;
+        }
+        case 2:
+        {
+            break;
+        }
+        case 3:
+        {
+            break;
+        }
+        default:
+            break;
+    }
+    return h;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString* cellIdentifier = @"CellIdentifier";
+    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    }
+    
+    cell.textLabel.text = @"";
+    
+    switch (indexPath.row) {
+        case 0:
+        {
+            break;
+        }
+        case 1:
+        {
+            break;
+        }
+        case 2:
+        {
+            break;
+        }
+        case 3:
+        {
+            break;
+        }
+        default:
+            break;
+    }
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    switch (indexPath.row) {
+        case 0:
+        {
+            break;
+        }
+        case 1:
+        {
+            break;
+        }
+        case 2:
+        {
+            break;
+        }
+        case 3:
+        {
+            break;
+        }
+        default:
+            break;
+    }
 }
 
 /*

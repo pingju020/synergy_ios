@@ -274,7 +274,7 @@ dispatch_source_t LJGCDTimer(NSTimeInterval interval,
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"yyyyMMddHHmmss";
     NSString *str = [formatter stringFromDate:[NSDate date]];
-    NSString *fileName = [NSString stringWithFormat:@"%@.mp3", str];
+    NSString *fileName = [NSString stringWithFormat:@"%@.m4a", str];
     
     NSURLSessionDataTask* task = [manager POST:url parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData)
                                   {
@@ -284,7 +284,7 @@ dispatch_source_t LJGCDTimer(NSTimeInterval interval,
                                       [formData appendPartWithFileData:fileData
                                                                   name:@"file"
                                                               fileName:fileName
-                                                              mimeType:@"audio/mp3"];
+                                                              mimeType:@"audio/m4a"];
                                   }
                                       progress:^(NSProgress * _Nonnull uploadProgress) {
                                           //打印下上传进度
