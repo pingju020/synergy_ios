@@ -78,4 +78,10 @@
     }
 }
 
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+    NSString* str=textField.text;
+    NSString* name=self.model.name;
+    [self.delegate BankMoneyPassValue:[NSString stringWithFormat:@"bank---%@--%@",str,name]];
+}
+
 @end

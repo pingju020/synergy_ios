@@ -237,6 +237,7 @@ AH_BASESUBVCFORMAINTAB_MODULE
     
     WebView=[[UIWebView alloc]initWithFrame:CGRectMake(0,NAVIGATOR_HEIGHT+STATUS_BAR_HEIGHT+60, SCREEN_WIDTH, SCREEN_HEIGHT-NAVIGATOR_HEIGHT-STATUS_BAR_HEIGHT-60-TAB_BAR_HEIGHT)];
     [self.view addSubview:WebView];
+    [self.view setBackgroundColor:[UIColor whiteColor]];
     
     
     webView.hidden=NO;
@@ -259,13 +260,13 @@ AH_BASESUBVCFORMAINTAB_MODULE
     [WebView addGestureRecognizer:longPress];
 
     
-    [WebView setOpaque:NO];//opaque是不透明的意思
+//    [WebView setOpaque:NO];//opaque是不透明的意思
     [WebView setScalesPageToFit:YES];//自动缩放以适应屏幕
     [self.view addSubview:WebView];
     //加载网页的方式
     //1.创建并加载远程网页
     NSUserDefaults *UserDefaults = [NSUserDefaults standardUserDefaults];
-//    NSString *username=[UserDefaults objectForKey:@"user"];
+    NSString *username=[UserDefaults objectForKey:@"user"];
     NSString* TempString=[NSString stringWithFormat:@"http://singki.com/synergy_w/wx/productDescs/inBankWeekLyList"];
     NSURL *url = [NSURL URLWithString:TempString];
     [WebView loadRequest:[NSURLRequest requestWithURL:url]];
@@ -280,6 +281,8 @@ AH_BASESUBVCFORMAINTAB_MODULE
     [opaqueView addSubview:activityIndicatorView];
     [self.view setBackgroundColor:[UIColor whiteColor]];
     [webView setBackgroundColor:[UIColor whiteColor]];
+    
+    opaqueView.hidden=YES;
 }
 
 #pragma mark 代理
@@ -326,7 +329,7 @@ AH_BASESUBVCFORMAINTAB_MODULE
 
 -(void)webViewDidStartLoad:(UIWebView *)webView{
     [activityIndicatorView startAnimating];
-    opaqueView.hidden = NO;
+    opaqueView.hidden = YES;
     webView.scrollView.scrollEnabled=NO;
 }
 

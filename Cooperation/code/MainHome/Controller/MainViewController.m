@@ -78,6 +78,9 @@
     UIButton* AddButton;
 
     BOOL isToBeConfirm;
+    
+    BOOL isSure;
+//    BOOL isAudit;
 }
 
 
@@ -308,9 +311,9 @@ AH_BASESUBVCFORMAINTAB_MODULE
                 
                 ProjectSearchConditionModel* TempModel=[[ProjectSearchConditionModel alloc]init];
                 TempModel.MessageInfo=@"阶段";
-                TempModel.stageOrder=@"0";
+                TempModel.stageOrder=@"all";
                 TempModel.Mark=YES;
-                TempModel.passParam=@"0";
+                TempModel.passParam=@"all";
                 [ProgressDataSource addObject:TempModel];
                 for(int i=0;i<arr.count;i++){
                     NSDictionary* TempDic=[arr objectAtIndex:i];
@@ -326,7 +329,7 @@ AH_BASESUBVCFORMAINTAB_MODULE
                 [self ProgressList];
                 //设定初始条件
                 [ProgressButton setTitle:@"阶段" forState:UIControlStateNormal];
-                ProgressCondition=@"0";
+                ProgressCondition=@"all";
             }
             
             
@@ -342,7 +345,12 @@ AH_BASESUBVCFORMAINTAB_MODULE
             NSString* Permission=[succeedResult objectForKey:@"permission"];
             if([Permission containsString:@"app:project:state:sure"]){
                 [self StatusListWithPermission:@"待审核"];
-            }else{
+                isSure=YES;
+            }else if ([Permission containsString:@"app:project:state:audit"]){
+                [self StatusListWithPermission:@"待审核"];
+                isSure=NO;
+            }
+            else{
                 [self StatusListWithPermission:@"随意"];
             }
             
@@ -434,7 +442,7 @@ AH_BASESUBVCFORMAINTAB_MODULE
     [self.view addSubview:MainTableView];
     
     UIView* TempLine=[[UIView alloc]initWithFrame:CGRectMake(0,40+STATUS_BAR_HEIGHT+NAVIGATOR_HEIGHT,SCREEN_WIDTH,10)];
-    [TempLine setBackgroundColor:[UIColor colorWithHexString:@"#D9D9D9"]];
+    [TempLine setBackgroundColor:[UIColor colorWithHexString:@"#F8F8F8"]];
     [self.view addSubview:TempLine];
     //D9D9D9
     
@@ -659,6 +667,7 @@ AH_BASESUBVCFORMAINTAB_MODULE
         if(model.Mark==YES){
             cell.ConditionSelectImageView.hidden=NO;
             [cell.ConditionLabel setTextColor:[UIColor colorWithHexString:@"#00B6F1"]];
+            
         }
         else{
             cell.ConditionSelectImageView.hidden=YES;
@@ -699,11 +708,42 @@ AH_BASESUBVCFORMAINTAB_MODULE
     
     if(tableView==MainTableView){
         ProjectMessageModel* TempModel=[Datasource objectAtIndex:indexPath.row];
-        //跳转详情页面
-        NSRange range = [TempModel.stageName rangeOfString:@"审批"];
-        BaseMainViewController* BaseInfoViewController=[[BaseMainViewController alloc]initWithProjretId:TempModel.id Name:TempModel.projectName Check:range.length > 0];
-        //传参等待上传
-        [self.navigationController pushViewController:BaseInfoViewController animated:NO];
+        if(isToBeConfirm==YES)
+        {
+            //获取权限
+            NSMutableDictionary* dic=[NSMutableDictionary new];
+            NSUserDefaults *UserDefaults = [NSUserDefaults standardUserDefaults];
+            [dic setObject:[UserDefaults objectForKey:@"user"] forKey:@"phone"];
+            [dic setObject:TempModel.id forKey:@"projectId"];
+            [HTTP_MANAGER startNormalPostWithParagram:dic Commandtype:@"app/project/getProjectPermission" successedBlock:^(NSDictionary *succeedResult, BOOL isSucceed) {
+                if (isSucceed) {
+                    NSDictionary* dic=[succeedResult objectForKey:@"data"];
+                    NSString* permission=[dic objectForKey:@"permission"];
+                    if([permission containsString:@""])//待审核
+                    {
+                        //跳撤回
+                    }else{//待确认
+                        //跳确认
+                    }
+                    
+                }
+                else{
+                    [PubllicMaskViewHelper showTipViewWith:succeedResult[@"msg"] inSuperView:self.view withDuration:2];
+                }
+            } failedBolck:^(AFHTTPSessionManager *session, NSError *error) {
+                [PubllicMaskViewHelper showTipViewWith:@"请求失败，请检查网络设置后重试" inSuperView:self.view withDuration:2];
+            }];
+        }
+        else//跳信息页面
+        {
+            //跳转详情页面
+            NSRange range = [TempModel.stageName rangeOfString:@"审批"];
+//            BaseMainViewController* BaseInfoViewController=[[BaseMainViewController alloc]initWithProjretId:TempModel.id Name:TempModel.projectName Check:range.length > 0];
+            BaseMainViewController* BaseInfoViewController=[[BaseMainViewController alloc]initWithProjretId:TempModel.id Name:TempModel.projectName Check:NO];
+            //传参等待上传
+            [self.navigationController pushViewController:BaseInfoViewController animated:NO];
+        }
+        
     }
     else if (tableView==ProgressList){
         //设置阶段条件

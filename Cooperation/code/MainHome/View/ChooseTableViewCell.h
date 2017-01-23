@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @class FactorModel;
+@protocol ChoosePassValue <NSObject>
+
+- (void)ChoosePassValue:(NSString*)Text;
+
+@end
 @interface ChooseTableViewCell : UITableViewCell
 @property(nonatomic,strong)FactorModel* model;
+@property(nonatomic,strong) id<ChoosePassValue>delegate;
 @end

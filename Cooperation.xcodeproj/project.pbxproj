@@ -308,6 +308,7 @@
 		ACB7C5A41E330D3900C44615 /* ppt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB7C5741E330D3900C44615 /* ppt@3x.png */; };
 		ACB7C5A51E330D3900C44615 /* xls@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB7C5751E330D3900C44615 /* xls@3x.png */; };
 		ACBAB9071E34AD7900784C9C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACBAB9061E34AD7900784C9C /* QuartzCore.framework */; };
+		ACE785C91E35A5A600EA155B /* SelectFinancialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE785C81E35A5A600EA155B /* SelectFinancialViewController.m */; };
 		ACF207A71E351C3500498C96 /* FileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF207A61E351C3500498C96 /* FileModel.m */; };
 		ACF207AA1E351C4500498C96 /* FolderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF207A91E351C4500498C96 /* FolderModel.m */; };
 		ACF207B11E351C6700498C96 /* FileTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF207AC1E351C6700498C96 /* FileTableCell.m */; };
@@ -1004,6 +1005,8 @@
 		ACB7C5741E330D3900C44615 /* ppt@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ppt@3x.png"; sourceTree = "<group>"; };
 		ACB7C5751E330D3900C44615 /* xls@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xls@3x.png"; sourceTree = "<group>"; };
 		ACBAB9061E34AD7900784C9C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		ACE785C71E35A5A600EA155B /* SelectFinancialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectFinancialViewController.h; sourceTree = "<group>"; };
+		ACE785C81E35A5A600EA155B /* SelectFinancialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectFinancialViewController.m; sourceTree = "<group>"; };
 		ACF207A51E351C3500498C96 /* FileModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileModel.h; sourceTree = "<group>"; };
 		ACF207A61E351C3500498C96 /* FileModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileModel.m; sourceTree = "<group>"; };
 		ACF207A81E351C4500498C96 /* FolderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderModel.h; sourceTree = "<group>"; };
@@ -1901,16 +1904,16 @@
 				ACF207AE1E351C6700498C96 /* FolderTableCell.h */,
 				ACF207AF1E351C6700498C96 /* FolderTableCell.m */,
 				ACF207B01E351C6700498C96 /* FolderTableCell.xib */,
-				C68710691E34575A0018E152 /* AddButtonTableViewCell.m */,
-				C687106A1E34575A0018E152 /* ChooseTableViewCell.m */,
-				C687106B1E34575A0018E152 /* NumberTypeTableViewCell.m */,
-				C687106C1E34575A0018E152 /* TextTypeTableViewCell.m */,
 				C687106D1E34575A0018E152 /* AddButtonTableViewCell.h */,
+				C68710691E34575A0018E152 /* AddButtonTableViewCell.m */,
+				C68710701E34575A0018E152 /* ChooseTableViewCell.h */,
+				C687106A1E34575A0018E152 /* ChooseTableViewCell.m */,
+				C68710711E34575A0018E152 /* NumberTypeTableViewCell.h */,
+				C687106B1E34575A0018E152 /* NumberTypeTableViewCell.m */,
+				C68710721E34575A0018E152 /* TextTypeTableViewCell.h */,
+				C687106C1E34575A0018E152 /* TextTypeTableViewCell.m */,
 				C687106E1E34575A0018E152 /* ChangeInfoLabel.h */,
 				C687106F1E34575A0018E152 /* ChangeInfoLabel.m */,
-				C68710701E34575A0018E152 /* ChooseTableViewCell.h */,
-				C68710711E34575A0018E152 /* NumberTypeTableViewCell.h */,
-				C68710721E34575A0018E152 /* TextTypeTableViewCell.h */,
 				AC68D9811E3396B1002DD4DE /* SelectManagerCell.h */,
 				AC68D9821E3396B1002DD4DE /* SelectManagerCell.m */,
 				AC68D9831E3396B1002DD4DE /* SelectManagerCell.xib */,
@@ -2650,6 +2653,8 @@
 				ACB7C5231E33038C00C44615 /* MemberViewController.m */,
 				C6EEC1281E34932B009469E8 /* BaseMainViewController.h */,
 				C6EEC1291E34932B009469E8 /* BaseMainViewController.m */,
+				ACE785C71E35A5A600EA155B /* SelectFinancialViewController.h */,
+				ACE785C81E35A5A600EA155B /* SelectFinancialViewController.m */,
 			);
 			path = ProjectBaseViewController;
 			sourceTree = "<group>";
@@ -3780,6 +3785,7 @@
 				4D9A11471E3593E800504884 /* ProjectStageSectionView.m in Sources */,
 				AC11174F1E31DD91009ABFDF /* ELCOverlayImageView.m in Sources */,
 				AC11177F1E31DD91009ABFDF /* NSObject+MJClass.m in Sources */,
+				ACE785C91E35A5A600EA155B /* SelectFinancialViewController.m in Sources */,
 				C6EEC1301E34969C009469E8 /* PPLabelMenuView.m in Sources */,
 				AC1117971E31DD91009ABFDF /* UIView+WebCache.m in Sources */,
 				AC1117801E31DD91009ABFDF /* NSObject+MJCoding.m in Sources */,

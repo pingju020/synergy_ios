@@ -10,7 +10,13 @@
 
 @class CreditModel;
 
+@protocol BankMoneyPassValue <NSObject>
+
+- (void)BankMoneyPassValue:(NSString*)Text;
+
+@end
 @interface BackMoneyTableViewCell : UITableViewCell
+@property(nonatomic,strong) id<BankMoneyPassValue>delegate;
 @property(nonatomic,assign)BOOL isTableHeader;
 @property(nonatomic,strong)CreditModel* model;
 @end

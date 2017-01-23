@@ -12,5 +12,6 @@
 + (instancetype)cellWithTableView:(UITableView *)tableView;
 @property (weak, nonatomic) IBOutlet UILabel *ConditionLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *ConditionSelectImageView;
+@property (weak, nonatomic) IBOutlet UIView *LineView;
 
 @end

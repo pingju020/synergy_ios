@@ -14,8 +14,9 @@
 #import "ChooseTableViewCell.h"
 #import "BackMoneyTableViewCell.h"
 #import "SelectOperatorViewController.h"
+#import "NSObject+MJKeyValue.h"
 
-@interface BaseInfomationViewController ()<UITableViewDelegate,UITableViewDataSource,ChoosePeopleDelegate>
+@interface BaseInfomationViewController ()<UITableViewDelegate,UITableViewDataSource,ChoosePeopleDelegate,TextPassValue,NumberPassValue,ChoosePassValue,AddPassValue,BankMoneyPassValue>
 @property(nonatomic,assign)E_INFO_TYPE type;
 @property(nonatomic,strong)ProjectDetailModel* model;
 @property(nonatomic,strong)UITableView* tableView;
@@ -58,21 +59,41 @@
     if (self = [super init]) {
         _type = type;
         _projectName = projectName;
-        if (type == E_INFO_EDIT) {
-            _model = [[ProjectDetailModel alloc]init];
-            title.text = @"填写项目基本信息";
-            [self makeListData];
-        }
-        else{
+//        if (type == E_INFO_EDIT) {
+//            _model = [[ProjectDetailModel alloc]init];
+//            title.text = @"填写项目基本信息";
+//            [self makeListData];
+//        }
+//        else{
             NSDictionary* para = @{
                                    @"phone":[[NSUserDefaults standardUserDefaults]objectForKey:@"user"],
                                    @"projectId":projectId};
             [HTTP_MANAGER startNormalPostWithParagram:para Commandtype:@"app/project/getProjectInfo" successedBlock:^(NSDictionary *succeedResult, BOOL isSucceed) {
                 if (isSucceed) {
-                    _model = [ProjectDetailModel creatModelWithDictonary:succeedResult[@"data"]];
-                    [self makeListData];
-                    title.text = _model.project.projectName;
-                    [self.tableView reloadData];
+                    NSDictionary* tempdic=[succeedResult objectForKey:@"data"];
+                    NSArray* arr=[tempdic objectForKey:@"factors"];
+                    if(arr.count==0){
+                        //为空
+                        _type=E_INFO_EDIT;
+//                        _model = [[ProjectDetailModel alloc]init];
+//                        title.text = @"填写项目基本信息";
+//                        [self makeListData];
+                        _model = [ProjectDetailModel creatModelWithDictonary:succeedResult[@"data"]];
+                        [self makeListData];
+                        title.text = _model.project.projectName;
+                        [self.tableView reloadData];
+                    }
+                    else{
+                        //不为空
+                        _type=E_INFO_VIEW;
+                        _model = [ProjectDetailModel creatModelWithDictonary:succeedResult[@"data"]];
+                        [self makeListData];
+                        title.text = _model.project.projectName;
+                        [self.tableView reloadData];
+                    }
+                    
+                    
+                    
                 }
                 else{
                     [PubllicMaskViewHelper showTipViewWith:succeedResult[@"msg"] inSuperView:self.view withDuration:2];
@@ -80,7 +101,7 @@
             } failedBolck:^(AFHTTPSessionManager *session, NSError *error) {
                 [PubllicMaskViewHelper showTipViewWith:@"请求失败，请稍后再试" inSuperView:self.view withDuration:2];
             }];
-        }
+//        }
     }
     return self;
 }
@@ -121,7 +142,8 @@
     projectName.name = @"项目名称";
     projectName.projectContentValue = _model.project.projectName;
     if (_type == E_INFO_EDIT) {
-        projectName.type = @"text";
+//        projectName.type = @"text";
+        projectName.type=@"show";
     }
     else{
         projectName.type = @"show";
@@ -223,7 +245,7 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-// 添加返款详情
+// 添加放款详情
 -(void)addBackMoney{
     NSLog(@"addBackMoney");
 }
@@ -240,11 +262,19 @@
 
 //选择融资模式
 -(void)chooseFinace{
+    //跳转
+    
+    
+    
+    
     //融资模式
+    
+//    _model.project.financingModeName---1
+//    _model.factors---2
     
     //主要设置这个东西
     
-//    _model.factors
+
     
     //获取融资信息
     NSLog(@"chooseFinace");
@@ -302,6 +332,7 @@
             if (!cell) {
                 cell = [[TextTypeTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:textCell];
             }
+            cell.delegate=self;
             cell.model = model;
             return cell;
         }
@@ -313,6 +344,7 @@
                 cell = [[NumberTypeTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:numberCell];
             }
             cell.model = model;
+            cell.delegate=self;
             return cell;
         }
         else if([model.type isEqualToString:@"date"]){
@@ -323,6 +355,7 @@
                 cell = [[ChooseTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:dateCell];
             }
             cell.model = model;
+            cell.delegate=self;
             return cell;
         }
         else{
@@ -333,6 +366,7 @@
                 cell = [[AddButtonTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
             }
             cell.model = model;
+            cell.delegate=self;
             return cell;
         }
     }
@@ -363,4 +397,26 @@
 -(void)chooseOperatorOrManagerWithName:(NSString*)name AndId:(NSString*)peopleid{
     ;
 }
+
+#pragma mark 代理传值
+-(void)PassValue:(NSString *)Text{
+    NSLog(@"text=%@",Text);
+}
+
+- (void)NumberPassValue:(NSString*)Text{
+     NSLog(@"text=%@",Text);
+}
+
+- (void)ChoosePassValue:(NSString*)Text{
+     NSLog(@"text=%@",Text);
+}
+
+- (void)AddPassValue:(NSString *)Text{
+     NSLog(@"text=%@",Text);
+}
+
+-(void)BankMoneyPassValue:(NSString *)Text{
+     NSLog(@"text=%@",Text);
+}
+
 @end

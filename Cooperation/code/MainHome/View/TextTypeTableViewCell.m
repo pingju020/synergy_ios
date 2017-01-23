@@ -68,5 +68,14 @@
         return NO;
     }
 }
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+    NSString* str=textField.text;
+    NSString* name=self.model.name;
+    [self.delegate PassValue:[NSString stringWithFormat:@"%@--%@",str,name]];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    
+}
 
 @end

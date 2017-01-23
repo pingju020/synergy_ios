@@ -10,7 +10,17 @@
 
 @class FactorModel;
 
+@protocol TextPassValue <NSObject>
+
+- (void)PassValue:(NSString*)Text;
+
+@end
+
 @interface TextTypeTableViewCell : UITableViewCell
+@property(nonatomic,strong) id<TextPassValue>delegate;
+
 @property(nonatomic,assign)BOOL bEdit;
 @property(nonatomic,strong)FactorModel* model;
 @end
+
+

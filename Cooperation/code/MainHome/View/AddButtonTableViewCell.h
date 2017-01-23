@@ -9,7 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @class FactorModel;
+@protocol AddPassValue <NSObject>
 
+- (void)AddPassValue:(NSString*)Text;
+
+@end
 @interface AddButtonTableViewCell : UITableViewCell
 @property(nonatomic,strong)FactorModel* model;
+@property(nonatomic,strong) id<AddPassValue>delegate;
 @end

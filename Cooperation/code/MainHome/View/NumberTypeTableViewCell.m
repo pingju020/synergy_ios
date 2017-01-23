@@ -9,7 +9,7 @@
 #import "NumberTypeTableViewCell.h"
 #import "ProjectDetailModel.h"
 
-@interface NumberTypeTableViewCell()
+@interface NumberTypeTableViewCell()<UITextFieldDelegate>
 @property(nonatomic,strong)UITextField* input;
 @property(nonatomic,strong)UILabel* money;
 @property(nonatomic,strong)UIView* sep;
@@ -41,6 +41,7 @@
         [_input setTextAlignment:NSTextAlignmentRight];
         [_input setTextColor:COMMON_CORLOR_HIGHLIGHT];
         [_input setFont:[UIFont systemFontOfSize:14]];
+        _input.delegate=self;
         [self.contentView addSubview:_input];
         
         _money = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_input.frame)+5, 0, 40, 56)];
@@ -64,5 +65,12 @@
     [self.input setPlaceholder:[NSString stringWithFormat:@"请填写%@",model.name]];
     [self.input setText:model.projectContentValue];
 }
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+    NSString* str=textField.text;
+    NSString* name=self.model.name;
+    [self.delegate NumberPassValue:[NSString stringWithFormat:@"%@--%@",str,name]];
+}
+
 
 @end

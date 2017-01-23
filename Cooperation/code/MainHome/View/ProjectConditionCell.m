@@ -17,6 +17,7 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ProjectConditionCell" owner:nil options:nil] lastObject];
     }
     [cell.ConditionLabel setTextColor:[UIColor darkGrayColor]];
+    [cell.LineView setBackgroundColor:[UIColor colorWithHexString:@"#F8F8F8"]];
     return cell;
 }
 - (void)awakeFromNib {

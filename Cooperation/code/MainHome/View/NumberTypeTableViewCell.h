@@ -9,7 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @class FactorModel;
+@protocol NumberPassValue <NSObject>
 
+- (void)NumberPassValue:(NSString*)Text;
+
+@end
 @interface NumberTypeTableViewCell : UITableViewCell
+@property(nonatomic,strong) id<NumberPassValue>delegate;
 @property(nonatomic,strong)FactorModel* model;
 @end
