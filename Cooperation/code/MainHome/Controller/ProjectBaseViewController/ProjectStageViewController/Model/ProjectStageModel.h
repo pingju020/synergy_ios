@@ -68,7 +68,7 @@ static CGFloat PS_CELL_H = 35;
 @property (nonatomic,assign) BOOL isOn; //default YES
 
 ///自定义反馈cell高度
-@property (nonatomic,assign) CGFloat feedBackCellHeight; //default-1 -1表示未计算过
+@property (nonatomic,assign) CGFloat feedBackCellHeight;
 
 //构建方法
 + (NSArray *)parsingArrayWithList:(NSArray *)list;
@@ -113,7 +113,7 @@ static CGFloat PS_CELL_H = 35;
 
 
 ///自定义反馈内容cell高度
-@property (nonatomic,assign) CGFloat contentCellHeight; //default-1 -1表示未计算过
+@property (nonatomic,assign) CGFloat contentCellHeight; 
 
 //构建方法
 + (NSArray *)parsingArrayWithList:(NSArray *)list;
