@@ -169,6 +169,10 @@
         case 1:
         {
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            UIImageView* ac = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"右箭头"]];
+            ac.lj_width = 8;
+            ac.lj_height = ac.lj_width*1.5;
+            cell.accessoryView = ac;
             cell.textLabel.text = @"常见问题";
             //cell.detailTextLabel.text = @"最新版本";
             break;
@@ -176,6 +180,10 @@
         case 2:
         {
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            UIImageView* ac = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"右箭头"]];
+            ac.lj_width = 8;
+            ac.lj_height = ac.lj_width*1.5;
+            cell.accessoryView = ac;
             cell.textLabel.text = @"版权信息";
             //cell.detailTextLabel.text = @"最新版本";
             break;
