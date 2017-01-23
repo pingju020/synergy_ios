@@ -242,6 +242,7 @@ AH_BASESUBVCFORMAINTAB_MODULE
 //    ExitButton.layer.borderColor=[[UIColor colorWithHexString:@"#A2B0DF"]CGColor];
 //    ExitButton.layer.borderWidth=1.0;
     ExitButton.backgroundColor=[UIColor colorWithHexString:@"#3983CA"];
+    //[ExitButton setBackgroundImage:[UIImage imageNamed:@"logout"] forState:UIControlStateNormal];
     [ExitBackground addSubview:ExitButton];
 }
 

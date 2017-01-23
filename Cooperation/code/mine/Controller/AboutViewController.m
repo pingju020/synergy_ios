@@ -7,6 +7,7 @@
 //
 
 #import "AboutViewController.h"
+#import "PJTabBarItem.h"
 
 @interface AboutViewController ()
 
@@ -19,7 +20,11 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor colorWithHexString:@"#F8F8F8"];
     self.title = @"关于";
+    
+    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithHexString:@"#00D2FF"]];
+    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil]];
 }
+
 - (void) dealloc
 {
 }
