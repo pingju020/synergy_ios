@@ -11,6 +11,14 @@
 @interface ProjectStageFileCell : UITableViewCell
 
 //赋值
-- (void)setInfoWithFileType:(NSInteger)fileType title:(NSString *)title;
+
+//文档信息
+- (void)setFileInfoWithFileType:(NSInteger)fileType title:(NSString *)title;
+
+//反馈内容
+- (void)setContentWithName:(NSString *)name text:(NSString *)text;
+
+//时间
+- (void)setCreateTime:(NSString *)createTime;
 
 @end

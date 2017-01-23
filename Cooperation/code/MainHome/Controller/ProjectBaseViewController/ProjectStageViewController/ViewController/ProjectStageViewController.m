@@ -284,7 +284,7 @@
         //赋值
         ProjectTaskFileModel *fileModel = taskModel.taskFiles[indexPath.row];
 
-        [cell setInfoWithFileType:fileModel.fileType.integerValue title:fileModel.fileName];
+        [cell setFileInfoWithFileType:fileModel.fileType.integerValue title:fileModel.fileName];
         
         return cell;
         

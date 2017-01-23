@@ -12,16 +12,18 @@
 @interface ProjectStageFileCell ()
 
 @property (nonatomic,strong) UIView *backView;
-@property (nonatomic,strong) UIImageView *icon;
-@property (nonatomic,strong) UILabel *titleLabel;
+@property (nonatomic,strong) UIImageView *fileIcon;
+@property (nonatomic,strong) UILabel *fileLabel;
+@property (nonatomic,strong) UILabel *contentLabel;
+
+
+@property (nonatomic,assign) BOOL isFileType;//是否是文档cell
 
 @end
 
 
 @implementation ProjectStageFileCell
-{
-    BOOL _isFirstLoad;
-}
+
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -34,38 +36,70 @@
 }
 
 #pragma mark -赋值
-- (void)setInfoWithFileType:(NSInteger)fileType title:(NSString *)title
+- (void)setCreateTime:(NSString *)createTime
 {
-    NSString *imageName = [self getImageNameWithFileType:fileType];
+    self.isFileType = NO;
     
-    self.icon.image = [UIImage imageNamed:imageName];
-    
-    self.titleLabel.text = title;
+    self.contentLabel.text = createTime;
 }
 
-- (NSString *)getImageNameWithFileType:(NSInteger)fileType
+- (void)setContentWithName:(NSString *)name text:(NSString *)text
 {
-    NSString *image;
+    NSString *str = [NSString stringWithFormat:@"%@：%@",name,text];
+    
+    //用富文本显示
+    NSMutableAttributedString *attr = [[NSMutableAttributedString alloc]initWithString:str];
+    
+    //名字
+    [attr addAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithHexString:@"#0DBEF5"],
+                          NSFontAttributeName:[UIFont systemFontOfSize:14]} range:NSMakeRange(0, name.length)];
+    
+    //内容
+    [attr addAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithHexString:@"#2A2A2A"],
+                          NSFontAttributeName:[UIFont systemFontOfSize:14]} range:NSMakeRange(str.length-text.length, text.length)];
+    
+    self.contentLabel.attributedText = attr;
+}
+
+//文档
+- (void)setFileInfoWithFileType:(NSInteger)fileType title:(NSString *)title
+{
+    self.isFileType = YES;
+    
+    NSString *imageName;
     switch (fileType) {
         case 7: //图片
-            image = @"jpg";
+            imageName = @"jpg";
             break;
             
         case 11: //doc
-            image = @"doc";
+            imageName = @"doc";
             break;
         case 12: //xls
-            image = @"xls";
+            imageName = @"xls";
             break;
         case 13: //ppt
-            image = @"ppt";
+            imageName = @"ppt";
             break;
         default:
-            image = @"";
+            imageName = @"";
             break;
     }
     
-    return image;
+    
+    self.fileIcon.image = [UIImage imageNamed:imageName];
+    
+    self.fileLabel.text = title;
+}
+
+- (void)setIsFileType:(BOOL)isFileType
+{
+    _isFileType = isFileType;
+    
+    self.fileIcon.hidden     = !isFileType;
+    self.fileLabel.hidden    = !isFileType;
+    
+    self.contentLabel.hidden = isFileType;
 }
 
 #pragma mark -setUI
@@ -73,19 +107,14 @@
 {
     [super layoutSubviews];
     
-    if (_isFirstLoad) {
-        self.backView.frame   = CGRectMake(30, 0, self.width-30-10, self.height);
-        
-        //backview的子控件
-        self.icon.frame       = CGRectMake(10, (_backView.height-19)/2, 13, 19);
-        
-        self.titleLabel.frame = CGRectMake(self.icon.right+10, (_backView.height-20)/2, _backView.width-(_icon.right+10)-10, 20);
-        
-        _isFirstLoad = NO;
-    }
+    self.backView.frame   = CGRectMake(30, 0, self.width-30-10, self.height);
     
-
+    //backview的子控件
+    self.fileIcon.frame     = CGRectMake(10, (_backView.height-19)/2, 13, 19);
     
+    self.fileLabel.frame    = CGRectMake(_fileIcon.right+10, 0, _backView.width-(_fileIcon.right+10)-10, _backView.height);
+    
+    self.contentLabel.frame = CGRectMake(10, 0, _backView.width-20, _backView.height);
     
 }
 
@@ -100,25 +129,37 @@
     return _backView;
 }
 
-- (UIImageView *)icon
+- (UIImageView *)fileIcon
 {
-    if (!_icon) {
-        _icon = [UIImageView new];
-        [self.backView addSubview:_icon];
+    if (!_fileIcon) {
+        _fileIcon = [UIImageView new];
+        [self.backView addSubview:_fileIcon];
     }
-    return _icon;
+    return _fileIcon;
 }
 
-- (UILabel *)titleLabel
+- (UILabel *)fileLabel
 {
-    if (!_titleLabel) {
-        _titleLabel = [UILabel new];
-        _titleLabel.font = [UIFont systemFontOfSize:14];
-        _titleLabel.textAlignment = NSTextAlignmentLeft;
-        _titleLabel.textColor = [UIColor colorWithHexString:@"#666666"];
-        [self.backView addSubview:_titleLabel];
+    if (!_fileLabel) {
+        _fileLabel = [UILabel new];
+        _fileLabel.font = [UIFont systemFontOfSize:14];
+        _fileLabel.textAlignment = NSTextAlignmentLeft;
+        _fileLabel.textColor = [UIColor colorWithHexString:@"#666666"];
+        [self.backView addSubview:_fileLabel];
     }
-    return _titleLabel;
+    return _fileLabel;
+}
+
+- (UILabel *)contentLabel
+{
+    if (!_contentLabel) {
+        _contentLabel = [UILabel new];
+        _contentLabel.font = [UIFont systemFontOfSize:14];
+        _contentLabel.textAlignment = NSTextAlignmentLeft;
+        _contentLabel.textColor = [UIColor colorWithHexString:@"#959595"];
+        [self.backView addSubview:_contentLabel];
+    }
+    return _contentLabel;
 }
 
 

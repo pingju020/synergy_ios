@@ -8,6 +8,7 @@
 
 #import "ProjectFeedBackCell.h"
 #import "ProjectStageModel.h"
+#import "ProjectStageFileCell.h"
 
 static CGFloat PS_RB_WIDTH;
 
@@ -74,10 +75,28 @@ static CGFloat PS_RB_WIDTH;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:@"cellId"];
+    ProjectStageFileCell *cell =[tableView dequeueReusableCellWithIdentifier:@"fileId"];
     if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellId"];
+        cell = [[ProjectStageFileCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"fileId"];
     }
+    
+    //赋值
+    ProjectFeedbackModel *fbModel = _taskModel.taskFeedbacks[indexPath.section];
+    
+    if (indexPath.row == 0) {    //反馈内容
+        [cell setContentWithName:fbModel.createByName text:fbModel.contents];
+        
+    }else if (indexPath.row == fbModel.taskFeedFiles.count+1){ //时间
+        [cell setCreateTime:fbModel.createTime];
+        
+    }else{ //文件
+        ProjectTaskFileModel *fileModel = fbModel.taskFeedFiles[indexPath.row-1];
+        
+        [cell setFileInfoWithFileType:fileModel.fileType.integerValue title:fileModel.fileName];
+        
+    }
+    
+    
     return cell;
 }
 
@@ -126,9 +145,10 @@ static CGFloat PS_RB_WIDTH;
      
      */
     
+    
     //记录下cell宽度，方便后续内部tableview搭建
     PS_RB_WIDTH = tableWidth;
-    
+
     //先判断是否已经有缓存
     if (!taskModel.taskFeedbacks) {
         return 0;
@@ -174,7 +194,7 @@ static CGFloat PS_RB_WIDTH;
         
     }else{
         //先获取文本
-        NSString *text = [NSString stringWithFormat:@"%@:%@",fbModel.createByName,fbModel.contents];
+        NSString *text = [NSString stringWithFormat:@"%@：%@",fbModel.createByName,fbModel.contents];
         
         
         CGRect frame = [text boundingRectWithSize:CGSizeMake(labelWidth, 1000)options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14]} context:nil];
