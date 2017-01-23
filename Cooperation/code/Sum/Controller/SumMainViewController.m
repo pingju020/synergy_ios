@@ -358,7 +358,8 @@ AH_BASESUBVCFORMAINTAB_MODULE
     cell.textLabel.font = [UIFont boldSystemFontOfSize:12.f];
     cell.detailTextLabel.font = [UIFont systemFontOfSize:12.f];
     cell.detailTextLabel.textColor = [UIColor colorWithRed:43/255.f green:185/255.f blue:244/255.f alpha:1];
-    
+    cell.textLabel.text = nil;
+    cell.detailTextLabel.text = nil;
     
     switch (indexPath.section) {
         case 0:
