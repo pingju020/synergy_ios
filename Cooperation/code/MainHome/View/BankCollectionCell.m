@@ -13,7 +13,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, SCREEN_WIDTH/2-20-20-20-10, 40)];
-        titleLabel.font = [UIFont systemFontOfSize:12.f];
+        titleLabel.font = [UIFont systemFontOfSize:14.f];
         self.titleLabel = titleLabel;
         [self.contentView addSubview:self.titleLabel];
         

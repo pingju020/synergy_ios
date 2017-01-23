@@ -203,7 +203,7 @@ AH_BASESUBVCFORMAINTAB_MODULE
     [Arrow1 addSubview:Image1];
     [StatusButton setBackgroundColor:[UIColor whiteColor]];
     [StatusButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-    StatusButton.titleLabel.font=[UIFont systemFontOfSize:12];
+    StatusButton.titleLabel.font=[UIFont systemFontOfSize:14];
     [StatusButton addTarget:self action:@selector(ShowOrRemoveStatusList) forControlEvents:UIControlEventTouchUpInside];
     [TopTabbar addSubview:StatusButton];
     [TopTabbar addSubview:Arrow1];
@@ -215,7 +215,7 @@ AH_BASESUBVCFORMAINTAB_MODULE
     [Arrow2 addSubview:Image2];
     [ProgressButton setBackgroundColor:[UIColor whiteColor]];
     [ProgressButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-    ProgressButton.titleLabel.font=[UIFont systemFontOfSize:12];
+    ProgressButton.titleLabel.font=[UIFont systemFontOfSize:14];
     [ProgressButton addTarget:self action:@selector(ShowOrRemoveProgressList) forControlEvents:UIControlEventTouchUpInside];
     [TopTabbar addSubview:ProgressButton];
     [TopTabbar addSubview:Arrow2];
@@ -227,7 +227,7 @@ AH_BASESUBVCFORMAINTAB_MODULE
     [Arrow3 addSubview:Image3];
     [BankButton setBackgroundColor:[UIColor whiteColor]];
     [BankButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-    BankButton.titleLabel.font=[UIFont systemFontOfSize:12];
+    BankButton.titleLabel.font=[UIFont systemFontOfSize:14];
     [BankButton addTarget:self action:@selector(ShowOrRemoveBankCollection) forControlEvents:UIControlEventTouchUpInside];
     [TopTabbar addSubview:BankButton];
     [TopTabbar addSubview:Arrow3];
@@ -239,7 +239,7 @@ AH_BASESUBVCFORMAINTAB_MODULE
     [Arrow4 addSubview:Image4];
     [BranchBankButton setBackgroundColor:[UIColor whiteColor]];
     [BranchBankButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-    BranchBankButton.titleLabel.font=[UIFont systemFontOfSize:12];
+    BranchBankButton.titleLabel.font=[UIFont systemFontOfSize:14];
     [BranchBankButton addTarget:self action:@selector(ShowOrRemoveBranchBankCollection) forControlEvents:UIControlEventTouchUpInside];
     [TopTabbar addSubview:BranchBankButton];
     [TopTabbar addSubview:Arrow4];

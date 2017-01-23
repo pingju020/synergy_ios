@@ -20,11 +20,11 @@
     }
     [cell.StatusLabel setTextColor:[UIColor colorWithHexString:@"#00B1F0"]];
     [cell.StatusLabel setTextAlignment:NSTextAlignmentLeft];
-    [cell.StatusLabel setFont:[UIFont systemFontOfSize:12.f]];
+    [cell.StatusLabel setFont:[UIFont systemFontOfSize:14.f]];
     
     
     [cell.MessgaeLabel setTextColor:[UIColor darkGrayColor]];
-    [cell.MessgaeLabel setFont:[UIFont systemFontOfSize:12.f]];
+    [cell.MessgaeLabel setFont:[UIFont systemFontOfSize:14.f]];
     
     
     
