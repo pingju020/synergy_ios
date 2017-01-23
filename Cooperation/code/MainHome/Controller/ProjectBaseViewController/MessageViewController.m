@@ -547,7 +547,7 @@ dispatch_source_t LJGCDTimer(NSTimeInterval interval,
             } else {
                 self.currentSelectedCell = messageTableViewCell;
                 [messageTableViewCell.messageBubbleView.animationVoiceImageView startAnimating];
-                [[XHAudioPlayerHelper shareInstance] managerAudioWithFileName:message.voicePath toPlay:YES];
+                [[XHAudioPlayerHelper shareInstance] managerAudioWithFileName:message.voiceUrl toPlay:YES];
             }
             break;
         }
