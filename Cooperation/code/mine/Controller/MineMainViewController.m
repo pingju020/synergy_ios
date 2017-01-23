@@ -218,6 +218,7 @@ AH_BASESUBVCFORMAINTAB_MODULE
 //    [PhoneNumber setTextAlignment:NSTextAlignmentRight];
     
     viewRedPoint = [[UIView alloc]initWithFrame:(CGRect){0,0,10,10}];
+    viewRedPoint.hidden = YES;
     viewRedPoint.backgroundColor = [UIColor redColor];
     viewRedPoint.layer.cornerRadius = 5;
     viewRedPoint.layer.masksToBounds = YES;
