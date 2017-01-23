@@ -24,6 +24,7 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        self.contentView.backgroundColor = VcBackgroudColor;
         self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return self;
@@ -72,9 +73,9 @@
     self.backView.frame   = CGRectMake(30, 0, self.width-30-10, self.height);
     
     //backview的子控件
-    self.icon.frame       = CGRectMake(10, (_backView.height-20)/2, 20, 20);
+    self.icon.frame       = CGRectMake(10, (_backView.height-19)/2, 13, 19);
     
-    self.titleLabel.frame = CGRectMake(self.icon.right+10, (_backView.height-20)/2, 20, 20);
+    self.titleLabel.frame = CGRectMake(self.icon.right+10, (_backView.height-20)/2, _backView.width-(_icon.right+10)-10, 20);
     
     
 }

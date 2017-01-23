@@ -14,8 +14,9 @@
 #import "ProjectStageHeaderView.h"
 #import "ProjectStageSectionView.h"
 #import "ProjectStageFileCell.h"
+#import "ProjectStageDateCell.h"
 
-@interface ProjectStageViewController ()<ProjectStageHeaderDelegate,UITableViewDelegate,UITableViewDataSource,ProjectStageSectionDelegate>
+@interface ProjectStageViewController ()<ProjectStageHeaderDelegate,UITableViewDelegate,UITableViewDataSource,ProjectStageSectionDelegate,ProjectStageDateDelegate>
 
 //UI
 @property (nonatomic,strong) ProjectTabScrollView *projectTabScrollView; //左侧滚动条
@@ -167,12 +168,20 @@
 - (void)projectStageHeaderChangeState
 {
     [PubllicMaskViewHelper showTipViewWith:@"点击了更改状态" inSuperView:self.view withDuration:1];
+    
+    //结束记得清缓存再刷新
+//    [self.caches removeObjectForKey:_stageId];
+//    [self requestStageData];
 }
 
 //新增任务
 - (void)projectStageHeaderAddMission
 {
     [PubllicMaskViewHelper showTipViewWith:@"点击了新增任务" inSuperView:self.view withDuration:1];
+    
+        //结束记得清缓存再刷新
+    //    [self.caches removeObjectForKey:_stageId];
+    //    [self requestStageData];
 }
 
 #pragma mark -ProjectStageSectionDelegate
@@ -180,8 +189,28 @@
 - (void)projectStageSectionRemove:(NSInteger)section
 {
     [PubllicMaskViewHelper showTipViewWith:@"点击了删除任务" inSuperView:self.view withDuration:1];
+    
+        //结束记得清缓存再刷新
+    //    [self.caches removeObjectForKey:_stageId];
+    //    [self requestStageData];
 }
 
+#pragma mark -ProjectStageDateDelegate
+- (void)projectStageWrite:(NSString *)taskId
+{
+        [PubllicMaskViewHelper showTipViewWith:@"点击了反馈" inSuperView:self.view withDuration:1];
+    //结束记得清缓存再刷新
+    //    [self.caches removeObjectForKey:_stageId];
+    //    [self requestStageData];
+}
+
+- (void)projectStageFinish:(NSString *)taskId
+{
+        [PubllicMaskViewHelper showTipViewWith:@"点击了完成" inSuperView:self.view withDuration:1];
+    //结束记得清缓存再刷新
+    //    [self.caches removeObjectForKey:_stageId];
+    //    [self requestStageData];
+}
 
 #pragma mark -UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -226,7 +255,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 40;
+    return 35;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -243,26 +272,28 @@
         
         //赋值
         ProjectTaskFileModel *fileModel = taskModel.taskFiles[indexPath.row];
-        
-        [cell setInfoWithFileType:fileModel.fileType.integerValue
-                            title:fileModel.fileName];
+
+        [cell setInfoWithFileType:fileModel.fileType.integerValue title:fileModel.fileName];
         
         return cell;
         
         
     }else if (indexPath.row == taskModel.taskFiles.count){ //时间栏
-        UITableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:@"time_id"];
+        ProjectStageDateCell *cell =[tableView dequeueReusableCellWithIdentifier:@"time_id"];
         if (!cell) {
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"time_id"];
+            cell = [[ProjectStageDateCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"time_id"];
         }
-        cell.textLabel.text = [NSString stringWithFormat:@"%@",taskModel.createTime];
+        cell.taskModel = taskModel;
+        
+        cell.delegate = self;
+        
         return cell;
         
         
     }else{ //反馈栏
-        UITableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:@"time_id"];
+        UITableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:@"feedback_id"];
         if (!cell) {
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"time_id"];
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"feedback_id"];
         }
         cell.textLabel.text = @"这是反馈cell,编写中";
         return cell;
@@ -282,8 +313,10 @@
         [PubllicMaskViewHelper showTipViewWith:[NSString stringWithFormat:@"点击了文件:%@",fileModel.fileUrl] inSuperView:self.view withDuration:1] ;
     
     }else{
-//        [tableView reloadSections:[[NSIndexSet alloc]initWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationFade];
-        [PubllicMaskViewHelper showTipViewWith:@"点击了收起/展开" inSuperView:self.view withDuration:1];
+        taskModel.isOn ^= 1;
+        
+        [tableView reloadSections:[[NSIndexSet alloc]initWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationFade];
+
     }
 }
 

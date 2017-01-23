@@ -9,6 +9,16 @@
 #import "ProjectStageModel.h"
 #import "MJExtension.h"
 
+//ProjectTaskFileModel在cellforrow方法里面取值会崩溃，原因未知，该类暂时改用这个方法
+static NSString *safetyEncodeDicionary(NSDictionary *dict,NSString *key){
+    if (!dict || !dict[key]) {
+        return @"";
+    }
+    return [NSString stringWithFormat:@"%@",dict[key]];
+    
+}
+
+
 #pragma mark -查询阶段详情
 @implementation ProjectStageModel
 
@@ -64,7 +74,21 @@
         return nil;
     }
     
-    NSMutableArray *mulArr = [ProjectTaskFileModel mj_keyValuesArrayWithObjectArray:list];
+    //暂时不用该方法
+//    NSMutableArray *mulArr = [ProjectTaskFileModel mj_keyValuesArrayWithObjectArray:list];
+    
+    
+    NSMutableArray *mulArr = [NSMutableArray array];
+    for (NSDictionary *dict in list) {
+        ProjectTaskFileModel *model = [ProjectTaskFileModel new];
+        [model setId:safetyEncodeDicionary(dict, @"id")];
+        model.fileUrl = safetyEncodeDicionary(dict, @"fileUrl");
+        model.fileName = safetyEncodeDicionary(dict, @"fileName");
+        model.fileType = safetyEncodeDicionary(dict, @"fileType");
+        
+        [mulArr addObject:model];
+    }
+    
     
     return [mulArr copy];
     
@@ -88,27 +112,10 @@
     for (NSDictionary *dict in list) {
         ProjectFeedbackModel *model = [ProjectFeedbackModel mj_objectWithKeyValues:dict];
         
-        model.taskFeedFiles = [ProjectFeedbackFileModel parsingArrayWithList:dict[@"taskFeedFiles"]];
+        model.taskFeedFiles = [ProjectTaskFileModel parsingArrayWithList:dict[@"taskFeedFiles"]];
         
         [mulArr addObject:model];
     }
-    
-    return [mulArr copy];
-}
-
-@end
-
-
-#pragma mark -任务反馈附件集合
-@implementation ProjectFeedbackFileModel
-
-+ (NSArray *)parsingArrayWithList:(NSArray *)list
-{
-    if (IsArrEmpty(list)) {
-        return nil;
-    }
-    
-    NSMutableArray *mulArr = [ProjectFeedbackFileModel mj_keyValuesArrayWithObjectArray:list];
     
     return [mulArr copy];
 }

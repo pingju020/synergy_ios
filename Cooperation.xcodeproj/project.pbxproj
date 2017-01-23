@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4D9A11471E3593E800504884 /* ProjectStageSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9A11461E3593E800504884 /* ProjectStageSectionView.m */; };
 		4D9A114D1E35A23A00504884 /* ProjectStageFileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9A114C1E35A23A00504884 /* ProjectStageFileCell.m */; };
+		4D9A11511E35ADB500504884 /* ProjectStageDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9A11501E35ADB500504884 /* ProjectStageDateCell.m */; };
+		4D9A11531E35B33C00504884 /* 任务-上拉2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D9A11521E35B33C00504884 /* 任务-上拉2.png */; };
 		4DD372FA1E34A2730011A7D1 /* ProjectStageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD372EC1E34A2730011A7D1 /* ProjectStageModel.m */; };
 		4DD372FC1E34A2730011A7D1 /* ProjectTabModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD372F01E34A2730011A7D1 /* ProjectTabModel.m */; };
 		4DD372FD1E34A2730011A7D1 /* ProjectStageHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD372F41E34A2730011A7D1 /* ProjectStageHeaderView.m */; };
@@ -499,6 +501,9 @@
 		4D9A11461E3593E800504884 /* ProjectStageSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectStageSectionView.m; sourceTree = "<group>"; };
 		4D9A114B1E35A23A00504884 /* ProjectStageFileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectStageFileCell.h; sourceTree = "<group>"; };
 		4D9A114C1E35A23A00504884 /* ProjectStageFileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectStageFileCell.m; sourceTree = "<group>"; };
+		4D9A114F1E35ADB500504884 /* ProjectStageDateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectStageDateCell.h; sourceTree = "<group>"; };
+		4D9A11501E35ADB500504884 /* ProjectStageDateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectStageDateCell.m; sourceTree = "<group>"; };
+		4D9A11521E35B33C00504884 /* 任务-上拉2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "任务-上拉2.png"; sourceTree = "<group>"; };
 		4DD372EB1E34A2730011A7D1 /* ProjectStageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectStageModel.h; sourceTree = "<group>"; };
 		4DD372EC1E34A2730011A7D1 /* ProjectStageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectStageModel.m; sourceTree = "<group>"; };
 		4DD372EF1E34A2730011A7D1 /* ProjectTabModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectTabModel.h; sourceTree = "<group>"; };
@@ -1368,6 +1373,8 @@
 				4D9A11461E3593E800504884 /* ProjectStageSectionView.m */,
 				4D9A114B1E35A23A00504884 /* ProjectStageFileCell.h */,
 				4D9A114C1E35A23A00504884 /* ProjectStageFileCell.m */,
+				4D9A114F1E35ADB500504884 /* ProjectStageDateCell.h */,
+				4D9A11501E35ADB500504884 /* ProjectStageDateCell.m */,
 			);
 			path = PeojectStageTableView;
 			sourceTree = "<group>";
@@ -2723,6 +2730,7 @@
 				ACB7C5501E330D3900C44615 /* 汇总@3x.png */,
 				ACB7C5511E330D3900C44615 /* 汇总2@3x.png */,
 				ACB7C5521E330D3900C44615 /* 密码@3x.png */,
+				4D9A11521E35B33C00504884 /* 任务-上拉2.png */,
 				ACB7C5531E330D3900C44615 /* 任务-下拉2.png */,
 				ACB7C5541E330D3900C44615 /* 删除.png */,
 				ACB7C5551E330D3900C44615 /* 删除2.png */,
@@ -3481,6 +3489,7 @@
 				ACB7C5A01E330D3900C44615 /* BG@3x.png in Resources */,
 				AC1117D51E31F04D009ABFDF /* username@3x.png in Resources */,
 				AC11175C1E31DD91009ABFDF /* news@2x.png in Resources */,
+				4D9A11531E35B33C00504884 /* 任务-上拉2.png in Resources */,
 				ACB7C5971E330D3900C44615 /* 用户名@3x.png in Resources */,
 				ACB7C58C1E330D3900C44615 /* 我的@3x.png in Resources */,
 				C634F9521E34AEA1003EE26B /* 汇总-右箭头2.png in Resources */,
@@ -3744,6 +3753,7 @@
 				AC1117491E31DD91009ABFDF /* ELCAlbumPickerController.m in Sources */,
 				AC11181E1E31F5B2009ABFDF /* MJRefreshFooter.m in Sources */,
 				C634FA691E34F93D003EE26B /* XHShareMenuItem.m in Sources */,
+				4D9A11511E35ADB500504884 /* ProjectStageDateCell.m in Sources */,
 				C634FA7E1E34F93E003EE26B /* XHMessageBubbleView.m in Sources */,
 				AC7FFC381E33652500200686 /* BranchBankIdentifyModel.m in Sources */,
 				C634FA7A1E34F93E003EE26B /* SETextSelectionView.m in Sources */,
