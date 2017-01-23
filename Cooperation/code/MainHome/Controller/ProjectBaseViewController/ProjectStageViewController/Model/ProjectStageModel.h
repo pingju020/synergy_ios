@@ -13,6 +13,10 @@
 @class ProjectFeedbackModel;
 @class ProjectFeedbackFileModel;
 
+
+//为方便修改，这里定义一个通用cell高度
+static CGFloat PS_CELL_H = 35;
+
 #pragma mark -查询阶段详情
 @interface ProjectStageModel : NSObject
 
@@ -63,6 +67,9 @@
 ///自定义参数 是否展开列表
 @property (nonatomic,assign) BOOL isOn; //default YES
 
+///自定义反馈cell高度
+@property (nonatomic,assign) CGFloat feedBackCellHeight; //default-1 -1表示未计算过
+
 //构建方法
 + (NSArray *)parsingArrayWithList:(NSArray *)list;
 
@@ -81,7 +88,6 @@
 ///附件类型（7：图片，11：doc，12：xls，13：ppt）
 //@property (nonatomic,strong) NSNumber *fileType;
 @property (nonatomic,copy) NSString *fileType;
-
 
 //构建方法
 + (NSArray *)parsingArrayWithList:(NSArray *)list;
@@ -104,6 +110,10 @@
 @property (nonatomic,copy) NSString *createTime;
 ///任务反馈附件集合
 @property (nonatomic,strong) NSArray <ProjectTaskFileModel *>*taskFeedFiles;
+
+
+///自定义反馈内容cell高度
+@property (nonatomic,assign) CGFloat contentCellHeight; //default-1 -1表示未计算过
 
 //构建方法
 + (NSArray *)parsingArrayWithList:(NSArray *)list;

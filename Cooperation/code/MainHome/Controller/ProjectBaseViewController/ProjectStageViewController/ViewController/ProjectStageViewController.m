@@ -15,6 +15,7 @@
 #import "ProjectStageSectionView.h"
 #import "ProjectStageFileCell.h"
 #import "ProjectStageDateCell.h"
+#import "ProjectFeedBackCell.h"
 
 @interface ProjectStageViewController ()<ProjectStageHeaderDelegate,UITableViewDelegate,UITableViewDataSource,ProjectStageSectionDelegate,ProjectStageDateDelegate>
 
@@ -260,9 +261,9 @@
     //cell 由文件列表+时间cell+反馈Cell构成
     
     if (indexPath.row >= taskModel.taskFiles.count + 1) { //反馈
-        return 50;
+        return [ProjectFeedBackCell getHeightWith:taskModel tableWidth:self.tableView.width];
     }else{
-        return 35;
+        return PS_CELL_H;
     }
 }
 
@@ -299,10 +300,10 @@
         
         
     }else{ //反馈栏
-        UITableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:@"feedback_id"];
+        ProjectFeedBackCell *cell =[tableView dequeueReusableCellWithIdentifier:@"feedback_id"];
         if (!cell) {
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"feedback_id"];
-            cell.contentView.backgroundColor = [UIColor colorWithHexString:@"#F8F8F8"];
+            cell = [[ProjectFeedBackCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"feedback_id"];
+            
         }
         cell.textLabel.text = @"这是反馈cell,编写中";
         return cell;
@@ -324,7 +325,18 @@
     }else{
         taskModel.isOn ^= 1;
         
-        [tableView reloadSections:[[NSIndexSet alloc]initWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationNone];
+        ProjectStageDateCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        cell.taskModel = taskModel;
+
+        NSIndexPath *newIndex = [NSIndexPath indexPathForRow:indexPath.row+1 inSection:indexPath.section];
+        
+        if (taskModel.isOn) {
+            [tableView insertRowsAtIndexPaths:@[newIndex] withRowAnimation:UITableViewRowAnimationFade];
+        }else{
+            [tableView deleteRowsAtIndexPaths:@[newIndex] withRowAnimation:UITableViewRowAnimationFade];
+        }
+        
+//        [tableView reloadSections:[[NSIndexSet alloc]initWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationNone]
 
     }
 }
