@@ -156,7 +156,7 @@ dispatch_source_t LJGCDTimer(NSTimeInterval interval,
                 [messages addObject:photoMessage];
             }else if([contentType isEqualToNumber:@15]){
                 //语音
-                XHMessage *voiceMessage = [[XHMessage alloc] initWithVoicePath:nil voiceUrl:[item lj_stringForKey:@"fileUrl"] voiceDuration:@"3" sender:[item lj_stringForKey:@"sendUserName"] timestamp:[[item lj_stringForKey:@"completeTime"]lj_dateWithFormat:@"yyyy-MM-dd HH:mm:ss"] isRead:YES];
+                XHMessage *voiceMessage = [[XHMessage alloc] initWithVoicePath:nil voiceUrl:[item lj_stringForKey:@"fileUrl"] voiceDuration:[item lj_stringForKey:@"duration"] sender:[item lj_stringForKey:@"sendUserName"] timestamp:[[item lj_stringForKey:@"completeTime"]lj_dateWithFormat:@"yyyy-MM-dd HH:mm:ss"] isRead:YES];
                 voiceMessage.avatar = [UIImage imageNamed:@"avatar"];
                 voiceMessage.avatarUrl = [item lj_stringForKey:@"sendUserImageUrl"];
                 voiceMessage.bubbleMessageType = XHBubbleMessageTypeSending;
@@ -186,7 +186,7 @@ dispatch_source_t LJGCDTimer(NSTimeInterval interval,
             }
             else if([contentType isEqualToNumber:@15]){
                 //语音
-                XHMessage *voiceMessage = [[XHMessage alloc] initWithVoicePath:nil voiceUrl:[item lj_stringForKey:@"fileUrl"] voiceDuration:@"3" sender:[item lj_stringForKey:@"sendUserName"] timestamp:[[item lj_stringForKey:@"completeTime"]lj_dateWithFormat:@"yyyy-MM-dd HH:mm:ss"] isRead:YES];
+                XHMessage *voiceMessage = [[XHMessage alloc] initWithVoicePath:nil voiceUrl:[item lj_stringForKey:@"fileUrl"] voiceDuration:[item lj_stringForKey:@"duration"] sender:[item lj_stringForKey:@"sendUserName"] timestamp:[[item lj_stringForKey:@"completeTime"]lj_dateWithFormat:@"yyyy-MM-dd HH:mm:ss"] isRead:YES];
                 voiceMessage.avatar = [UIImage imageNamed:@"avatar"];
                 voiceMessage.avatarUrl = [item lj_stringForKey:@"sendUserImageUrl"];
                 voiceMessage.bubbleMessageType = XHBubbleMessageTypeReceiving;
@@ -295,7 +295,7 @@ dispatch_source_t LJGCDTimer(NSTimeInterval interval,
                                            //上传成功
                                            NSLog(@"上传成功");
                                            NSString* imageUrl=[responseObject objectForKey:@"data"];
-                                           [HTTP_MANAGER startNormalPostWithParagram:@{@"phone":[[NSUserDefaults standardUserDefaults]objectForKey:@"user"],@"projectId":self.projectId,@"fileUrl":imageUrl,@"fileName":fileName} Commandtype:@"app/message/addMessage" successedBlock:^(NSDictionary *succeedResult, BOOL isSucceed) {
+                                           [HTTP_MANAGER startNormalPostWithParagram:@{@"phone":[[NSUserDefaults standardUserDefaults]objectForKey:@"user"],@"projectId":self.projectId,@"fileUrl":imageUrl,@"fileName":fileName,@"duration":dur} Commandtype:@"app/message/addMessage" successedBlock:^(NSDictionary *succeedResult, BOOL isSucceed) {
                                                NSLog(@"发送图片成功");
                                                [self finishSendMessageWithBubbleMessageType:XHBubbleMessageMediaTypeVoice];
                                                
