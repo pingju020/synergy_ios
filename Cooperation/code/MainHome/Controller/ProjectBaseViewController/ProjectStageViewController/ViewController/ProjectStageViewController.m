@@ -225,7 +225,9 @@
     ProjectTaskModel *taskModel = _stageModel.projectTasks[section];
     
     //cell数量是 附件数量 + 日期栏 + 反馈列表(要判断打开还是关闭)
-    return taskModel.taskFiles.count + 1 + (taskModel.isOn ? 1 : 0) ;
+    
+    return 1 + taskModel.taskFiles.count + (taskModel.isOn ? 1 : 0);
+
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -305,7 +307,7 @@
             cell = [[ProjectFeedBackCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"feedback_id"];
             
         }
-        cell.textLabel.text = @"这是反馈cell,编写中";
+        cell.taskModel = taskModel;
         return cell;
         
     }
