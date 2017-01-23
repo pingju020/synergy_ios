@@ -16,6 +16,7 @@
 		4DD372FD1E34A2730011A7D1 /* ProjectStageHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD372F41E34A2730011A7D1 /* ProjectStageHeaderView.m */; };
 		4DD372FE1E34A2730011A7D1 /* ProjectTabScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD372F61E34A2730011A7D1 /* ProjectTabScrollView.m */; };
 		4DD372FF1E34A2730011A7D1 /* ProjectStageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD372F91E34A2730011A7D1 /* ProjectStageViewController.m */; };
+		4DF897751E35D3E1003FFB24 /* ProjectFeedBackCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF897741E35D3E1003FFB24 /* ProjectFeedBackCell.m */; };
 		AC11154F1E31DD1F009ABFDF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AC11154E1E31DD1F009ABFDF /* main.m */; };
 		AC1115521E31DD1F009ABFDF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1115511E31DD1F009ABFDF /* AppDelegate.m */; };
 		AC1115551E31DD1F009ABFDF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1115541E31DD1F009ABFDF /* ViewController.m */; };
@@ -514,6 +515,8 @@
 		4DD372F61E34A2730011A7D1 /* ProjectTabScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectTabScrollView.m; sourceTree = "<group>"; };
 		4DD372F81E34A2730011A7D1 /* ProjectStageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectStageViewController.h; sourceTree = "<group>"; };
 		4DD372F91E34A2730011A7D1 /* ProjectStageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectStageViewController.m; sourceTree = "<group>"; };
+		4DF897731E35D3E1003FFB24 /* ProjectFeedBackCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectFeedBackCell.h; sourceTree = "<group>"; };
+		4DF897741E35D3E1003FFB24 /* ProjectFeedBackCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectFeedBackCell.m; sourceTree = "<group>"; };
 		AC11154A1E31DD1F009ABFDF /* Cooperation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cooperation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC11154E1E31DD1F009ABFDF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AC1115501E31DD1F009ABFDF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1375,6 +1378,8 @@
 				4D9A114C1E35A23A00504884 /* ProjectStageFileCell.m */,
 				4D9A114F1E35ADB500504884 /* ProjectStageDateCell.h */,
 				4D9A11501E35ADB500504884 /* ProjectStageDateCell.m */,
+				4DF897731E35D3E1003FFB24 /* ProjectFeedBackCell.h */,
+				4DF897741E35D3E1003FFB24 /* ProjectFeedBackCell.m */,
 			);
 			path = PeojectStageTableView;
 			sourceTree = "<group>";
@@ -3754,6 +3759,7 @@
 				AC11181E1E31F5B2009ABFDF /* MJRefreshFooter.m in Sources */,
 				C634FA691E34F93D003EE26B /* XHShareMenuItem.m in Sources */,
 				4D9A11511E35ADB500504884 /* ProjectStageDateCell.m in Sources */,
+				4DF897751E35D3E1003FFB24 /* ProjectFeedBackCell.m in Sources */,
 				C634FA7E1E34F93E003EE26B /* XHMessageBubbleView.m in Sources */,
 				AC7FFC381E33652500200686 /* BranchBankIdentifyModel.m in Sources */,
 				C634FA7A1E34F93E003EE26B /* SETextSelectionView.m in Sources */,
