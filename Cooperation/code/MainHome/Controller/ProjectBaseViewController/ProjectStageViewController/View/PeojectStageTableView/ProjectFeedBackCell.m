@@ -102,9 +102,14 @@ static CGFloat PS_RB_WIDTH;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+     ProjectFeedbackModel *fbModel = _taskModel.taskFeedbacks[indexPath.section];
+    ProjectTaskFileModel *fileModel = fbModel.taskFeedFiles[indexPath.row-1];
+    
     //点击文档cell才有效果
     if (indexPath.row > 0 && indexPath.row < _taskModel.taskFiles.count + 1) {
-        NSLog(@"点击了sub的文档");
+        if ([self.delegate respondsToSelector:@selector(projectReadFile:)]) {
+            [self.delegate projectReadFile:fileModel.fileUrl];
+        }
     }
 }
 

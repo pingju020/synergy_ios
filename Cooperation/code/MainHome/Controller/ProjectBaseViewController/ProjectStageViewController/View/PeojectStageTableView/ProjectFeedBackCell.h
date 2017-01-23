@@ -9,10 +9,20 @@
 #import <UIKit/UIKit.h>
 @class ProjectTaskModel;
 
+@protocol ProjectFeedBackDelegate <NSObject>
+
+- (void)projectReadFile:(NSString *)fileUrl;
+
+@end
+
 @interface ProjectFeedBackCell : UITableViewCell
 
 @property (nonatomic,strong) ProjectTaskModel *taskModel;
 
+@property (nonatomic,weak) id <ProjectFeedBackDelegate> delegate;
+
 + (CGFloat)getHeightWith:(ProjectTaskModel *)taskModel tableWidth:(CGFloat)tableWidth;//获取高度并缓存
+
+
 
 @end

@@ -17,7 +17,7 @@
 #import "ProjectStageDateCell.h"
 #import "ProjectFeedBackCell.h"
 
-@interface ProjectStageViewController ()<ProjectStageHeaderDelegate,UITableViewDelegate,UITableViewDataSource,ProjectStageSectionDelegate,ProjectStageDateDelegate>
+@interface ProjectStageViewController ()<ProjectStageHeaderDelegate,UITableViewDelegate,UITableViewDataSource,ProjectStageSectionDelegate,ProjectStageDateDelegate,ProjectFeedBackDelegate>
 
 //UI
 @property (nonatomic,strong) ProjectTabScrollView *projectTabScrollView; //左侧滚动条
@@ -213,6 +213,12 @@
     //    [self requestStageData];
 }
 
+#pragma mark -ProjectFeedBackDelegate
+- (void)projectReadFile:(NSString *)fileUrl
+{
+    [PubllicMaskViewHelper showTipViewWith:[NSString stringWithFormat:@"点击了文件:%@",fileUrl] inSuperView:self.view withDuration:1] ;
+}
+
 #pragma mark -UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -322,9 +328,9 @@
     if (indexPath.row < taskModel.taskFiles.count) {
         ProjectTaskFileModel *fileModel = taskModel.taskFiles[indexPath.row];
         
-        [PubllicMaskViewHelper showTipViewWith:[NSString stringWithFormat:@"点击了文件:%@",fileModel.fileUrl] inSuperView:self.view withDuration:1] ;
+        [self projectReadFile:fileModel.fileUrl];
     
-    }else{
+    }else{ //展开，收起的动画
         taskModel.isOn ^= 1;
         
         ProjectStageDateCell *cell = [tableView cellForRowAtIndexPath:indexPath];
