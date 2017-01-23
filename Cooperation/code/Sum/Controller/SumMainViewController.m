@@ -233,6 +233,8 @@ AH_BASESUBVCFORMAINTAB_MODULE
     [super viewDidLoad];
     self.title = @"汇总";
     
+    [self removeBackBtn];
+    
     [self reloadData];
 }
 

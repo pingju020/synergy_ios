@@ -39,6 +39,7 @@ AH_BASESUBVCFORMAINTAB_MODULE
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self removeBackBtn];
     // Do any additional setup after loading the view.
     margin=0;
     

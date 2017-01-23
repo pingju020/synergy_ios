@@ -60,7 +60,6 @@
 {
     [super viewWillAppear:animated];
     
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 - (void)viewWillLayoutSubviews{
@@ -80,7 +79,6 @@
 {
     [super viewWillDisappear:animated];
     
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
 - (void) viewDidDisappear:(BOOL)animated

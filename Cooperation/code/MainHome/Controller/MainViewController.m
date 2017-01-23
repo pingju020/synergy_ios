@@ -89,6 +89,8 @@ AH_BASESUBVCFORMAINTAB_MODULE
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self removeBackBtn];
+    
     isToBeConfirm=NO;
     // Do any additional setup after loading the view.
 //    [self.view setBackgroundColor:[UIColor yellowColor]];
