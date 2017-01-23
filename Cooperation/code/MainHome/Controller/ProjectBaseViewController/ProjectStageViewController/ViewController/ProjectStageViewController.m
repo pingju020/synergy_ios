@@ -13,9 +13,8 @@
 #import "ProjectStageModel.h"
 #import "ProjectStageHeaderView.h"
 #import "ProjectStageSectionView.h"
-#import "ProjectStageCell.h"
 
-@interface ProjectStageViewController ()<ProjectStageHeaderDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface ProjectStageViewController ()<ProjectStageHeaderDelegate,UITableViewDelegate,UITableViewDataSource,ProjectStageSectionDelegate>
 
 //UI
 @property (nonatomic,strong) ProjectTabScrollView *projectTabScrollView; //左侧滚动条
@@ -175,11 +174,18 @@
     [PubllicMaskViewHelper showTipViewWith:@"点击了新增任务" inSuperView:self.view withDuration:1];
 }
 
+#pragma mark -ProjectStageSectionDelegate
+//删除任务
+- (void)projectStageSectionRemove:(NSInteger)section
+{
+    [PubllicMaskViewHelper showTipViewWith:@"点击了删除任务" inSuperView:self.view withDuration:1];
+}
+
 
 #pragma mark -UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return _stageModel.projectTasks.count;
+    return _stageModel.projectTasks.count; //section数量根据任务数量来定
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -187,48 +193,48 @@
 
     ProjectTaskModel *taskModel = _stageModel.projectTasks[section];
     
-    return taskModel.isOn ? taskModel.taskFeedbacks.count : 0;
+    //cell数量是 附件数量 + 日期栏 + 反馈列表(要判断打开还是关闭)
+    return taskModel.taskFiles.count + 1 + (taskModel.isOn ? 1 : 0) ;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    ProjectTaskModel *taskModel = _stageModel.projectTasks[section];
-    
-    //计算高度
-    return [ProjectStageSectionView getSectionHeightWithModel:taskModel tableWidth:tableView.width];
+    return 30;
     
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     
-    ProjectStageSectionView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:PS_SECTION_ID];
+    ProjectStageSectionView *sectionHeader = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"sectionHeader"];
     
-    ProjectTaskModel *taskModel = _stageModel.projectTasks[section];
+    if (!sectionHeader) {
+        sectionHeader = [[ProjectStageSectionView alloc]initWithReuseIdentifier:@"sectionHeader"];
+    }
     
-    view.taskModel = taskModel;
     
-    return view;
+    ProjectTaskModel *taskModel   = _stageModel.projectTasks[section];
+    
+    sectionHeader.title     = taskModel.taskContent;
+    sectionHeader.section   = section;
+    sectionHeader.delegate  = self;
+    
+    return sectionHeader;
 }
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ProjectTaskModel *taskModel   = _stageModel.projectTasks[indexPath.section];
-    ProjectFeedbackModel *fbModel = taskModel.taskFeedbacks[indexPath.row];
-    
-    //计算高度
-    return [ProjectStageCell getCellHeightWithModel:fbModel tableWidth:tableView.width];
+    return 30;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ProjectStageCell *cell = [tableView dequeueReusableCellWithIdentifier:PS_CELL_ID forIndexPath:indexPath];
-    
-    ProjectTaskModel *taskModel = _stageModel.projectTasks[indexPath.section];
-    ProjectFeedbackModel *feedBackModel = taskModel.taskFeedbacks[indexPath.row];
-    
-    cell.feedBackModel = feedBackModel;
-    
+    UITableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:@"cell_id"];
+    if (!cell) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell_id"];
+    }
+    cell.textLabel.text = [NSString stringWithFormat:@"%li-%li",indexPath.section,indexPath.row];
     return cell;
 }
 
@@ -261,12 +267,7 @@
         _tableView.backgroundColor = VcBackgroudColor;
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        
-        //注册sectionView
-        [_tableView registerClass:[ProjectStageSectionView class] forHeaderFooterViewReuseIdentifier:PS_SECTION_ID];
-        //注册cell
-        [_tableView registerClass:[ProjectStageCell class] forCellReuseIdentifier:PS_CELL_ID];
-        
+
         [self.view addSubview:_tableView];
         
     }

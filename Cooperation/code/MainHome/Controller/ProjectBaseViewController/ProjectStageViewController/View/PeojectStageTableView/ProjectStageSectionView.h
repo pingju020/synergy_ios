@@ -2,20 +2,26 @@
 //  ProjectStageSectionView.h
 //  Cooperation
 //
-//  Created by 葛君语 on 2017/1/22.
+//  Created by 葛君语 on 2017/1/23.
 //  Copyright © 2017年 Tion. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-@class ProjectTaskModel;
 
-extern NSString *const PS_SECTION_ID; //section重用标识
+@protocol ProjectStageSectionDelegate <NSObject>
 
-@interface ProjectStageSectionView : UITableViewHeaderFooterView
-
-@property (nonatomic,strong) ProjectTaskModel *taskModel;
-
-//获取section高度
-+ (CGFloat)getSectionHeightWithModel:(ProjectTaskModel *)model tableWidth:(CGFloat)tableWidth;
+- (void)projectStageSectionRemove:(NSInteger)section;
 
 @end
+
+#pragma mark - 基类
+@interface ProjectStageSectionView : UITableViewHeaderFooterView
+
+@property (nonatomic,assign) NSInteger section;
+
+@property (nonatomic,strong) NSString *title;
+
+@property (nonatomic,weak) id <ProjectStageSectionDelegate>delegate;
+
+@end
+

@@ -88,8 +88,6 @@
     for (NSDictionary *dict in list) {
         ProjectFeedbackModel *model = [ProjectFeedbackModel mj_objectWithKeyValues:dict];
         
-        model.cellHeight = -1;
-        
         model.taskFeedFiles = [ProjectFeedbackFileModel parsingArrayWithList:dict[@"taskFeedFiles"]];
         
         [mulArr addObject:model];

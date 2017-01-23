@@ -2,51 +2,99 @@
 //  ProjectStageSectionView.m
 //  Cooperation
 //
-//  Created by 葛君语 on 2017/1/22.
+//  Created by 葛君语 on 2017/1/23.
 //  Copyright © 2017年 Tion. All rights reserved.
 //
 
 #import "ProjectStageSectionView.h"
-#import "ProjectStageModel.h"
 
-NSString *const PS_SECTION_ID = @"PS_SECTION_ID";
+@interface ProjectStageSectionView ()
 
-static CGFloat kSectionWidth; //section宽度
+@property (nonatomic,strong) UILabel *indexLabel;
+@property (nonatomic,strong) UILabel *titleLabel;
+@property (nonatomic,strong) UIButton *removeButton;
+
+@end
 
 @implementation ProjectStageSectionView
 
-- (instancetype)initWithReuseIdentifier:(NSString *)reuseIdentifier
+
+
+
+
+#pragma mark -btnAction
+- (void)removeClicked
 {
-    self = [super initWithReuseIdentifier:reuseIdentifier];
-    if (self) {
-        
+    if ([self.delegate respondsToSelector:@selector(projectStageSectionRemove:)]) {
+        [self.delegate projectStageSectionRemove:_section];
     }
-    return self;
 }
 
-#pragma mark -计算高度
-+ (CGFloat)getSectionHeightWithModel:(ProjectTaskModel *)model tableWidth:(CGFloat)tableWidth
+
+#pragma mark -赋值
+- (void)setTitle:(NSString *)title
 {
-    kSectionWidth = tableWidth;
+    _title = title;
     
-    //先判断高度是否已经计算过
-    if (model.sectionHeight != -1) { //有缓存，直接取缓存
-        return model.sectionHeight;
-        
-    }else{ //没有缓存，需要计算
-        CGFloat height = 20;
-        
-        //保存缓存
-        model.sectionHeight = height;
-        
-        return height;
-        
-    }
+    self.titleLabel.text = title;
 }
 
-- (void)setTaskModel:(ProjectTaskModel *)taskModel
+- (void)setSection:(NSInteger)section
 {
-    _taskModel = taskModel;
+    _section = section;
+    
+    self.indexLabel.text = [NSString stringWithFormat:@"%li",section+1];
+}
+
+#pragma mark -setUI
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    self.indexLabel.frame = CGRectMake(10, (self.height-15)/2, 15, 15);
+    
+    self.removeButton.frame = CGRectMake(self.width-10-15, (self.height-15)/2, 15, 15);
+    
+    self.titleLabel.frame = CGRectMake(self.indexLabel.right+5, (self.height-20)/2, self.removeButton.left-5-(_indexLabel.right+5), 20);
+
+}
+
+
+- (UILabel *)indexLabel
+{
+    if (!_indexLabel) {
+        _indexLabel = [UILabel new];
+        _indexLabel.backgroundColor = [UIColor colorWithHexString:@"#516CB8"];
+        _indexLabel.font = [UIFont systemFontOfSize:12];
+        _indexLabel.textColor = [UIColor whiteColor];
+        _indexLabel.textAlignment = NSTextAlignmentCenter;
+        [self.contentView addSubview:_indexLabel];
+    }
+    return _indexLabel;
+}
+
+- (UIButton *)removeButton
+{
+    if (!_removeButton) {
+        _removeButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 20, 20)];
+        _removeButton.backgroundColor = [UIColor greenColor];
+        [_removeButton addTarget:self action:@selector(removeClicked) forControlEvents:UIControlEventTouchUpInside];
+        [self.contentView addSubview:_removeButton];
+    }
+    return _removeButton;
+}
+
+- (UILabel *)titleLabel
+{
+    if (!_titleLabel) {
+        _titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.indexLabel.right+5, 0, 10, 20)];
+        _titleLabel.font = [UIFont systemFontOfSize:14];
+        _titleLabel.textColor = [UIColor colorWithHexString:@"#666666"];
+        _titleLabel.textAlignment = NSTextAlignmentLeft;
+        [self.contentView addSubview:_titleLabel];
+        
+    }
+    return _titleLabel;
 }
 
 
