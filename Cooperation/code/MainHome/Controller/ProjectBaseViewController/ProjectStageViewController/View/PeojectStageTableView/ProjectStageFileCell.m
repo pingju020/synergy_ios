@@ -19,12 +19,15 @@
 
 
 @implementation ProjectStageFileCell
+{
+    BOOL _isFirstLoad;
+}
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.contentView.backgroundColor = VcBackgroudColor;
+        self.contentView.backgroundColor = [UIColor colorWithHexString:@"#F8F8F8"];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return self;
@@ -70,12 +73,18 @@
 {
     [super layoutSubviews];
     
-    self.backView.frame   = CGRectMake(30, 0, self.width-30-10, self.height);
+    if (_isFirstLoad) {
+        self.backView.frame   = CGRectMake(30, 0, self.width-30-10, self.height);
+        
+        //backview的子控件
+        self.icon.frame       = CGRectMake(10, (_backView.height-19)/2, 13, 19);
+        
+        self.titleLabel.frame = CGRectMake(self.icon.right+10, (_backView.height-20)/2, _backView.width-(_icon.right+10)-10, 20);
+        
+        _isFirstLoad = NO;
+    }
     
-    //backview的子控件
-    self.icon.frame       = CGRectMake(10, (_backView.height-19)/2, 13, 19);
-    
-    self.titleLabel.frame = CGRectMake(self.icon.right+10, (_backView.height-20)/2, _backView.width-(_icon.right+10)-10, 20);
+
     
     
 }

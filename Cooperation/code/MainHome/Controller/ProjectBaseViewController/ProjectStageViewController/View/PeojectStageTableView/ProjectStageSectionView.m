@@ -17,12 +17,15 @@
 @end
 
 @implementation ProjectStageSectionView
+{
+    BOOL _isFirstLoad;
+}
 
 - (instancetype)initWithReuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithReuseIdentifier:reuseIdentifier];
     if (self) {
-        self.contentView.backgroundColor = VcBackgroudColor;
+        self.contentView.backgroundColor = [UIColor colorWithHexString:@"#F8F8F8"];
     }
     return self;
 }
@@ -59,11 +62,17 @@
 {
     [super layoutSubviews];
     
-    self.indexLabel.frame = CGRectMake(10, (self.height-15)/2, 15, 15);
+    if (!_isFirstLoad) {
+        self.indexLabel.frame = CGRectMake(10, (self.height-15)/2, 15, 15);
+        
+        self.removeButton.frame = CGRectMake(self.width-10-15, (self.height-15)/2, 15, 15);
+        
+        self.titleLabel.frame = CGRectMake(self.indexLabel.right+5, (self.height-20)/2, self.removeButton.left-5-(_indexLabel.right+5), 20);
+        
+        _isFirstLoad = NO;
+    }
     
-    self.removeButton.frame = CGRectMake(self.width-10-15, (self.height-15)/2, 15, 15);
-    
-    self.titleLabel.frame = CGRectMake(self.indexLabel.right+5, (self.height-20)/2, self.removeButton.left-5-(_indexLabel.right+5), 20);
+
 
 }
 

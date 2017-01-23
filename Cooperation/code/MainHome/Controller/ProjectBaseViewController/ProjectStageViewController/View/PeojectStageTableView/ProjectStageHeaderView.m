@@ -25,7 +25,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-
+        self.backgroundColor = [UIColor colorWithHexString:@"#F8F8F8"];
     }
     return self;
 }
@@ -122,6 +122,10 @@
         _stateButton.titleLabel.font = [UIFont systemFontOfSize:13];
         [_stateButton addTarget:self action:@selector(stateClicked) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_stateButton];
+        
+        UIImageView *arrow = [[UIImageView alloc]initWithFrame:CGRectMake(_stateButton.width-8-5, (_stateButton.height-5)/2, 8, 5)];
+        arrow.image = [UIImage imageNamed:@"任务-下拉2"];
+        [_stateButton addSubview:arrow];
         
     }
     return _stateButton;

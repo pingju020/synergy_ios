@@ -255,7 +255,15 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 35;
+    ProjectTaskModel *taskModel   = _stageModel.projectTasks[indexPath.section];
+    
+    //cell 由文件列表+时间cell+反馈Cell构成
+    
+    if (indexPath.row >= taskModel.taskFiles.count + 1) { //反馈
+        return 50;
+    }else{
+        return 35;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -294,6 +302,7 @@
         UITableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:@"feedback_id"];
         if (!cell) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"feedback_id"];
+            cell.contentView.backgroundColor = [UIColor colorWithHexString:@"#F8F8F8"];
         }
         cell.textLabel.text = @"这是反馈cell,编写中";
         return cell;
@@ -315,7 +324,7 @@
     }else{
         taskModel.isOn ^= 1;
         
-        [tableView reloadSections:[[NSIndexSet alloc]initWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationFade];
+        [tableView reloadSections:[[NSIndexSet alloc]initWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationNone];
 
     }
 }
@@ -346,7 +355,7 @@
     if (!_tableView) {
         _tableView = [[UITableView alloc]initWithFrame:CGRectMake(kTabWidth, CGRectGetMaxY(navigationBG.frame)+44, MAIN_WIDTH-kTabWidth, MAIN_HEIGHT-CGRectGetMaxY(navigationBG.frame)-44) style:UITableViewStylePlain];
         _tableView.showsVerticalScrollIndicator = NO;
-        _tableView.backgroundColor = VcBackgroudColor;
+        _tableView.backgroundColor = [UIColor colorWithHexString:@"#F8F8F8"];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.separatorStyle  = UITableViewCellSeparatorStyleNone;

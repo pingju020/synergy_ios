@@ -19,13 +19,17 @@
 @end
 
 @implementation ProjectStageDateCell
+{
+    BOOL _isFirstLoad; //是否首次加载
+}
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.contentView.backgroundColor = VcBackgroudColor;
+        self.contentView.backgroundColor = [UIColor colorWithHexString:@"#F8F8F8"];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
+        _isFirstLoad = YES;
     }
     return self;
 }
@@ -68,13 +72,19 @@
 {
     [super layoutSubviews];
     
-    self.arrowView.frame = CGRectMake(30, (self.height-10.5)/2, 15.5, 10.5);
+    if (_isFirstLoad) {
+        self.arrowView.frame = CGRectMake(30, (self.height-10.5)/2, 15.5, 10.5);
+        
+        self.finishButton.frame = CGRectMake(self.width-10-40, (self.height-30)/2, 40, 30);
+        self.writeButton.frame = CGRectMake(_finishButton.left-15-40, (self.height-30)/2, 40, 30);
+        self.endLabel.frame = CGRectMake(self.width-10-50, (self.height-30)/2, 50, 30);
+        
+        self.dateLabel.frame = CGRectMake(self.arrowView.right+5, (self.height-20)/2, 150, 20);
+        
+        _isFirstLoad = NO;
+    }
     
-    self.finishButton.frame = CGRectMake(self.width-10-40, (self.height-30)/2, 40, 30);
-    self.writeButton.frame = CGRectMake(_finishButton.left-15-40, (self.height-30)/2, 40, 30);
-    self.endLabel.frame = CGRectMake(self.width-10-50, (self.height-30)/2, 50, 30);
-    
-    self.dateLabel.frame = CGRectMake(self.arrowView.right+5, (self.height-20)/2, 150, 20);
+
 }
 
 - (UIImageView *)arrowView
