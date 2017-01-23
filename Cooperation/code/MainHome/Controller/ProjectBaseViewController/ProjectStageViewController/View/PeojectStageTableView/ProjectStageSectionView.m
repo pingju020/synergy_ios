@@ -18,6 +18,14 @@
 
 @implementation ProjectStageSectionView
 
+- (instancetype)initWithReuseIdentifier:(NSString *)reuseIdentifier
+{
+    self = [super initWithReuseIdentifier:reuseIdentifier];
+    if (self) {
+        self.backgroundColor = VcBackgroudColor;
+    }
+    return self;
+}
 
 
 

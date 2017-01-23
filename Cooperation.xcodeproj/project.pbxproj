@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4D9A11471E3593E800504884 /* ProjectStageSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9A11461E3593E800504884 /* ProjectStageSectionView.m */; };
+		4D9A114D1E35A23A00504884 /* ProjectStageFileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9A114C1E35A23A00504884 /* ProjectStageFileCell.m */; };
 		4DD372FA1E34A2730011A7D1 /* ProjectStageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD372EC1E34A2730011A7D1 /* ProjectStageModel.m */; };
 		4DD372FC1E34A2730011A7D1 /* ProjectTabModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD372F01E34A2730011A7D1 /* ProjectTabModel.m */; };
 		4DD372FD1E34A2730011A7D1 /* ProjectStageHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD372F41E34A2730011A7D1 /* ProjectStageHeaderView.m */; };
@@ -496,6 +497,8 @@
 /* Begin PBXFileReference section */
 		4D9A11451E3593E800504884 /* ProjectStageSectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectStageSectionView.h; sourceTree = "<group>"; };
 		4D9A11461E3593E800504884 /* ProjectStageSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectStageSectionView.m; sourceTree = "<group>"; };
+		4D9A114B1E35A23A00504884 /* ProjectStageFileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectStageFileCell.h; sourceTree = "<group>"; };
+		4D9A114C1E35A23A00504884 /* ProjectStageFileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectStageFileCell.m; sourceTree = "<group>"; };
 		4DD372EB1E34A2730011A7D1 /* ProjectStageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectStageModel.h; sourceTree = "<group>"; };
 		4DD372EC1E34A2730011A7D1 /* ProjectStageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectStageModel.m; sourceTree = "<group>"; };
 		4DD372EF1E34A2730011A7D1 /* ProjectTabModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectTabModel.h; sourceTree = "<group>"; };
@@ -1363,6 +1366,8 @@
 				4DD372F41E34A2730011A7D1 /* ProjectStageHeaderView.m */,
 				4D9A11451E3593E800504884 /* ProjectStageSectionView.h */,
 				4D9A11461E3593E800504884 /* ProjectStageSectionView.m */,
+				4D9A114B1E35A23A00504884 /* ProjectStageFileCell.h */,
+				4D9A114C1E35A23A00504884 /* ProjectStageFileCell.m */,
 			);
 			path = PeojectStageTableView;
 			sourceTree = "<group>";
@@ -3590,6 +3595,7 @@
 				AC1117471E31DD91009ABFDF /* DDDispatchQueueLogFormatter.m in Sources */,
 				C634FA671E34F93D003EE26B /* XHEmotionManager.m in Sources */,
 				AC11178F1E31DD91009ABFDF /* SDWebImageDownloaderOperation.m in Sources */,
+				4D9A114D1E35A23A00504884 /* ProjectStageFileCell.m in Sources */,
 				AC1118241E31F5B2009ABFDF /* MJRefreshBackNormalFooter.m in Sources */,
 				AC11176C1E31DD91009ABFDF /* AFNetworkActivityIndicatorManager.m in Sources */,
 				AC1117321E31DD91009ABFDF /* MainHomeItemLoadContext.m in Sources */,

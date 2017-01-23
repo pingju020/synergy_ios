@@ -13,6 +13,7 @@
 #import "ProjectStageModel.h"
 #import "ProjectStageHeaderView.h"
 #import "ProjectStageSectionView.h"
+#import "ProjectStageFileCell.h"
 
 @interface ProjectStageViewController ()<ProjectStageHeaderDelegate,UITableViewDelegate,UITableViewDataSource,ProjectStageSectionDelegate>
 
@@ -199,7 +200,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 30;
+    return 40;
     
 }
 
@@ -225,17 +226,65 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 30;
+    return 40;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:@"cell_id"];
-    if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell_id"];
+    ProjectTaskModel *taskModel   = _stageModel.projectTasks[indexPath.section];
+    
+    
+    //文件列表
+    if (indexPath.row < taskModel.taskFiles.count) {
+        ProjectStageFileCell *cell = [tableView dequeueReusableCellWithIdentifier:@"fileId"];
+        if (!cell) {
+            cell = [[ProjectStageFileCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"fileId"];
+        }
+        
+        //赋值
+        ProjectTaskFileModel *fileModel = taskModel.taskFiles[indexPath.row];
+        
+        [cell setInfoWithFileType:fileModel.fileType.integerValue
+                            title:fileModel.fileName];
+        
+        return cell;
+        
+        
+    }else if (indexPath.row == taskModel.taskFiles.count){ //时间栏
+        UITableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:@"time_id"];
+        if (!cell) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"time_id"];
+        }
+        cell.textLabel.text = [NSString stringWithFormat:@"%@",taskModel.createTime];
+        return cell;
+        
+        
+    }else{ //反馈栏
+        UITableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:@"time_id"];
+        if (!cell) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"time_id"];
+        }
+        cell.textLabel.text = @"这是反馈cell,编写中";
+        return cell;
+        
     }
-    cell.textLabel.text = [NSString stringWithFormat:@"%li-%li",indexPath.section,indexPath.row];
-    return cell;
+    
+
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ProjectTaskModel *taskModel   = _stageModel.projectTasks[indexPath.section];
+    //文件列表
+    if (indexPath.row < taskModel.taskFiles.count) {
+        ProjectTaskFileModel *fileModel = taskModel.taskFiles[indexPath.row];
+        
+        [PubllicMaskViewHelper showTipViewWith:[NSString stringWithFormat:@"点击了文件:%@",fileModel.fileUrl] inSuperView:self.view withDuration:1] ;
+    
+    }else{
+//        [tableView reloadSections:[[NSIndexSet alloc]initWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationFade];
+        [PubllicMaskViewHelper showTipViewWith:@"点击了收起/展开" inSuperView:self.view withDuration:1];
+    }
 }
 
 
@@ -267,6 +316,7 @@
         _tableView.backgroundColor = VcBackgroudColor;
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        _tableView.separatorStyle  = UITableViewCellSeparatorStyleNone;
 
         [self.view addSubview:_tableView];
         
