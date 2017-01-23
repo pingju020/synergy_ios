@@ -106,16 +106,10 @@
             
             [linePath addLineToPoint:point];
             
-            if (i == self.valueArray.count - 2) {
-                
+            if (i == (self.valueArray.count - 2) && self.drawLastDot) {
+
                 [linePath stroke];
                 
-//                UIBezierPath *linePathCenter = [UIBezierPath bezierPath];
-//                linePathCenter.lineWidth = self.lineWidth;
-//                linePathCenter.lineJoinStyle = kCGLineJoinRound;
-//                [linePathCenter moveToPoint:point];
-//                [linePathCenter addLineToPoint:(CGPoint){rect.origin.x+rect.size.width,point.y-2.f}];
-//                [linePathCenter stroke];
                 
                 UIBezierPath *linePathRight = [UIBezierPath bezierPath];
                 linePathRight.lineWidth = self.lineWidth;
@@ -124,6 +118,17 @@
                 [linePathRight addLineToPoint:(CGPoint){rect.origin.x+rect.size.width,point.y-2.f}];
                 CGFloat dash[] = {linePathRight.lineWidth,linePathRight.lineWidth};
                 [linePathRight setLineDash:dash count:2 phase:0];
+                [linePathRight stroke];
+            }
+            
+            if (i == self.valueArray.count - 1 && !self.drawLastDot) {
+                [linePath stroke];
+                
+                UIBezierPath *linePathRight = [UIBezierPath bezierPath];
+                linePathRight.lineWidth = self.lineWidth;
+                linePathRight.lineJoinStyle = kCGLineJoinRound;
+                [linePathRight moveToPoint:point];
+                [linePathRight addLineToPoint:(CGPoint){rect.origin.x+rect.size.width,point.y-2.f}];
                 [linePathRight stroke];
             }
         }
@@ -140,20 +145,18 @@
         UIBezierPath *pointPath;
         if (self.linejoinStyle == LPLineJoinRound) {
             //画小圆点
-            if (i == self.valueArray.count - 1) {
+            if (i == (self.valueArray.count - 1)&&self.drawLastDot) {
                 
                 CGPoint prePoint = [self.pointArray[i-1] CGPointValue];
                 
                 [[UIColor whiteColor] set];
                 pointPath = [UIBezierPath bezierPathWithArcCenter:(CGPoint){point.x,prePoint.y-2.f} radius:self.lineJoinPointWidth startAngle:0 endAngle:M_PI * 2 clockwise:YES];
                 pointPath.lineWidth = 1.f;
-                
                 [pointPath fill];
                 
                 [self.lineJoinPointColor set];
                 pointPath = [UIBezierPath bezierPathWithArcCenter:(CGPoint){point.x,prePoint.y-2.f} radius:self.lineJoinPointWidth startAngle:0 endAngle:M_PI * 2 clockwise:YES];
                 pointPath.lineWidth = 1.f;
-                
                 [pointPath stroke];
             }
             else{

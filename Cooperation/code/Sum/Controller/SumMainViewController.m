@@ -61,7 +61,7 @@ AH_BASESUBVCFORMAINTAB_MODULE
     
     self.dateCurrent = date;
     
-    
+    self.resultInfos = nil;
     
     [HTTP_MANAGER startNormalPostWithParagram:@{@"phone":[[NSUserDefaults standardUserDefaults]objectForKey:@"user"],@"date":[date lj_stringWithFormat:@"yyyy-MM"]} Commandtype:@"app/project/getGatherDate" successedBlock:^(NSDictionary *succeedResult, BOOL isSucceed) {
         NSNumber* ret =  [succeedResult lj_numberForKey:@"ret"];
@@ -69,8 +69,8 @@ AH_BASESUBVCFORMAINTAB_MODULE
             //成功
             @strongify(self)
             self.resultInfos = [succeedResult lj_dictionaryForKey:@"data"];
-            [self.tableView reloadData];
         }
+        [self.tableView reloadData];
     } failedBolck:^(AFHTTPSessionManager *session, NSError *error) {
         
     }];
@@ -89,6 +89,10 @@ AH_BASESUBVCFORMAINTAB_MODULE
 }
 
 - (void) showNext{
+    if ([[NSDate date]lj_month] == [self.dateCurrent lj_month]) {
+        return;
+    }
+    
     NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
     [dateComponents setMonth:1];
     NSCalendar *calendar = [NSCalendar currentCalendar];
@@ -101,7 +105,7 @@ AH_BASESUBVCFORMAINTAB_MODULE
     NSMutableArray* m1 = @[].mutableCopy;
     NSArray* monthsMoneys = [self.resultInfos lj_arrayForKey:@"monthsMoneys"];
     for (NSDictionary* it in monthsMoneys) {
-        [m0 addObject:[it lj_stringForKey:@"month" default:@""]];
+        [m0 addObject:[NSString stringWithFormat:@"%@月",[it lj_stringForKey:@"month" default:@""]]];
         [m1 addObject:[it lj_stringForKey:@"money" default:@""]];
     }
     *months = m0;
@@ -147,7 +151,10 @@ AH_BASESUBVCFORMAINTAB_MODULE
     NSMutableArray* ret = @[].mutableCopy;
     NSArray* s = @[@1,@2,@3,@4,@0];
     for (NSNumber* si in s) {
-        [ret addObject:[self getStateNum:si]];
+        NSString* v = [self getStateNum:si];
+        if (v.length>0) {
+            [ret addObject:v];
+        }
     }
     return ret;
 }
@@ -155,7 +162,48 @@ AH_BASESUBVCFORMAINTAB_MODULE
     NSMutableArray* ret = @[].mutableCopy;
     NSArray* s = @[@1,@2,@3,@4,@0];
     for (NSNumber* si in s) {
-        [ret addObject:[self getStateName:si]];
+        NSString* v = [self getStateName:si];
+        if (v.length>0) {
+            [ret addObject:v];
+        }
+    }
+    return ret;
+}
+/*
+ 
+ @[[UIColor colorWithHexString:@"#0DBEF5"]
+ ,[UIColor colorWithHexString:@"#6C85DD"]
+ ,[UIColor colorWithHexString:@"#09BB07"]
+ ,[UIColor colorWithHexString:@"#3188DB"]
+ ,[UIColor colorWithHexString:@"#50E3C2"]];
+ 
+ */
+- (NSArray*) getStateColors{
+    NSMutableArray* ret = @[].mutableCopy;
+    NSDictionary* colors = @{@"1":[UIColor colorWithHexString:@"#0DBEF5"]
+                             ,@"2":[UIColor colorWithHexString:@"#6C85DD"]
+                             ,@"3":[UIColor colorWithHexString:@"#09BB07"]
+                             ,@"4":[UIColor colorWithHexString:@"#3188DB"]
+                             ,@"0":[UIColor colorWithHexString:@"#50E3C2"]};
+    
+    for (int i=0; i<5; i++) {
+        NSString* sn = [self getStateNum:@(i)];
+        if (sn.length>0) {
+            [ret addObject:[colors objectForKey:@(i).stringValue]];
+        }
+    }
+    return ret;
+}
+
+- (NSString*) getCurrentDateValue{
+    NSString* ret = @"";
+    NSArray* monthsMoneys = [self.resultInfos lj_arrayForKey:@"monthsMoneys"];
+    for (NSDictionary* it in monthsMoneys) {
+        NSNumber* m = [it lj_numberForKey:@"month"];
+        if (m.integerValue == [self.dateCurrent lj_month]) {
+            ret = [it lj_stringForKey:@"money"];
+            break;
+        }
     }
     return ret;
 }
@@ -317,7 +365,9 @@ AH_BASESUBVCFORMAINTAB_MODULE
                 {
                     cell.accessoryType = UITableViewCellAccessoryNone;
                     cell.textLabel.text = @"已放款";
-                    cell.detailTextLabel.text = @"12亿";
+                    if ([self getCurrentDateValue].length>0) {
+                        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@万元",[self getCurrentDateValue]];
+                    }
                     break;
                 }
                 case 2:
@@ -328,12 +378,18 @@ AH_BASESUBVCFORMAINTAB_MODULE
                     NSArray* dArray = nil;
                     [self getMonths:&dArray money:&vArray];
                     
-                    SumLineChart* lineChart = [[SumLineChart alloc]initWithFrame:(CGRect){0,0,self.view.lj_width,120}];
-                    lineChart.backgroundColor = [UIColor whiteColor];
-                    lineChart.descArray = dArray;//@[@"8月",@"9月",@"10月",@"11月",@"12月",@"1月"];
-                    [lineChart drawLineChartWithValueArray:vArray/*@[@10,@11,@10.5,@10.8,@14,@12]*/ lineWidth:3.0 lineColor:[UIColor colorWithRed:26/255.f green:176/255.f blue:241/255.f alpha:1.f] lineJionStyle:LPLineJoinRound lineJoinPointColor:[UIColor colorWithRed:26/255.f green:176/255.f blue:241/255.f alpha:1.f] lineJoinPointWidth:5.0 topPadding:50 rightPadding:10 bottomPadding:50 leftPadding:10 valueSituation:LPValueSituationTop prefixString:@"" suffixString:@"亿" valueStringPadding:10 valueTextAttributes:@{NSForegroundColorAttributeName:[UIColor lightGrayColor],NSFontAttributeName:[UIFont systemFontOfSize:(10)]}];
+                    if (vArray.count>0&&dArray.count>0) {
+                        SumLineChart* lineChart = [[SumLineChart alloc]initWithFrame:(CGRect){0,0,self.view.lj_width,120}];
+                        if ([[NSDate date]lj_month] == [self.dateCurrent lj_month]) {
+                            lineChart.drawLastDot = YES;
+                        }
+                        lineChart.backgroundColor = [UIColor whiteColor];
+                        lineChart.descArray = dArray;//@[@"8月",@"9月",@"10月",@"11月",@"12月",@"1月"];
+                        [lineChart drawLineChartWithValueArray:vArray/*@[@10,@11,@10.5,@10.8,@14,@12]*/ lineWidth:3.0 lineColor:[UIColor colorWithRed:26/255.f green:176/255.f blue:241/255.f alpha:1.f] lineJionStyle:LPLineJoinRound lineJoinPointColor:[UIColor colorWithRed:26/255.f green:176/255.f blue:241/255.f alpha:1.f] lineJoinPointWidth:5.0 topPadding:50 rightPadding:10 bottomPadding:50 leftPadding:10 valueSituation:LPValueSituationTop prefixString:@"" suffixString:@"万元" valueStringPadding:10 valueTextAttributes:@{NSForegroundColorAttributeName:[UIColor lightGrayColor],NSFontAttributeName:[UIFont systemFontOfSize:(10)]}];
+                        
+                        [cell.contentView addSubview:lineChart];
+                    }
                     
-                    [cell.contentView addSubview:lineChart];
                     break;
                 }
                 case 3:
@@ -373,11 +429,12 @@ AH_BASESUBVCFORMAINTAB_MODULE
                     ring.backgroundColor = [UIColor whiteColor];
                     ring.valueDataArr = [self getStateValues];//@[@"12",@"7",@"5",@"13",@"46"];
                     ring.ringWidth = 35.0;
-                    ring.fillColorArray = @[[UIColor colorWithHexString:@"#0DBEF5"]
-                                            ,[UIColor colorWithHexString:@"#6C85DD"]
-                                            ,[UIColor colorWithHexString:@"#09BB07"]
-                                            ,[UIColor colorWithHexString:@"#3188DB"]
-                                            ,[UIColor colorWithHexString:@"#50E3C2"]];
+//                    ring.fillColorArray = @[[UIColor colorWithHexString:@"#0DBEF5"]
+//                                            ,[UIColor colorWithHexString:@"#6C85DD"]
+//                                            ,[UIColor colorWithHexString:@"#09BB07"]
+//                                            ,[UIColor colorWithHexString:@"#3188DB"]
+//                                            ,[UIColor colorWithHexString:@"#50E3C2"]];
+                    ring.fillColorArray = [self getStateColors];
                     ring.descArr = [self getStateDescs];//@[@"阶段一",@"阶段二",@"阶段三",@"阶段四",@"其他"];
                     [ring showAnimation];
                     

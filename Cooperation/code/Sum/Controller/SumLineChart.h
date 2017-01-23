@@ -51,6 +51,8 @@ typedef enum : NSUInteger {
 @property (nonatomic, copy) NSString *suffixString;
 //底部描述
 @property (nonatomic, strong) NSArray *descArray;
+//最后一个是否虚线
+@property (nonatomic,assign) BOOL drawLastDot;
 
 /**
  *  画折线  折点宽1.6倍线宽/颜色/无前后缀/文本到折点10/无格式/文本在上/默认边距
