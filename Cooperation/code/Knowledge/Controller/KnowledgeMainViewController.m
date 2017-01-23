@@ -39,6 +39,7 @@ AH_BASESUBVCFORMAINTAB_MODULE
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self removeBackBtn];
     // Do any additional setup after loading the view.
     margin=0;
     
@@ -158,17 +159,17 @@ AH_BASESUBVCFORMAINTAB_MODULE
     
     NSMutableArray* arr=[NSMutableArray new];
     
-    NSString* TempString1=[NSString stringWithFormat:@"http://singki.com/synergy_w/wx/productDescs/inBankWeekLyList"];
+    NSString* TempString1=[NSString stringWithFormat:@"%@productDescs/inBankWeekLyList",HOST_ADDRESS];
     NSURL *url1 = [NSURL URLWithString:TempString1];
     
     
-    NSString* TempString2=[NSString stringWithFormat:@"http://singki.com/synergy_w/wx/productDescs/inforPushList"];
+    NSString* TempString2=[NSString stringWithFormat:@"%@productDescs/inforPushList",HOST_ADDRESS];
     NSURL *url2 = [NSURL URLWithString:TempString2];
     
-    NSString* TempString3=[NSString stringWithFormat:@"http://singki.com/synergy_w/wx/productDescs/marketReportList"];
+    NSString* TempString3=[NSString stringWithFormat:@"%@productDescs/marketReportList",HOST_ADDRESS];
     NSURL *url3 = [NSURL URLWithString:TempString3];
     
-    NSString* TempString4=[NSString stringWithFormat:@"http://singki.com/synergy_w/wx/productDescs/product"];
+    NSString* TempString4=[NSString stringWithFormat:@"%@productDescs/product",HOST_ADDRESS];
     NSURL *url4 = [NSURL URLWithString:TempString4];
     [arr addObject:url1];
     [arr addObject:url2];
@@ -267,7 +268,7 @@ AH_BASESUBVCFORMAINTAB_MODULE
     //1.创建并加载远程网页
     NSUserDefaults *UserDefaults = [NSUserDefaults standardUserDefaults];
     NSString *username=[UserDefaults objectForKey:@"user"];
-    NSString* TempString=[NSString stringWithFormat:@"http://singki.com/synergy_w/wx/productDescs/inBankWeekLyList"];
+    NSString* TempString=[NSString stringWithFormat:@"%@productDescs/inBankWeekLyList",HOST_ADDRESS];
     NSURL *url = [NSURL URLWithString:TempString];
     [WebView loadRequest:[NSURLRequest requestWithURL:url]];
     //2.过度

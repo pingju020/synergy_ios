@@ -168,10 +168,10 @@ static UIFont* kNavigationBarTitleFont = nil;
     
     backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [backBtn setFrame:CGRectMake(0,DISTANCE_TOP,56-5,46-5)];
-    [backBtn setImageEdgeInsets:UIEdgeInsetsMake(10, 20, 10, 10)];
+    //[backBtn setImageEdgeInsets:UIEdgeInsetsMake(10, 20, 10, 10)];
     [backBtn setBackgroundColor:[UIColor clearColor]];
-    [backBtn setImage:[UIImage imageNamed:@"back@2x.png"] forState:UIControlStateNormal];
-    [backBtn setImage:[UIImage imageNamed:@"back@2x.png"] forState:UIControlStateHighlighted];
+    [backBtn setImage:[UIImage imageNamed:@"返回"] forState:UIControlStateNormal];
+    [backBtn setImage:[UIImage imageNamed:@"返回"] forState:UIControlStateHighlighted];
     [backBtn addTarget:self action:@selector(backBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     [navigationBG addSubview:backBtn];
     
@@ -200,8 +200,8 @@ static UIFont* kNavigationBarTitleFont = nil;
 - (void)resetBackBtnImage;
 {
     [backBtn setFrame:CGRectMake(10,DISTANCE_TOP,46,46)];
-    [backBtn setImage:[UIImage imageNamed:@"back@2x"] forState:UIControlStateNormal];
-    [backBtn setImage:[UIImage imageNamed:@"back@2x"] forState:UIControlStateHighlighted];
+    [backBtn setImage:[UIImage imageNamed:@"返回"] forState:UIControlStateNormal];
+    [backBtn setImage:[UIImage imageNamed:@"返回"] forState:UIControlStateHighlighted];
     [backBtn addTarget:self action:@selector(backBtnClicked) forControlEvents:UIControlEventTouchUpInside];
 }
 

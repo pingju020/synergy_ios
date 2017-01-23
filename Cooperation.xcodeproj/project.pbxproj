@@ -8,11 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		4D9A11471E3593E800504884 /* ProjectStageSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9A11461E3593E800504884 /* ProjectStageSectionView.m */; };
+		4D9A114D1E35A23A00504884 /* ProjectStageFileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9A114C1E35A23A00504884 /* ProjectStageFileCell.m */; };
+		4D9A11511E35ADB500504884 /* ProjectStageDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9A11501E35ADB500504884 /* ProjectStageDateCell.m */; };
+		4D9A11531E35B33C00504884 /* 任务-上拉2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D9A11521E35B33C00504884 /* 任务-上拉2.png */; };
 		4DD372FA1E34A2730011A7D1 /* ProjectStageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD372EC1E34A2730011A7D1 /* ProjectStageModel.m */; };
 		4DD372FC1E34A2730011A7D1 /* ProjectTabModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD372F01E34A2730011A7D1 /* ProjectTabModel.m */; };
 		4DD372FD1E34A2730011A7D1 /* ProjectStageHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD372F41E34A2730011A7D1 /* ProjectStageHeaderView.m */; };
 		4DD372FE1E34A2730011A7D1 /* ProjectTabScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD372F61E34A2730011A7D1 /* ProjectTabScrollView.m */; };
 		4DD372FF1E34A2730011A7D1 /* ProjectStageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD372F91E34A2730011A7D1 /* ProjectStageViewController.m */; };
+		4DF897751E35D3E1003FFB24 /* ProjectFeedBackCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF897741E35D3E1003FFB24 /* ProjectFeedBackCell.m */; };
 		AC11154F1E31DD1F009ABFDF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AC11154E1E31DD1F009ABFDF /* main.m */; };
 		AC1115521E31DD1F009ABFDF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1115511E31DD1F009ABFDF /* AppDelegate.m */; };
 		AC1115551E31DD1F009ABFDF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1115541E31DD1F009ABFDF /* ViewController.m */; };
@@ -464,6 +468,7 @@
 		C65875061E347887006FBA99 /* BackMoneyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C65875051E347887006FBA99 /* BackMoneyTableViewCell.m */; };
 		C66A31721E35A798005B057B /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C66A31711E35A798005B057B /* AboutViewController.m */; };
 		C66A31741E35A7D8005B057B /* logout@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C66A31731E35A7D8005B057B /* logout@3x.png */; };
+		C66A31761E35E6B8005B057B /* zixun_sample.png in Resources */ = {isa = PBXBuildFile; fileRef = C66A31751E35E6B8005B057B /* zixun_sample.png */; };
 		C68710681E34572C0018E152 /* ProjectDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C68710671E34572C0018E152 /* ProjectDetailModel.m */; };
 		C68710731E34575A0018E152 /* AddButtonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C68710691E34575A0018E152 /* AddButtonTableViewCell.m */; };
 		C68710741E34575A0018E152 /* ChooseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C687106A1E34575A0018E152 /* ChooseTableViewCell.m */; };
@@ -498,6 +503,11 @@
 /* Begin PBXFileReference section */
 		4D9A11451E3593E800504884 /* ProjectStageSectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectStageSectionView.h; sourceTree = "<group>"; };
 		4D9A11461E3593E800504884 /* ProjectStageSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectStageSectionView.m; sourceTree = "<group>"; };
+		4D9A114B1E35A23A00504884 /* ProjectStageFileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectStageFileCell.h; sourceTree = "<group>"; };
+		4D9A114C1E35A23A00504884 /* ProjectStageFileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectStageFileCell.m; sourceTree = "<group>"; };
+		4D9A114F1E35ADB500504884 /* ProjectStageDateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectStageDateCell.h; sourceTree = "<group>"; };
+		4D9A11501E35ADB500504884 /* ProjectStageDateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectStageDateCell.m; sourceTree = "<group>"; };
+		4D9A11521E35B33C00504884 /* 任务-上拉2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "任务-上拉2.png"; sourceTree = "<group>"; };
 		4DD372EB1E34A2730011A7D1 /* ProjectStageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectStageModel.h; sourceTree = "<group>"; };
 		4DD372EC1E34A2730011A7D1 /* ProjectStageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectStageModel.m; sourceTree = "<group>"; };
 		4DD372EF1E34A2730011A7D1 /* ProjectTabModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectTabModel.h; sourceTree = "<group>"; };
@@ -508,6 +518,8 @@
 		4DD372F61E34A2730011A7D1 /* ProjectTabScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectTabScrollView.m; sourceTree = "<group>"; };
 		4DD372F81E34A2730011A7D1 /* ProjectStageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectStageViewController.h; sourceTree = "<group>"; };
 		4DD372F91E34A2730011A7D1 /* ProjectStageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectStageViewController.m; sourceTree = "<group>"; };
+		4DF897731E35D3E1003FFB24 /* ProjectFeedBackCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectFeedBackCell.h; sourceTree = "<group>"; };
+		4DF897741E35D3E1003FFB24 /* ProjectFeedBackCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectFeedBackCell.m; sourceTree = "<group>"; };
 		AC11154A1E31DD1F009ABFDF /* Cooperation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cooperation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC11154E1E31DD1F009ABFDF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AC1115501E31DD1F009ABFDF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1266,6 +1278,7 @@
 		C66A31701E35A798005B057B /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		C66A31711E35A798005B057B /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		C66A31731E35A7D8005B057B /* logout@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logout@3x.png"; sourceTree = "<group>"; };
+		C66A31751E35E6B8005B057B /* zixun_sample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zixun_sample.png; sourceTree = "<group>"; };
 		C68710661E34572C0018E152 /* ProjectDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectDetailModel.h; sourceTree = "<group>"; };
 		C68710671E34572C0018E152 /* ProjectDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectDetailModel.m; sourceTree = "<group>"; };
 		C68710691E34575A0018E152 /* AddButtonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddButtonTableViewCell.m; sourceTree = "<group>"; };
@@ -1369,6 +1382,12 @@
 				4DD372F41E34A2730011A7D1 /* ProjectStageHeaderView.m */,
 				4D9A11451E3593E800504884 /* ProjectStageSectionView.h */,
 				4D9A11461E3593E800504884 /* ProjectStageSectionView.m */,
+				4D9A114B1E35A23A00504884 /* ProjectStageFileCell.h */,
+				4D9A114C1E35A23A00504884 /* ProjectStageFileCell.m */,
+				4D9A114F1E35ADB500504884 /* ProjectStageDateCell.h */,
+				4D9A11501E35ADB500504884 /* ProjectStageDateCell.m */,
+				4DF897731E35D3E1003FFB24 /* ProjectFeedBackCell.h */,
+				4DF897741E35D3E1003FFB24 /* ProjectFeedBackCell.m */,
 			);
 			path = PeojectStageTableView;
 			sourceTree = "<group>";
@@ -2709,6 +2728,7 @@
 		ACB7C5401E330C7800C44615 /* knowledge */ = {
 			isa = PBXGroup;
 			children = (
+				C66A31751E35E6B8005B057B /* zixun_sample.png */,
 				C66A31731E35A7D8005B057B /* logout@3x.png */,
 				C634F94B1E34AEA1003EE26B /* 日历.png */,
 				C634F94C1E34AEA1003EE26B /* 汇总-右箭头1.png */,
@@ -2728,6 +2748,7 @@
 				ACB7C5501E330D3900C44615 /* 汇总@3x.png */,
 				ACB7C5511E330D3900C44615 /* 汇总2@3x.png */,
 				ACB7C5521E330D3900C44615 /* 密码@3x.png */,
+				4D9A11521E35B33C00504884 /* 任务-上拉2.png */,
 				ACB7C5531E330D3900C44615 /* 任务-下拉2.png */,
 				ACB7C5541E330D3900C44615 /* 删除.png */,
 				ACB7C5551E330D3900C44615 /* 删除2.png */,
@@ -3341,6 +3362,8 @@
 				TargetAttributes = {
 					AC1115491E31DD1F009ABFDF = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = U4552DQAF3;
+						ProvisioningStyle = Manual;
 					};
 					AC1115621E31DD1F009ABFDF = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -3404,6 +3427,7 @@
 				ACB7C59A1E330D3900C44615 /* 知识库@3x.png in Resources */,
 				AC7C94E71E3383EB00DB7663 /* addManager@3x.png in Resources */,
 				ACB7C5861E330D3900C44615 /* 搜索-关闭.png in Resources */,
+				C66A31761E35E6B8005B057B /* zixun_sample.png in Resources */,
 				C634FAA91E34F93E003EE26B /* SenderVoiceNodePlaying001@2x.png in Resources */,
 				C634FA8D1E34F93E003EE26B /* Fav_Cell_Loc@2x.png in Resources */,
 				C634FA921E34F93E003EE26B /* MessageVideoPlay@2x.png in Resources */,
@@ -3484,6 +3508,7 @@
 				ACB7C5A01E330D3900C44615 /* BG@3x.png in Resources */,
 				AC1117D51E31F04D009ABFDF /* username@3x.png in Resources */,
 				AC11175C1E31DD91009ABFDF /* news@2x.png in Resources */,
+				4D9A11531E35B33C00504884 /* 任务-上拉2.png in Resources */,
 				ACB7C5971E330D3900C44615 /* 用户名@3x.png in Resources */,
 				ACB7C58C1E330D3900C44615 /* 我的@3x.png in Resources */,
 				C634F9521E34AEA1003EE26B /* 汇总-右箭头2.png in Resources */,
@@ -3600,6 +3625,7 @@
 				AC1117471E31DD91009ABFDF /* DDDispatchQueueLogFormatter.m in Sources */,
 				C634FA671E34F93D003EE26B /* XHEmotionManager.m in Sources */,
 				AC11178F1E31DD91009ABFDF /* SDWebImageDownloaderOperation.m in Sources */,
+				4D9A114D1E35A23A00504884 /* ProjectStageFileCell.m in Sources */,
 				AC1118241E31F5B2009ABFDF /* MJRefreshBackNormalFooter.m in Sources */,
 				AC11176C1E31DD91009ABFDF /* AFNetworkActivityIndicatorManager.m in Sources */,
 				AC1117321E31DD91009ABFDF /* MainHomeItemLoadContext.m in Sources */,
@@ -3747,6 +3773,8 @@
 				AC1117491E31DD91009ABFDF /* ELCAlbumPickerController.m in Sources */,
 				AC11181E1E31F5B2009ABFDF /* MJRefreshFooter.m in Sources */,
 				C634FA691E34F93D003EE26B /* XHShareMenuItem.m in Sources */,
+				4D9A11511E35ADB500504884 /* ProjectStageDateCell.m in Sources */,
+				4DF897751E35D3E1003FFB24 /* ProjectFeedBackCell.m in Sources */,
 				C634FA7E1E34F93E003EE26B /* XHMessageBubbleView.m in Sources */,
 				AC7FFC381E33652500200686 /* BranchBankIdentifyModel.m in Sources */,
 				C634FA7A1E34F93E003EE26B /* SETextSelectionView.m in Sources */,
@@ -4004,13 +4032,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = U4552DQAF3;
 				GCC_INPUT_FILETYPE = automatic;
 				GCC_PREFIX_HEADER = Cooperation/PrefixHeader.pch;
 				INFOPLIST_FILE = Cooperation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-licucore";
-				PRODUCT_BUNDLE_IDENTIFIER = sarris.Cooperation;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sarris.synergy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "e6e950f2-13af-4e5f-a1cd-e5b2d1546ca0";
+				PROVISIONING_PROFILE_SPECIFIER = synergyDev;
 			};
 			name = Debug;
 		};
@@ -4018,12 +4049,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				GCC_INPUT_FILETYPE = automatic;
 				GCC_PREFIX_HEADER = Cooperation/PrefixHeader.pch;
 				INFOPLIST_FILE = Cooperation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-licucore";
-				PRODUCT_BUNDLE_IDENTIFIER = sarris.Cooperation;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sarris.synergy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

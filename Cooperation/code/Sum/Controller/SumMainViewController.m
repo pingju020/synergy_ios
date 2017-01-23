@@ -195,6 +195,27 @@ AH_BASESUBVCFORMAINTAB_MODULE
     return ret;
 }
 
+- (void) getStateNum:(NSArray**)nums desc:(NSArray**)descs color:(NSArray**)colors{
+    NSMutableArray* a0 = @[].mutableCopy;
+    NSMutableArray* a1 = @[].mutableCopy;
+    //NSMutableArray* a2 = @[].mutableCopy;
+    
+    NSArray* stateNum = [self.resultInfos lj_arrayForKey:@"stateNum"];
+    for (NSDictionary* it in stateNum) {
+        [a0 addObject:[it lj_stringForKey:@"num"]];
+        [a1 addObject:[it lj_stringForKey:@"stateName"]];
+    }
+    *nums = a0;
+    *descs = a1;
+    *colors = [@[[UIColor colorWithHexString:@"#50E3C2"]
+                ,[UIColor colorWithHexString:@"#0DBEF5"]
+                ,[UIColor colorWithHexString:@"#6C85DD"]
+                ,[UIColor colorWithHexString:@"#09BB07"]
+                ,[UIColor colorWithHexString:@"#3188DB"]
+                ,[UIColor colorWithHexString:@"#5256DC"]
+                ,[UIColor colorWithHexString:@"#BC69C7"]]subarrayWithRange:(NSRange){0,a0.count}];
+}
+
 - (NSString*) getCurrentDateValue{
     NSString* ret = @"";
     NSArray* monthsMoneys = [self.resultInfos lj_arrayForKey:@"monthsMoneys"];
@@ -211,6 +232,8 @@ AH_BASESUBVCFORMAINTAB_MODULE
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"汇总";
+    
+    [self removeBackBtn];
     
     [self reloadData];
 }
@@ -335,7 +358,8 @@ AH_BASESUBVCFORMAINTAB_MODULE
     cell.textLabel.font = [UIFont boldSystemFontOfSize:12.f];
     cell.detailTextLabel.font = [UIFont systemFontOfSize:12.f];
     cell.detailTextLabel.textColor = [UIColor colorWithRed:43/255.f green:185/255.f blue:244/255.f alpha:1];
-    
+    cell.textLabel.text = nil;
+    cell.detailTextLabel.text = nil;
     
     switch (indexPath.section) {
         case 0:
@@ -425,17 +449,22 @@ AH_BASESUBVCFORMAINTAB_MODULE
                 {
                     [cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
                     
+                    NSArray* nums = nil;
+                    NSArray* descs = nil;
+                    NSArray* colors = nil;
+                    [self getStateNum:&nums desc:&descs color:&colors];
+                    
                     JHRingChart *ring = [[JHRingChart alloc] initWithFrame:CGRectMake(0, 0, self.view.lj_width, 200)];
                     ring.backgroundColor = [UIColor whiteColor];
-                    ring.valueDataArr = [self getStateValues];//@[@"12",@"7",@"5",@"13",@"46"];
+                    ring.valueDataArr = nums;//[self getStateValues];//@[@"12",@"7",@"5",@"13",@"46"];
                     ring.ringWidth = 35.0;
 //                    ring.fillColorArray = @[[UIColor colorWithHexString:@"#0DBEF5"]
 //                                            ,[UIColor colorWithHexString:@"#6C85DD"]
 //                                            ,[UIColor colorWithHexString:@"#09BB07"]
 //                                            ,[UIColor colorWithHexString:@"#3188DB"]
 //                                            ,[UIColor colorWithHexString:@"#50E3C2"]];
-                    ring.fillColorArray = [self getStateColors];
-                    ring.descArr = [self getStateDescs];//@[@"阶段一",@"阶段二",@"阶段三",@"阶段四",@"其他"];
+                    ring.fillColorArray = colors;//[self getStateColors];
+                    ring.descArr = descs;////[self getStateDescs];//@[@"阶段一",@"阶段二",@"阶段三",@"阶段四",@"其他"];
                     [ring showAnimation];
                     
                     [cell.contentView addSubview:ring];

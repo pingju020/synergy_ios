@@ -39,8 +39,9 @@
         [titleLab setTextColor: COMMON_CORLOR_NORMAL];
         [self addSubview:titleLab];
         
-        [btn addTarget:self action:@selector(selected:) forControlEvents:UIControlEventTouchUpInside];
+        [self addTarget:self action:@selector(selected:) forControlEvents:UIControlEventTouchUpInside];
         
+        btn.userInteractionEnabled = NO;
         [btn setBackgroundImage:[UIImage imageNamed:unSelectedImg] forState:UIControlStateNormal];
         [btn setBackgroundImage:[UIImage imageNamed:selecredImg] forState:UIControlStateSelected];
         

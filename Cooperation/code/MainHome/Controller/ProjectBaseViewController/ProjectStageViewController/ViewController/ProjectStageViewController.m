@@ -13,8 +13,11 @@
 #import "ProjectStageModel.h"
 #import "ProjectStageHeaderView.h"
 #import "ProjectStageSectionView.h"
+#import "ProjectStageFileCell.h"
+#import "ProjectStageDateCell.h"
+#import "ProjectFeedBackCell.h"
 
-@interface ProjectStageViewController ()<ProjectStageHeaderDelegate,UITableViewDelegate,UITableViewDataSource,ProjectStageSectionDelegate>
+@interface ProjectStageViewController ()<ProjectStageHeaderDelegate,UITableViewDelegate,UITableViewDataSource,ProjectStageSectionDelegate,ProjectStageDateDelegate>
 
 //UI
 @property (nonatomic,strong) ProjectTabScrollView *projectTabScrollView; //左侧滚动条
@@ -166,12 +169,20 @@
 - (void)projectStageHeaderChangeState
 {
     [PubllicMaskViewHelper showTipViewWith:@"点击了更改状态" inSuperView:self.view withDuration:1];
+    
+    //结束记得清缓存再刷新
+//    [self.caches removeObjectForKey:_stageId];
+//    [self requestStageData];
 }
 
 //新增任务
 - (void)projectStageHeaderAddMission
 {
     [PubllicMaskViewHelper showTipViewWith:@"点击了新增任务" inSuperView:self.view withDuration:1];
+    
+        //结束记得清缓存再刷新
+    //    [self.caches removeObjectForKey:_stageId];
+    //    [self requestStageData];
 }
 
 #pragma mark -ProjectStageSectionDelegate
@@ -179,8 +190,28 @@
 - (void)projectStageSectionRemove:(NSInteger)section
 {
     [PubllicMaskViewHelper showTipViewWith:@"点击了删除任务" inSuperView:self.view withDuration:1];
+    
+        //结束记得清缓存再刷新
+    //    [self.caches removeObjectForKey:_stageId];
+    //    [self requestStageData];
 }
 
+#pragma mark -ProjectStageDateDelegate
+- (void)projectStageWrite:(NSString *)taskId
+{
+        [PubllicMaskViewHelper showTipViewWith:@"点击了反馈" inSuperView:self.view withDuration:1];
+    //结束记得清缓存再刷新
+    //    [self.caches removeObjectForKey:_stageId];
+    //    [self requestStageData];
+}
+
+- (void)projectStageFinish:(NSString *)taskId
+{
+        [PubllicMaskViewHelper showTipViewWith:@"点击了完成" inSuperView:self.view withDuration:1];
+    //结束记得清缓存再刷新
+    //    [self.caches removeObjectForKey:_stageId];
+    //    [self requestStageData];
+}
 
 #pragma mark -UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -194,12 +225,14 @@
     ProjectTaskModel *taskModel = _stageModel.projectTasks[section];
     
     //cell数量是 附件数量 + 日期栏 + 反馈列表(要判断打开还是关闭)
-    return taskModel.taskFiles.count + 1 + (taskModel.isOn ? 1 : 0) ;
+    
+    return 1 + taskModel.taskFiles.count + (taskModel.isOn ? 1 : 0);
+
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 30;
+    return 40;
     
 }
 
@@ -225,17 +258,89 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 30;
+    ProjectTaskModel *taskModel   = _stageModel.projectTasks[indexPath.section];
+    
+    //cell 由文件列表+时间cell+反馈Cell构成
+    
+    if (indexPath.row >= taskModel.taskFiles.count + 1) { //反馈
+        return [ProjectFeedBackCell getHeightWith:taskModel tableWidth:self.tableView.width];
+    }else{
+        return PS_CELL_H;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:@"cell_id"];
-    if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell_id"];
+    ProjectTaskModel *taskModel   = _stageModel.projectTasks[indexPath.section];
+    
+    
+    //文件列表
+    if (indexPath.row < taskModel.taskFiles.count) {
+        ProjectStageFileCell *cell = [tableView dequeueReusableCellWithIdentifier:@"fileId"];
+        if (!cell) {
+            cell = [[ProjectStageFileCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"fileId"];
+        }
+        
+        //赋值
+        ProjectTaskFileModel *fileModel = taskModel.taskFiles[indexPath.row];
+
+        [cell setInfoWithFileType:fileModel.fileType.integerValue title:fileModel.fileName];
+        
+        return cell;
+        
+        
+    }else if (indexPath.row == taskModel.taskFiles.count){ //时间栏
+        ProjectStageDateCell *cell =[tableView dequeueReusableCellWithIdentifier:@"time_id"];
+        if (!cell) {
+            cell = [[ProjectStageDateCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"time_id"];
+        }
+        cell.taskModel = taskModel;
+        
+        cell.delegate = self;
+        
+        return cell;
+        
+        
+    }else{ //反馈栏
+        ProjectFeedBackCell *cell =[tableView dequeueReusableCellWithIdentifier:@"feedback_id"];
+        if (!cell) {
+            cell = [[ProjectFeedBackCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"feedback_id"];
+            
+        }
+        cell.taskModel = taskModel;
+        return cell;
+        
     }
-    cell.textLabel.text = [NSString stringWithFormat:@"%li-%li",indexPath.section,indexPath.row];
-    return cell;
+    
+
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ProjectTaskModel *taskModel   = _stageModel.projectTasks[indexPath.section];
+    //文件列表
+    if (indexPath.row < taskModel.taskFiles.count) {
+        ProjectTaskFileModel *fileModel = taskModel.taskFiles[indexPath.row];
+        
+        [PubllicMaskViewHelper showTipViewWith:[NSString stringWithFormat:@"点击了文件:%@",fileModel.fileUrl] inSuperView:self.view withDuration:1] ;
+    
+    }else{
+        taskModel.isOn ^= 1;
+        
+        ProjectStageDateCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        cell.taskModel = taskModel;
+
+        NSIndexPath *newIndex = [NSIndexPath indexPathForRow:indexPath.row+1 inSection:indexPath.section];
+        
+        if (taskModel.isOn) {
+            [tableView insertRowsAtIndexPaths:@[newIndex] withRowAnimation:UITableViewRowAnimationFade];
+        }else{
+            [tableView deleteRowsAtIndexPaths:@[newIndex] withRowAnimation:UITableViewRowAnimationFade];
+        }
+        
+//        [tableView reloadSections:[[NSIndexSet alloc]initWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationNone]
+
+    }
 }
 
 
@@ -264,9 +369,10 @@
     if (!_tableView) {
         _tableView = [[UITableView alloc]initWithFrame:CGRectMake(kTabWidth, CGRectGetMaxY(navigationBG.frame)+44, MAIN_WIDTH-kTabWidth, MAIN_HEIGHT-CGRectGetMaxY(navigationBG.frame)-44) style:UITableViewStylePlain];
         _tableView.showsVerticalScrollIndicator = NO;
-        _tableView.backgroundColor = VcBackgroudColor;
+        _tableView.backgroundColor = [UIColor colorWithHexString:@"#F8F8F8"];
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        _tableView.separatorStyle  = UITableViewCellSeparatorStyleNone;
 
         [self.view addSubview:_tableView];
         

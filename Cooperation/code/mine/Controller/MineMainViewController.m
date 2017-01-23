@@ -218,6 +218,7 @@ AH_BASESUBVCFORMAINTAB_MODULE
 //    [PhoneNumber setTextAlignment:NSTextAlignmentRight];
     
     viewRedPoint = [[UIView alloc]initWithFrame:(CGRect){0,0,10,10}];
+    viewRedPoint.hidden = YES;
     viewRedPoint.backgroundColor = [UIColor redColor];
     viewRedPoint.layer.cornerRadius = 5;
     viewRedPoint.layer.masksToBounds = YES;
@@ -242,6 +243,7 @@ AH_BASESUBVCFORMAINTAB_MODULE
 //    ExitButton.layer.borderColor=[[UIColor colorWithHexString:@"#A2B0DF"]CGColor];
 //    ExitButton.layer.borderWidth=1.0;
     ExitButton.backgroundColor=[UIColor colorWithHexString:@"#3983CA"];
+    //[ExitButton setBackgroundImage:[UIImage imageNamed:@"logout"] forState:UIControlStateNormal];
     [ExitBackground addSubview:ExitButton];
 }
 

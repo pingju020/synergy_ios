@@ -13,6 +13,7 @@
 #import "HttpSessionManager.h"
 #import "BaseInfomationViewController.h"
 #import "NSDictionary+LJAdditions.h"
+#import "MBProgressHUD.h"
 
 
 E_ROLE role;
@@ -162,7 +163,10 @@ E_ROLE role;
 - (void)LoginWithUserName:(NSString*)user AndPassword:(NSString*)password{
     NSDictionary* dicPara = @{@"loginName":@"13621580762", @"passWord":password};
     
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
     [HTTP_MANAGER startNormalPostWithParagram:dicPara Commandtype:@"app/check" successedBlock:^(NSDictionary *succeedResult, BOOL isSucceed) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
         if (isSucceed) {
             
             

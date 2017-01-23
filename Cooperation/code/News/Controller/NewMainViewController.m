@@ -8,6 +8,8 @@
 
 #import "NewMainViewController.h"
 #import "PJTabBarItem.h"
+#import "UIView+LJAdditions.h"
+#import "LJMacros.h"
 
 @interface NewMainViewController ()
 
@@ -20,7 +22,15 @@ AH_BASESUBVCFORMAINTAB_MODULE
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
+    [self removeBackBtn];
+    
+    UIImageView* sample = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"zixun_sample"]];
+    sample.frame = self.view.bounds;
+    sample.lj_height = self.view.lj_height-NAVIGATOR_HEIGHT;
+    sample.lj_top = NAVIGATOR_HEIGHT+STATUS_BAR_HEIGHT;
+    sample.autoresizingMask = UIViewAutoresizingFlexibleAll;
+    [self.view addSubview:sample];
+    
 }
 
 - (void)didReceiveMemoryWarning {
