@@ -10,6 +10,8 @@
 #import "PJTabBarItem.h"
 #import "LoginViewController.h"
 #import "UIImageView+WebCache.h"
+#import "UIView+LJAdditions.h"
+#import "AboutViewController.h"
 @interface MineMainViewController ()
 
 @end
@@ -31,6 +33,7 @@
     UIView* ExitBackground;
     UIButton* PhoneNumber;
     UIButton* ExitButton;
+    UIView* viewRedPoint;
 }
 AH_BASESUBVCFORMAINTAB_MODULE
 
@@ -214,6 +217,19 @@ AH_BASESUBVCFORMAINTAB_MODULE
     //    [PhoneNumber setText:@"188888888"];
 //    [PhoneNumber setTextAlignment:NSTextAlignmentRight];
     
+    viewRedPoint = [[UIView alloc]initWithFrame:(CGRect){0,0,10,10}];
+    viewRedPoint.backgroundColor = [UIColor redColor];
+    viewRedPoint.layer.cornerRadius = 5;
+    viewRedPoint.layer.masksToBounds = YES;
+    [MessagePhone addSubview:viewRedPoint];
+    viewRedPoint.lj_centerY = MessagePhone.lj_centerY;
+    viewRedPoint.lj_right = PhoneNumber.lj_left;
+    
+    UITapGestureRecognizer *tapAbout = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onAbout)];
+    tapAbout.cancelsTouchesInView = YES;
+    MessagePhone.userInteractionEnabled = YES;
+    [MessagePhone addGestureRecognizer:tapAbout];
+    
     [MessagePhone addSubview:PhoneNumber];
     //退出
     CGFloat ExitBarHeight=MyViewSize.height/12;
@@ -227,6 +243,11 @@ AH_BASESUBVCFORMAINTAB_MODULE
 //    ExitButton.layer.borderWidth=1.0;
     ExitButton.backgroundColor=[UIColor colorWithHexString:@"#3983CA"];
     [ExitBackground addSubview:ExitButton];
+}
+
+- (void)onAbout{
+    AboutViewController* vc = [[AboutViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark 获取数据

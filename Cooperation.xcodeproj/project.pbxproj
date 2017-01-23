@@ -459,6 +459,8 @@
 		C634FAC61E350FC8003EE26B /* sharemore_wxtalk@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C634FABC1E350FC8003EE26B /* sharemore_wxtalk@2x.png */; };
 		C634FACD1E352906003EE26B /* NSObject+LJAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C634FACC1E352906003EE26B /* NSObject+LJAdditions.m */; };
 		C65875061E347887006FBA99 /* BackMoneyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C65875051E347887006FBA99 /* BackMoneyTableViewCell.m */; };
+		C66A31721E35A798005B057B /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C66A31711E35A798005B057B /* AboutViewController.m */; };
+		C66A31741E35A7D8005B057B /* logout@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C66A31731E35A7D8005B057B /* logout@3x.png */; };
 		C68710681E34572C0018E152 /* ProjectDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C68710671E34572C0018E152 /* ProjectDetailModel.m */; };
 		C68710731E34575A0018E152 /* AddButtonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C68710691E34575A0018E152 /* AddButtonTableViewCell.m */; };
 		C68710741E34575A0018E152 /* ChooseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C687106A1E34575A0018E152 /* ChooseTableViewCell.m */; };
@@ -1252,6 +1254,9 @@
 		C634FACC1E352906003EE26B /* NSObject+LJAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LJAdditions.m"; sourceTree = "<group>"; };
 		C65875041E347887006FBA99 /* BackMoneyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackMoneyTableViewCell.h; sourceTree = "<group>"; };
 		C65875051E347887006FBA99 /* BackMoneyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackMoneyTableViewCell.m; sourceTree = "<group>"; };
+		C66A31701E35A798005B057B /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		C66A31711E35A798005B057B /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		C66A31731E35A7D8005B057B /* logout@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logout@3x.png"; sourceTree = "<group>"; };
 		C68710661E34572C0018E152 /* ProjectDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectDetailModel.h; sourceTree = "<group>"; };
 		C68710671E34572C0018E152 /* ProjectDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectDetailModel.m; sourceTree = "<group>"; };
 		C68710691E34575A0018E152 /* AddButtonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddButtonTableViewCell.m; sourceTree = "<group>"; };
@@ -2040,6 +2045,8 @@
 				AC1117D91E31F1BA009ABFDF /* MeWebViewController.m */,
 				AC1116271E31DD91009ABFDF /* MineMainViewController.h */,
 				AC1116281E31DD91009ABFDF /* MineMainViewController.m */,
+				C66A31701E35A798005B057B /* AboutViewController.h */,
+				C66A31711E35A798005B057B /* AboutViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2687,6 +2694,7 @@
 		ACB7C5401E330C7800C44615 /* knowledge */ = {
 			isa = PBXGroup;
 			children = (
+				C66A31731E35A7D8005B057B /* logout@3x.png */,
 				C634F94B1E34AEA1003EE26B /* 日历.png */,
 				C634F94C1E34AEA1003EE26B /* 汇总-右箭头1.png */,
 				C634F94D1E34AEA1003EE26B /* 汇总-右箭头2.png */,
@@ -3396,6 +3404,7 @@
 				AC11175E1E31DD91009ABFDF /* project@2x.png in Resources */,
 				AC1117BD1E31EA05009ABFDF /* selected@3x.png in Resources */,
 				C634FA9E1E34F93E003EE26B /* RecordingBkg@2x.png in Resources */,
+				C66A31741E35A7D8005B057B /* logout@3x.png in Resources */,
 				AC1117581E31DD91009ABFDF /* knowledge@2x.png in Resources */,
 				AC11175F1E31DD91009ABFDF /* project_press@2x.png in Resources */,
 				C634FA891E34F93E003EE26B /* avator@2x.png in Resources */,
@@ -3726,6 +3735,7 @@
 				AC7FFC381E33652500200686 /* BranchBankIdentifyModel.m in Sources */,
 				C634FA7A1E34F93E003EE26B /* SETextSelectionView.m in Sources */,
 				AC1117E01E31F1BA009ABFDF /* LibraryWebViewController.m in Sources */,
+				C66A31721E35A798005B057B /* AboutViewController.m in Sources */,
 				C634FA5C1E34F93D003EE26B /* XHCacheManager.m in Sources */,
 				AC1117481E31DD91009ABFDF /* DDMultiFormatter.m in Sources */,
 				C634FA711E34F93E003EE26B /* SESelectionGrabber.m in Sources */,
